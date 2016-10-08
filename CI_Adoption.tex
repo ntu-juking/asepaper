@@ -10,7 +10,15 @@
 \newcommand{\etc}{etc.}
 \newcommand{\etal}{{\emph{et al.}}}
 
+\newcommand{\nnbb}[2]{
+    \fbox{\bfseries\sffamily\scriptsize#1}
+    {\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}
+   }
 
+\newcommand{\as}[1]{\nnbb{Alexander}{#1}}
+\newcommand{\bv}[1]{\nnbb{Bogdan}{#1}}
+\newcommand{\vf}[1]{\nnbb{Vladimir}{#1}}
+\newcommand{\yz}[1]{\nnbb{Yangyang}{#1}}
 
 \begin{document}
 
@@ -29,7 +37,7 @@ Continuous Integration (CI) is a key part of the devops ideology of mashing deve
 \section{Introduction}
 Devops, or bringing development and build/release activities in the same framework can bring changes in the product to the user-plane more quickly. For it to be effective, the technology that implements these ideas has to allow for a seamless back and forth between development, integration, code testing review, and release. 
 
-Continuous Integration is the part of devops that seamlessly builds, tests, and integrates developer changes, and performs any pre-specified testing. CI, if implemented properly (e.g. Travis CI, Jenkins CI, <others?>) can benefit the distributed software development process, in particular code change throughput [] and some aspects of code quality []. It is a disruptive technology, in that it can scale up distributed development without noticeable diminishment in quality.
+Continuous Integration is the part of devops that seamlessly builds, tests, and integrates developer changes, and performs any pre-specified testing. CI (\eg Travis CI, Jenkins CI, Hudson CI), if implemented properly, can benefit the distributed software development process, in particular code change throughput~\cite{Stolberg} and some aspects of code quality~\cite{VasilescuYWDF15}. It is a disruptive technology, in that it can scale up distributed development without noticeable diminishment in quality.
 
 \section{Theory}
 
@@ -58,6 +66,8 @@ Different categories of initial faults
 \section{Conclusion}
 
 \section{Threats to Validity}
+
 \bibliographystyle{IEEEtran}
 \bibliography{references}
+
 \end{document}
