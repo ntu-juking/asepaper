@@ -1,11 +1,40 @@
-\documentclass{article}
+\documentclass[conference]{IEEEtran}
  
 \begin{document}
 
+\title{Evolution of Software Development Practices
+Following Adoption of Travis CI: A Large-scale Empirical Study of GitHub Traces}
 
-Evolution of Software Development Practices 
-Following Adoption of Travis CI: 
-A Large-scale Empirical Study of GitHub Traces
+\author
+{\IEEEauthorblockN{}
+\IEEEauthorblockA{}
+}
+\maketitle
+\begin{abstract}
+Continuous Integration (CI) is a key part of the devops ideology of mashing development and operations together to shorten the cycles of delivering a product to users. CI has become a disruptive innovation in software development: with proper implementation, e.g. Travis CI or Jenkins CI, positive effects have been demonstrated on pull request throughput and scaling up of project sizes. As any other innovation, adopting it implies adapting existing practices in order to take full advantage of its potential. Here we study the adaptation and evolution of code writing, review practices and unit testing practices as Travis CI is adopted by XX established projects on GitHub. By employing a mix of quantitative studies and case studies we triangulate the general evolution trajectories, and provide reasoning for the differences encountered among the projects.
+\end{abstract}
 
+\section{introduction}
+Devops, or bringing development and build/release activities in the same framework can bring changes in the product to the user-plane more quickly. For it to be effective, the technology that implements these ideas has to allow for a seamless back and forth between development, integration, code testing review, and release. 
+
+Continuous Integration is the part of devops that seamlessly builds, tests, and integrates developer changes, and performs any pre-specified testing. CI, if implemented properly (e.g. Travis CI, Jenkins CI, <others?>) can benefit the distributed software development process, in particular code change throughput [] and some aspects of code quality []. It is a disruptive technology, in that it can scale up distributed development without noticeable diminishment in quality.
+
+\section{Theory}
+
+For a developer not proficient with the operations side of the process, transitioning to an integrated CI platform, like Travis CI, involves adaptation of their established processes to the new environment. During this transition, some developers will experience a more streamlined process evolution trajectory than others. Studying those trajectories can provide lessons learned.
+
+
+We expect the following to potentially change in the transition <need to write theory behind each>:
+
+On the developer side:
+Change in code writing/committing: we expect smaller change sets over time
+We expect More unit testing over time
+Operations side:
+More discussions in code review over time
+Different categories of initial faults
+
+\section{RQs}
+
+\section{Methods}
 
 \end{document}
