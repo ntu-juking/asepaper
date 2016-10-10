@@ -2,10 +2,12 @@
 \section{Related Work}
 \label{sec:rw}
 Adoption and impact of continuous integration have attracted \as{limited/extensive} attention from the research community. Already in 2003 based on the studies of FreeBSD and Mozilla Holck and J{\o}rgensen have observed that continuous integration, interpreted as distributed development and obligation to integrate one's own contributions, is capable of replacing traditional software engineering coordination mechanisms~\cite{HolckJ03}.  
+Deshpande and Riehle have studied adoption of continuous integration based on Ohloh.net data~\cite{Deshpande2008}. Assuming that the use of continuous integration reduces the size of commits, they have studied the size of commits in 5122 projects and, since no commit size reduction has been observed, they have concluded that continuous integration has not been used. Their observations might have been affected by lack of actual relation between presence of continuous integration and commit size, aggregation effect of considering the average commit size over different projects as well as the period studied (January 1990--December 2006). 
+
+Ease of use of the Travis-CI~\cite{TravisCI} continuous integration system led to its popularity on GitHub and triggered a series of research studies~\cite{era14,VasilescuYWDF15,yue2015wait,BellerGZ16,Hilton2016,Yu2016}.\as{To be continued. Maybe Bogdan can write about his own work.}
+
+Industrial adoption of continuous integration systems has been recently studied in several papers~\cite{Leppanen2015,Laukkanen2015Agile,Debbiche2014,Stahl2014ICSEComp,Stahl2014JSS} and is a subject of the recent survey by Eck, Uebernickel and Brenner~\cite{EckUB14}. However, this line of work is based on interviews rather than on analysis of the development data.
 
 \as{Miller~\cite{Miller} discusses build breaks, is this relevant?}
 \as{Van der Storm discusses backtracking as a way of addressing build failures~\cite{Storm2008}.}
-
-Deshpande and Riehle have studied adoption of continuous integration based on Ohloh.net data~\cite{Deshpande2008}. Assuming that the use of continuous integration reduces the size of commits, they have studied the size of commits in 5122 projects and, since no commit size reduction has been observed, they have concluded that continuous integration has not been used. Their observations might have been affected by lack of actual relation between presence of continuous integration and commit size, aggregation effect of considering the average commit size over different projects as well as the period studied (January 1990--December 2006). 
-
-Ease of use of the Travis-CI~\cite{TravisCI} continuous integration system led to its popularity on GitHub and triggered a series of research studies~\cite{era14,VasilescuYWDF15,yue2015wait,BellerGZ16}
+\as{Laukannen and M\"{a}ntyl\"{a} have surveyed three papers discussing the impact of the build waiting times. Some of the consequences of the long/short build waiting times are related to CI~\cite{Laukkanen2015RCSE}.}
