@@ -1,7 +1,7 @@
 \documentclass[conference]{IEEEtran}
 \usepackage{cite}
 \usepackage{balance}
-
+\usepackage{graphicx}
 
 \usepackage{xspace}
 \newcommand{\ie}{{\emph{i.e.}},\xspace}
@@ -127,16 +127,40 @@ Data: 567 projects with 500+ nonmerge commits
 
 Fig 1: Box plots of code churn per unit time period, one for each time point, each point an aggregate of all projects
 
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\textwidth]{churn_before.pdf}
+\caption{The Code churn before CI adoption}
+\label{Fig:CodeChurnBefore}
+\end{figure}
+
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\textwidth]{churn_after.pdf}
+\caption{The Code churn after CI adoption}
+\label{Fig:CodeChurnAfter}
+\end{figure}
+
 Table 1: Summary of all models
 
 Table 2: Projects with negative trends after CI
 
-\subsection{RQ2: Changes in Code Review}
+\subsection{RQ2: Changes in Issues}
 
-Fig 2: Box plots of # issues per unit time period, one for each time point, each point an aggregate of all projects
+Fig 2: Box plots of \# issues per unit time period, one for each time point, each point an aggregate of all projects
+
+
+
 
 
 \subsection{RQ3: Trends in Unit Testing Per Pull Request}
+
+
+
 
 Fig 3: Box plots of fraction of builds with tests or unit tests per pull request, per unit time period, one for each time point, each point an aggregate of all projects
 
@@ -144,6 +168,29 @@ Fig 3: Box plots of fraction of builds with tests or unit tests per pull request
 
 
 \section{Conclusion}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\textwidth]{issues_before.pdf}
+\caption{Median number of issues before CI adoption}
+\label{Fig:IssuesBefore}
+\end{figure}
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\textwidth]{issues_after.pdf}
+\caption{Median number of issues after CI adoption}
+\label{Fig:IssuesAfter}
+\end{figure}
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\textwidth]{tests.pdf}
+\caption{Unit tests per build following CI adoption}
+\label{Fig:Tests}
+\end{figure}
 
 \section{Threats to Validity}
 
