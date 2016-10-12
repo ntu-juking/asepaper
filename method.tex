@@ -4,7 +4,7 @@
 
 a) data gathering
 
-From GITHUB Search API, we first find over 430k Java projects created before 2015-05-01 and with size larger than 500 kilobytes. After consulting Travis-CI API, we further identify projects that: 1) adopted Travis-CI; 2) at least 9 months before and 9 months after Travis-CI adoption. After this filtering process, our data set contains 1581 projects.  
+From GITHUB Search API, we first find over 430k Java projects created before 2015-05-01 and with size larger than 500 kilobytes. After consulting Travis-CI API, we further identify projects that: 1) adopted Travis-CI; 2) at least 9 * 30 days before and 9 * 30 days after Travis-CI adoption. After this filtering process, our data set contains 1581 projects.  
 For each project, we collect the whole history of commits, issues, pull requests and comments from GITHUB API, and the history of Travis-CI builds and job logs from Travis CI API.  The data were extracted from the inception until 2016-05-01. 
 In addition to these publicly available data, we further gathered more information as follows.
 
