@@ -10,15 +10,27 @@ For these projects, we collect the whole history of commits, issues, pull reques
 
 b) data description
 
-c) analysis methods
+c) Time Series Analysis Methods
 
-- Regression discontinuity design
+We use data visualization and statistical modeling methods to discover longitudinal patterns indicative of CI adoption effects on development practices.
+As one of the contributions of this paper, we introduce the statistical modeling framework of {\emph regression discontinuity design} to assess the existence and extent of a longitudinal effect of CI adoption on development practices.
+
+To evaluate the effect of a treatment, e.g., a new drug on a disease progression, randomized experimental trials are typically used, in which the experimental cohort is randomly split into a treatment group, i.e. those given the drug, and a control group, i.e., those given an experientially identical placebo. Then, the effect is evaluated based on the difference in disease progression between the two groups.
+In the absence of randomized trials, as is the case with trace data common in empirical software engineering, weaker techniques, e.g., quasi-experiments, are employed which make additional assumptions.
+
+Regression discontinuity design (RDD) is an example of such a technique, used for modeling the extent of a discontinuity of a function between its values at points just before and just after a given intervention point. 
+It is based on the assumption that in the absence of the intervention, the trend of the function would be continuous.
+A common situation where a discontinuity occurs is illustrated in Fig.~\ref{RDDIllustration}, where the discontinuity is shown as occuring at the time of the intervention, and is manifested as a different regression before and after that point.
+
+There are a number of different formalizations of RDD, most prominently sharp RDD and fuzzy RDD.~\cite{}
+Each can, in turn, be implemented in a variety of ways.
+To model the effect of CI adoption on developer practices, here we chose one of the simpler approaches of linear regression with an interaction term.
 
 
 
 
-- Statistical models
+ 
 
-- boxplots
 
-- case studies
+
+
