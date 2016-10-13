@@ -35,10 +35,21 @@ A common situation where a discontinuity occurs is illustrated in Fig.~\ref{RDDI
 There are a number of different formalizations of RDD, most prominently sharp RDD and fuzzy RDD.~\cite{}
 Each can, in turn, be implemented in a variety of ways.
 To model the effect of CI adoption on developer practices, here we chose one of the simpler approaches of linear regression with an interaction term.
+We summarize next our approach, following the description from a recent review of RDD~\cite{}. We refer to Figure~\ref{RDDIllustration} for an illustration.
+Let $Y$ be the outcome variable in which we are looking for a discontinuity, e.g. commit churn per month, let $X$ be the temporal variable containing the time of intervention, and $c$ be the time point at which the intervention, in this case CI adoption has happened.
+Then, an RDD model for points $x_i$ in equal intervals $h$ on each side of $c$, $c-h \le x_i \le c+h$, is given by:
 
+\[y_i \ = \alpha + \beta(x_i-c) + \gamma w_i + \delta(x_i-c)w_i + \epsilon_i,\]
 
+\noindent where $w_i = (x_i > c)$, i.e. $w_i$ is 1 if point $x_i$ is included in the treatment group (e.g., after CI adoption), and 0 if it is before the treatment.
+In fact, this model encapsulates two separate regressions.
+For points before the tratment, the resulting regression line has a slope of $\beta$, and after the treatment $\beta + \delta$.
+The size of the effect of the treatment is the difference between the two regression values of $y_i$ evaluated at $x=c$, and can be seen to be equal to the intercept $\alpha$.
 
+For example, in Fig.~\ref{RDDIllustration}, ...
 
+For each project, we use a sharp RDD model implemented as the above double linear regression, on data centered at the time of CI adoption, and having equal number of points on each side.
+Solving the regression gives us the coefficients, which we can reason about, especially the effect size, if any.
  
 
 
