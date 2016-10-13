@@ -2,10 +2,11 @@
 \section{Methods}
 \label{sec:method}
 
-\subsection{Data gathering}
-From GITHUB Search API, we first find over 430k Java projects created before 2015-05-01 and with size larger than 500 kilobytes. After consulting Travis-CI API, we further identify projects that: 1) adopted Travis-CI; 2) at least 9 months before and 9 months after Travis-CI adoption. After this filtering process, our data set contains 1581 projects.  
-For each project, we collect the whole history of commits, issues, pull requests and comments from GITHUB API, and the history of Travis-CI builds and job logs from Travis CI API.  The data were extracted from the inception until 2016-05-01. 
-In addition to these publicly available data, we further gathered more information as follows.
+a) data gathering
+
+To perform our study, first and foremost, we should make sure our studied projects have sufficient history (e.g. 9*30 days) both before using Travis-CI and after using Travis-CI.  As the data were extracted from the inception until 2016-05-01, the projects selected should be created at least before 2014-11-01. 
+From GITHUB Search API, we first found over 300k Java projects created before 2014-11-01 and with $\geqslant 500$ kilobytes. After consulting Travis-CI API, we further identify projects that: 1) adopted Travis-CI; 2) at least 9 * 30 days from project creation to Travis-CI adoption; 3) at least 9 * 30 days from Travis-CI adoption to 2016-05-01. This filtering process left us 1581 projects.  
+For each project, we collect the whole history of commits, issues, pull requests and comments from GITHUB API, and the history of Travis-CI builds and job logs from Travis CI API.  In addition to these publicly available data, we further gathered more information as follows.
 
 Number of tests: 
 Each build has at least one job which indicates an execution of the build on a specified environment. Once the job is started, a tracking log will be generated, which records the detailed information of the build lifecycle including the installation steps and the build scripts for testing. To investigate the testing evolution across builds, we attempt to mine data from these logs . We build an automatic tool to analyze Travis-CI build logs and extract summary information about test executions. 
