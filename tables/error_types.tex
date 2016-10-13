@@ -1,0 +1,28 @@
+% !TEX root = CI_Adoption.tex
+
+\begin{table*}[t] \centering
+\small
+  \caption{Travis-CI build failure taxonomy
+  \vspace{-0.2cm}
+  }
+  \label{error_types}
+
+\begin{tabular}{ p{3.5cm}  p{5cm}  p{8cm} }
+	
+\hline 
+\\[-1.8ex]\hline
+Category & Description & Examples of textual patterns \\ \hline 
+\emph{failed test} & tests were failed & tests failed, TestsFailedException, tests unsuccessful\\ \hline
+\emph{skipped or pending test} & tests were skipped or set to be pending & skipped tests \\ \hline
+\emph{missing file or dependency} & required files or dependencies are not available &  FileNotFoundException, no such file to load, is not installed \\ \hline
+\emph{code quality} & the code failed to satisfy the code standards & line too long, missing whitespace around operator, too many pylint violations \\ \hline
+\emph{compile error} &compilation errors happened & Compilation failed, syntax check failed, attributeError, parse error\\ \hline
+\emph{execution error} &an error occurs during the execution of code & runtime error, execution failed, test errors, OutOfMemoryError\\ \hline
+\emph{time out} & the build could not be completed within the required time&“test run exceeded * minutes”, “..took longer than”, command time-out \\ \hline 
+\emph{other} &other infrequent errors are included in this type & warnings on documentation, Aborted due to warnings, The remote end hung up unexpectedly \\
+\hline
+
+\end{tabular}
+
+\end{table*}
+
