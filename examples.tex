@@ -1,0 +1,21 @@
+% !TEX root = CI_Adoption.tex
+\section{Examples}
+\label{sec:examples}
+Before diving into quantitative analysis we eyeball several projects in our collection. 
+We observe that on several occasions continuous integration has been adopted as
+part of a larger scale restructuring effort. 
+For instance, \texttt{allendevco/pill-logger} has started using Travis-CI on November 20,
+2013; in the same period developers have changed the project build system from ant to
+gradle and as a consequence of that changed the way the project folders are organized.
+Similarly, \texttt{Netflix/denominator} has introduced continuous integration on March 13, 2015
+after an active development period of daily commits starting on March 3.
+On the very same date continuous integration has been introduced 
+the project updated library dependencies and restructured tests, while
+on the next day it added examples and removed support of DiscoveryDNS, and continued
+this rather active development till the version 4.5.0 has been released on April 6, 2015.
+The project has three additional commits in April and then went to a recess till early August. 
+Examples such as \texttt{allendevco/pill-logger} and \texttt{Netflix/denominator} 
+suggest that the software development immediately prior to introduction of continuous 
+integration and immediately after it might not be representative for the project.
+Therefore, in the quantitative analysis we perform in Section~\ref{XXX} we have decided to
+exclude one month before the first Travis-CI build and one month after it.
