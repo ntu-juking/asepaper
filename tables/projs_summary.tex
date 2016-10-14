@@ -1,25 +1,60 @@
 % !TEX root = CI_Adoption.tex
 
 
-
-\begin{table}[]
+% projects data summary
+\begin{table}[t]
 	\centering
 	\caption{Summary statistics for 1566 studied projects}
+	\vspace{-0.2cm}
 	\label{projs_summary}
-	\begin{tabular}{ p{1.2cm} p{0.7cm} p{0.7cm} p{0.7cm} p{0.7cm} p{0.7cm} p{0.7cm}}
+	\begin{tabular}{ p{1.2cm} p{1.2cm} p{1.2cm} p{1.2cm} p{1.2cm} }
+	\hline
+	Statistic   & Min        & Median     & Mean       & Max        \\ \hline
+	created\_at & 2008/6/6 & 2012/7/30 & 2012/6/27 & 2014/11/7 \\
+	size        & 500        & 6006       & 40460      & 2433000    \\
+	\# stars    & 0          & 33.5       & 344.1      & 18480      \\
+	\# forks    & 0          & 18         & 133.2      & 7247       \\
+	\# commits  & 5          & 412        & 1385       & 118000     \\
+	\# issues   & 0          & 20         & 125.9      & 10330      \\
+	\# PRs      & 0          & 14         & 97.68      & 7715       \\
+	\# builds   & 1          & 99.5       & 347        & 16700     \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+% summary for builds
+\begin{table}[t]
+	\centering
+	\caption{Statistics for Travis-CI builds}
+	\vspace{-0.2cm}
+	\label{builds_count}
+	\begin{tabular}{l|p{0.7cm}p{0.7cm}|p{0.7cm}p{0.7cm}p{0.7cm}p{0.7cm}}
 		\hline
-		Statistic       & Min            & 1st Qu.        & Median          & Mean           & 3rd Qu.        & Max             \\ \hline
-		
-		created\_at     & 2008/6/6 & 2011/8/8  & 2012/7/30 & 2012/6/27 & 2013/6/6  & 2014/11/7 \\
-		size            & 500            & 1594           & 6006            & 40460          & 26980          & 2433000         \\
-		
-		\# stars        & 0              & 6              & 33.5            & 344.1          & 180.8          & 18480           \\
-		\# forks        & 0              & 4              & 18              & 133.2          & 74             & 7247            \\
-		
-		\# commits      & 5              & 184.2          & 412             & 1385           & 1085           & 118000          \\
-		\# issues       & 0              & 2              & 20              & 125.9          & 89.75          & 10330           \\
-		
-		\# PRs & 0              & 2              & 14              & 97.68          & 64             & 7715            \\
-		\# builds       & 1              & 39             & 99.5            & 347            & 278            & 16700          
+		\multirow{2}{*}{\# builds} & \multicolumn{2}{c|}{event type} & \multicolumn{4}{c}{state}                                     \\ \cline{2-7} 
+		& push           & PR            & passed         & failed         & errored       & canceled    \\ \hline
+		541959                     & 367507         & 174452        & \begin{tabular}[c]{@{}c@{}}363717\\ (67.1\%)\end{tabular} & \begin{tabular}[c]{@{}c@{}}101441\\ (18.7\%)\end{tabular} & \begin{tabular}[c]{@{}c@{}}74673\\ (13.8\%)\end{tabular} & \begin{tabular}[c]{@{}c@{}}2128\\ (0.4\%)\end{tabular} \\ \hline
+	\end{tabular}
+	
+	
+\end{table}
+
+
+% count the #commits,#issues,#prs before and CI
+\begin{table}[t]
+	\centering
+	\caption{Statistics for commits, issues and pull requests}
+	\vspace{-0.2cm}
+	\label{count_info}
+	\begin{tabular}{lrrr}
+		\hline
+		& all     & Before CI & After CI \\ \hline
+		\# commits & 2163849 & 1425358   & 738491   \\ \hline
+		\# issues  & 197232  & 86539     & 110693   \\ \hline
+		\# PRs      & 152969  & 54440     & 98529    \\ \hline
 	\end{tabular}
 \end{table}
+
+
+
+
