@@ -2,7 +2,12 @@
 \usepackage{cite}
 \usepackage{balance}
 \usepackage{graphicx}
-
+\usepackage{url}
+\usepackage{subfigure}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{enumitem}
+\setitemize{noitemsep,topsep=2pt,parsep=1pt,partopsep=1pt}
 \usepackage{multirow}
 
 \usepackage{xspace}
@@ -11,6 +16,15 @@
 \newcommand{\eg}{{\emph{e.g.}},\xspace}
 \newcommand{\etc}{etc.}
 \newcommand{\etal}{{\emph{et al.}}}
+\newcommand{\GH}{{\sc GitHub}\xspace}
+\newcommand{\GHT}{{\sc GHTorrent}\xspace}
+\newcommand{\CI}{{$\mathcal{CI}$}\xspace}
+\newcommand{\tdd}{{$\mathcal{TDD}$}\xspace}
+\newcommand{\bCI}{{$\bm{\mathcal{CI}}$}\xspace}
+\newcommand{\PR}{{$\mathcal{PR}$}\xspace}
+\newcommand{\PRs}{{$\mathcal{PR}$s}\xspace}
+\newcommand\head[1]{\noindent{\underline{\bf{#1}}:}}
+\newcommand{\mypara}[1]{\vspace{4 mm} \noindent{\underline {\bf #1} \vspace{2mm}}}
 
 \usepackage{amssymb}
 \newcommand{\nnbb}[2]{
@@ -250,6 +264,7 @@ We observe a monotonically increasing trend in both the medians, from 140 to 160
 \label{Fig:BugTypes}
 \end{figure}
 
+\balance
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}

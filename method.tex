@@ -1,8 +1,9 @@
 % !TEX root = CI_Adoption.tex
+
 \section{Methods}
 \label{sec:method}
 
-a) data gathering
+\subsection{Data Gathering}
 
 To perform our study, first and foremost, we should make sure our studied projects have sufficient history (e.g. 9*30 days) both before using Travis-CI and after using Travis-CI.  As the data were extracted from the inception until 2016-05-01, the projects selected should be created at least before 2014-11-08, so that there are at least 9*30*2 days from its creation to 2016-05-01. 
 From GITHUB Search API, we first found over 300k Java projects created before 2014-11-08 and with $\geqslant 500$ kilobytes. After consulting Travis-CI, we further identify projects that: 1) adopted Travis-CI; 2) at least 9 * 30 days from project creation to Travis-CI adoption; 3) at least 9 * 30 days from Travis-CI adoption to 2016-05-01. This filtering process left us 1566 projects.  
