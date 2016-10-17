@@ -105,6 +105,7 @@ RQ3: Are developers transitioning to using more issues after the adoption of CI?
 \section{Results and Discussion}
 
 We sought to study how different software development practices evolve around the time of CI adoption and the period after the adoption.
+\input{examples}
 
 \subsection{RQ1: Trends in Code Churn}
 
@@ -186,7 +187,20 @@ Table~\ref{Table:rddmodels_freq} summarizes the results.
 \noindent \underline{Discussion}
 
 
-\subsection{RQ3: Trends in Testing}
+
+
+\subsection{RQ3: Trends in Issues}
+
+Fig 5: Box plots of \# issues per unit time period, one for each time point, each point an aggregate of all projects
+
+\input{tables/rq3_models}
+
+The values of the $\gamma$'s for these models are right skewed, with average and median over 1. Thus, we conclude the effect of CI adoption led to an overall increase of one issue more per period.
+
+
+
+
+\subsection{RQ4: Trends in Testing}
 
 The second development practice we examine is testing and the evolution of the types of errors revealed by automated testing.
 The data consists of XXX projects, each with at least YYY tests.
@@ -200,15 +214,8 @@ We observe a monotonically increasing trend in both the medians, from 140 to 160
 
 \noindent \underline{Discussion}
 
-\subsection{RQ3: Changes in Issues}
 
-Fig 5: Box plots of \# issues per unit time period, one for each time point, each point an aggregate of all projects
-
-
-\input{examples}
 \input{rw}
-
-
 \section{Conclusion}
 
 \begin{figure}[!t]
