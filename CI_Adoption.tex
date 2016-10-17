@@ -106,7 +106,7 @@ RQ3: Are developers transitioning to using more issues after the adoption of CI?
 
 We sought to study how different software development practices evolve around the time of CI adoption and the period after the adoption.
 
-\subsection{RQ1: Changes in Code Churn Practices}
+\subsection{RQ1: Trends in Code Churn}
 
 The first development practice we examine is code churn.
 The data consists of 567 projects, each with at least 500 nonmerge commits.
@@ -118,12 +118,13 @@ We observe that for most part, the medians dance around
 10 and 12 lines of code churn per period, and the averages between 16 and 18 lines, with large variance and no obvious trend. The 30-day interval just before CI adoption seems to stand out and is higher than the rest.
 
 Next, we look to the other side of the adoption point. Fig.~\ref{Fig:CodeChurnBefore} shows a boxplot of per-project median code churn for each of nine consecutive 30-day time intervals following CI adoption.
-Here, the story that the boxplots are telling is different. There is an apparent, downward trend in both the medians and averages, the former drop monotonically from 13 down to 7-8 lines of code and the latter down to 15 lines of code.
-The trend in the medians is significant statistically (which test?, p-val = 0.0014).
+Here,  there seems to be a slight downward trend in both the medians and averages, the former drop monotonically from 13 down to 8 lines of code and the latter down to 15 lines of code.
+However, we note the large variance around the medians.
+
 The 30- and 60-day intervals just after the adoption point seem to be higher than the rest, and together with the 30-day interval just before adoption of CI seem to form a peak of increased code churn.
-In conclusion, discounting the peak behavior in code churn around CI adoption time, we observe a 30\% reduction in the amounts of code churn from before to after CI adoption.
+In conclusion, discounting the peak behavior in code churn around CI adoption time, we observe a small reduction in the amounts of code churn from before to after CI adoption.
 
-
+\input{tables/rq1_models}
 \begin{figure}[!t]
 \centering
 \includegraphics[width=0.5\textwidth]{churn_before.pdf}
@@ -144,7 +145,6 @@ Guided by our observations from the exploratory study above, we proceed to quant
 For each project, we fitted a sharp RDD model, as decribed before.
 Table~\ref{Table:rddmodels} summarizes the results.
 
-Table XX: Summary of all models
 
 Table XX: Projects with statistical negative trends after CI
 
@@ -158,7 +158,35 @@ The increased code churn on both sides near the CI adoption time is arguably in 
 
 \noindent \underline{Case Study: Transition Period}
 
-\subsection{RQ2: Trends in Testing}
+
+\subsection{RQ2: Trends in Commit Frequency}
+
+The second development practice we examine is commit frequency.
+We use the same data as before, 567 projects, each with at least 500 nonmerge commits.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\textwidth]{numbercommits.pdf}
+\caption{Commit frequency before and after CI adoption}
+\label{Fig:NumberCommits}
+\end{figure}
+
+\noindent \underline{Exploratory Study} To explore general trends over time, we first look at commit frequency in the months leading up to CI adoption.
+Figs.~\ref{Fig:NumberCommits} shows the boxplots of per-project median code churn for each of nine consecutive 30-day time intervals before CI adoption, and respectively, nine consecutive 30-day time intervals after CI adoption.
+The vertical line in each boxplot is the median value of all per-project median, and the black dot is their average value.
+
+
+\noindent \underline{Modeling Study} 
+As in RQ1, for each project, we fitted a sharp RDD model, as decribed before.
+Table~\ref{Table:rddmodels_freq} summarizes the results.
+
+\input{tables/rq2_models}
+
+
+\noindent \underline{Discussion}
+
+
+\subsection{RQ3: Trends in Testing}
 
 The second development practice we examine is testing and the evolution of the types of errors revealed by automated testing.
 The data consists of XXX projects, each with at least YYY tests.
