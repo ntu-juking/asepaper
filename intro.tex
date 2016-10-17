@@ -1,0 +1,99 @@
+% !TEX root = CI_Adoption.tex
+
+\section{Introduction}
+
+It is not everyday that software engineering experiences a paradigm shift.
+The \DO movement, made popular in recent years, is according to many
+\cite{degrandis2011devops, loukides2012devops, humble2011enterprises, 
+roche2013adopting} such a shift.
+Simply stated, \DO aims to get changes into production as quickly as 
+possible, without compromising software quality.
+While no standard definitions exist and the term is often overloaded, here
+we refer to \DO as a culture that emphasizes \emph{automation of the 
+process of building, testing, and deploying software}.
+In practice, \DO is supported by a multitude of configuration management, 
+cloud-based continuous integration, and automated deployment tools,
+which enjoy widespread open-source~\cite{Hilton2016} and industrial 
+adoption~\cite{rightscale, hilton2016continuous}.
+
+In this study we focus on Continuous Integration (CI), the key enabler of \DO.
+CI is a well known concept in Extreme Programming, often attributed to
+Martin Fowler's 2000 blog post~\cite{fowler2000continuous}.
+As a practice, CI is seeing broad adoption with the increasing popularity
+of the \GH pull-based development model~\cite{gousios2014exploratory}
+and the plethora of open-source, \GH-compatible, cloud-based CI 
+tools,\footnote{\url{https://github.com/integrations/feature/continuous-integration}}
+such as Travis CI, CloudBees, and CircleCI.
+In this distributed development, social coding context, CI is particularly relevant. 
+By automatically building and testing a project's code base, in isolation, 
+with each incoming code change (\ie push commit, pull request), CI 
+has the potential to: (i)~speed up development (code change throughput)
+\cite{Stolberg, pham2013creating, Hilton2016};
+(ii)~help maintain code quality~\cite{VasilescuYWDF15, gousios2015work}.
+Clearly, CI promises to be a disruptive technology in distributed software
+development.
+However, despite its large scale adoption, we know relatively little about 
+the state of practice in using CI technology and the extent to which 
+developers are benefitting from its power.
+
+For it to be effective, CI must allow for a seamless back and forth between
+development, testing (\eg unit, integration, code review), and deployment. 
+The road to efficiency is riddled with trade-offs.
+For example, working in large increments may lead to more meaningful
+change sets, but it may also complicate synchronization between team 
+members and, if necessary, reverting changes.
+More frequent changes facilitate merging, but they also require more 
+computing infrastructure for CI, since by default the code is built and all 
+tests are executed with \emph{every} change.
+Moreover, while CI runs on smaller, more frequent changes would provide 
+earlier feedback on potential problems, they may also lead to process 
+``noise'', where developers start to ignore the CI build status due to 
+information overload, irrespective of whether the build is clean or 
+broken~\cite{DeadCI}.
+
+Several CI ``best practices'' have been proposed, \eg by Fowler in his 
+influential blog post~\cite{fowler2000continuous}, such as \emph{Keep 
+the Build Fast}.
+However, despite the large scale adoption of CI, we know relatively little 
+about the state of the practice in using this technology and whether 
+developers are benefitting from its power.
+In this paper we sought to examine the extent to which best practices 
+of CI are actually transitioned to and followed, after CI adoption in online 
+software development projects. 
+We focus on three major aspects of modern development: practices 
+related to code changes, code testing, and code reviews, and 
+operationalize them into measures for them which we observe from 
+trace data of GitHub repositories.
+We introduce regression discontinuity design analyses in order to 
+evaluate the effect of an intervention, in our case CI adoption, on the 
+transition toward expected behaviors in the above three practices.
+Applying those methods to hundreds of projects, appropriately selected, 
+we find that:
+
+%https://sethrobertson.github.io/GitBestPractices/
+
+%Devops, or bringing development and build/release activities in the same framework can bring changes in the product to the user-plane more quickly. For it to be effective, the technology that implements these ideas has to allow for a seamless back and forth between development, integration, code testing review, and release. 
+
+%Continuous Integration is the part of devops that seamlessly builds, tests, and integrates developer changes, and performs any pre-specified testing. CI (\eg Travis CI, Jenkins CI, Hudson CI), if implemented properly, can benefit the distributed software development process, in particular code change throughput~\cite{Stolberg} and some aspects of code quality~\cite{VasilescuYWDF15}. It is a disruptive technology, in that it can scale up distributed development without noticeable diminishment in quality.
+
+%Proper implementation is key here, otherwise the benefits may not be felt, and the technology may become a drag on resources, since it subsumes continuous builds and testing. 
+%This is particularly true in team environments, where it falls to each individual developer to keep up with project specific implementation policies.
+%For that reason, Martin Fowler wrote an article on CI best practices~\cite{}, which has been very influential and in many projects there are expectations that those practices define CI and that they will be followed.~\cite{}
+%In particular, those practices are: Maintain a Single Source Repository,  Automate the Build, Make Your Build Self-Testing, Everyone Commits To the Mainline Every Day, Every Commit Should Build the Mainline on an Integration Machine, Fix Broken Builds Immediately, Keep the Build Fast, Test in a Clone of the Production Environment, Make it Easy for Anyone to Get the Latest Executable, Everyone can see what's happening, and Automate Deployment.
+%But to what extent are they followed in practice?
+
+\begin{itemize}
+
+\item There is a significant and persistent downward trend in commit churn after CI is adopted, over all projects, but also for a large fraction of individual projects. This trend is non-existent before the adoption.
+
+\item Consistent with the above, we also find that the number of commits and PRs increases after CI adoption, and is random before it.
+
+\item There is a rapidly increasing trend in the number of automatic test per PR after CI adoption.
+
+\item There are significantly more issues submitted after CI adopted than before.
+
+\item There are no significant changes in the frequency of commits after CI adoption.
+\end{itemize}
+
+
+In what follows, we tell this paper's story in a carefully crafted, yet mostly standard multisectioned format, beginning with the inimitable background and theory section, followed by an examplary part on methodology, culminating in our tight results and logical discussion, with our long reaching conclusions, and the unavoidable threats to validity section bringin up the rear.
