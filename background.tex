@@ -1,0 +1,32 @@
+% !TEX root = CI_Adoption.tex
+
+\section{Background and Theory}
+
+For a developer not proficient with the operations side of the process, transitioning to an integrated CI platform, like Travis CI, involves adaptation of their established processes to the new environment. During this transition, some developers will experience a more streamlined process evolution trajectory than others. Studying those trajectories can provide lessons learned.
+
+
+%We expect the following to potentially change in the transition <need to write theory behind each>:
+%
+%On the developer side:
+%Change in code writing/committing: we expect smaller change sets over time
+%We expect More unit testing over time
+%Operations side:
+%More discussions in code review over time
+%Different categories of initial faults
+
+Continuous integration encourages developers to ``break down their work into small chunks of a few hours each'', as smaller and more frequent commits keep them to keep track of their progress and reduces the debug effort~\cite{Fowler,Duvall}. %Duvall [p. 31,38,40]
+Based on these guidelines we formulate our \textbf{RQ1}: Are developers reducing the size of code changes in each commit post CI adoption? Do they continue to do so over time?
+
+Size of the commit is closely related to commit frequency: indeed, the aforementioned quote from Fowler's blog refers to ``chunks of a few hours each''. In an early study Miller has observed that on average Microsoft developers committed once a day, while off-shore developers committed less frequently due to network latencies~\cite{Miller}; Y\"{u}ksel reports 33 commits per day after introduction of CI~\cite{Yuksel}. 
+Hence, we ask \textbf{RQ2}: Are developers committing code more frequently?
+\as{stopped here}
+For continuos integration to have the stated benefits, code review should play a prominent role. In a pull-request model of development, code review is done through comments in open issues.
+
+RQ3: Are developers transitioning to using more issues after the adoption of CI?
+
+
+Moreover, continuous integration is closely related to presence of automated tests~\cite{Fowler}. Duvall even claims that continuous integration without such tests should not be considered continuous integration at all~\cite{Duvall}, while Cannizzo, Clutton and Ramesh deem an extensive suite of unit and acceptance tests to be an essential first step~\cite{CannizzoCluttonRamesh}. \as{Y\"{u}ksel reports increase of the number of automated tests but they have combined introduction of CI with automated testing~\cite{Yuksel}. }
+
+RQ4: How are developers transitioning to automated testing over time?
+
+%\subsection{RQs}
