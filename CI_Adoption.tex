@@ -40,12 +40,24 @@
 
 \begin{document}
 
-\title{Census of Software Engineering Practices
-Following Adoption of Continuous Integration}
+\title{How Do Software Engineering Practices
+Change Following Adoption of Continuous Integration?}
 
 \author
-{\IEEEauthorblockN{}
-\IEEEauthorblockA{}
+{\IEEEauthorblockN{Yangyang Zhao}
+\IEEEauthorblockA{Nanjing University}
+\and
+\IEEEauthorblockN{Bogdan Vasilescu}
+\IEEEauthorblockA{Carnegie Mellon University}
+\and
+\IEEEauthorblockN{Yuming Zhou}
+\IEEEauthorblockA{Nanjing University}
+\and
+\IEEEauthorblockN{Alexander Serebrenik}
+\IEEEauthorblockA{Eindhoven U of Technology}
+\and
+\IEEEauthorblockN{Vladimir Filkov}
+\IEEEauthorblockA{UC Davis}
 }
 \maketitle
 \begin{abstract}
@@ -75,23 +87,28 @@ Therefore, in \textbf{RQ1} we investigate whether introduction of the continuous
 
 RQ1: Are developers reducing the size of code changes in each commit post CI adoption? Do they continue to do so over time?
 
-Moreover, continuous integration is closely related to presence of automated tests~\cite{Fowler}. Duvall even claims that continuous integration without such tests should not be considered continuous integration at all~\cite{Duvall}, while Cannizzo, Clutton and Ramesh deem an extensive suite of unit and acceptance tests to be an essential first step~\cite{CannizzoCluttonRamesh}. \as{Y\"{u}ksel reports increase of the number of automated tests but they have combined introduction of CI with automated testing~\cite{Yuksel}. }
+and related to that,
 
-RQ2: How are developers transitioning to automated testing over time?
+RQ2: Are developers commiting code more frequently?
 
 For continuos integration to have the stated benefits, code review should play a prominent role. In a pull-request model of development, code review is done through comments in open issues.
 
 RQ3: Are developers transitioning to using more issues after the adoption of CI?
 
 
+Moreover, continuous integration is closely related to presence of automated tests~\cite{Fowler}. Duvall even claims that continuous integration without such tests should not be considered continuous integration at all~\cite{Duvall}, while Cannizzo, Clutton and Ramesh deem an extensive suite of unit and acceptance tests to be an essential first step~\cite{CannizzoCluttonRamesh}. \as{Y\"{u}ksel reports increase of the number of automated tests but they have combined introduction of CI with automated testing~\cite{Yuksel}. }
+
+RQ4: How are developers transitioning to automated testing over time?
+
 %\subsection{RQs}
 
 \input{method}
+\input{examples}
 
 \section{Results and Discussion}
 
 We sought to study how different software development practices evolve around the time of CI adoption and the period after the adoption.
-\input{examples}
+
 
 \subsection{RQ1: Trends in Code Churn}
 
@@ -130,20 +147,31 @@ In conclusion, discounting the peak behavior in code churn around CI adoption ti
 \noindent \underline{Modeling Study} 
 Guided by our observations from the exploratory study above, we proceed to quantify the trends we observed.
 For each project, we fitted a sharp RDD model, as decribed before.
-Table~\ref{Table:rddmodels} summarizes the results.
+Because of the peak we observed, we eliminated the time point immediately before and the one immediately after the CI adoption time so as they do not throw off the regression models.
+Table~\ref{Table:rddmodels} summarizes the results for the models on the remaining 16 time points.
+Recall that $\beta$ is the slope before, $\gamma$ the size of the effect of CI introduction, $\delta$ is the divergence in the slopes before and after CI adoption, and $\beta + \delta$ the slope of the linear trend after CI adoption.
 
+Of the 567 models, all but one could be fit to the data.
+In 504 of the models, there was no significant linear relationship of code churn to time, i.e. there was no linear trend.
+In 45 projects there was a rising trend before CI and in 17 projects a falling trend before CI.
+Similarly, in 508 projects no effect of CI introduction on code churn was found. Among the 58 projects where an effect was significant, in about half (28) the trend was positive, i.e., code churn increased, and in the other half (30) it was negative, i.e., code churn decreased.
+Interestingly, while in 514 projects no change of slope in the trends before and after CI adoption was found, in the 52 with significant change of trends a reduction in the slope was more prevalent than an increase by 4 to 1.
+This carried over into trends following CI adoption: out of the 52 significant trend changes, 39 are downward trends, and only 13 are upward.
 
-Table XX: Projects with statistical negative trends after CI
+%Table XX: Projects with statistical negative trends after CI
 
 \noindent \underline{Discussion}
-The dominant trend following CI adoption is a downward one, twice as frequent as the upward one.
+
+Most of the projects could not be modeled with the RDD linear regression.
+Some of the reasons for this are: dispersion of the data,
+non-uniform distribution of the events across time, and project specific considerations that we could not model.
+
+Our exploratory study showed a downward trend following CI adoption.
+The modeling study showed that when linear trends were present, the downward ones after CI adoption were three times as frequent as the upward one, a reversal of the pattern in the trends before CI.
 This is consistent with Fowler's good practices of CI, of committing more frequently and smaller pieces of code.
 Still, most projects end up not following a trend after their adoption of CI, while still remaining active.
 
-
 The increased code churn on both sides near the CI adoption time is arguably in line with expectations that more maintanance work may be going on in preparation for the transition to CI, and that the projects go through some adjustment/cleanup period right after.
-
-\noindent \underline{Case Study: Transition Period}
 
 
 \subsection{RQ2: Trends in Commit Frequency}
@@ -162,13 +190,21 @@ We use the same data as before, 567 projects, each with at least 500 nonmerge co
 Figs.~\ref{Fig:NumberCommits} shows the boxplots of per-project median code churn for each of nine consecutive 30-day time intervals before CI adoption, and respectively, nine consecutive 30-day time intervals after CI adoption.
 The vertical line in each boxplot is the median value of all per-project median, and the black dot is their average value.
 
+As was the case with code churn, here we also see a peak in the 30-day interval just before and the one just after CI adoption.
+Unlike for code churn, here we do not observe an apparent trend in the median or average commit frequency.
 
 \noindent \underline{Modeling Study} 
 As in RQ1, for each project, we fitted a sharp RDD model, as decribed before.
 Table~\ref{Table:rddmodels_freq} summarizes the results.
-
+We eliminated one time point on either side of the CI adoption time so as they do not throw off the regression models.
 \input{tables/rq2_models}
 
+We were able to fit all 567 models to the data.
+In 458 of the models, there was no significant linear relationship of commit frequency to time, i.e. there was no linear trend.
+In 67 projects there was a rising trend in commit frequency before CI and in 42 projects a falling trend before CI.
+Similarly, in 476 projects no effect of CI introduction on commit frequency was found. Among the 91 projects where an effect was significant, in about 50 the trend was positive, i.e., commit frequency increased, and in the rest it was negative, i.e., commit frequency decreased.
+Interestingly, while in 468 projects no change of slope in the trends before and after CI adoption was found, in the 99 with significant change of trends a reduction in the slope was more prevalent than an increase by about 2 to 1.
+This carried over into trends in commit frequency following CI adoption: out of the 99 significant trend changes, 66 are downward trends, and only 33 are upward.
 
 \noindent \underline{Discussion}
 
@@ -177,8 +213,14 @@ Table~\ref{Table:rddmodels_freq} summarizes the results.
 
 \subsection{RQ3: Trends in Issues}
 
+\noindent \underline{Exploratory Study}
+
+
+\noindent \underline{Modeling Study}
 Fig 5: Box plots of \# issues per unit time period, one for each time point, each point an aggregate of all projects
 
+
+\noindent \underline{Discussion}
 \input{tables/rq3_models}
 
 The values of the $\gamma$'s for these models are right skewed, with average and median over 1. Thus, we conclude the effect of CI adoption led to an overall increase of one issue more per period.
@@ -195,8 +237,9 @@ The data consists of XXX projects, each with at least YYY tests.
 Fig.~\ref{Fig:Tests} shows a boxplot of per-project median number of tests per build, for each of five consecutive 60-day time intervals before CI adoption.
 We aggregated the data here in 60 day intervals to make it easier to visualize the trend since the differences are small.
 The vertical line in each boxplot is the median value of all per-project median, and the black dot is their average value.
-We observe a monotonically increasing trend in both the medians, from 140 to 160 tests per build, and the means, from 205 to 245 tests per build, i.e. 15\% to 20\% increase. The trend in the medians is significant statistically (which test?, p-val = 0.00?).
+We observe a monotonically increasing trend in both the medians, from 140 to 160 tests per build, and the means, from 205 to 245 tests per build, i.e. 15\% to 20\% increase. 
 
+\noindent \underline{Error Types Study}
 
 \noindent \underline{Discussion}
 
