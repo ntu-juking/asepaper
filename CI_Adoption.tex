@@ -149,15 +149,27 @@ Guided by our observations from the exploratory study above, we proceed to quant
 For each project, we fitted a sharp RDD model, as decribed before.
 Because of the peak we observed, we eliminated the time point immediately before and the one immediately after the CI adoption time so as they do not throw off the regression models.
 Table~\ref{Table:rddmodels} summarizes the results for the models on the remaining 16 time points.
+Recall that $\beta$ is the slope before, $\gamma$ the size of the effect of CI introduction, $\delta$ is the divergence in the slopes before and after CI adoption, and $\beta + \delta$ the slope of the linear trend after CI adoption.
 
+Of the 567 models, all but one could be fit to the data.
+In 504 of the models, there was no significant linear relationship of code churn to time, i.e. there was no linear trend.
+In 45 projects there was a rising trend before CI and in 17 projects a falling trend before CI.
+Similarly, in 508 projects no effect of CI introduction on code churn was found. Among the 58 projects where an effect was significant, in about half (28) the trend was positive, i.e., code churn increased, and in the other half (30) it was negative, i.e., code churn decreased.
+Interestingly, while in 514 projects no change of slope in the trends before and after CI adoption was found, in the 52 with significant change of trends a reduction in the slope was more prevalent than an increase by 4:1.
+This carried over into trends following CI adoption: out of the 52 significant trend changes, 39 are downward trends, and only 13 are upward.
 
-Table XX: Projects with statistical negative trends after CI
+%Table XX: Projects with statistical negative trends after CI
 
 \noindent \underline{Discussion}
-The dominant trend following CI adoption is a downward one, twice as frequent as the upward one.
+
+Most of the projects could not be modeled with the RDD linear regression.
+Some of the reasons for this are: dispersion of the data,
+non-uniform distribution of the events across time, and project specific considerations that we could not model.
+
+Our exploratory study showed a downward trend following CI adoption.
+The modeling study showed that when linear trends were present, the downward ones after CI adoption were three times as frequent as the upward one, a reversal of the pattern in the trends before CI.
 This is consistent with Fowler's good practices of CI, of committing more frequently and smaller pieces of code.
 Still, most projects end up not following a trend after their adoption of CI, while still remaining active.
-
 
 The increased code churn on both sides near the CI adoption time is arguably in line with expectations that more maintanance work may be going on in preparation for the transition to CI, and that the projects go through some adjustment/cleanup period right after.
 
