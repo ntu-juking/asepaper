@@ -12,19 +12,46 @@ adopted \Tvis at some point during their history.
 Data collection involved mining multiple sources, the \GH API, project version 
 control (git) logs, and the \Tvis API.
 The goal was to select non-trivial projects that adopted \Tvis, and had sufficient
-activity both before and after the adoption in order to observe potential
-transition effects.
-Note that for the purpose of this study we don't distinguish between \emph{project} 
-and \emph{repository}; the term \emph{project} has also been used to refer to 
-a collection of interrelated repositories in the literature~\cite{vasilescu2016sky}.
+activity both before and after adoption, in order to observe potential transition effects.
+Note that for the purpose of this study we don't distinguish between ``project'' 
+and ``repository''; the term ``project'' has also been used to refer to a collection 
+of interrelated repositories in the literature~\cite{vasilescu2016sky}.
 
 We started by composing (using the \GH Search API) a list of candidate Java 
-projects that (i)~were not very small (a large fraction of )
+projects that: (i)~were not very small (a large fraction of projects on \GH are 
+small and inactive~\cite{gousios2014exploratory}; we arbitrarily chose to ignore
+projects smaller than 500 kilobytes, using the \GH Search API's \emph{size} 
+parameter); and (ii)~were created no later than 2014-11-08. 
+The second criterion is a consequence of our data collection date (2016-05-01)
+and the ``sufficient history'' requirement. 
+Our statistical analysis, detailed below, assumes 9 months of history for each
+project both prior to and after adopting \Tvis; since we did not have access to
+data on when each project started using \Tvis at this stage, we conservatively
+chose the 2014-11-08 date, which allows 9*30*2 days of history from project 
+creation to 2016-05-01.
+This step resulted in a list of over 300,000 candidate Java projects.
 
+%first and foremost, we should make sure our studied projects have sufficient history (e.g. 9*30 days) both before using Travis-CI and after using Travis-CI.  As the data were extracted from the inception until 2016-05-01, the projects selected should be created at least before 2014-11-08, so that there are at least 9*30*2 days from its creation to 2016-05-01. 
+%From GitHub Search API, we first found over 300k Java projects created before 2014-11-08 and with $\geqslant 500$ kilobytes. 
+%After consulting Travis-CI, we further identify projects that: 1) adopted Travis-CI; 2) at least 9 * 30 days from project creation to Travis-CI adoption; 3) at least 9 * 30 days from Travis-CI adoption to 2016-05-01. This filtering process left us 1566 projects.  
+%For each project, we collect the whole history of commits, issues, and pull requests from GitHub API, and the history of Travis-CI builds and job logs from Travis-CI repository using the ruby library of \textit{travis gem}.  In addition to these publicly available data, we further gathered the information about the number of tests and types of errors during the Travis-CI run.
 
-first and foremost, we should make sure our studied projects have sufficient history (e.g. 9*30 days) both before using Travis-CI and after using Travis-CI.  As the data were extracted from the inception until 2016-05-01, the projects selected should be created at least before 2014-11-08, so that there are at least 9*30*2 days from its creation to 2016-05-01. 
-From GitHub Search API, we first found over 300k Java projects created before 2014-11-08 and with $\geqslant 500$ kilobytes. After consulting Travis-CI, we further identify projects that: 1) adopted Travis-CI; 2) at least 9 * 30 days from project creation to Travis-CI adoption; 3) at least 9 * 30 days from Travis-CI adoption to 2016-05-01. This filtering process left us 1566 projects.  
-For each project, we collect the whole history of commits, issues, and pull requests from GitHub API, and the history of Travis-CI builds and job logs from Travis-CI repository using the ruby library of \textit{travis gem}.  In addition to these publicly available data, we further gathered the information about the number of tests and types of errors during the Travis-CI run.
+Next, we used the \Tvis API to determine which of these projects:
+(i)~used \Tvis, and if yes, we recorded the date of the earliest build as the 
+adoption date; (ii)~had at least 9*30 days of history from project creation to 
+the adoption date, and from the adoption date to 2016-05-01, respectively. 
+This filtering process resulted in 1,566 projects.
+For each project, we collected: (i)~its history of commits, issues, and pull 
+requests using the \GH API; and (ii)~its history of \Tvis builds and, for each
+build, all its job logs (a \Tvis build can be configured to run multiple jobs,
+one for each set of configuration options; each job run produces a ``build log''), 
+using the \Tvis API and the \textit{travis gem} Ruby library.  
+In addition to these publicly available data, we parsed the build logs and 
+further extracted information about the number of tests executed (using
+regular expressions), and the types of reasons causing the builds to break
+(details below).
+
+\bv{I'm here}
 
 \input{tables/ouput_examples}
 \emph{Number of tests per build}: 
