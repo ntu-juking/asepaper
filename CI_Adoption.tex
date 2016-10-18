@@ -103,11 +103,12 @@ RQ4: How are developers transitioning to automated testing over time?
 %\subsection{RQs}
 
 \input{method}
+\input{examples}
 
 \section{Results and Discussion}
 
 We sought to study how different software development practices evolve around the time of CI adoption and the period after the adoption.
-\input{examples}
+
 
 \subsection{RQ1: Trends in Code Churn}
 
@@ -146,7 +147,8 @@ In conclusion, discounting the peak behavior in code churn around CI adoption ti
 \noindent \underline{Modeling Study} 
 Guided by our observations from the exploratory study above, we proceed to quantify the trends we observed.
 For each project, we fitted a sharp RDD model, as decribed before.
-Table~\ref{Table:rddmodels} summarizes the results.
+Because of the peak we observed, we eliminated the time point immediately before and the one immediately after the CI adoption time so as they do not throw off the regression models.
+Table~\ref{Table:rddmodels} summarizes the results for the models on the remaining 16 time points.
 
 
 Table XX: Projects with statistical negative trends after CI
@@ -158,8 +160,6 @@ Still, most projects end up not following a trend after their adoption of CI, wh
 
 
 The increased code churn on both sides near the CI adoption time is arguably in line with expectations that more maintanance work may be going on in preparation for the transition to CI, and that the projects go through some adjustment/cleanup period right after.
-
-\noindent \underline{Case Study: Transition Period}
 
 
 \subsection{RQ2: Trends in Commit Frequency}
@@ -178,11 +178,13 @@ We use the same data as before, 567 projects, each with at least 500 nonmerge co
 Figs.~\ref{Fig:NumberCommits} shows the boxplots of per-project median code churn for each of nine consecutive 30-day time intervals before CI adoption, and respectively, nine consecutive 30-day time intervals after CI adoption.
 The vertical line in each boxplot is the median value of all per-project median, and the black dot is their average value.
 
+As was the case with code churn, here we also see a peak in the 30-day interval just before and the one just after CI adoption.
+Unlike for code churn, here we do not observe an apparent trend in the median or average commit frequency.
 
 \noindent \underline{Modeling Study} 
 As in RQ1, for each project, we fitted a sharp RDD model, as decribed before.
 Table~\ref{Table:rddmodels_freq} summarizes the results.
-
+We eliminated one time point on either side of the CI adoption time so as they do not throw off the regression models.
 \input{tables/rq2_models}
 
 
@@ -193,8 +195,14 @@ Table~\ref{Table:rddmodels_freq} summarizes the results.
 
 \subsection{RQ3: Trends in Issues}
 
+\noindent \underline{Exploratory Study}
+
+
+\noindent \underline{Modeling Study}
 Fig 5: Box plots of \# issues per unit time period, one for each time point, each point an aggregate of all projects
 
+
+\noindent \underline{Discussion}
 \input{tables/rq3_models}
 
 The values of the $\gamma$'s for these models are right skewed, with average and median over 1. Thus, we conclude the effect of CI adoption led to an overall increase of one issue more per period.
@@ -211,8 +219,9 @@ The data consists of XXX projects, each with at least YYY tests.
 Fig.~\ref{Fig:Tests} shows a boxplot of per-project median number of tests per build, for each of five consecutive 60-day time intervals before CI adoption.
 We aggregated the data here in 60 day intervals to make it easier to visualize the trend since the differences are small.
 The vertical line in each boxplot is the median value of all per-project median, and the black dot is their average value.
-We observe a monotonically increasing trend in both the medians, from 140 to 160 tests per build, and the means, from 205 to 245 tests per build, i.e. 15\% to 20\% increase. The trend in the medians is significant statistically (which test?, p-val = 0.00?).
+We observe a monotonically increasing trend in both the medians, from 140 to 160 tests per build, and the means, from 205 to 245 tests per build, i.e. 15\% to 20\% increase. 
 
+\noindent \underline{Error Types Study}
 
 \noindent \underline{Discussion}
 
