@@ -44,12 +44,12 @@ This filtering process resulted in 1,566 projects.
 For each project, we collected: (i)~its history of commits, issues, and pull 
 requests using the \GH API; and (ii)~its history of \Tvis builds and, for each
 build, all its job logs (a \Tvis build can be configured to run multiple jobs,
-one for each set of configuration options; each job run produces a ``build log''), 
-using the \Tvis API and the \textit{travis gem} Ruby library.  
+one for each set of user-defined configuration options; each job run produces 
+a ``build log''), using the \Tvis API and the \textit{travis gem} Ruby library.  
 In addition to these publicly available data, we parsed the build logs and 
-further extracted information about the number of tests executed (using
-regular expressions), and the types of reasons causing the builds to break
-(details below).
+further extracted information about the number of tests executed and the 
+types of reasons causing the builds to break.
+We detail each of these steps next.
 
 \bv{I'm here}
 
