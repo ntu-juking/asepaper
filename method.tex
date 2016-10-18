@@ -3,9 +3,26 @@
 \section{Methods}
 \label{sec:method}
 
+We collected and statistically analyzed data from a sample of open-source 
+Java (chosen based on familiarity of the first author) projects on \GH, that 
+adopted \Tvis at some point during their history.
+
 \subsection{Data Gathering}
 
-To perform our study, first and foremost, we should make sure our studied projects have sufficient history (e.g. 9*30 days) both before using Travis-CI and after using Travis-CI.  As the data were extracted from the inception until 2016-05-01, the projects selected should be created at least before 2014-11-08, so that there are at least 9*30*2 days from its creation to 2016-05-01. 
+Data collection involved mining multiple sources, the \GH API, project version 
+control (git) logs, and the \Tvis API.
+The goal was to select non-trivial projects that adopted \Tvis, and had sufficient
+activity both before and after the adoption in order to observe potential
+transition effects.
+Note that for the purpose of this study we don't distinguish between \emph{project} 
+and \emph{repository}; the term \emph{project} has also been used to refer to 
+a collection of interrelated repositories in the literature~\cite{vasilescu2016sky}.
+
+We started by composing (using the \GH Search API) a list of candidate Java 
+projects that (i)~were not very small (a large fraction of )
+
+
+first and foremost, we should make sure our studied projects have sufficient history (e.g. 9*30 days) both before using Travis-CI and after using Travis-CI.  As the data were extracted from the inception until 2016-05-01, the projects selected should be created at least before 2014-11-08, so that there are at least 9*30*2 days from its creation to 2016-05-01. 
 From GitHub Search API, we first found over 300k Java projects created before 2014-11-08 and with $\geqslant 500$ kilobytes. After consulting Travis-CI, we further identify projects that: 1) adopted Travis-CI; 2) at least 9 * 30 days from project creation to Travis-CI adoption; 3) at least 9 * 30 days from Travis-CI adoption to 2016-05-01. This filtering process left us 1566 projects.  
 For each project, we collect the whole history of commits, issues, and pull requests from GitHub API, and the history of Travis-CI builds and job logs from Travis-CI repository using the ruby library of \textit{travis gem}.  In addition to these publicly available data, we further gathered the information about the number of tests and types of errors during the Travis-CI run.
 
@@ -18,7 +35,7 @@ Each build has at least one job which indicates an execution of the build on a s
 In Travis-CI, a build is marked as \textit{failed} if one of its \textit{non-allow-failure} jobs failed. From this point, to understand why the Travis-CI builds failed, we attempt to find out what happened in the jobs. We first manually reviewed a set of failed jobs to recognize what kinds of failures occur and the corresponding used textual patterns, and then extracted a group of mapping rules to classify these patterns into categories. To mitigate the risk of bias arising from missing and incorrect classification, we augmented the reviewing rates to improve our classification rules and remove spurious classification as much as possible. The classification scheme evolved over the process of manual review, and was refined gradually to cover more textual patterns. Finally, we summarize a group of mapping rules to category the errors into 8 types, as shown in Table~\ref{error_types}. 
 We implemented tools to do the classification automatically. The detailed process is that: 1) failure log location. We first recognized failed jobs with \textit{non-allow-failure} attribute, which result in the build's final \textit{failed} state. Then we located the command which may indeed caused the breakdown. From the log file, we found the failed command which exited with a non-zero value.The log of this command usually described the detailed information about the deadly errors happened. If such commands are not recorded in the log file, we will expand search scope to the \textit{script} phase and the phase \textit{after script} based on Travis-CI build lifecycle. Because if errors occur before script phase, the job will be marked as \textit{errored} and stops immediately. Only if the \textit{script} phase returns a non-zero exit code or the phase \textit{after script} times out, the job will be marked as \textit{failed}. So we first check if there is a time-out error in \textit{after script}. If not, the errors happened in the \textit{script} phase potentially caused the build broken. 
 2) log parsing. After extracting the log fragment which described the errors occurred, we use textual pattern matching method to recognize the errors. 
-3) classification. After extracting the textual patterns, we categorize them  into the defined 8 types based on the rules. There will be one to many relationship between jobs and types. For example, if a job have failed tests and skipped tests, it will be tagged with both “failed test” and “skipped or pending test” types.
+3) classification. After extracting the textual patterns, we categorize them  into the defined 8 types based on the rules. There will be one to many relationship between jobs and types. For example, if a job have failed tests and skipped tests, it will be tagged with both ``failed test'' and ``skipped or pending test'' types.
 
 
 %\textit{Distinguishing the bugs introduced before CI adoption and the bugs introduced after CI adoption}: 
