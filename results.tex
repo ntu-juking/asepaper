@@ -56,7 +56,6 @@ This carried over into trends following CI adoption: out of the 52 significant t
 %Table XX: Projects with statistical negative trends after CI
 
 \noindent \underline{Discussion}
-
 Most of the projects could not be modeled with the RDD linear regression.
 Some of the reasons for this are: dispersion of the data,
 non-uniform distribution of the events across time, and project specific considerations that we could not model.
@@ -89,7 +88,7 @@ As was the case with code churn, here we also see a peak in the 30-day interval 
 Unlike for code churn, here we do not observe an apparent trend in the median or average commit frequency.
 
 \noindent \underline{Modeling Study} 
-As in RQ1, for each project, we fitted a sharp RDD model, as decribed before.
+As in RQ1, for each project, we fitted a sharp RDD model, as described before.
 Table~\ref{Table:rddmodels_freq} summarizes the results.
 We eliminated one time point on either side of the CI adoption time so as they do not throw off the regression models.
 \input{tables/rq2_models}
@@ -102,7 +101,15 @@ Interestingly, while in 468 projects no change of slope in the trends before and
 This carried over into trends in commit frequency following CI adoption: out of the 99 significant trend changes, 66 are downward trends, and only 33 are upward.
 
 \noindent \underline{Discussion}
+As it is the case for the code churn, most of the projects could not be modeled with the RDD linear regression for 
+the reasons similar to those in case of the code churn.
 
+While our exploratory study did not suggest presence of a trend, the modeling study suggests that if a linear 
+trend is present, then it is twice as likely to be decreasing as increasing. 
+Given the expected increase in the frequency of commits expressed and encouraged by Fowler, this result might appear surprising.
+One should keep in mind, however, that most projects do not show a trend.
+
+\as{Vladimir, do you have a cross-combination data, such as \# decrease in churn AND increase in frequency?}
 
 
 
@@ -110,6 +117,20 @@ This carried over into trends in commit frequency following CI adoption: out of 
 
 \noindent \underline{Exploratory Study}
 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\textwidth]{issues_before.pdf}
+\caption{Median number of issues before CI adoption}
+\label{Fig:IssuesBefore}
+\end{figure}
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\textwidth]{issues_after.pdf}
+\caption{Median number of issues after CI adoption}
+\label{Fig:IssuesAfter}
+\end{figure}
 
 \noindent \underline{Modeling Study}
 Fig 5: Box plots of \# issues per unit time period, one for each time point, each point an aggregate of all projects
@@ -134,7 +155,21 @@ We aggregated the data here in 60 day intervals to make it easier to visualize t
 The vertical line in each boxplot is the median value of all per-project median, and the black dot is their average value.
 We observe a monotonically increasing trend in both the medians, from 140 to 160 tests per build, and the means, from 205 to 245 tests per build, i.e. 15\% to 20\% increase. 
 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\textwidth]{tests.pdf}
+\caption{Unit tests per build following CI adoption}
+\label{Fig:Tests}
+\end{figure}
+
 \noindent \underline{Error Types Study}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.5\textwidth]{plot_together.png}
+\caption{Evolution of Error Types Since CI Adoption}
+\label{Fig:BugTypes}
+\end{figure}
 
 \noindent \underline{Discussion}
 
