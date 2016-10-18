@@ -27,12 +27,21 @@
 \newcommand\head[1]{\noindent{\underline{\bf{#1}}:}}
 \newcommand{\mypara}[1]{\vspace{4 mm} \noindent{\underline {\bf #1} \vspace{2mm}}}
 
+\usepackage[table]{xcolor}
+\usepackage{ifthen}
 \usepackage{amssymb}
-\newcommand{\nnbb}[2]{
-    \fbox{\bfseries\sffamily\scriptsize#1}
+\newboolean{showcomments}
+\setboolean{showcomments}{true} % toggle to show or hide comments
+\ifthenelse{\boolean{showcomments}}
+  {\newcommand{\nnbb}[2]{
+    \fcolorbox{gray}{yellow}{\bfseries\sffamily\scriptsize#1}
     {\sf\small$\blacktriangleright$\textit{#2}$\blacktriangleleft$}
    }
-
+   \newcommand{\version}{\emph{\scriptsize$-$working$-$}}
+  }
+  {\newcommand{\nb}[2]{}
+   \newcommand{\version}{}
+  }
 \newcommand{\as}[1]{\nnbb{Alexander}{#1}}
 \newcommand{\bv}[1]{\nnbb{Bogdan}{#1}}
 \newcommand{\vf}[1]{\nnbb{Vladimir}{#1}}
