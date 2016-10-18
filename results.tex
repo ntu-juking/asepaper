@@ -116,6 +116,13 @@ One should keep in mind, however, that most projects do not show a trend.
 \subsection{RQ3: Trends in Issues}
 
 \noindent \underline{Exploratory Study}
+We follow the same approach as in RQ1 and RQ2 and compare the medians and the averages in the months
+before and after the adoption of CI.
+Fig.~\ref{Fig:IssuesBefore} and \ref{Fig:IssuesAfter} plot the number of issues per unit time period.
+Observing these figures we can see that the months immediately 
+preceding and following the adoption of CI exhibit the highest number of issues.
+Following the adoption of CI the median of the number of issues seems to stabilize while averages do
+not show a clear trend. 
 
 \begin{figure}[!t]
 \centering
@@ -133,11 +140,19 @@ One should keep in mind, however, that most projects do not show a trend.
 \end{figure}
 
 \noindent \underline{Modeling Study}
-Fig 5: Box plots of \# issues per unit time period, one for each time point, each point an aggregate of all projects
+\input{tables/rq3_models}
+Results of the RDD modeling are summarized in Table~\ref{Table:rddmodels_issues}.
+Lower number of projects in Table~\ref{Table:rddmodels_issues} compared to Tables~\ref{Table:rddmodels} 
+and~\ref{Table:rddmodels_freq} should not be surprising. 
+Recall from Section~\ref{sec:dd} that to answer RQ3 we have focused on projects having at least 100 issues,
+ reducing 567 projects used in RQ1 and RQ2 to 293.
+We have fitted models to 291 projects of the 291, however in most cases we did not observe linear trends.
+When a linear trend has been observed than it was more than twice more often decreasing than increasing.
+
 
 
 \noindent \underline{Discussion}
-\input{tables/rq3_models}
+
 
 The values of the $\gamma$'s for these models are right skewed, with average and median over 1. Thus, we conclude the effect of CI adoption led to an overall increase of one issue more per period.
 
