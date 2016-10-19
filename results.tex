@@ -5,22 +5,6 @@
 We discuss changes in development practices after CI adoption along four 
 dimensions: code churn, commit frequency, issue tracking, and testing. 
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 10]{churn_before.pdf}
-\caption{Code churn before \Tvis adoption.}
-\label{Fig:CodeChurnBefore}
-\end{figure}
-
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 10]{churn_after.pdf}
-\caption{Code churn after \Tvis adoption.}
-\label{Fig:CodeChurnAfter}
-\end{figure}
-
-
 \subsection{Preliminaries}
 \label{sec:examples}
 
@@ -48,6 +32,22 @@ practices.
 Therefore, to limit the risk of our trends being biased by extraordinary project 
 activity during the transition period, we decided to exclude one month before 
 the first \Tvis build and one month after it, in our quantitative analyses below.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_before.pdf}
+\caption{Code churn before \Tvis adoption.}
+\label{Fig:CodeChurnBefore}
+\end{figure}
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_after.pdf}
+\caption{Code churn after \Tvis adoption.}
+\label{Fig:CodeChurnAfter}
+\end{figure}
+
 
 \subsection{RQ1: Trends in Code Churn}
 
@@ -87,7 +87,7 @@ to after CI adoption.
 \smallskip\noindent \emph{Statistical Modeling Study}: 
 Guided by our observations from the exploratory study above, we proceed to 
 quantify the trends we observed.
-For each project, we fitted an RDD model, as described before.
+For each project, we fitted a sharp RDD model, as described before.
 Recall that because of the peak we observed, we eliminated the time point 
 immediately before and the one immediately after the CI adoption time, so as 
 they do not throw off the regression models.
@@ -150,139 +150,197 @@ through some adjustment/cleanup period right after.
 \subsection{RQ2: Trends in Commit Frequency}
 
 The second development practice we examine is commit frequency.
-We use the same data as before, 567 projects, each with at least 500 nonmerge commits.
+We use the same data as before, 567 projects, each with at least 500 
+non-merge commits.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.5\textwidth]{numbercommits.pdf}
+\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{numbercommits.pdf}
 \caption{Commit frequency before and after CI adoption}
 \label{Fig:NumberCommits}
 \end{figure}
 
-\noindent \underline{Exploratory Study} To explore general trends over time, we first look at commit frequency in the months leading up to CI adoption.
-Figs.~\ref{Fig:NumberCommits} shows the boxplots of per-project median code churn for each of nine consecutive 30-day time intervals before CI adoption, and respectively, nine consecutive 30-day time intervals after CI adoption.
-The vertical line in each boxplot is the median value of all per-project median, and the black dot is their average value.
+\smallskip\noindent \emph{Exploratory Study}: 
+To explore general trends over time, we first look at commit frequency in 
+the months leading up to CI adoption.
+Figs.~\ref{Fig:NumberCommits} shows the boxplots of per-project median 
+number of commits for each of nine consecutive 30-day time intervals 
+before CI adoption and, respectively, nine consecutive 30-day time intervals 
+after CI adoption.
+As before, the horizontal line in each boxplot is the median value of all 
+per-project medians, and the black dot is their average value.
 
-As was the case with code churn, here we also see a peak in the 30-day interval just before and the one just after CI adoption.
-Unlike for code churn, here we do not observe an apparent trend in the median or average commit frequency.
+As was the case with code churn, here we also see a peak in the 30-day 
+interval just before and the one just after CI adoption.
+Unlike for code churn, here we do not observe an apparent trend in the 
+median or average commit frequency.
 
-\noindent \underline{Modeling Study} 
-As in RQ1, for each project, we fitted a sharp RDD model, as described before.
+\smallskip\noindent \emph{Statistical Modeling Study}: 
+As in RQ1, we fitted a sharp RDD model for each project, as described before.
 Table~\ref{Table:rddmodels_freq} summarizes the results.
-We eliminated one time point on either side of the CI adoption time so as they do not throw off the regression models.
+Recall that we eliminated one time point on either side of the CI adoption 
+time so as they do not throw off the regression models.
 \input{tables/rq2_models}
 
-In 452 (80\%) of the models, there was no significant linear relationship of commit frequency to time, i.e. there was no linear trend.
-In 71 projects there was a rising trend in commit frequency before CI and in 44 projects a falling trend before CI.
-Similarly, in 466 projects no effect of CI introduction on commit frequency was found. Among the 101 projects where an effect was significant, in 59 the trend was positive, i.e., commit frequency increased, and in the rest it was negative, i.e., commit frequency decreased.
-The mean value over all projects for $\gamma$, the effect size of CI adoption, was $1.1$ commit.
-While in 454 projects no change of slope in the trends before and after CI adoption was found, in the 113 with significant change of trends a reduction in the slope was more prevalent than an increase by about 2.5 to 1.
-This carried over to a lesser degree into trends in commit frequency following CI adoption: out of the 113 significant trend changes, 71 are downward trends, and 42 are upward.
+In 452 (80\%) of the models, there was no significant linear relationship 
+between commit frequency and time, \ie there was no linear trend.
+In 71 projects there was a rising trend in commit frequency before CI 
+and in 44 projects a falling trend before CI.
+Similarly, in 466 projects no effect of CI introduction on commit frequency 
+was found. 
+Among the 101 projects where an effect was significant, in 59 the trend 
+was positive, \ie commit frequency increased, and in the rest it was 
+negative, \ie commit frequency decreased.
+The mean value over all projects for $\gamma$, the effect size of CI 
+adoption, was $1.1$ commit.
+While in 454 projects no change of slope in the trends before and after CI 
+adoption was found, in the 113 with significant change of trends a reduction 
+in the slope was more prevalent than an increase by about 2.5 to 1.
+This carried over to a lesser degree into trends in commit frequency 
+following CI adoption: out of the 113 significant trend changes, 71 are 
+downward trends, and 42 are upward.
 
-\noindent \underline{Discussion}
-As was the case for the code churn, most of the projects could not be modeled with the RDD linear regression for 
-the reasons similar to those in case of the code churn.
+\smallskip\noindent \emph{Discussion}:
+As was the case for the code churn, most of the projects could not be 
+modeled with the RDD linear regression for the reasons similar to those 
+in case of the code churn.
 
-While our exploratory study did not suggest presence of a trend, the modeling study suggests that right after CI adoption there is a slight positive effect (after removing the peak months around CI adoption time). However this effect is not sustained if a linear 
-trend is present, which is 2.5 times as likely to be decreasing as increasing. 
-Given the expected increase in the frequency of commits expressed and encouraged by Fowler, this result might appear surprising.
-It is possible that some saturation to the commit frequency has already been reached even before the CI adoption time.
-As we see next, it is also likely developers are spending more time on automated testing.
+While our exploratory study did not suggest presence of a trend, the 
+modeling study suggests that right after CI adoption there is a slight 
+positive effect (after removing the peak months around CI adoption time). 
+However, this effect is not sustained if a linear trend is present, which is 
+2.5 times as likely to be decreasing as increasing. 
+Given the expected increase in the frequency of commits expressed and 
+encouraged by Fowler, this result might appear surprising.
+It is possible that some saturation to the commit frequency has already 
+been reached even before the CI adoption time.
+As we see next, it is also likely developers are spending more time on 
+automated testing.
 
 
 %\as{Vladimir, do you have a cross-combination data, such as \# decrease in churn AND increase in frequency?}
 
 
 
-\subsection{RQ3: Trends in Issues Frequency}
+\subsection{RQ3: Trends in Issue Report Frequency}
 
-The third development practice we examine is issues frequency.
-As described above, we use data on 293 projects, each with at least 100 issues.
+The third development practice we examine is issue report frequency.
+As described above, we use data on 293 projects, each with at least 
+100 issues.
 
-\noindent \underline{Exploratory Study}
-We follow the same approach as in RQ1 and RQ2 and compare the medians and the averages in the number of issues per time period, in the months
-before and after the adoption of CI.
-Fig.~\ref{Fig:IssuesBefore} and \ref{Fig:IssuesAfter} plot the number of issues per unit time period.
-Observing these figures we can see that the months immediately 
-preceding and following the adoption of CI exhibit the highest number of issues.
-Following the adoption of CI the median of the number of issues seems to stabilize while averages do
-not show a clear trend. 
-
-
-\begin{figure}[!t]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.5\textwidth]{issues_before.pdf}
+\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{issues_before.pdf}
 \caption{Median number of issues before CI adoption}
 \label{Fig:IssuesBefore}
 \end{figure}
 
 
-\begin{figure}[!t]
+\begin{figure}[t]
 \centering
-\includegraphics[width=0.5\textwidth]{issues_after.pdf}
+\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{issues_after.pdf}
 \caption{Median number of issues after CI adoption}
 \label{Fig:IssuesAfter}
 \end{figure}
 
-\noindent \underline{Modeling Study}
+\smallskip\noindent \emph{Exploratory Study}:
+We follow the same approach as in RQ1 and RQ2 and compare the 
+medians and the averages in the number of issues per time period, in the 
+months before and after the adoption of CI.
+Fig.~\ref{Fig:IssuesBefore} and \ref{Fig:IssuesAfter} plot the number of 
+issues per unit time period.
+Observing these figures we can see that the months immediately preceding 
+and following the adoption of CI exhibit the highest number of issues.
+Following the adoption of CI the median of the number of issues seems to 
+stabilize, while averages do not show a clear trend. 
+
 \input{tables/rq3_models}
+
+\smallskip\noindent \emph{Modeling Study}:
 Results of the RDD modeling are summarized in Table~\ref{Table:rddmodels_issues}.
-Lower number of projects in Table~\ref{Table:rddmodels_issues} compared to Tables~\ref{Table:rddmodels} 
-and~\ref{Table:rddmodels_freq} should not be surprising. 
-Recall from Section~\ref{sec:dd} that to answer RQ3 we have focused on projects having at least 100 issues,
- reducing 567 projects used in RQ1 and RQ2 to 293.
-We have fitted models to 291 projects of the 293, however in most cases we did not observe linear trends.
-When a linear trend has been observed than it was more than twice more often decreasing than increasing.
-The mean value over all projects for $\gamma$, the effect size of CI adoption, was $1.0$ issue.
+The lower number of projects in Table~\ref{Table:rddmodels_issues} 
+compared to Tables~\ref{Table:rddmodels} and~\ref{Table:rddmodels_freq} 
+should not be surprising. 
+Recall from Section~\ref{sec:dd} that to answer RQ3 we have focused on 
+projects having at least 100 issues, further reducing the size of the data set 
+used in RQ1 and RQ2 to 293.
+We have fitted models to 291 projects of the 293, however in most cases we 
+did not observe linear trends.
+When a linear trend has been observed than it was more than twice more 
+often decreasing than increasing.
+The mean value over all projects for $\gamma$, the effect size of CI adoption, 
+was $1.0$ issue.
 
 
-\noindent \underline{Discussion}
-
- Thus, we conclude the effect of CI adoption led to an overall increase of one issue more per period.
+\smallskip\noindent \emph{Discussion}:
+ Thus, we conclude the effect of CI adoption led to an overall increase of one 
+ issue more per period.\vf{This needs text}
 
 
 
 
 \subsection{RQ4: Trends in Testing}
 
-The last development practice we examine is testing and the evolution of the types of errors revealed by automated testing.
-The data consists of 250 projects, each with at least 100 builds, and 90\% of builds deploying tests.
-
-\noindent \underline{Exploratory Study} As before, we first look for general trends over time.
-Fig.~\ref{Fig:Tests} shows a boxplot of per-project median number of tests per build, for each of five consecutive 60-day time intervals before CI adoption.
-We aggregated the data here in 60 day intervals to make it easier to visualize the trend since the differences are small.
-The vertical line in each boxplot is the median value of all per-project median, and the black dot is their average value.
-We observe a monotonically increasing trend in both the medians, from 140 to 160 tests per build, and the means, from 205 to 245 tests per build, i.e. 15\% to 20\% increase. 
-
-To ascertain if the complexity of builds increases over time, we also calculated the average number of jobs per build.
-The median is $1$ for all five time intervals.
-These two findings suggest strongly that there is an increase in the number of unit tests per build over time.
-This is consistent with the good practices proposal.
-
+The last development practice we examine is testing and the evolution 
+of the types of errors revealed by automated testing.
+The data consists of 250 projects, each with at least 100 builds, and 90\% 
+of builds executing tests.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.5\textwidth]{tests.pdf}
+\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{tests.pdf}
 \caption{Unit tests per build following CI adoption}
 \label{Fig:Tests}
 \end{figure}
 
-\noindent \underline{Error Types Study}
-We also looked at the evolution of the error types in builds over time after CI adoption.
-For all 250 projects above, we looked at the builds that resulted in errors, and deconvolved the 
-errors into 8 types, as described above.
-We did this over 3 intervals: 0-60 days, 61-180 days, and 181-300 days (i.e., points 1, 3, and  5 in Fig.~\ref{Fig:Tests}).
-The results are shown in Fig.~\ref{Fig:BugTypes}, where
-on the y-axis are the proportion of all erroneous builds that yield that error type.
-We find an apparent upward trend over time in most error type categories, most notably compile errors, execution errors, failed tests and skipped test.~\footnote{The median number of error types per build remained $2$ over time.}
-All these are consistent with an increase in the amount of code being built and tested per build, as well as an increasing management of errors by skipping tests, likely to aid in debugging.
-On the other hand, we find a decreasing trend among errors related to missing files/dependencies, and time-outs, both consistent with those errors being less of an issue over time, as developers are acculturating to the CI mediated processes.
+\smallskip\noindent \emph{Exploratory Study}: 
+As before, we first look for general trends over time.
+Fig.~\ref{Fig:Tests} shows a boxplot of per-project median number of tests 
+per build, for each of five consecutive 60-day time intervals before CI adoption.
+We aggregated the data here in 60 day intervals to make it easier to visualize 
+the trend, since the differences are small.
+The vertical line in each boxplot is the median value of all per-project medians, 
+and the black dot is their average value.
+We observe a monotonically increasing trend in both the medians, from 140 to 
+160 tests per build, and the means, from 205 to 245 tests per build, \ie 15\% to 
+20\% increase. 
 
-Thus, overall we find an expected adjustment to the automated testing and error handling, with an indication that debugging complexity grows over time.
+To ascertain if the complexity of builds increases over time, we also calculated 
+the average number of jobs per build.
+The median is $1$ for all five time intervals.
+These two findings suggest strongly that there is an increase in the number of 
+unit tests per build over time.
+This is consistent with the good practices proposal.
+\vf{This needs work}
+
+
+\smallskip\noindent \emph{Error Types Study}:
+We also looked at the evolution of the error types in builds over time after CI 
+adoption.
+For all 250 projects above, we looked at the builds that resulted in errors, 
+and deconvolved the errors into 8 types, as described above.
+We did this over 3 intervals: 0-60 days, 61-180 days, and 181-300 days (\ie 
+points 1, 3, and  5 in Fig.~\ref{Fig:Tests}).\vf{If figure is updated this can go.}
+The results are shown in Fig.~\ref{Fig:BugTypes}, where on the y-axis are 
+the proportion of all erroneous builds that yield that error type.
+We find an apparent upward trend over time in most error type categories, 
+most notably compile errors, execution errors, failed tests, and skipped 
+test.\footnote{The median number of error types per build remained $2$ over 
+time.}
+All these are consistent with an increase in the amount of code being built 
+and tested per build, as well as an increasing management of errors by 
+skipping tests, likely to aid in debugging.
+On the other hand, we find a decreasing trend among errors related to missing 
+files/dependencies, and time-outs, both consistent with those errors being less 
+of an issue over time, as developers are acculturating to the CI mediated 
+processes.
+
+Thus, overall we find an expected adjustment to the automated testing and 
+error handling, with an indication that debugging complexity grows over time.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.5\textwidth]{plot_together.png}
+\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{plot_together.png}
 \caption{Evolution of Error Types Since CI Adoption}
 \label{Fig:BugTypes}
 \end{figure}
