@@ -6,18 +6,18 @@ It is not everyday that software engineering experiences a paradigm shift.
 The \DO movement, made popular in recent years, is according to many
 \cite{degrandis2011devops, loukides2012devops, humble2011enterprises, 
 roche2013adopting} such a shift.
-Simply stated, \DO aims to get changes into production as quickly as 
+\DO aims to get changes into production as quickly as 
 possible, without compromising software quality.
 While no standard definitions exist and the term is often overloaded, here
 we refer to \DO as a culture that emphasizes \emph{automation of the 
 process of building, testing, and deploying software}.
-In practice, \DO is supported by a multitude of configuration management, 
-cloud-based continuous integration, and automated deployment tools,
+In practice, \DO is supported by a multitude of tools for configuration management, 
+cloud-based continuous integration, and automated deployment,
 which enjoy widespread open-source~\cite{Hilton2016} and industrial 
 adoption~\cite{rightscale, hilton2016continuous}.
 
 In this study we focus on Continuous Integration (CI), the key enabler of \DO.
-CI is a well known concept in Extreme Programming, often attributed to
+CI is a well known concept in Extreme Programming, promulged in 
 Martin Fowler's 2000 blog post~\cite{fowler2000continuous}.
 As a practice, CI is seeing broad adoption with the increasing popularity
 of the \GH pull-based development model~\cite{gousios2014exploratory}
@@ -58,7 +58,13 @@ influential blog post~\cite{fowler2000continuous}, such as
 and \emph{Keep the Build Fast}.
 However, despite the large scale adoption of CI, we know relatively little 
 about the state of the practice in using this technology and whether 
-developers are benefitting from its power.
+developers are aligning their practices with Fowler's proposed "best practices".
+Using CI seems apparently beneficial, especially since many others are using it.
+But how much disruption does the transition to CI cause?
+And how do teams change their workflows to accommodate CI?
+Such knowledge can help developers to optimize their practices, project 
+maintainers to make informed decisions about adopting CI, and 
+researchers and tool builders to identify areas in need of attention.
 
 In this paper we report on a study of a sample of \GH open-source 
 software projects that adopted \Tvis technology, by far the most popular 
@@ -66,12 +72,6 @@ CI infrastructure used on \GH~\cite{Hilton2016}.
 In particular, we focus on the \emph{transition from no CI to using 
 T{\footnotesize RAVIS} CI}, and investigate how development practices 
 changed following the adoption of \Tvis.
-Clearly, using CI seems beneficial.
-But how much disruption does the transition to CI cause?
-And how do teams change their workflows to accommodate CI?
-Such knowledge can help developers to optimize their practices, project 
-maintainers to make informed decisions about adopting CI, and 
-researchers and tool builders to identify areas in need of attention.
 To this end, we operationalize practices in three main aspects of 
 distributed development, related to code changes, issue tracking, 
 and testing.
@@ -85,17 +85,17 @@ projects, appropriately selected, we find that:
 
 \begin{itemize}
 
-\item There is a significant and persistent downward trend in commit churn after CI is adopted, over all projects, but also for a large fraction of individual projects. This trend is non-existent before the adoption.
+\item There is a persistent downward trend in commit churn after CI is adopted, over all projects, but also for a large fraction of individual projects. This trend is non-existent before the adoption. This is in agreement with Fowler's "best practices", although probably to a lesser extent than expected.
 
-\item Consistent with the above, we also find that the number of commits and PRs increases after CI adoption, and is random before it.
+\item We also find that the number of commits per time period does not change for most projects, but for 20\% of them it increases slightly after CI adoption, but returns back down with time.
+This is not in apparent agreement with Fowler's "best practices"
 
-\item There is a rapidly increasing trend in the number of automatic test per PR after CI adoption.
+\item There is an increasing trend in the number of automatic test per build after CI adoption, as expected/
 
-\item There are significantly more issues submitted after CI adopted than before.
+\item There are significantly more issues submitted after CI is adopted than before.
 
-\item There are no significant changes in the frequency of commits after CI adoption.
 \end{itemize}
-\bv{Verify and update list of findings}
+
 
 The remainder of this paper starts by developing the research questions pertaining to adoption of CI and its impact
  on developers' practices (Section~\ref{sec:background}), discusses the methods used to collect and analyze 
