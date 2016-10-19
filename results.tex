@@ -62,10 +62,12 @@ It is also likely that our models and data are insufficient to capture them.
 Some of the reasons for this are: low temporal resolution, high dispersion of the data,
 non-uniform distribution of the events across time, and project specific considerations that we could not model.
 
-Our exploratory study showed a downward trend following CI adoption.
-The modeling study showed that when linear trends were present (in 15\% of the models), the downward ones after CI adoption were twice times as frequent as the upward one, a reversal of the pattern in the trends from before CI.
+Our exploratory study showed a peak around CI adoption time and a slight downward trend following CI adoption.
+The modeling study showed that when linear trends were present (in 15\% of the models), the downward ones after CI adoption were twice  as frequent as the upward one, a reversal of the pattern in the trends from before CI.
 This is consistent with Fowler's recommended good practices of CI, of committing smaller changes to the code.
+Alternatively, it is also consistent with an explanation proposed by Hilton et al.~\cite{Hilton2016} that as projects age, fixing commits might become more prevalent, which on average are smaller.
 
+The models also showed that when present, the effect of CI adoption on the amount of code churn right after was positive in more cases than negative.
 The increased code churn on both sides near the CI adoption time is arguably in line with expectations that more maintanance work may be going on in preparation for the transition to CI, and that the projects go through some adjustment/cleanup period right after.
 
 
@@ -94,23 +96,25 @@ Table~\ref{Table:rddmodels_freq} summarizes the results.
 We eliminated one time point on either side of the CI adoption time so as they do not throw off the regression models.
 \input{tables/rq2_models}
 
-We were able to fit all 567 models to the data.
-In 458 of the models, there was no significant linear relationship of commit frequency to time, i.e. there was no linear trend.
-In 67 projects there was a rising trend in commit frequency before CI and in 42 projects a falling trend before CI.
-Similarly, in 476 projects no effect of CI introduction on commit frequency was found. Among the 91 projects where an effect was significant, in about 50 the trend was positive, i.e., commit frequency increased, and in the rest it was negative, i.e., commit frequency decreased.
-Interestingly, while in 468 projects no change of slope in the trends before and after CI adoption was found, in the 99 with significant change of trends a reduction in the slope was more prevalent than an increase by about 2 to 1.
-This carried over into trends in commit frequency following CI adoption: out of the 99 significant trend changes, 66 are downward trends, and only 33 are upward.
+In 452 (80\%) of the models, there was no significant linear relationship of commit frequency to time, i.e. there was no linear trend.
+In 71 projects there was a rising trend in commit frequency before CI and in 44 projects a falling trend before CI.
+Similarly, in 466 projects no effect of CI introduction on commit frequency was found. Among the 101 projects where an effect was significant, in 59 the trend was positive, i.e., commit frequency increased, and in the rest it was negative, i.e., commit frequency decreased.
+The mean value over all projects for $\gamma$, the effect size of CI adoption, was $1.1$ commit.
+While in 454 projects no change of slope in the trends before and after CI adoption was found, in the 113 with significant change of trends a reduction in the slope was more prevalent than an increase by about 2.5 to 1.
+This carried over to a lesser degree into trends in commit frequency following CI adoption: out of the 113 significant trend changes, 71 are downward trends, and 42 are upward.
 
 \noindent \underline{Discussion}
 As it is the case for the code churn, most of the projects could not be modeled with the RDD linear regression for 
 the reasons similar to those in case of the code churn.
 
-While our exploratory study did not suggest presence of a trend, the modeling study suggests that if a linear 
-trend is present, then it is twice as likely to be decreasing as increasing. 
+While our exploratory study did not suggest presence of a trend, the modeling study suggests that right after CI adoption there is a slight positive effect (after removing the peak months around CI adoption time). However this effect is not sustained if a linear 
+trend is present, which is 2.5 times as likely to be decreasing as increasing. 
 Given the expected increase in the frequency of commits expressed and encouraged by Fowler, this result might appear surprising.
-One should keep in mind, however, that most projects do not show a trend.
+It is possible that some saturation to the commit frequency has already been reached even before the CI adoption time.
+As we see next, it is also likely developers are spending more time on automated testing.
 
-\as{Vladimir, do you have a cross-combination data, such as \# decrease in churn AND increase in frequency?}
+
+%\as{Vladimir, do you have a cross-combination data, such as \# decrease in churn AND increase in frequency?}
 
 
 
