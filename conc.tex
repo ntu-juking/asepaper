@@ -11,5 +11,13 @@ Finally, we have considered trends in testing and the types of errors revealed b
 The number of tests run by Travis CI shows an increasing trend \as{VF, please check this once you have done a more careful modeling} 
 in agreement with the importance of automated testing in CI.
 We also observed increase in the percentage of compilation and execution errors as well as failed and skipping tests as opposed to missing files or dependencies.
+We conjecture that as file omissions are easy to fix, once such an error has been observed it is immediately fixed as opposed to repeated attempts to fix other kinds
+of errors causing repeated build failures.
+%As developers are getting more and more used to the rapid feedback provided by the CI 
+\as{This still does not explain the evolution; the conjecture that the developers are running more and more attempts to fix a bug seems to be contradicted by 
+our conclusion on \# commits (unless they are using pull requests...)}
 
-\as{no idea why does this happen.}
+Our observations suggest that while CI is a popular mechanism supporting software development, it does not necessarily help the developers to achieve the expected benefits. 
+CI needs and wishes of open-source and proprietary code developers have been recently surveyed~\cite{Hilton2016,hilton2016continuous}: we consider investigating whether
+introduction of CI in a project leads to realization of those expectations as future work.
+\as{Danny Dig and co-authors have only compared Travis with no-Travis but did not look at the transition.}
