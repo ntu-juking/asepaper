@@ -1,3 +1,15 @@
 % !TEX root = CI_Adoption.tex
 \section{Conclusion}
 \label{sec:conc}
+In this paper we have focused on continuous integration: while several ``best practices'' have been proposed relatively little has been done to evaluate the state of practice.
+Therefore, using a collection of Java GitHub projects we have conducted an empirical study of the impact of CI adoption on the development practices.
+We have observed that for most projects no clear linear trends can be observed either before or after introduction of Travis CI.
+In cases when such a linear trend can be observed it is more often decreasing (less churned lines, less frequent commits, less issues) and while
+decrease in the churned lines concurs with one of the aforementioned ``best practices'', decrease in the commit frequency or number of issues
+seems to disagree with them. 
+Finally, we have considered trends in testing and the types of errors revealed by the automatic testing.
+The number of tests run by Travis CI shows an increasing trend \as{VF, please check this once you have done a more careful modeling} 
+in agreement with the importance of automated testing in CI.
+We also observed increase in the percentage of compilation and execution errors as well as failed and skipping tests as opposed to missing files or dependencies.
+
+\as{no idea why does this happen.}
