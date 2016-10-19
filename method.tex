@@ -192,7 +192,7 @@ In the end, the filtered data set for RQ4 consisted of 250 projects.
 We use data visualization and statistical modeling methods to discover 
 longitudinal patterns indicative of CI adoption effects on development practices.
 As one of the contributions of this paper, we introduce the statistical modeling 
-framework of \emph{regression discontinuity design} to assess the existence 
+framework of \emph{regression discontinuity design}~\cite{Imbens2008611} to assess the existence 
 and extent of a longitudinal effect of CI adoption on development practices.
 
 To evaluate the effect of a treatment, \eg a new drug on a disease progression, 
@@ -205,7 +205,7 @@ In the absence of randomized trials, as is the case with the trace data that is
 common in empirical software engineering, weaker techniques which make 
 additional assumptions, \eg quasi-experiments, are employed.
 
-Regression discontinuity design (RDD) is an example of such a technique, 
+Regression discontinuity design (RDD)~\cite{Imbens2008611} is an example of such a technique, 
 used for modeling the extent of a discontinuity of a function between its values 
 at points just before and just after a given intervention point. 
 It is based on the assumption that in the absence of the intervention, the 
@@ -219,8 +219,7 @@ sharp RDD and fuzzy RDD~\cite{imbens2008regression}.
 Each, in turn, can be implemented in a variety of ways.
 To model the effect of CI adoption on developer practices, here we chose one 
 of the simpler approaches, namely linear regression with an interaction term.
-We summarize our approach next, following the description from a recent 
-review of RDD~\cite{}. \vf{Which?}
+We summarize our approach next, following the description from a survey for practitioners article by Imbens and Lemieux~\cite{imbens2008}.
 We refer to Figure~\ref{RDDIllustration} for an illustration.
 Let $Y$ be the outcome variable in which we are looking for a discontinuity, 
 \eg commit churn per month, let $X$ be the temporal variable containing the 
@@ -238,15 +237,13 @@ For points before the treatment, the resulting regression line has a slope of
 $\beta$, and after the treatment $\beta + \delta$.
 The size of the effect of the treatment is the difference between the two 
 regression values of $y_i$ evaluated at $x=c$, and can be seen to be equal 
-to the intercept $\gamma$.
-
-For example, in Fig.~\ref{RDDIllustration}, ...
+to $\gamma$.
+For example, in Fig.~\ref{RDDIllustration}, the treatment effect ($\gamma$) is negative, and there is an interaction effect ($\delta ne 0$) which changes the slope of the regression after the treatment.
 
 For each project, we use an RDD model implemented as the above 
 double linear regression, on data centered at the time of CI adoption, and 
 having equal number of points on each side.
-Solving the regression gives us the coefficients, which we can reason about, 
-especially the effect size, if any.
+Solving the regression gives us the coefficients, which if significant, can help us reason about the treatment and its effects, if any.
  
 
 \begin{figure}[t]
