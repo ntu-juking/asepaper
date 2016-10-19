@@ -119,7 +119,10 @@ As we see next, it is also likely developers are spending more time on automated
 
 
 
-\subsection{RQ3: Trends in Issues}
+\subsection{RQ3: Trends in Issues Frequency}
+
+The third development practice we examine is issues frequency.
+As described above, we use data on 293 projects, each with at least 100 issues.
 
 \noindent \underline{Exploratory Study}
 We follow the same approach as in RQ1 and RQ2 and compare the medians and the averages in the number of issues per time period, in the months
@@ -153,29 +156,34 @@ Lower number of projects in Table~\ref{Table:rddmodels_issues} compared to Table
 and~\ref{Table:rddmodels_freq} should not be surprising. 
 Recall from Section~\ref{sec:dd} that to answer RQ3 we have focused on projects having at least 100 issues,
  reducing 567 projects used in RQ1 and RQ2 to 293.
-We have fitted models to 291 projects of the 291, however in most cases we did not observe linear trends.
+We have fitted models to 291 projects of the 293, however in most cases we did not observe linear trends.
 When a linear trend has been observed than it was more than twice more often decreasing than increasing.
-
+The mean value over all projects for $\gamma$, the effect size of CI adoption, was $1.0$ issue.
 
 
 \noindent \underline{Discussion}
 
-
-The values of the $\gamma$'s for these models are right skewed, with average and median over 1. Thus, we conclude the effect of CI adoption led to an overall increase of one issue more per period.
+ Thus, we conclude the effect of CI adoption led to an overall increase of one issue more per period.
 
 
 
 
 \subsection{RQ4: Trends in Testing}
 
-The second development practice we examine is testing and the evolution of the types of errors revealed by automated testing.
-The data consists of XXX projects, each with at least YYY tests.
+The last development practice we examine is testing and the evolution of the types of errors revealed by automated testing.
+The data consists of 250 projects, each with at least 100 builds, and 90\% of builds deploying tests.
 
 \noindent \underline{Exploratory Study} As before, we first look for general trends over time.
 Fig.~\ref{Fig:Tests} shows a boxplot of per-project median number of tests per build, for each of five consecutive 60-day time intervals before CI adoption.
 We aggregated the data here in 60 day intervals to make it easier to visualize the trend since the differences are small.
 The vertical line in each boxplot is the median value of all per-project median, and the black dot is their average value.
 We observe a monotonically increasing trend in both the medians, from 140 to 160 tests per build, and the means, from 205 to 245 tests per build, i.e. 15\% to 20\% increase. 
+
+To ascertain if the complexity of builds increases over time, we also calculated the average number of jobs per build.
+The median is $1$ for all five time intervals.
+These two findings suggest strongly that there is an increase in the number of unit tests per build over time.
+This is consistent with the good practices proposal.
+
 
 \begin{figure}[!t]
 \centering
@@ -185,6 +193,17 @@ We observe a monotonically increasing trend in both the medians, from 140 to 160
 \end{figure}
 
 \noindent \underline{Error Types Study}
+We also looked at the evolution of the error types in builds over time after CI adoption.
+For all 250 projects above, we looked at the builds that resulted in errors, and deconvolved the 
+errors into 8 types, as described above.
+We did this over 3 intervals: 0-60 days, 61-180 days, and 181-300 days (i.e., points 1, 3, and  5 in Fig.~\ref{Fig:Tests}).
+The results are shown in Fig.~\ref{Fig:BugTypes}, where
+on the y-axis are the proportion of all erroneous builds that yield that error type.
+We find an apparent upward trend over time in most error type categories, most notably compile errors, execution errors, failed tests and skipped test.~\footnote{The median number of error types per build remained $2$ over time.}
+All these are consistent with an increase in the amount of code being built and tested per build, as well as an increasing management of errors by skipping tests, likely to aid in debugging.
+On the other hand, we find a decreasing trend among errors related to missing files/dependencies, and time-outs, both consistent with those errors being less of an issue over time, as developers are acculturating to the CI mediated processes.
+
+Thus, overall we find an expected adjustment to the automated testing and error handling, with an indication that debugging complexity grows over time.
 
 \begin{figure}[!t]
 \centering
@@ -193,5 +212,5 @@ We observe a monotonically increasing trend in both the medians, from 140 to 160
 \label{Fig:BugTypes}
 \end{figure}
 
-\noindent \underline{Discussion}
+
 
