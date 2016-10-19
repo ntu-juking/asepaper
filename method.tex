@@ -237,15 +237,13 @@ For points before the treatment, the resulting regression line has a slope of
 $\beta$, and after the treatment $\beta + \delta$.
 The size of the effect of the treatment is the difference between the two 
 regression values of $y_i$ evaluated at $x=c$, and can be seen to be equal 
-to the intercept $\gamma$.
-
-For example, in Fig.~\ref{RDDIllustration}, ...
+to $\gamma$.
+For example, in Fig.~\ref{RDDIllustration}, the treatment effect ($\gamma$) is negative, and there is an interaction effect ($\delta ne 0$) which changes the slope of the regression after the treatment.
 
 For each project, we use an RDD model implemented as the above 
 double linear regression, on data centered at the time of CI adoption, and 
 having equal number of points on each side.
-Solving the regression gives us the coefficients, which we can reason about, 
-especially the effect size, if any.
+Solving the regression gives us the coefficients, which if significant, can help us reason about the treatment and its effects, if any.
  
 
 \begin{figure}[t]
