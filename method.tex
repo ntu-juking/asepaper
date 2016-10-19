@@ -4,8 +4,8 @@
 \label{sec:method}
 
 We collected and statistically analyzed data from a sample of open-source 
-Java (chosen based on familiarity of the first author) projects on \GH, that 
-adopted \Tvis at some point during their history.
+Java (language chosen based on familiarity of the first author) projects on 
+\GH, that adopted \Tvis at some point during their history.
 
 \subsection{Data Gathering}
 
@@ -143,13 +143,13 @@ our data set, 68\% coming from push commits and 32\% come from pull
 requests (PRs). 
 Of these builds, 67.1\% were passed, 18.6\% were failed, and the others 
 were errored or canceled. 
-Besides, Table~\ref{count_info} lists the statistics for \# commits, \# issues 
-and \# PRs before and after adopting \Tvis, respectively. 
+Besides, Table~\ref{count_info} lists the statistics for \#commits, \#issues 
+and \#PRs before and after adopting \Tvis, respectively. 
 We can preliminarily see that, in our studied projects, there are less commits 
 after CI adoption, but more issues and PRs. 
 From the summary statistics, we found there are large variances between 
 projects in terms of each attribute, as shown in Table~\ref{projs_summary}. 
-For example, 18\% of projects have a value of \# issues equal to 0, as they 
+For example, 18\% of projects have a value of \#issues equal to 0, as they 
 haven't featured \GH issue tracking yet. 
 When studying the evolution practices of issues, these projects without 
 issues may bias our conclusions. 
@@ -174,12 +174,12 @@ avoidance reasons.
 The resulting filtered data set consists of 293 projects, with a total of 143,573 
 \GH issues.
 
-For RQ4, we investigate the changes in \# tests per build.
-As introduced above, we collected \# tests from build logs. 
+For RQ4, we investigate the changes in \#tests per build.
+As introduced above, we collected \#tests from build logs. 
 Again, as above, we first filtered the projects based on the number of builds
 (lower bound arbitrarily set at 100), leaving 736 projects. 
 %Each projects should have at least 100 builds. This selection left us 736 projects. 
-Furthermore, during the collection of \# tests, we found (and subsequently
+Furthermore, during the collection of \#tests, we found (and subsequently
 filtered out) 219 projects that did not execute any tests as part of their \Tvis 
 builds, and additional 267 projects that tested very scarcely (\ie we kept 
 projects for which at least 90\% builds executed at least one test). 
@@ -187,38 +187,65 @@ projects for which at least 90\% builds executed at least one test).
 In the end, the filtered data set for RQ4 consisted of 250 projects.
 %Among the other projects, 250 of them have more than 90\% builds with at least one test. Here, we only consider these 250 projects with high coverage of testing ( \textgreater{ 90\%} ).
 
-\subsection{Time Series Analysis Methods}
+\subsection{Time Series Analysis Method}
 
-We use data visualization and statistical modeling methods to discover longitudinal patterns indicative of CI adoption effects on development practices.
-As one of the contributions of this paper, we introduce the statistical modeling framework of {\emph regression discontinuity design} to assess the existence and extent of a longitudinal effect of CI adoption on development practices.
+We use data visualization and statistical modeling methods to discover 
+longitudinal patterns indicative of CI adoption effects on development practices.
+As one of the contributions of this paper, we introduce the statistical modeling 
+framework of \emph{regression discontinuity design} to assess the existence 
+and extent of a longitudinal effect of CI adoption on development practices.
 
-To evaluate the effect of a treatment, e.g., a new drug on a disease progression, randomized experimental trials are typically used, in which the experimental cohort is randomly split into a treatment group, i.e. those given the drug, and a control group, i.e., those given an experientially identical placebo. Then, the effect is evaluated based on the difference in disease progression between the two groups.
-In the absence of randomized trials, as is the case with trace data common in empirical software engineering, weaker techniques, e.g., quasi-experiments, are employed which make additional assumptions.
+To evaluate the effect of a treatment, \eg a new drug on a disease progression, 
+randomized experimental trials are typically used, in which the experimental 
+cohort is randomly split into a treatment group, \ie those given the drug, and 
+a control group, \ie those given an experientially identical placebo. 
+Then, the effect is evaluated based on the difference in disease progression 
+between the two groups.
+In the absence of randomized trials, as is the case with the trace data that is
+common in empirical software engineering, weaker techniques which make 
+additional assumptions, \eg quasi-experiments, are employed.
 
-Regression discontinuity design (RDD) is an example of such a technique, used for modeling the extent of a discontinuity of a function between its values at points just before and just after a given intervention point. 
-It is based on the assumption that in the absence of the intervention, the trend of the function would be continuous.
-A common situation where a discontinuity occurs is illustrated in Fig.~\ref{RDDIllustration}, where the discontinuity is shown as occuring at the time of the intervention, and is manifested as a different regression before and after that point.
+Regression discontinuity design (RDD) is an example of such a technique, 
+used for modeling the extent of a discontinuity of a function between its values 
+at points just before and just after a given intervention point. 
+It is based on the assumption that in the absence of the intervention, the 
+trend of the function would be continuous.
+A common situation where a discontinuity occurs is illustrated in Fig.~\ref{RDDIllustration}, 
+where the discontinuity is shown as occurring at the time of the intervention, 
+and is manifested as a different regression before and after that point.
 
-There are a number of different formalizations of RDD, most prominently sharp RDD and fuzzy RDD.~\cite{}
-Each can, in turn, be implemented in a variety of ways.
-To model the effect of CI adoption on developer practices, here we chose one of the simpler approaches of linear regression with an interaction term.
-We summarize next our approach, following the description from a recent review of RDD~\cite{}. We refer to Figure~\ref{RDDIllustration} for an illustration.
-Let $Y$ be the outcome variable in which we are looking for a discontinuity, e.g. commit churn per month, let $X$ be the temporal variable containing the time of intervention, and $c$ be the time point at which the intervention, in this case CI adoption has happened.
-Then, an RDD model for points $x_i$ in equal intervals $h$ on each side of $c$, $c-h \le x_i \le c+h$, is given by:
+There are a number of different formalizations of RDD, most prominently 
+sharp RDD and fuzzy RDD~\cite{imbens2008regression}.
+Each, in turn, can be implemented in a variety of ways.
+To model the effect of CI adoption on developer practices, here we chose one 
+of the simpler approaches, namely linear regression with an interaction term.
+We summarize our approach next, following the description from a recent 
+review of RDD~\cite{}. \vf{Which?}
+We refer to Figure~\ref{RDDIllustration} for an illustration.
+Let $Y$ be the outcome variable in which we are looking for a discontinuity, 
+\eg commit churn per month, let $X$ be the temporal variable containing the 
+time of intervention, and let $c$ be the time point at which the intervention, in 
+this case CI adoption, has happened.
+Then, an RDD model for points $x_i$ in equal intervals $h$ on each side of 
+$c$, $c-h \le x_i \le c+h$, is given by:
 
 \[y_i \ = \alpha + \beta(x_i-c) + \gamma w_i + \delta(x_i-c)w_i + \epsilon_i,\]
 
-\noindent where $w_i = (x_i > c)$, i.e. $w_i$ is 1 if point $x_i$ is included in the treatment group (e.g., after CI adoption), and 0 if it is before the treatment.
+\noindent where $w_i = (x_i > c)$, \ie $w_i$ is 1 if point $x_i$ is included in 
+the treatment group (\eg after CI adoption), and 0 if it is before the treatment.
 In fact, this model encapsulates two separate regressions.
-For points before the tratment, the resulting regression line has a slope of $\beta$, and after the treatment $\beta + \delta$.
-The size of the effect of the treatment is the difference between the two regression values of $y_i$ evaluated at $x=c$, and can be seen to be equal to the intercept $\gamma$.
+For points before the treatment, the resulting regression line has a slope of 
+$\beta$, and after the treatment $\beta + \delta$.
+The size of the effect of the treatment is the difference between the two 
+regression values of $y_i$ evaluated at $x=c$, and can be seen to be equal 
+to the intercept $\gamma$.
 
 For example, in Fig.~\ref{RDDIllustration}, ...
 
-For each project, we use a sharp RDD model implemented as the above double linear regression, on data centered at the time of CI adoption, and having equal number of points on each side.
-Solving the regression gives us the coefficients, which we can reason about, especially the effect size, if any.
+For each project, we use a sharp RDD model implemented as the above 
+double linear regression, on data centered at the time of CI adoption, and 
+having equal number of points on each side.
+Solving the regression gives us the coefficients, which we can reason about, 
+especially the effect size, if any.
  
-
-
-
 
