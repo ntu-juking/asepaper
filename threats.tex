@@ -2,8 +2,25 @@
 
 \section{Threats to Validity}
 \label{sec:threats}
-\textbf{Construct Validity}: 
-Construct validity is the extent to which the data was collected correctly. We collected the data of commits, issues and PRs from GITHUB. After the data being collected, we recheck to make sure we didn't miss any commits, issues and PRs. For example, we searched the issues using GitHub search API for each project, and compared the returned \textit{total\_count} field with the total number of issues we have collected. If they were different, we found the missing issues, and regathered them until all the issues were gathered. Similarly, the data collected from Travis-CI was also rechecked carefully. To ensure the reliability of test number per build, we randomly selected a sample of builds, manually reviewed the log files and verified the data from manual review and automatical collection to make sure they are consistent. Similar, the data of build error classification was also examined in this manually checking way.
+In this section, we discuss the threats to construct validity, internal validity  and external validity~\cite{perry2000empirical}.
+
+\textbf{Construct Validity} assesses whether the variables we considered accurately model the constructs of our study. 
+One of the constructs in our study is ``CI adoption time'' that we operationalize as the ``first build of Travis CI''. 
+A more precise definition of ``CI adoption time'' would have involved results of thee actions: registration of the repository with Travis CI, build execution and commit involving \texttt{.travis.yml}.
+Information about the repository registration is not publicly available. 
+Travis-CI can create a build using the default settings, without \texttt{.travis.yml} being present in the repository.
+However, by default Travis-CI is configured for Ruby, and obviously any attempt to build a Java project as if it were Ruby are deemed to fail.
+%When registering the project one might also indicate that the builds should be created only if \texttt{.travis.yml} is present.
+Similarly, after \texttt{.travis.yml} is committed, Travis-CI does not necessarily create a build since the repository has to be registered and changes have to be pushed first. 
+Most projects perform the three actions on the same day, or at least within a couple of days.
+However, in several projects such as \as{Bogdan, what was the name of this SuperAwesome thing?} completing the three actions has taken more than \as{Bogdan, please check} years.
+Hence, validity of the ``CI adoption time'' construct might have been threatened by the operationalization.
+
+\as{stopped here}
+One of the threats to construct validity pertains to pull requests that  appear as not being merged even if they have been merged~\cite{Kalliamvakou2014Promises}, \ie 
+
+
+is the extent to which the data was collected correctly. We collected the data of commits, issues and PRs from GITHUB. After the data being collected, we recheck to make sure we didn't miss any commits, issues and PRs. For example, we searched the issues using GitHub search API for each project, and compared the returned \textit{total\_count} field with the total number of issues we have collected. If they were different, we found the missing issues, and regathered them until all the issues were gathered. Similarly, the data collected from Travis-CI was also rechecked carefully. To ensure the reliability of test number per build, we randomly selected a sample of builds, manually reviewed the log files and verified the data from manual review and automatical collection to make sure they are consistent. Similar, the data of build error classification was also examined in this manually checking way.
 
 \textbf{Internal Validity}:
 Internal validity is the extent to which the conclusions can be drawn about the causal effect of independent variables on the dependent variables. We considered if commit churn, number of tests, build error types and number of issues will evolve in a certain trend after CI is adopted. For each perspective, we filtered the projects based on particular required conditions, and focus on the individual variable, without considering whether other variables will influence the trend. If such variables exist, they may weaken the credibility of our results.
