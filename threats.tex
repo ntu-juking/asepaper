@@ -2,52 +2,88 @@
 
 \section{Threats to Validity}
 \label{sec:threats}
-In this section, we discuss the threats to construct validity, internal validity  and external validity~\cite{perry2000empirical}.
+In this section, we discuss the threats to construct validity, internal validity, 
+and external validity~\cite{perry2000empirical}.
 
-\textbf{Construct Validity} assesses whether the variables we considered accurately model the constructs of our study. 
-One of the constructs in our study is ``CI adoption time'' that we operationalize as the ``first build of Travis CI''. 
-A more precise definition of ``CI adoption time'' would have involved results of thee actions: registration of the repository with Travis CI, build execution and commit involving \texttt{.travis.yml}.
-Information about the repository registration is not publicly available. 
-Travis-CI can create a build using the default settings, without \texttt{.travis.yml} being present in the repository.
-However, by default Travis-CI is configured for Ruby, and obviously any attempt to build a Java project as if it were Ruby are deemed to fail.
+\smallskip \emph{Construct Validity} assesses whether the variables we 
+considered accurately model the constructs of our study. 
+One of the constructs in our study is a project's ``CI adoption time,'' which 
+we operationalize as the ``first \Tvis build''. 
+A more precise definition of ``CI adoption time'' would have involved 
+reconciling three timestamps: registration of the repository with \Tvis, the 
+first build, and the addition of the \texttt{.travis.yml} configuration file to the
+repository root folder.
+This is due to the fact that \Tvis can also start a build using some default 
+environment settings (Ruby) \emph{without} \texttt{.travis.yml} being present.
+%However, by default Travis-CI is configured for Ruby, and obviously any attempt to build a Java project as if it were Ruby are deemed to fail.
 %When registering the project one might also indicate that the builds should be created only if \texttt{.travis.yml} is present.
-Similarly, after \texttt{.travis.yml} is committed, Travis-CI does not necessarily create a build since the repository has to be registered and changes have to be pushed first. 
-Most projects perform the three actions on the same day, or at least within a couple of days.
-However, in several projects such as \as{Bogdan, what was the name of this SuperAwesome thing?} completing the three actions has taken more than \as{Bogdan, please check} years.
-Hence, validity of the ``CI adoption time'' construct might have been threatened by the operationalization.
+Similarly, even after \texttt{.travis.yml} is present in the repository, \Tvis may 
+not necessarily immediately start a build; for that to happen the repository 
+has to be registered with \Tvis and some changes have to be pushed to a
+surveilled branch, either directly or as part of an open pull request. 
+Information about a repository's registration with \Tvis is not publicly available. 
+However, in practice most projects perform all three actions on the same day, 
+or at least within a couple of days.
+As an illustration, we point the reader to the singular exception we encountered
+in our informal explorations of the data, \texttt{SuperAwesomeLTD/sa-mobile-sdk-android},
+for which completing all three actions took more than 2 years.
+%However, in several projects such as \as{Bogdan, what was the name of this SuperAwesome thing?} completing the three actions has taken more than \as{Bogdan, please check} years.
+Hence, validity of the ``CI adoption time'' construct might have been threatened 
+by the operationalization.
 
-Another construct whose validity might have been threatened is ``size of a code change''.
-We operationalize this construct as the number of churned lines, as customary interpreted as the sum of the number of added 
-and removed lines~\cite{GigerPG}. 
+Another construct whose validity might have been threatened is ``size of a 
+code change''.
+We operationalize this construct as the number of churned lines, customarily 
+interpreted as the sum of the number of added and removed lines~\cite{GigerPG}. 
 In this way, moved lines are counted twice, as being added and as being removed.
 Moreover, we do not distinguish between lines of Java code and other lines. 
-The reason is that while the repositories considered are labeled by GitHub as Java repositories and \emph{predominantly} contain Java code,
-they also contain source code in other languages, configuration files and documentation. 
-Distinguishing between source code and non-source code in all those languages is non-trivial.
+The reason is that while the repositories considered are labeled by \GH as 
+Java repositories and \emph{predominantly} contain Java code, they also 
+contain source code in other languages, configuration files, and documentation. 
+Distinguishing between source code and non-source code in all those 
+languages is non-trivial.
 
-Validity of the measurements we have performed such as the number of commits or the number of builds might have been threatened by the limitations of the GitHub API and Travis API.
-Furthermore, validity of the error type recognition might have been affected by the selection of the keywords in the error type recognition tool. 
-To mitigate this threat and encourage replication of our results we made the tools and the data publicly available\footnote{\url{http://web.cs.ucdavis.edu/~filkov/software/adoptCI/}}.
+The validity of our measurements, such as the number of commits or the 
+number of builds, might have been threatened by the limitations of the \GH 
+and \Tvis APIs.
+Furthermore, validity of the error type recognition might have been affected 
+by the selection of the keywords in the error type recognition tool. 
+To mitigate this threat and encourage replications, we made our tools 
+and data publicly available.\footnote{\url{http://web.cs.ucdavis.edu/~filkov/software/adoptCI/}}
 
-Finally, in this work we use terms ``project'' and ``repository'' interchangeably: as pointed out by Kalliamvakou \etal~\cite{Kalliamvakou2014Promises} this is not necessarily the case. 
+Finally, in this work we use terms ``project'' and ``repository'' interchangeably: 
+as pointed out by Kalliamvakou \etal~\cite{Kalliamvakou2014Promises}, this is 
+not necessarily always the case. 
 
 %is the extent to which the data was collected correctly. We collected the data of commits, issues and PRs from GITHUB. After the data being collected, we recheck to make sure we didn't miss any commits, issues and PRs. For example, we searched the issues using GitHub search API for each project, and compared the returned \textit{total\_count} field with the total number of issues we have collected. If they were different, we found the missing issues, and regathered them until all the issues were gathered. Similarly, the data collected from Travis-CI was also rechecked carefully. To ensure the reliability of test number per build, we randomly selected a sample of builds, manually reviewed the log files and verified the data from manual review and automatical collection to make sure they are consistent. Similar, the data of build error classification was also examined in this manually checking way.
 
-\textbf{Internal Validity}:
-Internal validity is the extent to which the conclusions can be drawn from the measurements we have conducted. 
-To reduce these threats we have opted for RDD~\cite{imbens2008regression}, a sound approach to statistical modeling of discontinuity in time series. 
-Application of RDD to software engineering data has been recently advocated by Wieringa~\cite{Wieringa}.
+\smallskip \emph{Internal Validity} is the extent to which the conclusions can 
+be drawn from the measurements we conducted. 
+To reduce these threats we have opted for RDD~\cite{imbens2008regression}, 
+a sound approach to statistical modeling of discontinuity in time series. 
+Application of RDD to software engineering data has been recently advocated 
+by Wieringa~\cite{Wieringa}.
 
 \as{Do we have expect to have confounds somewhere? Not in RDD but maybe in the \# tests study?}
 % about the causal effect of independent variables on the dependent variables. We considered if commit churn, number of tests, build error types and number of issues will evolve in a certain trend after CI is adopted. For each perspective, we filtered the projects based on particular required conditions, and focus on the individual variable, without considering whether other variables will influence the trend. If such variables exist, they may weaken the credibility of our results.
  
-\as{Where does the following paragraph belong?} 
-In addition, we selected the projects indeed with CI adoption, but didn't take into account the CI usage frequency. If a project has only a few builds within a few years, the software engineering practices may be different from other projects which use CI frequently. 
-Besides, in our data set, a group of builds didn't have test execution descriptions in the log files. Most of them are due to the projects without featuring test execution (nearly 30\% projects). For the other builds, the possible reasons are that (1) the log files are blank; (1) the build was canceled before running tests; (3) all the jobs were errored or failed and then exited before running tests; (4)the build was set to skip tests (\eg \textit{DskipTests=true}). To solve this, we selected the projects which featured test execution and had over 90\% builds with at least one test.
+The attentive reader will have also noted multiple data cleaning and filtering 
+steps described in the previous sections.
+While we did not explicitly test how our results would differ under different
+assumptions and data filtering criteria, if at all, we did base our decisions on
+statistical best practices (\eg regarding data sparsity) as well as our prior
+experience with mining \GH and \Tvis data~\cite{yue2015wait, VasilescuYWDF15}.
+We encourage independent replications to assess the robustness of our results.
+ 
+%In addition, we selected the projects indeed with CI adoption, but didn't take into account the CI usage frequency. If a project has only a few builds within a few years, the software engineering practices may be different from other projects which use CI frequently. 
+%Besides, in our data set, a group of builds didn't have test execution descriptions in the log files. Most of them are due to the projects without featuring test execution (nearly 30\% projects). For the other builds, the possible reasons are that (1) the log files are blank; (1) the build was canceled before running tests; (3) all the jobs were errored or failed and then exited before running tests; (4)the build was set to skip tests (\eg \textit{DskipTests=true}). To solve this, we selected the projects which featured test execution and had over 90\% builds with at least one test.
 
 
-\textbf{External Validity} pertains to generalizability of our findings beyond the collection of GitHub Java projects we have investigated.
-We expect our findings to apply to any mid-sized to large Java project.
-Still, this expectation might be threatened by peculiarities of other CI tools (\eg Jenkins or Hudson) or differences between open-source and proprietary projects.
+\smallskip \emph{External Validity} pertains to generalizability of our findings 
+beyond the collection of \GH Java projects we investigated.
+While we do expect our findings to apply to other mid-sized to large Java projects,
+this expectation might be threatened by peculiarities of other CI tools (\eg Jenkins, 
+Hudson) as well as differences between open-source and proprietary projects, just
+to name a few.
 
 %the projects in our study are all Java open source projects from GitHub repository. Therefore, our conclusion may not be generalized either to projects developed by other programming languages or projects that are not open-source. Besides, as we know, there have been multiple CI techniques in practice, \eg Travis CI, Jenkins CI, Hudson CI. In our study, we only focused on Travis CI, which may also threaten the generalization of our results. However. as Travis-CI is the most popular CI service in GitHub, we believe our results on Travis-CI are representative for CI.  This is an inherent threat for all studies in empirical software engineering, as many factors cannot be characterized completely. To mitigate this threat, there is a need to replicate our study using a wide variety of systems and considering other CI techniques in the future work.
