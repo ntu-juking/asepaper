@@ -4,6 +4,7 @@
 
 We sought to study how different software development practices change after CI adoption into the projects. 
 
+\input{examples}
 
 \subsection{RQ1: Trends in Code Churn}
 
@@ -104,7 +105,7 @@ While in 454 projects no change of slope in the trends before and after CI adopt
 This carried over to a lesser degree into trends in commit frequency following CI adoption: out of the 113 significant trend changes, 71 are downward trends, and 42 are upward.
 
 \noindent \underline{Discussion}
-As it is the case for the code churn, most of the projects could not be modeled with the RDD linear regression for 
+As was the case for the code churn, most of the projects could not be modeled with the RDD linear regression for 
 the reasons similar to those in case of the code churn.
 
 While our exploratory study did not suggest presence of a trend, the modeling study suggests that right after CI adoption there is a slight positive effect (after removing the peak months around CI adoption time). However this effect is not sustained if a linear 
@@ -121,13 +122,14 @@ As we see next, it is also likely developers are spending more time on automated
 \subsection{RQ3: Trends in Issues}
 
 \noindent \underline{Exploratory Study}
-We follow the same approach as in RQ1 and RQ2 and compare the medians and the averages in the months
+We follow the same approach as in RQ1 and RQ2 and compare the medians and the averages in the number of issues per time period, in the months
 before and after the adoption of CI.
 Fig.~\ref{Fig:IssuesBefore} and \ref{Fig:IssuesAfter} plot the number of issues per unit time period.
 Observing these figures we can see that the months immediately 
 preceding and following the adoption of CI exhibit the highest number of issues.
 Following the adoption of CI the median of the number of issues seems to stabilize while averages do
 not show a clear trend. 
+
 
 \begin{figure}[!t]
 \centering
