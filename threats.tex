@@ -16,11 +16,21 @@ Most projects perform the three actions on the same day, or at least within a co
 However, in several projects such as \as{Bogdan, what was the name of this SuperAwesome thing?} completing the three actions has taken more than \as{Bogdan, please check} years.
 Hence, validity of the ``CI adoption time'' construct might have been threatened by the operationalization.
 
+Another construct whose validity might have been threatened is ``size of a code change''.
+We operationalize this construct as the number of churned lines, as customary interpreted as the sum of the number of added 
+and removed lines~\cite{GigerPG}. 
+In this way, moved lines are counted twice, as being added and as being removed.
+Moreover, we do not distinguish between lines of Java code and other lines. 
+The reason is that while the repositories considered are labeled by GitHub as Java repositories and \emph{predominantly} contain Java code,
+they also contain source code in other languages, configuration files and documentation. 
+Distinguishing between source code and non-source code in all those languages is non-trivial.
+
+Finally, in this work we use terms ``project'' and ``repository'' interchangeably: as pointed out by Kalliamvakou \etal~\cite{Kalliamvakou2014Promises} this is not necessarily the case. 
+
+
 \as{stopped here}
-One of the threats to construct validity pertains to pull requests that  appear as not being merged even if they have been merged~\cite{Kalliamvakou2014Promises}, \ie 
 
-
-is the extent to which the data was collected correctly. We collected the data of commits, issues and PRs from GITHUB. After the data being collected, we recheck to make sure we didn't miss any commits, issues and PRs. For example, we searched the issues using GitHub search API for each project, and compared the returned \textit{total\_count} field with the total number of issues we have collected. If they were different, we found the missing issues, and regathered them until all the issues were gathered. Similarly, the data collected from Travis-CI was also rechecked carefully. To ensure the reliability of test number per build, we randomly selected a sample of builds, manually reviewed the log files and verified the data from manual review and automatical collection to make sure they are consistent. Similar, the data of build error classification was also examined in this manually checking way.
+%is the extent to which the data was collected correctly. We collected the data of commits, issues and PRs from GITHUB. After the data being collected, we recheck to make sure we didn't miss any commits, issues and PRs. For example, we searched the issues using GitHub search API for each project, and compared the returned \textit{total\_count} field with the total number of issues we have collected. If they were different, we found the missing issues, and regathered them until all the issues were gathered. Similarly, the data collected from Travis-CI was also rechecked carefully. To ensure the reliability of test number per build, we randomly selected a sample of builds, manually reviewed the log files and verified the data from manual review and automatical collection to make sure they are consistent. Similar, the data of build error classification was also examined in this manually checking way.
 
 \textbf{Internal Validity}:
 Internal validity is the extent to which the conclusions can be drawn about the causal effect of independent variables on the dependent variables. We considered if commit churn, number of tests, build error types and number of issues will evolve in a certain trend after CI is adopted. For each perspective, we filtered the projects based on particular required conditions, and focus on the individual variable, without considering whether other variables will influence the trend. If such variables exist, they may weaken the credibility of our results.
