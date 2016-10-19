@@ -25,15 +25,19 @@ The reason is that while the repositories considered are labeled by GitHub as Ja
 they also contain source code in other languages, configuration files and documentation. 
 Distinguishing between source code and non-source code in all those languages is non-trivial.
 
+Validity of the measurements we have performed such as the number of commits or the number of builds might have been threatened by the limitations of the GitHub API and Travis API.
 Finally, in this work we use terms ``project'' and ``repository'' interchangeably: as pointed out by Kalliamvakou \etal~\cite{Kalliamvakou2014Promises} this is not necessarily the case. 
-
-
-\as{stopped here}
 
 %is the extent to which the data was collected correctly. We collected the data of commits, issues and PRs from GITHUB. After the data being collected, we recheck to make sure we didn't miss any commits, issues and PRs. For example, we searched the issues using GitHub search API for each project, and compared the returned \textit{total\_count} field with the total number of issues we have collected. If they were different, we found the missing issues, and regathered them until all the issues were gathered. Similarly, the data collected from Travis-CI was also rechecked carefully. To ensure the reliability of test number per build, we randomly selected a sample of builds, manually reviewed the log files and verified the data from manual review and automatical collection to make sure they are consistent. Similar, the data of build error classification was also examined in this manually checking way.
 
 \textbf{Internal Validity}:
-Internal validity is the extent to which the conclusions can be drawn about the causal effect of independent variables on the dependent variables. We considered if commit churn, number of tests, build error types and number of issues will evolve in a certain trend after CI is adopted. For each perspective, we filtered the projects based on particular required conditions, and focus on the individual variable, without considering whether other variables will influence the trend. If such variables exist, they may weaken the credibility of our results.
+Internal validity is the extent to which the conclusions can be drawn from the measurements we have conducted. 
+To reduce these threats we have opted for RDD~\cite{imbens2008regression}, a sound approach to statistical modeling of discontinuity in time series. 
+Application of RDD to software engineering data has been recently advocated by Wieringa~\cite{Wieringa}.
+
+% about the causal effect of independent variables on the dependent variables. We considered if commit churn, number of tests, build error types and number of issues will evolve in a certain trend after CI is adopted. For each perspective, we filtered the projects based on particular required conditions, and focus on the individual variable, without considering whether other variables will influence the trend. If such variables exist, they may weaken the credibility of our results.
+ 
+\as{Where does the following paragraph belong?} 
 In addition, we selected the projects indeed with CI adoption, but didn't take into account the CI usage frequency. If a project has only a few builds within a few years, the software engineering practices may be different from other projects which use CI frequently. 
 Besides, in our data set, a group of builds didn't have test execution descriptions in the log files. Most of them are due to the projects without featuring test execution (nearly 30\% projects). For the other builds, the possible reasons are that (1) the log files are blank; (1) the build was canceled before running tests; (3) all the jobs were errored or failed and then exited before running tests; (4)the build was set to skip tests (\eg \textit{DskipTests=true}). To solve this, we selected the projects which featured test execution and had over 90\% builds with at least one test.
 
