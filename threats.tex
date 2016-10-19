@@ -63,9 +63,11 @@ To reduce these threats we have opted for RDD~\cite{imbens2008regression},
 a sound approach to statistical modeling of discontinuity in time series. 
 Application of RDD to software engineering data has been recently advocated 
 by Wieringa~\cite{Wieringa}.
-
-\as{Do we have expect to have confounds somewhere? Not in RDD but maybe in the \# tests study?}
+%\as{Do we have expect to have confounds somewhere? Not in RDD but maybe in the \# tests study?}
 % about the causal effect of independent variables on the dependent variables. We considered if commit churn, number of tests, build error types and number of issues will evolve in a certain trend after CI is adopted. For each perspective, we filtered the projects based on particular required conditions, and focus on the individual variable, without considering whether other variables will influence the trend. If such variables exist, they may weaken the credibility of our results.
+ 
+ The similar patterns in all our tables describing the RDD results, of higher upward trends before and higher downward trends after CI adoption, may bring on the question whether the methods are biased. To address that concern, we ran our methods on randomized matrices of our data, 200 times for each model. The results on such randomized data showed equal proportions of up to down trends before and after CI adoption, thus eliminating this concern.
+ 
  
 The attentive reader will have also noted multiple data cleaning and filtering 
 steps described in the previous sections.

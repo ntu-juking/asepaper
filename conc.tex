@@ -3,21 +3,27 @@
 \label{sec:conc}
 In this paper we have focused on continuous integration: while several ``best practices'' have been proposed relatively little has been done to evaluate the state of practice.
 Therefore, using a collection of Java GitHub projects we have conducted an empirical study of the impact of CI adoption on the development practices.
-We have observed that for most projects no clear linear trends can be observed either before or after introduction of Travis CI.
-In cases when such a linear trend can be observed it is more often decreasing (less churned lines, less frequent commits, less issues) and while
+We have observed that for most projects no significant linear trends can be observed either before or after introduction of Travis CI.
+In cases when such a linear trend can be observed it is more often decreasing (fewer churned lines, less frequent commits, fewer issues) and while
 decrease in the churned lines concurs with one of the aforementioned ``best practices'', decrease in the commit frequency or number of issues
 seems to disagree with them. 
 Finally, we have considered trends in testing and the types of errors revealed by the automatic testing.
-The number of tests run by Travis CI shows an increasing trend \as{VF, please check this once you have done a more careful modeling} 
+The number of tests run by Travis CI shows an increasing trend, 
+%\as{VF, please check this once you have done a more careful modeling} 
 in agreement with the importance of automated testing in CI.
 We also observed increase in the percentage of compilation and execution errors as well as failed and skipping tests as opposed to missing files or dependencies.
 We conjecture that as file omissions are easy to fix, once such an error has been observed it is immediately fixed as opposed to repeated attempts to fix other kinds
 of errors causing repeated build failures.
+More work has to be done to tease out the, possibly subtle, interactions in the interleaved processes of building, coding, and testing.
 %As developers are getting more and more used to the rapid feedback provided by the CI 
-\as{This still does not explain the evolution; the conjecture that the developers are running more and more attempts to fix a bug seems to be contradicted by 
-our conclusion on \# commits (unless they are using pull requests...)}
+%\as{This still does not explain the evolution; the conjecture that the developers are running more and more attempts to fix a bug seems to be contradicted by 
+%our conclusion on \# commits (unless they are using pull requests...)}
 
-Our observations suggest that while CI is a popular mechanism supporting software development, it does not necessarily help the developers to achieve the expected benefits. 
-CI needs and wishes of open-source and proprietary code developers have been recently surveyed~\cite{Hilton2016,hilton2016continuous}: we consider investigating whether
-introduction of CI in a project leads to realization of those expectations as future work.
-\as{Danny Dig and co-authors have only compared Travis with no-Travis but did not look at the transition.}
+While CI is a popular mechanism supporting software development, 
+we don't find overwhelming evidence that developers transition to "best practices" following its adoption.
+In fact, it is apparent that the "one size fits all" approach may not apply here, and that project specific concerns may guide individual implementations, usage, and practices.
+These findings have support in recent qualitative studies, where
+CI needs and wishes of open-source and proprietary code developers have been recently surveyed~\cite{Hilton2016,hilton2016continuous}.
+We consider investigating whether
+introduction of CI in a project leads to realization of those expectations, independent of Fowler's "best practices" as future work.
+%\as{Danny Dig and co-authors have only compared Travis with no-Travis but did not look at the transition.}
