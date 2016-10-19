@@ -46,24 +46,25 @@ Because of the peak we observed, we eliminated the time point immediately before
 Table~\ref{Table:rddmodels} summarizes the results for the models on the remaining 16 time points.
 Recall that $\beta$ is the slope before, $\gamma$ the size of the effect of CI introduction, $\delta$ is the divergence in the slopes before and after CI adoption, and $\beta + \delta$ the slope of the linear trend after CI adoption.
 
-Of the 567 models, all but one could be fit to the data.
-In 504 of the models, there was no significant linear relationship of code churn to time, i.e. there was no linear trend.
-In 45 projects there was a rising trend before CI and in 17 projects a falling trend before CI.
-Similarly, in 508 projects no effect of CI introduction on code churn was found. Among the 58 projects where an effect was significant, in about half (28) the trend was positive, i.e., code churn increased, and in the other half (30) it was negative, i.e., code churn decreased.
-Interestingly, while in 514 projects no change of slope in the trends before and after CI adoption was found, in the 52 with significant change of trends a reduction in the slope was more prevalent than an increase by 4 to 1.
-This carried over into trends following CI adoption: out of the 52 significant trend changes, 39 are downward trends, and only 13 are upward.
+Of the 567 models, in 487  there was no significant linear relationship of code churn to time, i.e. there was no linear trend.
+In 47 projects there was a rising trend before CI and in 33 projects a falling trend before CI.
+Similarly, in 507 projects no effect of CI introduction on code churn was found. Among the 58 projects where an effect was significant, in 34 the trend was positive, i.e., code churn increased, and in 24 it was negative, i.e., code churn decreased.
+Interestingly, while in 487 projects no change of slope in the trends before and after CI adoption was found, in the 80 projects with significant change of trends, a reduction in the slope was more prevalent than an increase by about 2 to 1.
+This carried over into trends following CI adoption: out of the 80 significant trend changes, 55 are downward trends, and only 25 are upward.
+
 
 %Table XX: Projects with statistical negative trends after CI
 
 \noindent \underline{Discussion}
-Most of the projects could not be modeled with the RDD linear regression.
-Some of the reasons for this are: dispersion of the data,
+Most of the projects did not show linear trends with time in code churn, on either side of the CI adoption time.
+One explanation consistent with this is that any phenomena giving rise to pressures to increase or reduce code churn, are not long term/sustained, or alternatiely, perhaps they are subordinate in magnitude to other, more pressing phenomena of local character in time.  
+It is also likely that our models and data are insufficient to capture them.
+Some of the reasons for this are: low temporal resolution, high dispersion of the data,
 non-uniform distribution of the events across time, and project specific considerations that we could not model.
 
 Our exploratory study showed a downward trend following CI adoption.
-The modeling study showed that when linear trends were present, the downward ones after CI adoption were three times as frequent as the upward one, a reversal of the pattern in the trends before CI.
-This is consistent with Fowler's good practices of CI, of committing more frequently and smaller pieces of code.
-Still, most projects end up not following a trend after their adoption of CI, while still remaining active.
+The modeling study showed that when linear trends were present (in 15\% of the models), the downward ones after CI adoption were twice times as frequent as the upward one, a reversal of the pattern in the trends from before CI.
+This is consistent with Fowler's recommended good practices of CI, of committing smaller changes to the code.
 
 The increased code churn on both sides near the CI adoption time is arguably in line with expectations that more maintanance work may be going on in preparation for the transition to CI, and that the projects go through some adjustment/cleanup period right after.
 
