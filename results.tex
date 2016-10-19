@@ -5,6 +5,22 @@
 We discuss changes in development practices after CI adoption along four 
 dimensions: code churn, commit frequency, issue tracking, and testing. 
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 10]{churn_before.pdf}
+\caption{Code churn before \Tvis adoption.}
+\label{Fig:CodeChurnBefore}
+\end{figure}
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 10]{churn_after.pdf}
+\caption{Code churn after \Tvis adoption.}
+\label{Fig:CodeChurnAfter}
+\end{figure}
+
+
 \subsection{Preliminaries}
 \label{sec:examples}
 
@@ -39,7 +55,7 @@ The first development practice we examine is code churn.
 Recall that our data consists of 567 projects, each with at least 500 non-merge 
 commits.
 
-\smallskip\noindent \emph{Exploratory Study:} To explore general trends over 
+\smallskip\noindent \emph{Exploratory Study}: To explore general trends over 
 time, we first look at code churn in months leading up to CI adoption.
 Fig.~\ref{Fig:CodeChurnBefore} shows a boxplot of per-project median code 
 churn for each of nine consecutive 30-day time intervals before CI adoption.
@@ -52,7 +68,7 @@ The 30-day interval just before CI adoption seems to stand out and is higher
 than the rest.
 
 Next, we look to the other side of the adoption point. 
-Fig.~\ref{Fig:CodeChurnBefore} shows a boxplot of per-project median code 
+Fig.~\ref{Fig:CodeChurnAfter} shows a boxplot of per-project median code 
 churn for each of nine consecutive 30-day time intervals following CI adoption.
 Here, there seems to be a slight downward trend in both the medians and 
 averages; the former drop monotonically from 13 down to 8 lines of code and 
@@ -67,27 +83,13 @@ time, we observe a small reduction in the amounts of code churn from before
 to after CI adoption.
 
 \input{tables/rq1_models}
-\begin{figure}[!t]
-\centering
-\includegraphics[width=0.5\textwidth]{churn_before.pdf}
-\caption{Code churn before \Tvis adoption.}
-\label{Fig:CodeChurnBefore}
-\end{figure}
 
-
-\begin{figure}[!t]
-\centering
-\includegraphics[width=0.5\textwidth]{churn_after.pdf}
-\caption{Code churn after \Tvis adoption.}
-\label{Fig:CodeChurnAfter}
-\end{figure}
-
-\noindent \underline{Modeling Study} 
+\smallskip\noindent \emph{Statistical Modeling Study}: 
 Guided by our observations from the exploratory study above, we proceed to 
 quantify the trends we observed.
 For each project, we fitted an RDD model, as described before.
 Recall that because of the peak we observed, we eliminated the time point 
-immediately before and the one immediately after the CI adoption time so as 
+immediately before and the one immediately after the CI adoption time, so as 
 they do not throw off the regression models.
 Table~\ref{Table:rddmodels} summarizes the results for the models on the 
 remaining 16 time points.
@@ -95,29 +97,54 @@ Recall that $\beta$ is the slope before, $\gamma$ the size of the effect of
 CI introduction, $\delta$ is the divergence in the slopes before and after CI 
 adoption, and $\beta + \delta$ the slope of the linear trend after CI adoption.
 
-Of the 567 models, in 487  there was no significant linear relationship of code churn to time, i.e. there was no linear trend.
-In 47 projects there was a rising trend before CI and in 33 projects a falling trend before CI.
-Similarly, in 507 projects no effect of CI introduction on code churn was found. Among the 58 projects where an effect was significant, in 34 the trend was positive, i.e., code churn increased, and in 24 it was negative, i.e., code churn decreased.
-Interestingly, while in 487 projects no change of slope in the trends before and after CI adoption was found, in the 80 projects with significant change of trends, a reduction in the slope was more prevalent than an increase by about 2 to 1.
-This carried over into trends following CI adoption: out of the 80 significant trend changes, 55 are downward trends, and only 25 are upward.
+Of the 567 models, in 487 there was no significant linear relationship of 
+code churn to time, \ie there was no linear trend.
+In 47 projects there was a rising trend before CI and in 33 projects a falling 
+trend before CI.
+Similarly, in 507 projects no effect of CI introduction on code churn was found. 
+Among the 58 projects where an effect was significant, in 34 the trend was 
+positive, \ie code churn increased, and in 24 it was negative, \ie code churn 
+decreased.
+Interestingly, while in 487 projects no change of slope in the trends before 
+and after CI adoption was found, in the 80 projects with significant change 
+of trends, a reduction in the slope was more prevalent than an increase by 
+about 2 to 1.
+This carried over into trends following CI adoption: out of the 80 significant 
+trend changes, 55 are downward trends, and only 25 are upward.
 
 
 %Table XX: Projects with statistical negative trends after CI
 
-\noindent \underline{Discussion}
-Most of the projects did not show linear trends with time in code churn, on either side of the CI adoption time.
-One explanation consistent with this is that any phenomena giving rise to pressures to increase or reduce code churn, are not long term/sustained, or alternatiely, perhaps they are subordinate in magnitude to other, more pressing phenomena of local character in time.  
+\smallskip\noindent \emph{Discussion}:
+Most of the projects did not show linear trends with time in code churn, on 
+either side of the CI adoption time.
+One explanation consistent with this is that any phenomena giving rise to 
+pressures to increase or reduce code churn are not long term/sustained or, 
+alternatively, perhaps they are subordinate in magnitude to other, more 
+pressing phenomena of local character in time.
 It is also likely that our models and data are insufficient to capture them.
-Some of the reasons for this are: low temporal resolution, high dispersion of the data,
-non-uniform distribution of the events across time, and project specific considerations that we could not model.
+Some of the reasons for this are: low temporal resolution, high dispersion 
+of the data, non-uniform distribution of the events across time, and project 
+specific considerations that we could not model.
 
-Our exploratory study showed a peak around CI adoption time and a slight downward trend following CI adoption.
-The modeling study showed that when linear trends were present (in 15\% of the models), the downward ones after CI adoption were twice  as frequent as the upward one, a reversal of the pattern in the trends from before CI.
-This is consistent with Fowler's recommended good practices of CI, of committing smaller changes to the code.
-Alternatively, it is also consistent with an explanation proposed by Hilton et al.~\cite{Hilton2016} that as projects age, fixing commits might become more prevalent, which on average are smaller.
+Our exploratory study showed a peak around CI adoption time and a slight 
+downward trend following CI adoption.
+The modeling study showed that when linear trends were present (in 15\% 
+of the models), the downward one after CI adoption were twice as frequent 
+as the upward one, a reversal of the pattern in the trends from before CI.
+This is consistent with Fowler's recommended good practices of CI, of 
+committing smaller changes to the code.
+Alternatively, it is also consistent with the observation by Brindescu 
+\etal~\cite{brindescu2014centralized} that, as projects age, bug-fixing 
+commits, which on average are smaller, become more prevalent than 
+commits adding new features, which on average are larger.
 
-The models also showed that when present, the effect of CI adoption on the amount of code churn right after was positive in more cases than negative.
-The increased code churn on both sides near the CI adoption time is arguably in line with expectations that more maintanance work may be going on in preparation for the transition to CI, and that the projects go through some adjustment/cleanup period right after.
+The models also showed that when present, the effect of CI adoption on the 
+amount of code churn right after was positive in more cases than negative.
+The increased code churn on both sides near the CI adoption time is 
+arguably in line with expectations that more maintenance work may be 
+going on in preparation for the transition to CI, and that the projects go 
+through some adjustment/cleanup period right after.
 
 
 \subsection{RQ2: Trends in Commit Frequency}
