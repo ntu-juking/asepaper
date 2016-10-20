@@ -192,8 +192,9 @@ In the end, the filtered data set for RQ4 consisted of 250 projects.
 We use data visualization and statistical modeling methods to discover 
 longitudinal patterns indicative of CI adoption effects on development practices.
 As one of the contributions of this paper, we introduce the statistical modeling 
-framework of \emph{regression discontinuity design}~\cite{Imbens2008611} to assess the existence 
-and extent of a longitudinal effect of CI adoption on development practices.
+framework of \emph{regression discontinuity design}~\cite{imbens2008regression} 
+to assess the existence and extent of a longitudinal effect of CI adoption on 
+development practices.
 
 To evaluate the effect of a treatment, \eg a new drug on a disease progression, 
 randomized experimental trials are typically used, in which the experimental 
@@ -219,7 +220,8 @@ sharp RDD and fuzzy RDD~\cite{imbens2008regression}.
 Each, in turn, can be implemented in a variety of ways.
 To model the effect of CI adoption on developer practices, here we chose one 
 of the simpler approaches, namely linear regression with an interaction term.
-We summarize our approach next, following the description from a survey for practitioners article by Imbens and Lemieux~\cite{imbens2008}.
+We summarize our approach next, following the description by Imbens and 
+Lemieux~\cite{imbens2008regression}.
 We refer to Figure~\ref{RDDIllustration} for an illustration.
 Let $Y$ be the outcome variable in which we are looking for a discontinuity, 
 \eg commit churn per month, let $X$ be the temporal variable containing the 

@@ -1,12 +1,34 @@
 % !TEX root = CI_Adoption.tex
+
 \section{Related Work}
 \label{sec:rw}
-Adoption and impact of continuous integration have attracted significant attention from the research community. Already in 2003 based on the studies of FreeBSD and Mozilla Holck and J{\o}rgensen have observed that continuous integration, interpreted as distributed development and obligation to integrate one's own contributions, is capable of replacing traditional software engineering coordination mechanisms~\cite{HolckJ03}.  
-Deshpande and Riehle have studied adoption of continuous integration based on Ohloh.net data~\cite{Deshpande2008}. Assuming that the use of continuous integration reduces the size of commits, they have studied the size of commits in 5122 projects and, since no commit size reduction has been observed, they have concluded that continuous integration has not been used. Their observations might have been affected by lack of actual relation between presence of continuous integration and commit size, aggregation effect of considering the average commit size over different projects as well as the period studied (January 1990--December 2006). 
 
-Ease of use of the Travis-CI~\cite{TravisCI} continuous integration system led to its popularity on GitHub and triggered a series of research studies~\cite{era14,VasilescuYWDF15,yue2015wait,BellerGZ16,Hilton2016,Yu2016}.\as{To be continued. Maybe Bogdan can write about his own work.}
+Adoption and impact of CI have attracted quite some attention from the research 
+community already. 
+The earlier studies interpret CI as \emph{distributed development and obligation 
+to integrate one's own contributions}, as common in most open-source software.
+Though not directly comparable, we review these studies for historical reasons.
+Holck and J{\o}rgensen, based on studies of FreeBSD and Mozilla, observed that 
+CI (under this definition) is capable of replacing traditional software engineering 
+coordination mechanisms~\cite{HolckJ03}.  
+Deshpande and Riehle studied adoption of CI based on Ohloh.net data~\cite{Deshpande2008}
+under the assumption that it reduces the size of commits (to facilitate coordination
+in distributed settings), but observed no commit size reduction in their 5,122 projects. 
+%Assuming that the use of CI (again under this early definition) reduces the 
+%size of commits, the authors studied the size of commits in 5,122 projects and, 
+%since no commit size reduction was observed, they concluded that CI has not 
+%been used. 
+%Their observations might have been affected by lack of actual relation between 
+%presence of continuous integration and commit size, aggregation effect of considering the average commit size over different projects as well as the period studied (January 1990--December 2006). 
 
-A report of Forrester research has indicated that already in 2009 67\% of the 52 development professionals who have adopted Agile adopted continuous integration, another 19\% were in process of implementing it and another 10\% planned to implement it~\cite{Forrester}. 
+More recently, the ease of use of the \Tvis~\cite{TravisCI} system led to its 
+popularity on \GH, and triggered a series of research studies~\cite{era14, 
+VasilescuYWDF15, yue2015wait, BellerGZ16, Hilton2016, Yu2016}.
+
+
+A 2009 Forrester report indicated that 67\% of the 52 development professionals
+who adopted Agile adopted continuous integration, another 19\% were in process 
+of implementing it and another 10\% planned to implement it~\cite{Forrester}. 
 Not surprisingly, the topic of industrial adoption of continuous integration 
 has also attracted substantial research attention~\cite{Leppanen2015,Laukkanen2015Agile,Debbiche2014,Stahl2014ICSEComp,Stahl2014JSS} and is a subject of the recent survey by Eck, Uebernickel and Brenner~\cite{EckUB14}. 
 However, this line of work is based on interviews rather than on analysis of the development data.
