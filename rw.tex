@@ -24,9 +24,31 @@ in distributed settings), but observed no commit size reduction in their 5,122 p
 More recently, the ease of use of the \Tvis~\cite{TravisCI} system led to its 
 popularity on \GH, and triggered a series of research studies~\cite{era14, 
 VasilescuYWDF15, yue2015wait, BellerGZ16, Hilton2016, Yu2016}.
+This line of research is closer to the current work as it performs empirical
+analysis of \Tvis data. Moreover, similarly to Vasilescu \etal~\cite{era14}
+and Hilton \etal~\cite{Hilton2016} our work can be seen as related to adoption of \Tvis,
+and similarly to Beller \etal~\cite{BellerGZ16} we study build failures.
+However, all these papers compare projects that adopt CI with those that do not, 
+or different kinds of projects that adopt CI with each other, and therefore, their
+conclusions might be threatened by specific aspects of individual projects.
+In our work we therefore opt for the evolution perspective and focus on the
+differences between the development practices within the project before and
+after adoption of \Tvis.
+Hence, while the previous research has focused on the \emph{between-subject 
+design} we provide complementary insights through a \emph{within-subject design}.
+\as{Bogdan, Vladimir, please check the previous paragraph.}
 
-\as{Discuss \cite{gousios2015work, gousios2016work} }
-\as{Discuss another paper of Danny Dig that Bogdan has shared.}
+Gousious \etal\ have studied work practices and challenges in pull-based
+development on \GH~\cite{gousios2015work, gousios2016work}. 
+They report that 75\% of the projects surveyed use CI tools to evaluate
+code quality~\cite{gousios2015work} and that more than 60\% of the surveyed 
+contributors employ automatic testing, either locally or using a CI server~\cite{gousios2016work}. 
+Importance of tooling facilitating the testing tasks has been already recognized by 
+Pham \etal~\cite{pham2013creating}: back in 2012 when the authors have conducted
+the interviews, \Tvis has only started to support mainstream languages such as Java 
+and lack of such tooling has been reported as an important challenge.
+These findings further emphasize importance of CI in modern software development. 
+
 %Already a 2009 Forrester report indicated that 67\% of the 52 development professionals
 %who adopted Agile adopted continuous integration, another 19\% were in process 
 %of implementing it and another 10\% planned to implement it~\cite{Forrester}. 
@@ -40,4 +62,6 @@ However, this line of work is based on interviews or surveys rather than on anal
 %\as{Van der Storm discusses backtracking as a way of addressing build failures~\cite{Storm2008}.}
 %\as{Laukannen and M\"{a}ntyl\"{a} have surveyed three papers discussing the impact of the build waiting times. Some of the consequences of the long/short build waiting times are related to CI~\cite{Laukkanen2015RCSE}.}
 
-Automated testing is an important factor that affects the cost-effectiveness of continuous integration. In recent years, much effort has been devoted to improve the quality and efficiency of automated testing in continuous integration. Campos et al.~\cite{campos2014continuous} used Continuous Test Generation (CTG) to enhance continuous integration with automated test generation. Their experimental results showed that CTG could lead to a significantly higher code coverage while reducing the test generation time. Elbaum et al.~\cite{elbaum2014techniques} and Hu et al.~\cite{hu2016Implementation} applied test case selection and test case prioritization to test suites, making continuous integration processes more cost-efficient. D{\"o}singer et al. ~\cite{dosinger2012communicating} proposed the continuous change impact analysis technique to analyze the dependencies between the codes of various projects to improve the effectiveness of automated testing. Long et al.~\cite{long2015collaborative} designed tools to support collaborative testing between testers. Nilsson et al.~\cite{nilsson2014visualizing} developed a technique to visualize end-to-end testing activities in the continuous integration processes. All these effort in automated testing improve the cost-effectiveness of continuous integration. 
+Automated testing is an important factor that affects the cost-effectiveness of continuous integration. In recent years, much effort has been devoted to improve the quality and efficiency of automated testing in continuous integration. Campos et al.~\cite{campos2014continuous} used Continuous Test Generation (CTG) to enhance continuous integration with automated test generation. Their experimental results showed that CTG could lead to a significantly higher code coverage while reducing the test generation time. Elbaum et al.~\cite{elbaum2014techniques} and Hu et al.~\cite{hu2016Implementation} applied test case selection and test case prioritization to test suites, making continuous integration processes more cost-efficient. D{\"o}singer et al. ~\cite{dosinger2012communicating} proposed the continuous change impact analysis technique to analyze the dependencies between the codes of various projects to improve the effectiveness of automated testing. Long et al.~\cite{long2015collaborative} designed tools to support collaborative testing between testers. Nilsson et al.~\cite{nilsson2014visualizing} developed a technique to visualize end-to-end testing activities in the continuous integration processes. All these efforts in automated testing improve the cost-effectiveness of continuous integration. 
+
+ 
