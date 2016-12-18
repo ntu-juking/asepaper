@@ -55,8 +55,19 @@ These findings further emphasize importance of CI in modern software development
 March 2016 survey of 1,060 IT professionals indicated that 81\% of the enterprises 
 and 70\% small and midsize businesses implement \DO~\cite{rightscale}. 
 Not surprisingly, the topic of industrial adoption of continuous integration 
-has also attracted substantial research attention~\cite{hilton2016continuous,Leppanen2015,Laukkanen2015Agile,Debbiche2014,Stahl2014ICSEComp,Stahl2014JSS} and is a subject of the recent literature survey by Eck, Uebernickel and Brenner~\cite{EckUB14}. 
-However, this line of work is based on interviews or surveys rather than on analysis of the development data.
+has also attracted substantial research attention~\cite{hilton2016continuous,Leppanen2015,Laukkanen2015Agile,Debbiche2014,Stahl2014ICSEComp,Stahl2014JSS,Stahl2013Experienced} and is a subject of the recent literature survey by Eck, Uebernickel and Brenner~\cite{EckUB14}. 
+However, this line of work is based on interviews or surveys rather than on analysis of the development data
+and as such is to larger extent susceptible to the perception bias: \eg Leppanen \etal\ report that
+CI introduction is beneficial for productivity~\cite{Leppanen2015}, 
+Eck \etal\ stress that productivity is likely to decrease before any positive effects can be observed~\cite{EckUB14},
+and St{\aa}hl and Bosch validated this hypothesis only partially~\cite{Stahl2013Experienced}.
+
+Several papers have reported on experiences with applying CI in specific domains:
+\eg Zaytsev and Morrison report that introduction of CI in neuroinformatics
+software development facilitated integration of new changes, and hence reduced 
+time-to-marked without compromising on quality~\cite{Zaytsev:Morrison}; 
+and M{\aa}rtensson \etal\ observed that long build- and test-time in software-intensive
+embedded systems discourage developers from frequent committing~\cite{Martensson2016}.
 
 %\as{Miller~\cite{Miller} discusses build breaks, is this relevant?}
 %\as{Van der Storm discusses backtracking as a way of addressing build failures~\cite{Storm2008}.}
