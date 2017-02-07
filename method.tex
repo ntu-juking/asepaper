@@ -46,6 +46,9 @@ requests using the \GH API; and (ii)~its history of \Tvis builds and, for each
 build, all its job logs (a \Tvis build can be configured to run multiple jobs,
 one for each set of user-defined configuration options; each job run produces 
 a ``build log''), using the \Tvis API and the \textit{travis gem} Ruby library.  
+For the commits, we recognize the non-merge commits and merge commits, 
+and further annotate the non-merge commits as bug-fixing or not 
+(by searching fix patterns, \eg ``fix bug'', in the commit messages).
 In addition to these publicly available data, we parsed the build logs and 
 further extracted information about the number of tests executed and the 
 types of reasons causing builds to break.
@@ -167,7 +170,8 @@ monthly intervals), and discard projects with less than 500 total non-merge
 commits.
 %We Each project should have at least 500 nonmerge commits. 
 In the end, the data set for RQ1 and RQ2 consists of 567 projects, with a 
-total if 1,629,090 non-merge commits.
+total of 1,629,090 non-merge commits (of them, 274,410 are fix commits) 
+and 157,976 merge commits.
 
 For RQ3, we only selected projects with at least 100 issues for similar sparsity 
 avoidance reasons. 
