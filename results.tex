@@ -186,7 +186,8 @@ per-project medians, and the black dot is their average value.
 As was the case with code churn, here we also see a peak in the 30-day 
 interval just before and the one just after CI adoption.
 We do not observe an apparent trend in the 
-median or average non-merge commit frequency, but we do observe an upward trend in merge commits.
+median or average non-merge commit frequency.
+We do observe an upward trend in merge commits, but the variance in the data is large.
 
 \smallskip\noindent \emph{Statistical Modeling Study}: 
 As in RQ1, we fitted a sharp RDD model for each project, as described before.
@@ -195,8 +196,8 @@ As before, we eliminated one time point on either side of the CI adoption
 time, so that the peaks at those times  do not throw off the regression models.
 \input{tables/rq2_models}
 
-In 452 (80\%) of the models, there was no significant linear relationship 
-between commit frequency and time, \ie there was no linear trend.
+For the non-merge commits, in 452 (80\%) of the models, there was no significant linear relationship 
+between  frequency and time, \ie there was no linear trend.
 In 71 projects there was a rising trend in commit frequency before CI 
 and in 44 projects a falling trend before CI.
 Similarly, in 466 projects no effect of CI introduction on commit frequency 
@@ -213,22 +214,25 @@ This carried over to a lesser degree into trends in commit frequency
 following CI adoption: out of the 113 significant trend changes, 71 are 
 downward trends, and 42 are upward.
 
+For the merge commits, Table~\ref{Table:rddmodels_merge_freq}, the results are qualitatively in the same ball-park as those for the non-merge commits.
+
 \smallskip\noindent \emph{Discussion}:
 As was the case for code churn, most of the projects did not have longitudinal linear trends in non-merge commits, for reasons probably similar to those 
 in case of the code churn.
 
-However, we see a strong increasing trend in the merge commits over the majority of the projects.
+Even though  we observed a post-CI adopt increase  in the merge commits in our exploratory study, the statistical tests did not confirm that to be the case for more than 20\% of the projects. We attribute this disparity to the large variance in the data and especially on the sparsity of merge commits over time. 
 
 While our exploratory study did not suggest presence of a trend, the 
 modeling study suggests that right after CI adoption there is a slight 
-positive effect (after removing the peak months around CI adoption time). 
-However, this effect is not sustained if a linear trend is present, which is 
-2.5 times as likely to be decreasing as increasing. 
+positive effect in both the merge and non-merge commits (after removing the peak months around CI adoption time). 
+However, this effect is not sustained.
+% if a linear trend is present, which is 2.5 times as likely to be decreasing as increasing. 
+
 Given the expected increase in the frequency of commits expressed and 
-encouraged by Fowler, this result might appear surprising.
+encouraged by Fowler, our results might appear surprising.
 It is possible that some saturation to the commit frequency has already 
 been reached even before the CI adoption time.
-As we see next, it is also likely developers are spending more time on 
+As we see next, it is also likely that instead developers are spending more time on 
 automated testing.
 
 
