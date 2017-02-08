@@ -150,36 +150,49 @@ through some adjustment/cleanup period right after.
 \subsection{RQ2: Trends in Commit Frequency}
 
 The second development practice we examine is commit frequency.
-We use the same data as before, 567 projects, each with at least 500 
+We examine this question from two directions by looking separately at the non-merge commits at the merge commits (we obtained the latter as described previously in the Methods section).
+
+We started from the same data as before, 567 projects, each with at least 500 
 non-merge commits.
+Additionally, we restricted the projects for the  merge commits study so that we only look at projects that have at least 20 merge commits over the 18 time points, i.e. on average about 1 per time point.
+This filtering yielded a set of 370 projects for the merge commit frequency study.
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{numbercommits.pdf}
-\caption{Commit frequency before and after CI adoption}
+\caption{Non-merge commit frequency before and after CI adoption}
 \label{Fig:NumberCommits}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.45\textwidth, height=1.5in, clip=true, trim=0 15 15 50]{merges.pdf}
+\caption{Merge commit frequency before and after CI adoption}
+\label{Fig:MergeCommits}
 \end{figure}
 
 \smallskip\noindent \emph{Exploratory Study}: 
 To explore general trends over time, we first look at commit frequency in 
 the months leading up to CI adoption.
-Figs.~\ref{Fig:NumberCommits} shows the boxplots of per-project median 
-number of commits for each of nine consecutive 30-day time intervals 
+Figs.~\ref{Fig:NumberCommits} and \ref{Fig:MergeCommits} show the boxplots of per-project median 
+number of non-merge commits, and merge commits, respectively, for each of nine consecutive 30-day time intervals 
 before CI adoption and, respectively, nine consecutive 30-day time intervals 
 after CI adoption.
+We use a log-scale for the merge commits due to the overdispersion of the data which is sparse over the time periods we have chosen.
+
 As before, the horizontal line in each boxplot is the median value of all 
 per-project medians, and the black dot is their average value.
 
 As was the case with code churn, here we also see a peak in the 30-day 
 interval just before and the one just after CI adoption.
-Unlike for code churn, here we do not observe an apparent trend in the 
-median or average commit frequency.
+We do not observe an apparent trend in the 
+median or average non-merge commit frequency, but we do observe an upward trend in merge commits.
 
 \smallskip\noindent \emph{Statistical Modeling Study}: 
 As in RQ1, we fitted a sharp RDD model for each project, as described before.
-Table~\ref{Table:rddmodels_freq} summarizes the results.
-Recall that we eliminated one time point on either side of the CI adoption 
-time so as they do not throw off the regression models.
+Tables~\ref{Table:rddmodels_freq} and ~\ref{Table:rddmodels_merge_freq} summarize the results.
+As before, we eliminated one time point on either side of the CI adoption 
+time, so that the peaks at those times  do not throw off the regression models.
 \input{tables/rq2_models}
 
 In 452 (80\%) of the models, there was no significant linear relationship 
@@ -201,8 +214,10 @@ following CI adoption: out of the 113 significant trend changes, 71 are
 downward trends, and 42 are upward.
 
 \smallskip\noindent \emph{Discussion}:
-As was the case for code churn, most of the projects did not have longitudinal linear trends, for reasons probably similar to those 
+As was the case for code churn, most of the projects did not have longitudinal linear trends in non-merge commits, for reasons probably similar to those 
 in case of the code churn.
+
+However, we see a strong increasing trend in the merge commits over the majority of the projects.
 
 While our exploratory study did not suggest presence of a trend, the 
 modeling study suggests that right after CI adoption there is a slight 
