@@ -49,7 +49,8 @@ and \Tvis APIs.
 Furthermore, validity of the error type recognition might have been affected 
 by the selection of the keywords in the error type recognition tool. 
 To mitigate this threat and encourage replications, we made our tools 
-and data publicly available.\footnote{\url{http://web.cs.ucdavis.edu/~filkov/software/adoptCI/}}
+and data publicly available.%\footnote{\url{http://web.cs.ucdavis.edu/~filkov/software/adoptCI/}}
+\footnote{\url{LINK}}
 
 Finally, in this work we use terms ``project'' and ``repository'' interchangeably: 
 as pointed out by Kalliamvakou \etal~\cite{Kalliamvakou2014Promises}, this is 
@@ -73,8 +74,10 @@ The attentive reader will have also noted multiple data cleaning and filtering
 steps described in the previous sections.
 While we did not explicitly test how our results would differ under different
 assumptions and data filtering criteria, if at all, we did base our decisions on
-statistical best practices (\eg regarding data sparsity) as well as our prior
-experience with mining \GH and \Tvis data~\cite{yue2015wait, VasilescuYWDF15}.
+statistical best practices (\eg regarding data sparsity) as well as 
+earlier studies of \Tvis~\cite{era14,% 
+VasilescuYWDF15, yue2015wait, BellerGZ16, Hilton2016, Yu2016}.
+%our prior experience with mining \GH and \Tvis data~\cite{yue2015wait, VasilescuYWDF15}.
 We encourage independent replications to assess the robustness of our results.
  
 %In addition, we selected the projects indeed with CI adoption, but didn't take into account the CI usage frequency. If a project has only a few builds within a few years, the software engineering practices may be different from other projects which use CI frequently. 
