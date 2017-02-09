@@ -71,17 +71,32 @@ We use  \texttt{\small git rev-list --all --merges} to recognize merge commits.
 
 \smallskip\noindent\emph{Bug fixing vs.\ other activities:} 
 
-For the commits, we distinguish between \emph{non-merge commits} 
-and \emph{merge commits}, and further annotate the non-merge commits 
-as \emph{bug-fixing or not} (by searching fix patterns, \eg ``fix bug'', in the commit messages).
-In addition to these publicly available data, we parsed the build logs and 
-further extracted information about the number of tests executed and the 
-types of reasons causing builds to break.
-We provide more details next.
+The kind of activity being performed is an important confound for commit size,
+since one can reasonably expect, \eg that bug fixes are smaller than new feature
+implementations.
+We additionally annotate the non-merge commits as \emph{bug-fixing or not}, 
+by searching for typical patterns in commit 
+messages~\cite{mockus2000identifying}.\footnote{E.g., \verb$^(bug)?fix(es|s|ed|ing)?(bug)?([[:punct:]]|\\s+)$}
+Note that we don't enforce that commits messages that match our regular
+expressions also contain references to existing issue report numbers, in an
+attempt to be more robust to different issue trackers (indeed, not all projects 
+use \GH's issue tracker) and project linking / commit message conventions.
+%
+%The "fix" heuristic without issue tracker links (looking for issue numbers and verifying they exist in the issue tracker) has the disadvantage that it will detect "false positives", i.e., commits made not in response to an open issue; plus the extra disadvantage that it will identify commit messages containing "suffix", for example.
+%
+%However, not all projects use GitHub's issue tracker, as we know and a reviewer pointed out. Also, the original intent, triggered by a review comment, was to distinguish between new features and bug fixes. We can say that the "fix" heuristic more closely accomplishes this by being robust to issue trackers and project linking conventions. The only downside I can think of is if people close open "feature request" issues from the issue tracker, using "fix" language.
+
+
+
 
 \input{tables/ouput_examples}
 
 \smallskip\noindent\emph{Number of tests executed per build:} 
+
+In addition to these data described above, we parsed the \Tvis build logs and 
+further extracted information about the number of tests executed and the 
+types of reasons causing builds to break.
+We provide more details next.
 
 Each \Tvis build consists of at least one job, which corresponds to a particular
 build \& test environment (\eg jdk version, environment variables). 
