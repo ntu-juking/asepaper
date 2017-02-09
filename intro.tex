@@ -10,11 +10,11 @@ roche2013adopting}.
 %\DO 
 It aims to get changes into production as quickly as 
 possible, without compromising software quality.
-While no standard definitions exist and the term is often overloaded, here
+While no standard definitions exist (the term is often overloaded), here
 we refer to \DO as a culture that emphasizes \emph{automation of the 
 process of building, testing, and deploying software}.
-In practice, \DO is supported by a multitude of tools for configuration management, 
-cloud-based continuous integration, and automated deployment,
+In practice, \DO is supported by a multitude of tools for configuration 
+management, cloud-based continuous integration, and automated deployment,
 which enjoy widespread open-source~\cite{Hilton2016} and industrial 
 adoption~\cite{rightscale, hilton2016continuous}.
 
@@ -26,7 +26,7 @@ of the \GH pull-based development model~\cite{gousios2014exploratory}
 and the plethora of open-source, \GH-compatible, cloud-based CI 
 tools,\footnote{\url{https://github.com/integrations/feature/continuous-integration}}
 such as \Tvis, \CB, and \CCI.
-In this decentralized, social coding context, CI is particularly relevant. 
+In a decentralized, social coding context such as \GH, CI is particularly relevant. 
 By automatically building and testing a project's code base, in isolation, 
 with each incoming code change (\ie push commit, pull request), CI 
 has the potential to: (i)~speed up development (code change throughput)
@@ -69,7 +69,7 @@ maintainers to make informed decisions about adopting CI, and
 researchers and tool builders to identify areas in need of attention.
 
 In this paper we report on a study of a sample of \GH open-source 
-software projects that adopted \Tvis technology, by far the most popular 
+software projects that adopted \Tvis, by far the most popular 
 CI infrastructure used on \GH~\cite{Hilton2016}.
 In particular, we focus on the \emph{transition from no CI to using 
 T{\footnotesize RAVIS} CI}, and investigate how development practices 
@@ -87,20 +87,20 @@ projects, appropriately selected, we find that:
 
 \begin{itemize}
 
-\item Following CA adoption there are downward trends in commit churn, for ca. 10\% of 
-individual projects (for ca. 86\% no statistical evidence for a trend could be found,
-and for ca. 4\% of the projects the trend is upwards). 
+\item Following CI adoption there are downward trends in commit churn, 
+for ca. 10\% of projects (for ca. 86\% no statistical evidence for a trend 
+could be found, and for ca. 4\% the trend is upwards). 
 This downward trend is non-existent before the adoption. 
 This is in agreement with Fowler's ``best practices", although 
 probably to a much lesser extent than expected.
 
-\item We also find that the commit frequency for both merge and non-merge commits does 
+\item The commit frequency for both merge and non-merge commits does 
 not change substantially for most projects, but for 20\% of them it increases
 after CI adoption, but returns back down with time.
 This is not in apparent agreement with Fowler's ``best practices".
 
-\item There is an increasing trend in the number of automatic test 
-per build after CI adoption, as expected.
+\item There is an increasing trend in the number of automatic tests 
+executed per build after CI adoption, as expected.
 
 \item There are significantly more issues submitted after CI is 
 adopted than before.
@@ -110,7 +110,7 @@ adopted than before.
 
 The remainder of this paper starts by developing the research questions 
 pertaining to adoption of CI and its impact on developers' practices 
-(Section~\ref{sec:background}), discusses the methods used to collect 
+(Section~\ref{sec:background}), then discusses the methods used to collect 
 and analyze the data (Section~\ref{sec:method}), presents the results 
 (Section~\ref{sec:results}), reviews the related work (Section~\ref{sec:rw}),
 assesses threats to validity (Section~\ref{sec:threats}), and concludes 
