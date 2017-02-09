@@ -22,14 +22,15 @@ Studying those trajectories can provide lessons learned.
 
 Continuous integration encourages developers to ``break down their work 
 into small chunks of a few hours each'', as smaller and more frequent commits 
-helps them keep track of their progress and reduces the debug effort~\cite{Fowler,Duvall}. 
+helps them keep track of their progress and reduces the debugging effort~\cite{Fowler,Duvall}. 
 %Duvall [p. 31,38,40]
-Based on these guidelines we formulate our \textbf{RQ1}: 
-Are developers reducing the size of code changes in each commit post CI adoption? 
-Do they continue to do so over time?
+Based on these guidelines we formulate \textbf{RQ1}: 
+\emph{Are developers reducing the size of code changes in each commit 
+post CI adoption? 
+Do they continue to do so over time?}
 
-The size of the commit is closely related to commit frequency: indeed, the 
-aforementioned quote from Fowler's blog refers to ``chunks of a few hours each''. 
+The size of commits is closely related to commit frequency: indeed, the 
+aforementioned quote from Fowler's blog post refers to ``chunks of a few hours each''. 
 In an early study Miller has observed that, on average, Microsoft developers 
 committed once a day, while off-shore developers committed less frequently 
 due to network latencies~\cite{Miller}; Stolberg expects everyone to commit every 
@@ -37,32 +38,37 @@ day~\cite{Stolberg} and Y\"{u}ksel reports 33 commits per day after introduction
 of CI~\cite{Yuksel}. On a related note, the interviewees in the study of 
 Leppanen \etal~\cite{Leppanen2015} saw higher release frequency as an
 advantage and reported that the CI ``radically decreased time-to-market''. 
-Hence, we ask in \textbf{RQ2}: Are developers committing code more frequently?
+Hence, we ask in \textbf{RQ2}: 
+\emph{Are developers committing code more frequently?}
 
 For CI, and \DO in general, to have the stated benefits, effective communication on arising issues is important.
-Although not stated in the proposed ``best practices" by Fowler, the frequency of opened issues per time period may change after CI adoption to meet the demands arising from changes in other practices, like code churn and automated testing.
+Although not stated in the proposed ``best practices" by Fowler, the frequency 
+of opened issues per time period may change after CI adoption to meet the 
+demands arising from changes in other practices, \eg related to code churn 
+and automated testing.
 %In the very popular pull-request model of development, code review is done through open issues.
 %\as{Can we say something about the popularity of the pull-request model of development in GH? Is this your work or GG's?} 
 %However, maintaining the process of code review has been recognized as one of 
 %the challenges when adopting continuous deployment~\cite{ClapsBSA}, software 
 %development technique related to continuous integration.
 Hence, we ask in \textbf{RQ3}: 
-Are developers transitioning to opening more or fewer issues after the adoption of CI?
+\emph{Are developers transitioning to opening more or fewer issues after 
+adopting CI?}
 
 Finally, CI is closely related to presence of automated tests~\cite{Fowler}. 
 Duvall even claims that CI without such tests should not be considered CI 
 at all~\cite{Duvall}, while Cannizzo, Clutton, and Ramesh deem an extensive 
 suite of unit and acceptance tests to be an essential first step~\cite{CannizzoCluttonRamesh}. 
 Moreover, CI is frequently introduced together with test automation~\cite{Yuksel}.
-However, developing tests suited for automation requires change in developers' 
-mind set and presence of a comprehensive set of tests incurs additional maintenance 
+However, developing tests suited for automation requires a change in developers' 
+mindset, and presence of a comprehensive set of tests incurs additional maintenance 
 costs~\cite{CoramBohner}.
 Naturally, more automated testing will expose more errors, and CI makes it possible 
 to track and react to different error types differently~\cite{BellerGZ16}.
 %\as{Y\"{u}ksel reports increase of the number of automated tests but they have combined introduction of CI with automated testing~\cite{Yuksel}. }
 Therefore, we formulate \textbf{RQ4}: 
-How does automated testing usage change over time after CI adoption? 
-And how do build errors evolve over time? 
+\emph{How does automated testing usage change over time after CI adoption? 
+And how do build errors evolve over time?}
 %\as{Not sure about the formulation; the word ``transition'' implies that in the beginning the developers do not use automated testing. Do we really check this?}
 
 %\subsection{RQs}
