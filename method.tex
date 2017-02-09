@@ -17,6 +17,8 @@ Note that for the purpose of this study we don't distinguish between ``project''
 and ``repository''; the term ``project'' has also been used to refer to a collection 
 of interrelated repositories in the literature~\cite{vasilescu2016sky}.
 
+\smallskip\noindent\emph{Candidate projects and initial filtering:} 
+
 We started by composing (using the \GH Search API) a list of candidate Java 
 projects that: (i)~were not very small (a large fraction of projects on \GH are 
 small and inactive~\cite{gousios2014exploratory}; we arbitrarily chose to ignore
@@ -46,9 +48,32 @@ requests using the \GH API; and (ii)~its history of \Tvis builds and, for each
 build, all its job logs (a \Tvis build can be configured to run multiple jobs,
 one for each set of user-defined configuration options; each job run produces 
 a ``build log''), using the \Tvis API and the \textit{travis gem} Ruby library.  
-For the commits, we recognize the non-merge commits and merge commits, 
-and further annotate the non-merge commits as bug-fixing or not 
-(by searching fix patterns, \eg ``fix bug'', in the commit messages).
+
+\smallskip\noindent\emph{Mainline commits:}
+
+Since git is a distributed version control system, developers can work locally,
+in increments, before pushing their changes to \GH or opening a pull request.
+E.g., a developer can choose to partition a large change into many smaller 
+ones, and make multiple local commits to better handle the work.
+This would not have any effect on CI runs, since CI is only triggered by \GH 
+push events, and events happening after (and including when) a pull request 
+is opened.
+%Pull requests are also a mechanism to isolate individual developers from 
+%activity on the mainline.
+Consequently, to study \emph{Commits To the \_Mainline\_ Every Day}
+(Fowler's best practice), as opposed to potentially local git commits, we
+distinguish between \emph{non-merge commits} and \emph{merge commits}
+as a proxy.
+We use  \texttt{\small git rev-list --all --merges} to recognize merge commits.
+
+%Starting from RQ1 and RQ2 the practice being investigate should be “Commits To the Mainline Every Day”, but then you analyze git commits. Not surprisingly, commits do not increase. Why they should? The main reason of having many commits is the ability to partition a large change in many smaller ones and to better handle the work locally. What really matters for the CI are pushes and pull requests. Indeed, I would expect an increase of pushes/pull requests when CI is being adopted. Maybe a way to observe this is to actually analyze merge commits and see whether their frequency increases.
+%Similar considerations apply for the size of code changes. Also, I’ve the feeling that such a size may strongly depend on the kind of activity being performed. For example, it could be that bug fixing correlates with small change size, whereas feature addition with larger ones. 
+
+\smallskip\noindent\emph{Bug fixing vs.\ other activities:} 
+
+For the commits, we distinguish between \emph{non-merge commits} 
+and \emph{merge commits}, and further annotate the non-merge commits 
+as \emph{bug-fixing or not} (by searching fix patterns, \eg ``fix bug'', in the commit messages).
 In addition to these publicly available data, we parsed the build logs and 
 further extracted information about the number of tests executed and the 
 types of reasons causing builds to break.
