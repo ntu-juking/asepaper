@@ -66,8 +66,8 @@ distinguish between \emph{non-merge commits} and \emph{merge commits}
 as a proxy.
 We use  \texttt{\small git rev-list --all --merges} to recognize merge commits.
 
-%Starting from RQ1 and RQ2 the practice being investigate should be ÒCommits To the Mainline Every DayÓ, but then you analyze git commits. Not surprisingly, commits do not increase. Why they should? The main reason of having many commits is the ability to partition a large change in many smaller ones and to better handle the work locally. What really matters for the CI are pushes and pull requests. Indeed, I would expect an increase of pushes/pull requests when CI is being adopted. Maybe a way to observe this is to actually analyze merge commits and see whether their frequency increases.
-%Similar considerations apply for the size of code changes. Also, IÕve the feeling that such a size may strongly depend on the kind of activity being performed. For example, it could be that bug fixing correlates with small change size, whereas feature addition with larger ones. 
+%Starting from RQ1 and RQ2 the practice being investigate should be ï¿½Commits To the Mainline Every Dayï¿½, but then you analyze git commits. Not surprisingly, commits do not increase. Why they should? The main reason of having many commits is the ability to partition a large change in many smaller ones and to better handle the work locally. What really matters for the CI are pushes and pull requests. Indeed, I would expect an increase of pushes/pull requests when CI is being adopted. Maybe a way to observe this is to actually analyze merge commits and see whether their frequency increases.
+%Similar considerations apply for the size of code changes. Also, Iï¿½ve the feeling that such a size may strongly depend on the kind of activity being performed. For example, it could be that bug fixing correlates with small change size, whereas feature addition with larger ones. 
 
 \smallskip\noindent\emph{Bug fixing vs.\ other activities:} 
 
@@ -247,10 +247,11 @@ framework of \emph{regression discontinuity design}~\cite{imbens2008regression}
 to assess the existence and extent of a longitudinal effect of CI adoption on 
 development practices.
 
-To evaluate the effect of a treatment (\eg new drug) on a disease progression, 
-randomized experimental trials are typical, in which the experimental 
-cohort is randomly split into a treatment group, \ie those given the drug, and 
-a control group, \ie those given an experientially identical placebo. 
+To evaluate the effect of a treatment, \eg new drug on a disease progression, 
+randomized experimental trials are conducted, 
+in which the experimental 
+cohort is randomly split into a treatment group, \ie those given the treatment, and 
+a control group, \ie those not given the treament. 
 Then, the effect is evaluated based on the difference in disease progression 
 between the two groups.
 In the absence of randomized trials, as is the case with trace data in 
@@ -259,25 +260,22 @@ additional assumptions, \eg quasi-experiments, are employed.
 
 Regression discontinuity design (RDD)~\cite{imbens2008regression} is an example of such a technique, 
 used for modeling the extent of a discontinuity of a function between its values 
-at points just before and just after a given intervention point. 
-It is based on the assumption that in the absence of the intervention, the 
-trend of the function would be continuous.
-A common situation where a discontinuity occurs is illustrated in Fig.~\ref{RDDIllustration}, 
-where the discontinuity is shown as occurring at the time of the intervention, 
-and is manifested as a different regression before and after that point.
+at points just before and just after a given intervention. 
+RDD is based on the assumption that in the absence of the intervention, the 
+trend of the function would be continuous in the same way as prior to it.
+Fig.~\ref{RDDIllustration} illustrates a discontinuity, and the RDD approach, in a nutshell, aims to uncover the 
+ different regression lines before and after the discontinuity.
 
 There are a number of different formalizations of RDD, most prominently 
 sharp RDD and fuzzy RDD~\cite{imbens2008regression}.
-Each, in turn, can be implemented in a variety of ways.
-To model the effect of CI adoption on developer practices, here we chose one 
-of the simpler sharp RDD approaches, \ie linear regression with an interaction term.
+%Each, in turn, can be implemented in a variety of ways.
+To model the effect of CI adoption on developer practices, here we chose one implementation
+of the simpler, sharp RDD approach: linear regression with an interaction term.
 We summarize our approach next, following the description by Imbens and 
-Lemieux~\cite{imbens2008regression}.
-We refer to Figure~\ref{RDDIllustration} for an illustration.
+Lemieux~\cite{imbens2008regression}, and refer to Figure~\ref{RDDIllustration}.
 Let $Y$ be the outcome variable in which we are looking for a discontinuity, 
-\eg commit churn per month, let $X$ be the temporal variable containing the 
-time of intervention, and let $c$ be the time point at which the intervention, in 
-this case CI adoption, has happened.
+\eg change in commit churn per month before vs after CI adoption, let $X$ be the temporal variable containing the 
+time of intervention, and let $c$ be the time point at which the intervention, \eg CI adoption, has occurred.
 Then, an RDD model for points $x_i$ in equal intervals $h$ on each side of 
 $c$, $c-h \le x_i \le c+h$, is given by:
 
@@ -297,7 +295,7 @@ For each project, we use an RDD model implemented as the above
 double linear regression, on data centered at the time of CI adoption, and 
 having equal number of points on each side.
 Solving the regression gives us the coefficients, which if significant, can help us reason about the treatment and its effects, if any.
- 
+We note here that a critical assumption for RDD is that all else but the treatment remains steady, before, during, and after the treatment.
 
 \begin{figure}[t]
 	\centering
