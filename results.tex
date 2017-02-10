@@ -37,7 +37,7 @@ the first \Tvis build and one month after it, in our quantitative analyses below
 \centering
 \includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_before.pdf}
 \caption{Code churn before \Tvis adoption.}
-\label{Fig:CodeChurnBefore}
+\label{Fig:CodeChurnBefore}\vspace{-0.3cm}
 \end{figure}
 
 
@@ -45,7 +45,7 @@ the first \Tvis build and one month after it, in our quantitative analyses below
 \centering
 \includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_after.pdf}
 \caption{Code churn after \Tvis adoption.}
-\label{Fig:CodeChurnAfter}
+\label{Fig:CodeChurnAfter}\vspace{-0.3cm}
 \end{figure}
 
 
@@ -85,7 +85,7 @@ to after CI adoption.
 \input{tables/rq1_models}
 
 \smallskip\noindent \emph{Statistical Modeling Study}: 
-Guided by our observations from the exploratory study above, we proceed to 
+Guided by our exploratory observations above, we proceed to 
 quantify the trends we observed.
 For each project, we fitted a sharp RDD model, as described before.
 Recall that because of the peak we observed, we eliminated the time point 
@@ -149,12 +149,13 @@ through some adjustment/cleanup period right after.
 
 \subsection{RQ2: Trends in Commit Frequency}
 
-The second development practice we examine is commit frequency.
-We examine this question from two directions by looking separately at the non-merge commits at the merge commits (we obtained the latter as described previously in the Methods section).
+The second practice we examine is commit frequency.
+We examine this question from two directions by looking separately at the non-merge commits at the merge commits. 
+%(we obtained the latter as described previously in the Methods section).
 
 We started from the same data as before, 567 projects, each with at least 500 
 non-merge commits.
-Additionally, we restricted the projects for the  merge commits study so that we only look at projects that have at least 20 merge commits over the 18 time points, i.e. on average about 1 per time point.
+Additionally, we restricted the projects for the  merge commits study so that we only look at projects that have at least 20 merge commits over the 18 time points, \ie on average about 1 per time point.
 This filtering yielded a set of 370 projects for the merge commit frequency study.
 
 \begin{figure}[!t]
@@ -179,11 +180,10 @@ number of non-merge commits, and merge commits, respectively, for each of nine c
 before CI adoption and, respectively, nine consecutive 30-day time intervals 
 after CI adoption.
 We use a log-scale for the merge commits due to the overdispersion of the data which is sparse over the time periods we have chosen.
-
 As before, the horizontal line in each boxplot is the median value of all 
 per-project medians, and the black dot is their average value.
 
-As was the case with code churn, here we also see a peak in the 30-day 
+As with code churn, here we also see a peak in the 30-day 
 interval just before and the one just after CI adoption.
 We do not observe an apparent trend in the 
 median or average non-merge commit frequency.
@@ -214,13 +214,19 @@ This carried over to a lesser degree into trends in commit frequency
 following CI adoption: out of the 113 significant trend changes, 71 are 
 downward trends, and 42 are upward.
 
-For the merge commits, Table~\ref{Table:rddmodels_merge_freq}, the results are qualitatively in the same ball-park as those for the non-merge commits.
+For merge commits (Table~\ref{Table:rddmodels_merge_freq}), the results 
+are qualitatively similar to those for non-merge commits.
 
 \smallskip\noindent \emph{Discussion}:
-As was the case for code churn, most of the projects did not have longitudinal linear trends in non-merge commits, for reasons probably similar to those 
-in case of the code churn.
+As was the case for code churn, most projects did not have longitudinal 
+linear trends in non-merge commits, for reasons probably similar to those 
+in case of code churn.
 
-Even though  we observed a post-CI adopt increase  in the merge commits in our exploratory study, the statistical tests did not confirm that to be the case for more than 20\% of the projects. We attribute this disparity to the large variance in the data and especially on the sparsity of merge commits over time. 
+Even though  we observed a post-CI adoption increase in merge commits 
+in our exploratory study, the statistical tests did not confirm that to be the 
+case for more than 20\% of the projects. 
+We attribute this disparity to the large variance in the data and especially 
+the sparsity of merge commits over time. 
 
 While our exploratory study did not suggest presence of a trend, the 
 modeling study suggests that right after CI adoption there is a slight 
@@ -264,14 +270,14 @@ As described above, we use data on 293 projects, each with at least
 \smallskip\noindent \emph{Exploratory Study}:
 We follow the same approach as in RQ1 and RQ2 and compare the 
 medians and the averages in the number of issues per time period, in the 
-months before and after the adoption of CI.
+months before and after CI adoption.
 Fig.~\ref{Fig:IssuesBefore} and \ref{Fig:IssuesAfter} plot the number of 
 issues per unit time period.
 Observing these figures shows that the months immediately preceding 
 and following the adoption of CI exhibit the highest number of issues.
-Besides those, before CI adoption the median number of issues per period seem to vary between 2 and 4 issues, with most of them being at 3, while the averages are between 5 and 6.
-Following the adoption of CI the median of the number of issues seems to 
-stabilize at 4 issues per period, and the averages are between 6 and 7.
+Besides those, before CI adoption the median number of issues per period seem to vary between 2 and 4, with most of them being at 3, while the averages are between 5 and 6.
+Following CI adoption the median of the number of issues seems to 
+stabilize at 4 per period, and the averages are between 6 and 7.
 
 \input{tables/rq3_models}
 
@@ -293,7 +299,6 @@ was $1.0$ issue.
 
 
 \smallskip\noindent \emph{Discussion}:
-
 Again, most of the projects did not have longitudinal linear trends for reasons probably similar to those in the case of the code churn.
 
 As in RQ1, our exploratory study showed a peak in the median number of issues per period around CI adoption time, and an upward trend following CI adoption.

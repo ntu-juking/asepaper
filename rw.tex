@@ -28,23 +28,32 @@ This line of research is closer to the current work as it performs empirical
 analysis of \Tvis data. Moreover, similarly to Vasilescu \etal~\cite{era14}
 and Hilton \etal~\cite{Hilton2016} our work can be seen as related to adoption of \Tvis,
 and similarly to Beller \etal~\cite{BellerGZ16} we study build failures.
-However, all these papers compare projects that adopt CI with those that do not, 
-or different kinds of projects that adopt CI with each other, and therefore, their
-conclusions might be threatened by specific aspects of individual projects.
-In our work we therefore opt for the evolution perspective and focus on the
-differences between the development practices within the project before and
-after adoption of \Tvis.
-Hence, while the previous research has focused on the \emph{between-subject 
-design} we provide complementary insights through a \emph{within-subject design}.
+Closest in spirit to ours is probably the work of Vasilescu \etal~\cite{VasilescuYWDF15},
+who report, using different methodology, increases in a project team's ability 
+to integrate outside contributions following adoption of \Tvis.
+In our work we adopt a similar evolutionary perspective and \emph{within-subject 
+design}, focusing on changes in development practices in the projects  before 
+and after adoption of \Tvis;
+most prior work has adopted a \emph{between-subject design}, comparing 
+projects that adopt CI with others that do not.
+
+%However, all these papers compare projects that adopt CI with those that do not, 
+%or different kinds of projects that adopt CI with each other, and therefore, their
+%conclusions might be threatened by specific aspects of individual projects.
+%In our work we therefore opt for the evolution perspective and focus on the
+%differences between the development practices within the project before and
+%after adoption of \Tvis.
+%Hence, while the previous research has focused on the \emph{between-subject 
+%design} we provide complementary insights through a \emph{within-subject design}.
 %\as{Bogdan, Vladimir, please check the previous paragraph.}
 
-Gousious \etal\ have studied work practices and challenges in pull-based
+Gousious \etal\ studied work practices and challenges in pull-based
 development on \GH~\cite{gousios2015work, gousios2016work}. 
 They report that 75\% of the projects surveyed use CI tools to evaluate
 code quality~\cite{gousios2015work} and that more than 60\% of the surveyed 
 contributors employ automatic testing, either locally or using a CI server~\cite{gousios2016work}. 
 Importance of tooling facilitating the testing tasks has been already recognized by 
-Pham \etal~\cite{pham2013creating}: back in 2012 when the authors have conducted
+Pham \etal~\cite{pham2013creating}: back in 2012 when the authors conducted
 the interviews, \Tvis has only started to support mainstream languages such as Java 
 and lack of such tooling has been reported as an important challenge.
 These findings further emphasize importance of CI in modern software development. 
@@ -52,27 +61,50 @@ These findings further emphasize importance of CI in modern software development
 %Already a 2009 Forrester report indicated that 67\% of the 52 development professionals
 %who adopted Agile adopted continuous integration, another 19\% were in process 
 %of implementing it and another 10\% planned to implement it~\cite{Forrester}. 
-March 2016 survey of 1,060 IT professionals indicated that 81\% of the enterprises 
+A March 2016 survey of 1,060 IT professionals indicated that 81\% of the enterprises 
 and 70\% small and midsize businesses implement \DO~\cite{rightscale}. 
-Not surprisingly, the topic of industrial adoption of continuous integration 
-has also attracted substantial research attention~\cite{hilton2016continuous,Leppanen2015,Laukkanen2015Agile,Debbiche2014,Stahl2014ICSEComp,Stahl2014JSS,Stahl2013Experienced} and is a subject of the recent literature survey by Eck, Uebernickel and Brenner~\cite{EckUB14}. 
-However, this line of work is based on interviews or surveys rather than on analysis of the development data
-and as such is to larger extent susceptible to the perception bias: \eg Leppanen \etal\ report that
+Not surprisingly, the topic of industrial adoption of CI 
+has also attracted substantial research attention~\cite{hilton2016continuous,Leppanen2015,Laukkanen2015Agile,Debbiche2014,Stahl2014ICSEComp,Stahl2014JSS,Stahl2013Experienced} and is a subject of the recent literature survey by Eck \etal~\cite{EckUB14}. 
+However, this line of work is based on interviews or surveys rather than on 
+analysis of repository data and, as such, is to a larger extent susceptible to 
+perception bias: \eg Leppanen \etal\ report that
 CI introduction is beneficial for productivity~\cite{Leppanen2015}, 
 Eck \etal\ stress that productivity is likely to decrease before any positive effects can be observed~\cite{EckUB14},
 and St{\aa}hl and Bosch validated this hypothesis only partially~\cite{Stahl2013Experienced}.
+%
+There are also reports of experiences with applying CI in specific domains,
+such as neuroinformatics~\cite{Zaytsev:Morrison} and software-intensive
+embedded systems~\cite{Martensson2016}.
 
-Several papers have reported on experiences with applying CI in specific domains:
-\eg Zaytsev and Morrison report that introduction of CI in neuroinformatics
-software development facilitated integration of new changes, and hence reduced 
-time-to-marked without compromising on quality~\cite{Zaytsev:Morrison}; 
-and M{\aa}rtensson \etal\ observed that long build- and test-time in software-intensive
-embedded systems discourage developers from frequent committing~\cite{Martensson2016}.
+%Several papers have reported on experiences with applying CI in specific domains:
+%\eg Zaytsev and Morrison report that introduction of CI in neuroinformatics
+%software development facilitated integration of new changes, and hence reduced 
+%time-to-marked without compromising quality~\cite{Zaytsev:Morrison}; 
+%and M{\aa}rtensson \etal\ observed that long build- and test-time in software-intensive
+%embedded systems discourage developers from frequent committing~\cite{Martensson2016}.
 
 %\as{Miller~\cite{Miller} discusses build breaks, is this relevant?}
 %\as{Van der Storm discusses backtracking as a way of addressing build failures~\cite{Storm2008}.}
 %\as{Laukannen and M\"{a}ntyl\"{a} have surveyed three papers discussing the impact of the build waiting times. Some of the consequences of the long/short build waiting times are related to CI~\cite{Laukkanen2015RCSE}.}
 
-Automated testing is an important factor that affects the cost-effectiveness of continuous integration. In recent years, much effort has been devoted to improve the quality and efficiency of automated testing in continuous integration. Campos et al.~\cite{campos2014continuous} used Continuous Test Generation (CTG) to enhance continuous integration with automated test generation. Their experimental results showed that CTG could lead to a significantly higher code coverage while reducing the test generation time. Elbaum et al.~\cite{elbaum2014techniques} and Hu et al.~\cite{hu2016Implementation} applied test case selection and test case prioritization to test suites, making continuous integration processes more cost-efficient. D{\"o}singer et al. ~\cite{dosinger2012communicating} proposed the continuous change impact analysis technique to analyze the dependencies between the codes of various projects to improve the effectiveness of automated testing. Long et al.~\cite{long2015collaborative} designed tools to support collaborative testing between testers. Nilsson et al.~\cite{nilsson2014visualizing} developed a technique to visualize end-to-end testing activities in the continuous integration processes. All these efforts in automated testing improve the cost-effectiveness of continuous integration. 
+Automated testing is an important factor that affects the cost-effectiveness 
+of CI. 
+In recent years, much effort has been devoted to improve the quality and 
+efficiency of automated testing in CI. 
+Campos et al.~\cite{campos2014continuous} used Continuous Test Generation 
+(CTG) to enhance CI with automated test generation. 
+Their experimental results showed that CTG could lead to a significantly 
+higher code coverage while reducing the test generation time. 
+Elbaum \etal~\cite{elbaum2014techniques} and Hu 
+\etal~\cite{hu2016Implementation} applied test case selection and test case 
+prioritization to test suites, making CI processes more cost-efficient. 
+D{\"o}singer \etal~\cite{dosinger2012communicating} proposed the continuous 
+change impact analysis technique to analyze the dependencies between the 
+code of various projects to improve the effectiveness of automated testing. 
+Long \etal~\cite{long2015collaborative} designed tools to support collaborative 
+testing between testers. 
+Nilsson et al.~\cite{nilsson2014visualizing} developed a technique to visualize 
+end-to-end testing activities in CI processes. 
+All these efforts in automated testing improve the cost-effectiveness of CI. 
 
  

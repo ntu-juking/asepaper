@@ -240,21 +240,21 @@ In the end, 250 projects remained in the filtered RQ4 data set.
 \subsection{Time Series Analysis Method}
 \label{sec:tsa}
 
-We use data visualization and statistical modeling methods to discover 
+We use data visualization and statistical modeling to discover 
 longitudinal patterns indicative of CI adoption effects on development practices.
-As one of the contributions of this paper, we introduce the statistical modeling 
+As one of our contributions, we introduce the statistical modeling 
 framework of \emph{regression discontinuity design}~\cite{imbens2008regression} 
 to assess the existence and extent of a longitudinal effect of CI adoption on 
 development practices.
 
-To evaluate the effect of a treatment, \eg a new drug on a disease progression, 
-randomized experimental trials are typically used, in which the experimental 
+To evaluate the effect of a treatment (\eg new drug) on a disease progression, 
+randomized experimental trials are typical, in which the experimental 
 cohort is randomly split into a treatment group, \ie those given the drug, and 
 a control group, \ie those given an experientially identical placebo. 
 Then, the effect is evaluated based on the difference in disease progression 
 between the two groups.
-In the absence of randomized trials, as is the case with the trace data that is
-common in empirical software engineering, weaker techniques which make 
+In the absence of randomized trials, as is the case with trace data in 
+empirical software engineering, weaker techniques which make 
 additional assumptions, \eg quasi-experiments, are employed.
 
 Regression discontinuity design (RDD)~\cite{imbens2008regression} is an example of such a technique, 
@@ -270,7 +270,7 @@ There are a number of different formalizations of RDD, most prominently
 sharp RDD and fuzzy RDD~\cite{imbens2008regression}.
 Each, in turn, can be implemented in a variety of ways.
 To model the effect of CI adoption on developer practices, here we chose one 
-of the simpler sharp RDD approaches, namely linear regression with an interaction term.
+of the simpler sharp RDD approaches, \ie linear regression with an interaction term.
 We summarize our approach next, following the description by Imbens and 
 Lemieux~\cite{imbens2008regression}.
 We refer to Figure~\ref{RDDIllustration} for an illustration.
@@ -301,8 +301,8 @@ Solving the regression gives us the coefficients, which if significant, can help
 
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=0.5\textwidth, clip=true, trim=0 15 15 50]{RDD_plot.png}
-	\caption{RDD Illustration}
+	\includegraphics[width=0.4\textwidth, clip=true, trim=0 15 15 50]{RDD_plot.png}
+	\caption{RDD illustration.}\vspace{-0.5cm}
 	\label{RDDIllustration}
 \end{figure}
 
