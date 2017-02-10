@@ -290,12 +290,15 @@ The size of the effect of the treatment is the difference between the two
 regression values of $y_i$ evaluated at $x=c$, and can be seen to be equal 
 to $\gamma$.
 For example, in Fig.~\ref{RDDIllustration}, the treatment effect ($\gamma$) is negative, and there is an interaction effect ($\delta \neq 0$) which changes the slope of the regression after the treatment.
+A critical assumption for RDD is that but for the treatment, all other variables remain steady, before, during, and after the treatment.
 
 For each project, we use an RDD model implemented as the above 
 double linear regression, on data centered at the time of CI adoption, and 
 having equal number of points on each side.
 Solving the regression gives us the coefficients, which if significant, can help us reason about the treatment and its effects, if any.
-We note here that a critical assumption for RDD is that all else but the treatment remains steady, before, during, and after the treatment.
+We report on the models having significant coefficients in the regressions (<0.05). Our succesful models had an $R^2$ of at least $0.65$. 
+
+
 
 \begin{figure}[t]
 	\centering

@@ -48,21 +48,19 @@ number of builds, might have been threatened by the limitations of the \GH
 and \Tvis APIs.
 Furthermore, validity of the error type recognition might have been affected 
 by the selection of the keywords in the error type recognition tool. 
-To mitigate this threat and encourage replications, we made our tools 
-and data publicly available.\footnote{\url{LINK}}
+To mitigate this threat and encourage replications, we will make our tools 
+and data publicly available. (\emph{Note: to avoid complications related to the double-blind MSR policy, and on advice of the MSR PC chairs, we delay the release until publication}) %\footnote{\url{LINK}}
 %\footnote{\url{http://web.cs.ucdavis.edu/~filkov/software/adoptCI/}}
 
-Finally, in this work we use terms ``project'' and ``repository'' interchangeably: 
-as pointed out by Kalliamvakou \etal~\cite{Kalliamvakou2014Promises}, this is 
-not necessarily always the case. 
+Finally, in this work we use terms ``project'' and ``repository'' interchangeably, which is not always the case~\cite{Kalliamvakou2014Promises}. 
 
 %is the extent to which the data was collected correctly. We collected the data of commits, issues and PRs from GITHUB. After the data being collected, we recheck to make sure we didn't miss any commits, issues and PRs. For example, we searched the issues using GitHub search API for each project, and compared the returned \textit{total\_count} field with the total number of issues we have collected. If they were different, we found the missing issues, and regathered them until all the issues were gathered. Similarly, the data collected from Travis-CI was also rechecked carefully. To ensure the reliability of test number per build, we randomly selected a sample of builds, manually reviewed the log files and verified the data from manual review and automatical collection to make sure they are consistent. Similar, the data of build error classification was also examined in this manually checking way.
 
 \smallskip \emph{Internal Validity} is the extent to which the conclusions can 
-be drawn from the measurements we conducted. 
+be drawn from our measurements. 
 To reduce these threats we have opted for RDD~\cite{imbens2008regression}, 
 a sound approach to statistical modeling of discontinuity in time series. 
-Application of RDD to software engineering data has been recently advocated 
+Application of RDD to SE data has been recently advocated 
 by Wieringa~\cite{Wieringa}.
 %\as{Do we have expect to have confounds somewhere? Not in RDD but maybe in the \# tests study?}
 % about the causal effect of independent variables on the dependent variables. We considered if commit churn, number of tests, build error types and number of issues will evolve in a certain trend after CI is adopted. For each perspective, we filtered the projects based on particular required conditions, and focus on the individual variable, without considering whether other variables will influence the trend. If such variables exist, they may weaken the credibility of our results.
@@ -88,7 +86,7 @@ We encourage independent replications to assess the robustness of our results.
 beyond the collection of \GH Java projects we investigated.
 While we do expect our findings to apply to other mid-sized to large Java projects,
 this expectation might be threatened by peculiarities of other CI tools (\eg Jenkins, 
-Hudson) as well as differences between open-source and proprietary projects, just
+Hudson) as well as differences between open-source and proprietary projects, 
 to name a few.
 
 %the projects in our study are all Java open source projects from GitHub repository. Therefore, our conclusion may not be generalized either to projects developed by other programming languages or projects that are not open-source. Besides, as we know, there have been multiple CI techniques in practice, \eg Travis CI, Jenkins CI, Hudson CI. In our study, we only focused on Travis CI, which may also threaten the generalization of our results. However. as Travis-CI is the most popular CI service in GitHub, we believe our results on Travis-CI are representative for CI.  This is an inherent threat for all studies in empirical software engineering, as many factors cannot be characterized completely. To mitigate this threat, there is a need to replicate our study using a wide variety of systems and considering other CI techniques in the future work.
