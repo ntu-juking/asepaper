@@ -12,7 +12,7 @@ It aims to get changes into production as quickly as
 possible, without compromising software quality.
 While no standard definitions exist (the term is often overloaded), here
 we refer to \DO as a culture that emphasizes \emph{automation of the 
-process of building, testing, and deploying software}.
+processes of building, testing, and deploying software}.
 In practice, \DO is supported by a multitude of tools for configuration 
 management, cloud-based continuous integration, and automated deployment,
 which enjoy widespread open-source~\cite{Hilton2016} and industrial 
@@ -44,7 +44,7 @@ However, the road to efficiency is riddled with choices and trade-offs.
 For example, working in large increments may lead to more meaningful
 change sets, but it may also complicate synchronization between team 
 members and, if necessary, reverting changes.
-More frequent changes facilitate merging, but they also require more 
+Conversely, more frequent changes facilitate merging, but they also require more 
 computing infrastructure for CI, since by default the code is built and all 
 tests are executed with \emph{every} change.
 Moreover, while CI runs on smaller, more frequent changes would provide 
@@ -68,23 +68,25 @@ Such knowledge can help developers to optimize their practices, project
 maintainers to make informed decisions about adopting CI, and 
 researchers and tool builders to identify areas in need of attention.
 
-In this paper we report on a study of a sample of \GH open-source 
-software projects that adopted \Tvis, by far the most popular 
+In this paper we report on a study of a large sample of \GH open-source 
+projects that adopted \Tvis, by far the most popular 
 CI infrastructure used on \GH~\cite{Hilton2016}.
-In particular, we focus on the \emph{transition from no CI to using 
+In particular, we focus on the \emph{transition (from no CI) to using 
 T{\footnotesize RAVIS} CI}, and investigate how development practices 
-changed following the adoption of \Tvis.
+changed following this shift.
 To this end, we operationalize practices in three main aspects of 
 distributed development, related to code changes, issue tracking, 
-and testing.
-To evaluate the effect of an intervention, in our case adoption of
-\Tvis, on the transition toward expected behaviors in the above 
-three practices (measured from trace data of \GH repositories),
-we introduce \emph{regression discontinuity design analyses}.
-Applying this methodology to hundreds of open-source Java 
-projects, appropriately selected, we find that:
+and testing, and pursue a mixed-methods approach.
+Quantitatively, to evaluate the effect of an intervention, in our case 
+adoption of \Tvis, on the transition toward expected behaviors in the 
+above three practices (measured from trace data in thousands of 
+\GH projects, appropriately selected), we introduce \emph{regression 
+discontinuity design analyses}.
+Qualitatively, to help essentialize the quantitative results, we survey a 
+sample of \GH developers about their experiences with adopting \Tvis. 
+Applying this methodology, we find that:
 
-
+\bv{This needs to be updated}
 \begin{itemize}
 
 \item Following CI adoption there are downward trends in commit churn, 
