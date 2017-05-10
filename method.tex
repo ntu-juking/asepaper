@@ -460,18 +460,68 @@ the slope of the regression after the treatment.
 A critical assumption for RDD is that but for the treatment, all other variables 
 remain steady, before, during, and after the treatment.
 
-For each project, we use an RDD model implemented as the above 
-double linear regression, on data centered at the time of CI adoption, and 
-having equal number of points on each side.
-Solving the regression gives us the coefficients, which if significant, can help 
-us reason about the treatment and its effects, if any.
-We report on the models having significant coefficients in the regressions ($<0.05$). 
-%Our successful models had an $R^2$ of at least $0.65$. 
-
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=0.4\textwidth, clip=true, trim=0 15 15 50]{RDD_plot.png}
-	\caption{RDD illustration.}\vspace{-0.5cm}
+	\caption{RDD illustration.\vf{Replace this with PDF version and bigger fonts}}\vspace{-0.5cm}
 	\label{RDDIllustration}
 \end{figure}
 
+We wish to capture, using the RDD model above, changes in trends after CI 
+adoption across our sample of projects, while controling for confounding variables 
+(\eg project size, age, and programming language; see Measures subsection above).
+Our data is centered at the time of CI adoption, and has an equal number of points, 
+12, on each side.
+Since our data is inherently nested (each project contributes multiple observations; 
+similarly for programming language), we implement the RDD model as a 
+mixed-effects linear regression (functions \texttt{lmer} and \texttt{lmer.test} in R) 
+with a random-effects term for \emph{project} and another random effects term 
+for \emph{programming language}; this way, we can capture project-to-project and 
+language-to-language variability in the response.
+All other variables were modeled as fixed effects.
+
+%For each project, we use an RDD model implemented as the above 
+%double linear regression, on data centered at the time of CI adoption, and 
+%having equal number of points on each side.
+Solving the regression gives us the coefficients, which, if significant, can help 
+us reason about the treatment and its effects, if any.
+We report on the models having significant coefficients in the regressions 
+($p < 0.05$) as well as their effect sizes, obtained from ANOVA analyses.
+Model fit was evaluated using a marginal ($R^2_m$) and a conditional ($R^2_c$) 
+coefficient of determination for generalized mixed-effects 
+models~\cite{nakagawa2013general, johnson2014extension}; $R^2_m$ describes 
+the proportion of variance explained by the fixed effects alone; $R^2_c$ describes 
+the proportion of variance explained by the fixed and random effects together.
+
+%Coefficients are considered important if they were statistically significant ($p < 0.05$). 
+%Their effect sizes are obtained from ANOVA analyses. 
+%We evaluate our model's fit using a marginal ($R^2_m$) and a conditional
+%($R^2_c$) coefficient of determination for generalized mixed-effects 
+%models~\cite{nakagawa2013general, johnson2014extension},
+%as implemented in the \texttt{MuMIn} package in R: 
+
+%Our successful models had an $R^2$ of at least $0.65$. 
+
+%Then we fit a linear mixed-effects model with a random-effects term for developer.
+%This allows us to capture developer-to-developer 
+%variability in the response (LOC added), 
+%(\eg some developers being naturally 
+%more productive than others), rather than assessing
+%% variability in the \emph{average} 
+%the contributions of specific developers, which we are less interested 
+%in.
+%%\footnote{For that we would have used a fixed effect term.}
+%% (which is what a fixed effect term
+%%would have done, and ).
+%Additionally, we allow for deviations in slope of a developer's time trend
+%from the population values (\ie we allow for the possibility that, for example, 
+%developers with higher initial productivity may, on average, be less strongly
+%affected by time passing).
+%We also tested, but found insignificant, the inclusion of a random-effect term for the time window in 
+%which the measurement was taken, to capture longitudinal, week-to-week 
+%variability (\eg some weeks developers may be more productive due to other, 
+%unobserved variables).
+%The additional random effect was not significant.
+%The random effects term for time window is a simple, scalar term that allows 
+%us to capture longitudinal, month-to-month variability (\eg in some months
+%developers may be more productive due to other, unobserved variables).
