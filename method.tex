@@ -3,14 +3,15 @@
 \section{Methods}
 \label{sec:method}
 
-We collected and statistically analyzed data from a sample of open-source 
-Java (language chosen based on familiarity of the first author) projects on 
-\GH, that adopted \Tvis at some point during their history.
+We collected and statistically analyzed data from a large sample of open-source 
+projects on \GH, that adopted \Tvis at some point during their history.
+We further surveyed a sample of those projects' \Tvis adopters.
+%Java (language chosen based on familiarity of the first author) 
 
 \subsection{Data Gathering}
 
-Data collection involved mining multiple sources, the \GH API, project version 
-control (git) logs, and the \Tvis API.
+Data collection involved mining multiple sources: \GHT~\cite{gousios2012ghtorrent}, 
+the \GH API, project version control (git) logs, and the \Tvis API.
 The goal was to select non-trivial projects that adopted \Tvis, and had sufficient
 activity both before and after adoption, in order to observe potential transition effects.
 Note that for the purpose of this study we don't distinguish between ``project'' 
@@ -18,6 +19,58 @@ and ``repository''; the term ``project'' has also been used to refer to a collec
 of interrelated repositories in the literature~\cite{vasilescu2016sky}.
 
 \smallskip\noindent\emph{Candidate projects and initial filtering:} 
+
+We started by identifying \GH projects that ever used \Tvis.
+To our knowledge, no such general list exists 
+(\TT~\cite{beller2017travistorrent} is restricted to Java and Ruby projects), so
+we wrote a script that iterates over non-fork \GHT projects (oldest to newest)
+and pokes the \Tvis API (cf.\ \cite{era14}) to determine if the project used \Tvi;
+we ran and stopped the script after identifying approximately half (165,549)
+of all \GH projects that ever used \Tvis.\footnote{At the time of writing, \Tvi self 
+reports being used in over 318,000 open source \GH projects, see 
+\url{https://travis-ci.org}.} 
+
+Next, we cloned the \GH repositories of all these projects locally, and extracted
+their main-branch commit histories using \Perc, an open-source repository
+mining tool part of the \GLab tool suite.\footnote{\url{http://grimoirelab.github.io}}
+Following, we traversed each project's commit history to determine when 
+maintainers introduced \Tvis, by identifying the earliest commit to the 
+\texttt{.travis.yml} configuration file, and recorded its authored timestamp as
+the timestamp of the \Tvi adoption.
+We then proceeded to aggregate data about the different practices considered
+in 30-day windows, 12 on each side, around the \Tvis adoption event.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=\columnwidth, clip=true, trim=0 395 0 40]{figures/timeline.pdf}
+	\caption{Overview of our time series assembly method.}%\vspace{-0.5cm}
+	\label{fig:timeseries}
+\end{figure}
+
+Before diving into quantitative analysis we eyeballed several projects in our 
+collection. 
+We observed that on several occasions \Tvis has been adopted as part of a 
+larger scale restructuring effort. 
+For instance, \texttt{allendevco/pill-logger} has started using \Tvis on November 
+20, 2013; in the same period developers have changed the project build system 
+from Ant to Gradle and, as a consequence of that, also changed the way the 
+project folders are organized.
+Similarly, \texttt{Netflix/denominator} has introduced \Tvis on March 13, 2015
+after an active development period of daily commits starting on March 3.
+On the very same date \Tvis has been introduced, the project updated library 
+dependencies and restructured tests, while on the next day it added examples 
+and removed support of DiscoveryDNS.
+This rather active development continued until the version 4.5.0 has been 
+released on April 6, 2015.
+The project had three additional commits in April and then went to a recess 
+until early August. 
+Examples such as \texttt{allendevco/pill-logger} and \texttt{Netflix/denominator} 
+suggest that the activity immediately prior and immediately after introduction 
+of \Tvis might not be representative for the project's overall software development
+practices.
+Therefore, to limit the risk of our trends being biased by extraordinary project 
+activity during the transition period, we decided to exclude one month before 
+the first \Tvis build and one month after it, in our quantitative analyses below.
 
 We started by composing (using the \GH Search API) a list of candidate Java 
 projects that: (i)~were not very small (a large fraction of projects on \GH are 
