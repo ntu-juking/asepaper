@@ -18,9 +18,9 @@ Note that for the purpose of this study we don't distinguish between ``project''
 and ``repository''; the term ``project'' has also been used to refer to a collection 
 of interrelated repositories in the literature~\cite{vasilescu2016sky}.
 
-\smallskip\noindent\emph{Candidate projects and initial filtering:} 
+\smallskip\noindent\emph{Candidate Projects} 
 
-We started by identifying \GH projects that ever used \Tvis.
+We started by identifying \GH projects that use \Tvis.
 To our knowledge, no such general list exists 
 (\TT~\cite{beller2017travistorrent} is restricted to Java and Ruby projects), so
 we wrote a script that iterates over non-fork \GHT projects (oldest to newest)
@@ -34,122 +34,134 @@ Next, we cloned the \GH repositories of all these projects locally, and extracte
 their main-branch commit histories using \Perc, an open-source repository
 mining tool part of the \GLab tool suite.\footnote{\url{http://grimoirelab.github.io}}
 Following, we traversed each project's commit history to determine when 
-maintainers introduced \Tvis, by identifying the earliest commit to the 
+maintainers introduced \Tvis, by identifying the earliest commit of the 
 \texttt{.travis.yml} configuration file, and recorded its authored timestamp as
 the timestamp of the \Tvi adoption.
-We then proceeded to aggregate data about the different practices considered
-in 30-day windows, 12 on each side, around the \Tvis adoption event.
 
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=\columnwidth, clip=true, trim=0 395 0 40]{figures/timeline.pdf}
+	\includegraphics[width=\columnwidth, clip=true, trim=0 392 0 40]{figures/timeline.pdf}
 	\caption{Overview of our time series assembly method.}%\vspace{-0.5cm}
 	\label{fig:timeseries}
 \end{figure}
 
-Before diving into quantitative analysis we eyeballed several projects in our 
-collection. 
-We observed that on several occasions \Tvis has been adopted as part of a 
-larger scale restructuring effort. 
-For instance, \texttt{allendevco/pill-logger} has started using \Tvis on November 
-20, 2013; in the same period developers have changed the project build system 
-from Ant to Gradle and, as a consequence of that, also changed the way the 
-project folders are organized.
-Similarly, \texttt{Netflix/denominator} has introduced \Tvis on March 13, 2015
-after an active development period of daily commits starting on March 3.
-On the very same date \Tvis has been introduced, the project updated library 
-dependencies and restructured tests, while on the next day it added examples 
-and removed support of DiscoveryDNS.
-This rather active development continued until the version 4.5.0 has been 
-released on April 6, 2015.
-The project had three additional commits in April and then went to a recess 
-until early August. 
-Examples such as \texttt{allendevco/pill-logger} and \texttt{Netflix/denominator} 
-suggest that the activity immediately prior and immediately after introduction 
-of \Tvis might not be representative for the project's overall software development
-practices.
-Therefore, to limit the risk of our trends being biased by extraordinary project 
-activity during the transition period, we decided to exclude one month before 
-the first \Tvis build and one month after it, in our quantitative analyses below.
+\smallskip\noindent\emph{Time Series}
 
-We started by composing (using the \GH Search API) a list of candidate Java 
-projects that: (i)~were not very small (a large fraction of projects on \GH are 
-small and inactive~\cite{gousios2014exploratory}; we arbitrarily chose to ignore
-projects smaller than 500 kilobytes, using the \GH Search API's \emph{size} 
-parameter); and (ii)~were created no later than 2014-11-08. 
-The second criterion is a consequence of our data collection date (2016-05-01)
-and the ``sufficient history'' requirement. 
-Our statistical analysis, detailed below, assumes 9 months of history for each
-project both prior to and after adopting \Tvis; since we did not have access to
-data on when each project started using \Tvis at this stage, we conservatively
-chose the 2014-11-08 date, which allows 9*30*2 days of history from project 
-creation to 2016-05-01.
-This step resulted in a list of over 300,000 candidate Java projects.
+We proceeded to aggregate data about the different practices considered
+in 30-day windows, 12 on each side, around the \Tvis adoption event
+(Figure~\ref{fig:timeseries}).
 
-%first and foremost, we should make sure our studied projects have sufficient history (e.g. 9*30 days) both before using Travis-CI and after using Travis-CI.  As the data were extracted from the inception until 2016-05-01, the projects selected should be created at least before 2014-11-08, so that there are at least 9*30*2 days from its creation to 2016-05-01. 
-%From GitHub Search API, we first found over 300k Java projects created before 2014-11-08 and with $\geqslant 500$ kilobytes. 
-%After consulting Travis-CI, we further identify projects that: 1) adopted Travis-CI; 2) at least 9 * 30 days from project creation to Travis-CI adoption; 3) at least 9 * 30 days from Travis-CI adoption to 2016-05-01. This filtering process left us 1566 projects.  
-%For each project, we collect the whole history of commits, issues, and pull requests from GitHub API, and the history of Travis-CI builds and job logs from Travis-CI repository using the ruby library of \textit{travis gem}.  In addition to these publicly available data, we further gathered the information about the number of tests and types of errors during the Travis-CI run.
+During initial exploration, we observed that on several occasions \Tvi has 
+been adopted as part of a larger restructuring effort, which lasted several days.
+Examples include changing the build system from Ant to Gradle and, 
+consequently, how project folders are organized; updating library 
+dependencies; and restructured tests.
+Based on this anecdotal evidence, we concluded that the activity immediately 
+prior to and immediately following the introduction of \Tvis might not be 
+representative of the project's overall trends.
+Therefore, to limit the risk of bias due to extraordinary project activity in 
+the transition period, we excluded one month of data centered around the 
+adoption event in our quantitative analyses below.
 
-Next, we used the \Tvis API to determine which of these projects:
-(i)~used \Tvis, and if yes, we recorded the date of the earliest build as the 
-adoption date; (ii)~had at least 9*30 days of history from project creation to 
-the adoption date, and from the adoption date to 2016-05-01, respectively. 
-This filtering process resulted in 1,566 projects.
-For each project, we collected: (i)~its history of commits, issues, and pull 
-requests using the \GH API; and (ii)~its history of \Tvis builds and, for each
-build, all its job logs (a \Tvis build can be configured to run multiple jobs,
-one for each set of user-defined configuration options; each job run produces 
-a ``build log''), using the \Tvis API and the \textit{travis gem} Ruby library.  
+\smallskip\noindent\emph{Measures}
 
-\smallskip\noindent\emph{Mainline commits:}
+We collected global and time-window-specific measures: 
+\begin{itemize}
 
+\item \textbf{total number of commits} in a project's history, as a proxy for 
+project size / activity.
+
+\item \textbf{total number of commit authors}, as a proxy for the size of a
+project's community; commit authors include both core developers, who are
+also committers, and external contributors, without ``write'' access, whose 
+commits are merged in by the core developers.
+Since it is common for open-source developers to contribute under different 
+aliases (name-email tuples), \eg as a result of using different machines and 
+changes in git settings over time, we first performed \emph{identity merging}.
+We used heuristics that match first and last names, email prefixes, and email 
+domains, cf.\ prior work~\cite{bird2006mining, vasilescu2015msrdata}, and
+found an average of 1.15 (max 7) aliases per person in our dataset.
+
+\item \textbf{project age} at the time of adopting \Tvis, in months, computed
+since the earliest recorded commit.
+
+\item \textbf{main programming language}, automatically computed by \GH
+based on the contents of each repository and extensions of file names therein.
+
+\item \textbf{number of non-merge commits}, \textbf{number of merge commits} 
+per time window.
+%, our measure of commit frequency.
 Since git is a distributed version control system, developers can work locally,
 in increments, before pushing their changes to \GH or opening a pull request.
 E.g., a developer can choose to partition a large change into many smaller 
-ones, and make multiple local commits to better handle the work.
+ones, and make multiple local commits to better manage the work.
 This would not have any effect on CI runs, since CI is only triggered by \GH 
-push events, and events happening after (and including when) a pull request 
-is opened.
+\emph{push} events, and events happening after (and including when) a pull 
+request is opened.
 %Pull requests are also a mechanism to isolate individual developers from 
 %activity on the mainline.
 Consequently, to study \emph{Commits To the \_Mainline\_ Every Day}
 (Fowler's best practice), as opposed to potentially local git commits, we
 distinguish between \emph{non-merge commits} and \emph{merge commits}
 as a proxy.
-We use  \texttt{\small git rev-list --all --merges} to recognize merge commits.
+We recognize non-merge commits as those having at most one parent, and
+merge commits otherwise.
 
-%Starting from RQ1 and RQ2 the practice being investigate should be �Commits To the Mainline Every Day�, but then you analyze git commits. Not surprisingly, commits do not increase. Why they should? The main reason of having many commits is the ability to partition a large change in many smaller ones and to better handle the work locally. What really matters for the CI are pushes and pull requests. Indeed, I would expect an increase of pushes/pull requests when CI is being adopted. Maybe a way to observe this is to actually analyze merge commits and see whether their frequency increases.
-%Similar considerations apply for the size of code changes. Also, I�ve the feeling that such a size may strongly depend on the kind of activity being performed. For example, it could be that bug fixing correlates with small change size, whereas feature addition with larger ones. 
+%\item  per time window.
+%, as a proxy for how
+%distributed a project's development is, over branches and forks.
 
-\smallskip\noindent\emph{Bug fixing vs.\ other activities:} 
+\item \textbf{mean commit churn} for non-merge commits, per time window,
+our measure of commit size.
+Churn is computed as the total number of lines added plus the total number
+of lines removed per commit (in git modified lines appear as first removed, 
+then added), extracted from git logs.
+The mean is computed over all non-merge commits commits in that time window.
 
-The kind of activity being performed may confound commit size, \eg since one 
-can expect bug fix commits to be smaller than new feature implementations.
-We additionally annotate the non-merge commits as \emph{bug-fixing} or not, 
-by searching for typical patterns in commit 
-messages~\cite{mockus2000identifying}.\footnote{E.g., \verb$^(bug)?fix(es|s|ed|ing)?(bug)?([[:punct:]]|\\s+)$}
-Note that we don't enforce that commit messages that match our regular
-expressions also contain references to existing issue report numbers, in an
-attempt to be more robust to different issue trackers (indeed, not all projects 
-use \GH's issue tracker) and different project linking / commit message conventions.
-%
-%The "fix" heuristic without issue tracker links (looking for issue numbers and verifying they exist in the issue tracker) has the disadvantage that it will detect "false positives", i.e., commits made not in response to an open issue; plus the extra disadvantage that it will identify commit messages containing "suffix", for example.
-%
-%However, not all projects use GitHub's issue tracker, as we know and a reviewer pointed out. Also, the original intent, triggered by a review comment, was to distinguish between new features and bug fixes. We can say that the "fix" heuristic more closely accomplishes this by being robust to issue trackers and project linking conventions. The only downside I can think of is if people close open "feature request" issues from the issue tracker, using "fix" language.
+\item \textbf{number of issues opened / closed}, \textbf{number of pull requests
+opened / closed} per time window, extracted using the \GH API.
+
+\item \textbf{mean pull request latency} per time window, in hours, computed 
+as the difference between the timestamp when the PR was closed and that 
+when it was opened.
+The mean is computed over all PRs in that time window.
+\end{itemize}
+
+\bv{Add something about build logs and unit tests.}
+%(i)~its history of commits, issues, and pull 
+%requests using the \GH API; and 
+%(ii)~its history of \Tvis builds and, for each
+%build, all its job logs (a \Tvis build can be configured to run multiple jobs,
+%one for each set of user-defined configuration options; each job run produces 
+%a ``build log''), using the \Tvis API and the \textit{travis gem} Ruby library.  
 
 
+\smallskip\noindent\emph{Filtering}
 
+As a large fraction of projects on \GH are small and not highly 
+active~\cite{gousios2014exploratory}, we filtered out projects that had not 
+been consistently active during our 24-month observation period: we require
+at least one commit on the main branch in each of the 24 time windows 
+(in our sample only 2,595 projects, across 83 programming languages, satisfy 
+this requirement).
+Furthermore, our multivariate regression analysis below requires enough 
+variance along each of the dimensions being modeled, thus we additionally
+filter out programming languages not represented by at least 10 projects each.
+The resulting dataset consists of 2,446 projects across 22 languages.
+
+\bv{Talk about outlier removal}
+
+\bv{Add dataset overview table}
 
 \input{tables/ouput_examples}
 
-\smallskip\noindent\emph{Number of tests executed per build:} 
+\smallskip\noindent\emph{Number of Tests Executed per Build} 
 
 We also parsed the \Tvis build logs and extracted information about the 
-number of tests executed and the types of reasons causing builds to break.
+number of tests executed. % and the types of reasons causing builds to break.
 %We provide more details next.
 Each \Tvis build consists of at least one job, which corresponds to a particular
-build \& test environment (\eg jdk version, environment variables). 
+build and test environment (\eg jdk version, environment variables). 
 Once the job is started, a log is generated, recording the detailed information
 of the build lifecycle, including installation steps and output produced by the 
 build managers. % scripts for testing. 
@@ -160,62 +172,128 @@ to analyze the logs and extract summary information about test executions.
 Since the relationship between builds and jobs is one-to-many, we use the 
 maximum number of tests across jobs as the test count for the build. 
 
-\input{tables/error_types}
 
-\smallskip\noindent\emph{Error classification for failed builds:}
 
-\Tvis marks a build as \textit{failed} if at least one of its jobs not explicitly 
-labeled as \emph{allowed to fail} in the project's CI configuration 
-file\footnote{\url{https://docs.travis-ci.com/user/customizing-the-build/#Rows-that-are-Allowed-to-Fail}} failed.
-Therefore, to understand why \Tvis builds failed, we proceed to find out 
-what happened in the jobs. 
-We first manually reviewed a set of failed jobs to recognize what kinds of 
-failures occur and whether there are any corresponding textual patterns in 
-the logs.
-Then, we extracted a set of mapping rules to classify these patterns into 
-categories.
-We proceeded iteratively by inspecting more randomly selected failed jobs
-and gradually refining our classification scheme, until reaching saturation. 
-%To mitigate the risk of bias arising from missing and incorrect classification, 
-%we augmented the manual reviewing rates to improve our classification 
-%rules and remove spurious classification as much as possible. 
-%The classification scheme evolved during this process, and was gradually 
-%refined to cover more textual patterns. 
-In the end, we identified 8 categories of reasons for build failures, 
-as summarized in Table~\ref{error_types}. 
-%a group of mapping rules to classify the errors into 8 types, as shown 
+%We started by composing (using the \GH Search API) a list of candidate Java 
+%projects that: (i)~were not very small (a large fraction of projects on \GH are 
+%small and inactive~\cite{gousios2014exploratory}; we arbitrarily chose to ignore
+%projects smaller than 500 kilobytes, using the \GH Search API's \emph{size} 
+%parameter); and (ii)~were created no later than 2014-11-08. 
+%The second criterion is a consequence of our data collection date (2016-05-01)
+%and the ``sufficient history'' requirement. 
+%Our statistical analysis, detailed below, assumes 9 months of history for each
+%project both prior to and after adopting \Tvis; since we did not have access to
+%data on when each project started using \Tvis at this stage, we conservatively
+%chose the 2014-11-08 date, which allows 9*30*2 days of history from project 
+%creation to 2016-05-01.
+%This step resulted in a list of over 300,000 candidate Java projects.
 
-Next, we implemented tools for automatic classification. 
-The detailed process comprises the following steps:
+%first and foremost, we should make sure our studied projects have sufficient history (e.g. 9*30 days) both before using Travis-CI and after using Travis-CI.  As the data were extracted from the inception until 2016-05-01, the projects selected should be created at least before 2014-11-08, so that there are at least 9*30*2 days from its creation to 2016-05-01. 
+%From GitHub Search API, we first found over 300k Java projects created before 2014-11-08 and with $\geqslant 500$ kilobytes. 
+%After consulting Travis-CI, we further identify projects that: 1) adopted Travis-CI; 2) at least 9 * 30 days from project creation to Travis-CI adoption; 3) at least 9 * 30 days from Travis-CI adoption to 2016-05-01. This filtering process left us 1566 projects.  
+%For each project, we collect the whole history of commits, issues, and pull requests from GitHub API, and the history of Travis-CI builds and job logs from Travis-CI repository using the ruby library of \textit{travis gem}.  In addition to these publicly available data, we further gathered the information about the number of tests and types of errors during the Travis-CI run.
 
-\noindent 1)~\emph{Failure Location}. 
-We first recognized failed jobs with \textit{non-allow-failure} attributes, which 
-result in the build's final \textit{failed} state. 
-Then, we attempted to locate the command which caused the breakdown 
-in the log file, as the command which exited with a non-zero value.
-The log entry for this command usually provided detailed information about 
-the fatal errors that occurred. 
-If such commands were not recorded in the log file, we expanded the search 
-scope to the \textit{script} phase and the \textit{after script} phase of the 
-build log, as per \Tvis build lifecycle.\footnote{\url{https://docs.travis-ci.com/user/customizing-the-build/#The-Build-Lifecycle}}
-Note that if errors occur in the \emph{before script} phase of the build, the 
-job is automatically marked as \textit{errored} and stops immediately. 
-Only if the \textit{script} phase returns a non-zero exit code, or the \textit{after 
-script} phase times out, then the job is marked as \textit{failed}. 
-Therefore, we first check if there is a time-out error in \textit{after script}. 
-If not, then it's likely that the errors in the \textit{script} phase caused the 
-build to break. 
+%Next, we used the \Tvis API to determine which of these projects:
+%(i)~used \Tvis, and if yes, we recorded the date of the earliest build as the 
+%adoption date; (ii)~had at least 9*30 days of history from project creation to 
+%the adoption date, and from the adoption date to 2016-05-01, respectively. 
+%This filtering process resulted in 1,566 projects.
 
-\noindent 2)~\emph{Log Parsing \& Tagging}. 
-After extracting the log fragment describing the errors, we 
-used textual pattern matching for classification. 
+%\smallskip\noindent\emph{Mainline commits:}
 %
-%\noindent 3)~\emph{Tagging}. 
-%We tagged the extracted textual patterns with a subset of the defined 8 error 
-%types. 
-Note the one-to-many relationship between jobs and failure types. 
-E.g., if a job had both failed tests and skipped tests, it is tagged 
-with both ``failed test'' and ``skipped or pending test'' error types.
+%Since git is a distributed version control system, developers can work locally,
+%in increments, before pushing their changes to \GH or opening a pull request.
+%E.g., a developer can choose to partition a large change into many smaller 
+%ones, and make multiple local commits to better handle the work.
+%This would not have any effect on CI runs, since CI is only triggered by \GH 
+%push events, and events happening after (and including when) a pull request 
+%is opened.
+%%Pull requests are also a mechanism to isolate individual developers from 
+%%activity on the mainline.
+%Consequently, to study \emph{Commits To the \_Mainline\_ Every Day}
+%(Fowler's best practice), as opposed to potentially local git commits, we
+%distinguish between \emph{non-merge commits} and \emph{merge commits}
+%as a proxy.
+%We use  \texttt{\small git rev-list --all --merges} to recognize merge commits.
+
+%Starting from RQ1 and RQ2 the practice being investigate should be �Commits To the Mainline Every Day�, but then you analyze git commits. Not surprisingly, commits do not increase. Why they should? The main reason of having many commits is the ability to partition a large change in many smaller ones and to better handle the work locally. What really matters for the CI are pushes and pull requests. Indeed, I would expect an increase of pushes/pull requests when CI is being adopted. Maybe a way to observe this is to actually analyze merge commits and see whether their frequency increases.
+%Similar considerations apply for the size of code changes. Also, I�ve the feeling that such a size may strongly depend on the kind of activity being performed. For example, it could be that bug fixing correlates with small change size, whereas feature addition with larger ones. 
+
+%\smallskip\noindent\emph{Bug fixing vs.\ other activities:} 
+%
+%The kind of activity being performed may confound commit size, \eg since one 
+%can expect bug fix commits to be smaller than new feature implementations.
+%We additionally annotate the non-merge commits as \emph{bug-fixing} or not, 
+%by searching for typical patterns in commit 
+%messages~\cite{mockus2000identifying}.\footnote{E.g., \verb$^(bug)?fix(es|s|ed|ing)?(bug)?([[:punct:]]|\\s+)$}
+%Note that we don't enforce that commit messages that match our regular
+%expressions also contain references to existing issue report numbers, in an
+%attempt to be more robust to different issue trackers (indeed, not all projects 
+%use \GH's issue tracker) and different project linking / commit message conventions.
+%%
+%%The "fix" heuristic without issue tracker links (looking for issue numbers and verifying they exist in the issue tracker) has the disadvantage that it will detect "false positives", i.e., commits made not in response to an open issue; plus the extra disadvantage that it will identify commit messages containing "suffix", for example.
+%%
+%%However, not all projects use GitHub's issue tracker, as we know and a reviewer pointed out. Also, the original intent, triggered by a review comment, was to distinguish between new features and bug fixes. We can say that the "fix" heuristic more closely accomplishes this by being robust to issue trackers and project linking conventions. The only downside I can think of is if people close open "feature request" issues from the issue tracker, using "fix" language.
+%
+
+
+
+%\input{tables/error_types}
+
+%\smallskip\noindent\emph{Error classification for failed builds:}
+%
+%\Tvis marks a build as \textit{failed} if at least one of its jobs not explicitly 
+%labeled as \emph{allowed to fail} in the project's CI configuration 
+%file\footnote{\url{https://docs.travis-ci.com/user/customizing-the-build/#Rows-that-are-Allowed-to-Fail}} failed.
+%Therefore, to understand why \Tvis builds failed, we proceed to find out 
+%what happened in the jobs. 
+%We first manually reviewed a set of failed jobs to recognize what kinds of 
+%failures occur and whether there are any corresponding textual patterns in 
+%the logs.
+%Then, we extracted a set of mapping rules to classify these patterns into 
+%categories.
+%We proceeded iteratively by inspecting more randomly selected failed jobs
+%and gradually refining our classification scheme, until reaching saturation. 
+%%To mitigate the risk of bias arising from missing and incorrect classification, 
+%%we augmented the manual reviewing rates to improve our classification 
+%%rules and remove spurious classification as much as possible. 
+%%The classification scheme evolved during this process, and was gradually 
+%%refined to cover more textual patterns. 
+%In the end, we identified 8 categories of reasons for build failures, 
+%as summarized in Table~\ref{error_types}. 
+%%a group of mapping rules to classify the errors into 8 types, as shown 
+%
+%Next, we implemented tools for automatic classification. 
+%The detailed process comprises the following steps:
+%
+%\noindent 1)~\emph{Failure Location}. 
+%We first recognized failed jobs with \textit{non-allow-failure} attributes, which 
+%result in the build's final \textit{failed} state. 
+%Then, we attempted to locate the command which caused the breakdown 
+%in the log file, as the command which exited with a non-zero value.
+%The log entry for this command usually provided detailed information about 
+%the fatal errors that occurred. 
+%If such commands were not recorded in the log file, we expanded the search 
+%scope to the \textit{script} phase and the \textit{after script} phase of the 
+%build log, as per \Tvis build lifecycle.\footnote{\url{https://docs.travis-ci.com/user/customizing-the-build/#The-Build-Lifecycle}}
+%Note that if errors occur in the \emph{before script} phase of the build, the 
+%job is automatically marked as \textit{errored} and stops immediately. 
+%Only if the \textit{script} phase returns a non-zero exit code, or the \textit{after 
+%script} phase times out, then the job is marked as \textit{failed}. 
+%Therefore, we first check if there is a time-out error in \textit{after script}. 
+%If not, then it's likely that the errors in the \textit{script} phase caused the 
+%build to break. 
+%
+%\noindent 2)~\emph{Log Parsing \& Tagging}. 
+%After extracting the log fragment describing the errors, we 
+%used textual pattern matching for classification. 
+%%
+%%\noindent 3)~\emph{Tagging}. 
+%%We tagged the extracted textual patterns with a subset of the defined 8 error 
+%%types. 
+%Note the one-to-many relationship between jobs and failure types. 
+%E.g., if a job had both failed tests and skipped tests, it is tagged 
+%with both ``failed test'' and ``skipped or pending test'' error types.
 
 
 %\textit{Distinguishing the bugs introduced before CI adoption and the bugs introduced after CI adoption}: 
