@@ -157,6 +157,7 @@ The resulting dataset consists of 2,446 projects across 22 languages.
 
 \smallskip\noindent\emph{Number of Tests Executed per Build} 
 
+\bv{Integrate this into Measures above}
 We also parsed the \Tvis build logs and extracted information about the 
 number of tests executed. % and the types of reasons causing builds to break.
 %We provide more details next.
@@ -310,6 +311,7 @@ maximum number of tests across jobs as the test count for the build.
 
 \input{tables/projs_summary}
 
+\bv{Integrate this into Filtering above}
 %Our study makes use of a large-scale data set collected from the selected 1566 java projects. 
 Table~\ref{projs_summary} contains descriptive statistics for the selected 
 1,566 Java projects that adopted \Tvis. 
@@ -371,65 +373,100 @@ In the end, 250 projects remained in the filtered RQ4 data set.
 \subsection{Time Series Analysis Method}
 \label{sec:tsa}
 
-We use data visualization and statistical modeling to discover 
-longitudinal patterns indicative of CI adoption effects on development practices.
+We use data visualization and statistical modeling to discover longitudinal 
+patterns indicative of CI adoption effects on development practices.
 As one of our contributions, we introduce the statistical modeling 
 framework of \emph{regression discontinuity design}~\cite{imbens2008regression} 
-to assess the existence and extent of a longitudinal effect of CI adoption on 
-development practices.
+to assess the existence and extent of a longitudinal effect on development 
+practices, associated with the \Tvis adoption.
 
 To evaluate the effect of a treatment, \eg new drug on a disease progression, 
-randomized experimental trials are conducted, 
-in which the experimental 
-cohort is randomly split into a treatment group, \ie those given the treatment, and 
-a control group, \ie those not given the treatment. 
-Then, the effect is evaluated based on the difference in disease progression 
+randomized experimental trials are usually conducted: the experimental 
+cohort is randomly split into a treatment group, \ie those given the treatment, 
+and a control group, \ie those not given the treatment; 
+then, the effect is evaluated based on the difference in disease progression 
 between the two groups.
-In the absence of randomized trials, as is the case with trace data in 
-empirical software engineering, weaker techniques which make 
-additional assumptions, \eg quasi-experiments, are employed.
+In the absence of randomized trials, as is often the case with software 
+engineering trace data, weaker techniques, \eg quasi-experiments, are employed.
+%which make additional assumptions, 
 
-Regression discontinuity design (RDD)~\cite{imbens2008regression} is an example of such a technique, 
-used for modeling the extent of a discontinuity of a function between its values 
-at points just before and just after a given intervention. 
+Among quasi-experimental designs to evaluate longitudinal effects of an 
+intervention, regression discontinuity designs (RDDs)~\cite{cook1979quasi} 
+are the most powerful.
+RDD is used to model the extent of a discontinuity of a function between its 
+values at points just before and just after a given intervention. 
 RDD is based on the assumption that in the absence of the intervention, the 
-trend of the function would be continuous in the same way as prior to it.
-Fig.~\ref{RDDIllustration} illustrates a discontinuity, and the RDD approach, in a nutshell, aims to uncover the 
- different regression lines before and after the discontinuity.
+trend of the function would be continuous in the same way as prior to the 
+intervention.
+Therefore, RDD allows one to statistically assess how much an intervention 
+(in our case the adoption of \Tvis) changed an outcome of interest, both 
+immediately as well as over time; and, if implemented using multiple regression, 
+at the same time evaluate whether the change could be attributed to other 
+factors than the intervention.
+Figure~\ref{RDDIllustration} illustrates a discontinuity; the RDD approach, 
+in a nutshell, aims to uncover the different regression lines before and after 
+the discontinuity.
 
-There are a number of different formalizations of RDD, most prominently 
+%\cite{weinberg2001reducing}
+
+There are different formalizations of RDD, most prominently 
 sharp RDD and fuzzy RDD~\cite{imbens2008regression}.
 %Each, in turn, can be implemented in a variety of ways.
-To model the effect of CI adoption on developer practices, here we chose one implementation
-of the simpler, sharp RDD approach: linear regression with an interaction term.
-We summarize our approach next, following the description by Imbens and 
-Lemieux~\cite{imbens2008regression}, and refer to Figure~\ref{RDDIllustration}.
+To model the effect of CI adoption on developer practices, here we chose one 
+implementation of the simpler, sharp RDD approach: \emph{segmented regression 
+analysis of interrupted time series data}~\cite{wagner2002segmented}.
+%linear regression with an interaction term.
+We summarize our approach next, following the description by Wagner 
+\etal~\cite{wagner2002segmented}, and refer to Figure~\ref{RDDIllustration}.
+%Imbens and Lemieux~\cite{imbens2008regression}, and refer to Figure~\ref{RDDIllustration}.
 Let $Y$ be the outcome variable in which we are looking for a discontinuity, 
-\eg change in commit churn per month before vs after CI adoption, let $X$ be the temporal variable containing the 
-time of intervention, and let $c$ be the time point at which the intervention, \eg CI adoption, has occurred.
-Then, an RDD model for points $x_i$ in equal intervals $h$ on each side of 
-$c$, $c-h \le x_i \le c+h$, is given by:
+\eg commit churn per month.
+We can specify the following linear regression model to estimate the level
+and trend in $Y$ before CI adoption and the changes in level and trend
+after CI adoption:
+%, let $X$ 
+%be the temporal variable containing the time of intervention, and let $c$ be 
+%the time point at which the intervention has occurred.
+%Then, an RDD model for points $x_i$ in equal intervals $h$ on each side of 
+%$c$, $c-h \le x_i \le c+h$, is given by:
+\begin{align}
+y_i \ = &\alpha + \beta \cdot \text{time}_i + \gamma \cdot \text{intervention}_i \nonumber \\
+	&+ \delta \cdot \text{time\_after\_intervention}_i + \epsilon_i,
+%y_i \ = \alpha + \beta(x_i-c) + \gamma w_i + \delta(x_i-c)w_i + \epsilon_i,
+\end{align}
+where \emph{time} is a continuous variable indicating time in months at 
+time $t$ from the start of the observation period;
+\emph{intervention} is an indicator for time $t$ occurring before 
+($\text{intervention} = 0$) or after ($\text{intervention} = 1$) CI adoption, which 
+was at month 0 based on our encoding in Figure~\ref{fig:timeseries};
+and \emph{time after intervention} is a continuous variable counting the number 
+of months after the intervention at time $t$, coded 0 before CI adoption and 
+($\text{time} - 12$) after CI adoption.
 
-\[y_i \ = \alpha + \beta(x_i-c) + \gamma w_i + \delta(x_i-c)w_i + \epsilon_i,\]
+%\[y_i \ = \alpha + \beta(x_i-c) + \gamma w_i + \delta(x_i-c)w_i + \epsilon_i,\]
 
-\noindent where $w_i = (x_i \geq c)$, \ie $w_i$ is 1 if point $x_i$ is included in 
-the treatment group (\eg after CI adoption), and 0 if it is before the treatment.
+%\noindent where $w_i = (x_i \geq c)$, \ie $w_i$ is 1 if point $x_i$ is included in 
+%the treatment group (\eg after CI adoption), and 0 if it is before the treatment.
 In fact, this model encapsulates two separate regressions.
 For points before the treatment, the resulting regression line has a slope of 
 $\beta$, and after the treatment $\beta + \delta$.
 The size of the effect of the treatment is the difference between the two 
-regression values of $y_i$ evaluated at $x=c$, and can be seen to be equal 
-to $\gamma$.
-For example, in Fig.~\ref{RDDIllustration}, the treatment effect ($\gamma$) is negative, and there is an interaction effect ($\delta \neq 0$) which changes the slope of the regression after the treatment.
-A critical assumption for RDD is that but for the treatment, all other variables remain steady, before, during, and after the treatment.
+regression values of $y_i$ evaluated at the intervention time,
+%$x=c$, 
+and can be seen to be equal to $\gamma$.
+For example, in Figure~\ref{RDDIllustration}, the treatment effect ($\gamma$) 
+is negative, and there is an interaction effect ($\delta \neq 0$) which changes 
+the slope of the regression after the treatment.
+A critical assumption for RDD is that but for the treatment, all other variables 
+remain steady, before, during, and after the treatment.
 
 For each project, we use an RDD model implemented as the above 
 double linear regression, on data centered at the time of CI adoption, and 
 having equal number of points on each side.
-Solving the regression gives us the coefficients, which if significant, can help us reason about the treatment and its effects, if any.
-We report on the models having significant coefficients in the regressions ($<0.05$). Our successful models had an $R^2$ of at least $0.65$. 
-
-
+Solving the regression gives us the coefficients, which if significant, can help 
+us reason about the treatment and its effects, if any.
+We report on the models having significant coefficients in the regressions ($<0.05$). 
+%Our successful models had an $R^2$ of at least $0.65$. 
 
 \begin{figure}[t]
 	\centering
