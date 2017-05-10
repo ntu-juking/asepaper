@@ -380,14 +380,15 @@ framework of \emph{regression discontinuity design}~\cite{imbens2008regression}
 to assess the existence and extent of a longitudinal effect on development 
 practices, associated with the \Tvis adoption.
 
-To evaluate the effect of a treatment, \eg new drug on a disease progression, 
+To evaluate the effect of a treatment, \eg a new drug, on a disease progression, 
 randomized experimental trials are usually conducted: the experimental 
 cohort is randomly split into a treatment group, \ie those given the treatment, 
 and a control group, \ie those not given the treatment; 
 then, the effect is evaluated based on the difference in disease progression 
 between the two groups.
 In the absence of randomized trials, as is often the case with software 
-engineering trace data, weaker techniques, \eg quasi-experiments, are employed.
+engineering trace data, weaker techniques such as quasi-experiments are 
+employed.
 %which make additional assumptions, 
 
 Among quasi-experimental designs to evaluate longitudinal effects of an 
@@ -422,7 +423,7 @@ We summarize our approach next, following the description by Wagner
 Let $Y$ be the outcome variable in which we are looking for a discontinuity, 
 \eg commit churn per month.
 We can specify the following linear regression model to estimate the level
-and trend in $Y$ before CI adoption and the changes in level and trend
+and trend in $Y$ before CI adoption, and the changes in level and trend
 after CI adoption:
 %, let $X$ 
 %be the temporal variable containing the time of intervention, and let $c$ be 
@@ -435,12 +436,12 @@ y_i \ = &\alpha + \beta \cdot \text{time}_i + \gamma \cdot \text{intervention}_i
 %y_i \ = \alpha + \beta(x_i-c) + \gamma w_i + \delta(x_i-c)w_i + \epsilon_i,
 \end{align}
 where \emph{time} is a continuous variable indicating time in months at 
-time $t$ from the start of the observation period;
-\emph{intervention} is an indicator for time $t$ occurring before 
+time $i$ from the start of the observation period;
+\emph{intervention} is an indicator for time $i$ occurring before 
 ($\text{intervention} = 0$) or after ($\text{intervention} = 1$) CI adoption, which 
 was at month 0 based on our encoding in Figure~\ref{fig:timeseries};
 and \emph{time after intervention} is a continuous variable counting the number 
-of months after the intervention at time $t$, coded 0 before CI adoption and 
+of months at time $i$ after the intervention, coded 0 before CI adoption and 
 ($\text{time} - 12$) after CI adoption.
 
 %\[y_i \ = \alpha + \beta(x_i-c) + \gamma w_i + \delta(x_i-c)w_i + \epsilon_i,\]
@@ -457,7 +458,7 @@ and can be seen to be equal to $\gamma$.
 For example, in Figure~\ref{RDDIllustration}, the treatment effect ($\gamma$) 
 is negative, and there is an interaction effect ($\delta \neq 0$) which changes 
 the slope of the regression after the treatment.
-A critical assumption for RDD is that but for the treatment, all other variables 
+Note, a critical assumption for RDD is that all variables but the treatment
 remain steady, before, during, and after the treatment.
 
 \begin{figure}[t]
@@ -467,12 +468,12 @@ remain steady, before, during, and after the treatment.
 	\label{RDDIllustration}
 \end{figure}
 
-We wish to capture, using the RDD model above, changes in trends after CI 
+Our goal is to capture, using the RDD model above, changes in trends after CI 
 adoption across our sample of projects, while controling for confounding variables 
-(\eg project size, age, and programming language; see Measures subsection above).
+(\eg project size, age, and programming language).
 Our data is centered at the time of CI adoption, and has an equal number of points, 
 12, on each side.
-Since our data is inherently nested (each project contributes multiple observations; 
+Since the data is inherently nested (each project contributes multiple observations; 
 similarly for programming language), we implement the RDD model as a 
 mixed-effects linear regression (functions \texttt{lmer} and \texttt{lmer.test} in R) 
 with a random-effects term for \emph{project} and another random effects term 
