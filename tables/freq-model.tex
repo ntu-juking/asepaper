@@ -1,0 +1,40 @@
+
+ 
+
+\begin{table}[t]
+\centering \footnotesize
+\rowcolors{3}{Gray}{}
+\begin{tabular}{l D{)}{)}{13)3}@{} D{.}{.}{5.5} }
+\hline
+                                               & \multicolumn{1}{c}{Coeffs (Errors)} & \multicolumn{1}{c}{Sum Sq.} \\
+\hline
+(Intercept)                            & -1.660 \; (0.102)^{***} & \\
+log(TotalCommits)                      & 0.662 \; (0.015)^{***} & 933.1^{***}  \\
+log(num\_merge\_commits+1)           & 0.558 \; (0.004)^{***} & 8323.6^{***} \\
+AgeAtTravis                            & -0.003 \; (0.000)^{***} & 30.7^{***}\\
+log(NumAuthors)                        & -0.215 \; (0.011)^{***} & 173.2^{***}\\
+time                                   & -0.012 \; (0.001)^{***} & 40.8^{***}\\
+interventionTRUE                       & 0.102 \; (0.018)^{***} & 15.1^{***} \\
+time\_after\_intervention              & -0.013 \; (0.002)^{***} & 25.5^{***}\\
+\hline
+%AIC                                    & 111917.158              \\
+%BIC                                    & 112031.638              \\
+%Log Likelihood                         & -55945.579              \\
+%Num. obs.                              & 49323                   \\
+%Num. groups: Repo                      & 2401                    \\
+%Num. groups: Language                  & 22                      \\
+%Var: Repo (Intercept)                  & 0.399                   \\
+%Var: Repo interventionTRUE             & 0.339                   \\
+%Cov: Repo (Intercept) interventionTRUE & -0.178                  \\
+%Var: Language (Intercept)              & 0.010                   \\
+%Var: Residual                          & 0.462                   \\
+\hline
+\rowcolor{white}
+\multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
+\end{tabular}
+\caption{Commit frequency model. The response is \textbf{log(number of non-merge commits)}
+per month. $R^2_m = 0.57$. $R^2_c = 0.77$.}
+\label{table:freq}
+ 
+\end{table}
+

@@ -1,0 +1,81 @@
+
+ 
+
+\begin{table}[t]
+\centering \footnotesize
+\rowcolors{3}{Gray}{}
+\begin{tabular}{l D{)}{)}{13)3}@{} D{.}{.}{5.5} }
+\hline
+                                               & \multicolumn{1}{c}{Coeffs (Errors)} & \multicolumn{1}{c}{Sum Sq.} \\
+\hline
+(Intercept)                            & 1.311 \; (0.132)^{***} & \\
+log(TotalCommits)                      & 0.439 \; (0.016)^{***}  & 588.51^{***} \\
+AgeAtTravis                            & -0.003 \; (0.000)^{***} & 48.10^{***} \\
+log(NumAuthors)                        & -0.173 \; (0.012)^{***} & 158.77^{***} \\
+time                                   & 0.002 \; (0.002)       & 0.93 \\ 
+interventionTRUE                       & 0.039 \; (0.019)^{*}    & 3.22^{*} \\
+time\_after\_intervention              & -0.023 \; (0.002)^{***} & 75.59^{***} \\
+%
+%
+%(Intercept)                                & 1.125 \; (0.161)^{***}  &  \\
+%log(TotalCommits)                          & 0.514 \; (0.020)^{***}  & 588.51^{***} \\
+%AgeAtTravis                                & -0.003 \; (0.001)^{***} & 48.10^{***} \\
+%log(NumAuthors)                            & -0.218 \; (0.016)^{***} & 158.77^{***} \\
+%time                                       & 0.002 \; (0.002)       & 0.93 \\
+%interventionTRUE                           & 0.072 \; (0.028)^{**}  & 3.22^{*} \\
+%time\_after\_intervention                  & -0.024 \; (0.003)^{***} & 75.59^{***} \\
+%(Intercept)                                          & 0.069 \; (0.012)^{***}   & \\
+%GlobalTime                                    & -0.037 \; (0.005)^{***}  & 15.71^{***} \\
+%Projects                                      & 0.263 \; (0.006)^{***}   & 2566.87^{***} \\
+%Languages                                     & 0.549 \; (0.004)^{***}   & 11505.20^{***} \\
+%$S_\text{Focus}$                                  & -0.300 \; (0.004)^{***}  & 2757.75^{***} \\
+%$S_\text{Language}$                               & -0.231 \; (0.003)^{***}  & 2354.39^{***} \\
+%AvgProjectsPerDay                             & 0.046 \; (0.004)^{***}   & 215.29^{***} \\
+%$S_\text{Switch}$                          & 0.225 \; (0.004)^{***}   & 2255.09^{***} \\
+%Projects:$S_\text{Focus}$                  & 0.032 \; (0.003)^{***}   & 0.16^{***} \\
+%Languages:$S_\text{Language}$              & -0.045 \; (0.002)^{***}  & 345.96^{***} \\
+%Projects:$S_\text{Language}$               & -0.021 \; (0.003)^{***}  & 68.66^{***} \\
+%Projects:AvgProjectsPerDay             & -0.024 \; (0.003)^{***}  & 128.60^{***} \\
+%$S_\text{Language}$:AvgProjectsPerDay      & 0.026 \; (0.003)^{***}   & 59.86^{***} \\
+%Projects:$S_\text{Switch}$          & -0.104 \; (0.003)^{***}  & 404.80^{***} \\
+%AvgProjectsPerDay:$S_\text{Switch}$ & 0.058 \; (0.003)^{***}   & 203.12^{***} \\
+%$S_\text{Language}$:$S_\text{Switch}$   & -0.029 \; (0.003)^{***}  & 35.99^{***} \\
+\hline
+%\multicolumn{3}{c}{AIC = 175178.307; BIC =  175303.204; LogLik = -87575.153           }                                          \\
+%\rowcolor{white}
+%\rowcolor{white}
+%\multicolumn{3}{c}{Num. obs. = 55340; Num. groups: Repo = 2405; Language = 22}\\
+%AIC                                        & 175178.307              \\
+%BIC                                        & 175303.204              \\
+%Log Likelihood                             & -87575.153              \\
+%Num. obs.                                  & 55340                   \\
+%Num. groups: Repo                          & 2405                    \\
+%Num. groups: Language                      & 22                      \\
+%Var: Repo (Intercept)                      & 0.666                   \\
+%Var: Repo interventionTRUE                 & 0.262                   \\
+%Cov: Repo (Intercept) interventionTRUE     & -0.138                  \\
+%Var: Language (Intercept)                  & 0.145                   \\
+%Var: Language interventionTRUE             & 0.003                   \\
+%Cov: Language (Intercept) interventionTRUE & 0.002                   \\
+%Var: Residual                              & 1.200                   \\
+%Analysis of Variance Table of type III  with  Satterthwaite 
+%approximation for degrees of freedom
+%                        Sum Sq Mean Sq NumDF DenDF F.value    Pr(>F)    
+%log(TotalCommits)       760.54  760.54     1  2412  634.04 < 2.2e-16 ***
+%AgeAtTravis              49.73   49.73     1  2386   41.46 1.449e-10 ***
+%log(NumAuthors)         234.13  234.13     1  2373  195.19 < 2.2e-16 ***
+%time                      0.77    0.77     1 50696    0.65   0.42188    
+%intervention              8.29    8.29     1    11    6.91   0.02413 *  
+%time_after_intervention  95.91   95.91     1 50681   79.96 < 2.2e-16 ***
+%---
+%Signif. codes:  0 Ô***Õ 0.001 Ô**Õ 0.01 Ô*Õ 0.05 Ô.Õ 0.1 Ô Õ 1
+\hline
+\rowcolor{white}
+\multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
+\end{tabular}
+\caption{Commit churn model. The response is \textbf{log(mean commit churn)}
+per month. $R^2_m = 0.1$. $R^2_c = 0.46$.}
+\label{table:churn}
+ 
+\end{table}
+

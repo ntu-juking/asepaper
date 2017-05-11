@@ -5,33 +5,76 @@
 We discuss changes in development practices after CI adoption along four 
 dimensions: code churn, commit frequency, issue tracking, and testing. 
 
-\subsection{Preliminaries}
-\label{sec:examples}
+%\subsection{Preliminaries}
+%\label{sec:examples}
+%
+%Before diving into quantitative analysis we eyeballed several projects in our 
+%collection. 
+%We observed that on several occasions \Tvis has been adopted as part of a 
+%larger scale restructuring effort. 
+%For instance, \texttt{allendevco/pill-logger} has started using \Tvis on November 
+%20, 2013; in the same period developers have changed the project build system 
+%from Ant to Gradle and, as a consequence of that, also changed the way the 
+%project folders are organized.
+%Similarly, \texttt{Netflix/denominator} has introduced \Tvis on March 13, 2015
+%after an active development period of daily commits starting on March 3.
+%On the very same date \Tvis has been introduced, the project updated library 
+%dependencies and restructured tests, while on the next day it added examples 
+%and removed support of DiscoveryDNS.
+%This rather active development continued until the version 4.5.0 has been 
+%released on April 6, 2015.
+%The project had three additional commits in April and then went to a recess 
+%until early August. 
+%Examples such as \texttt{allendevco/pill-logger} and \texttt{Netflix/denominator} 
+%suggest that the activity immediately prior and immediately after introduction 
+%of \Tvis might not be representative for the project's overall software development
+%practices.
+%Therefore, to limit the risk of our trends being biased by extraordinary project 
+%activity during the transition period, we decided to exclude one month before 
+%the first \Tvis build and one month after it, in our quantitative analyses below.
 
-Before diving into quantitative analysis we eyeballed several projects in our 
-collection. 
-We observed that on several occasions \Tvis has been adopted as part of a 
-larger scale restructuring effort. 
-For instance, \texttt{allendevco/pill-logger} has started using \Tvis on November 
-20, 2013; in the same period developers have changed the project build system 
-from Ant to Gradle and, as a consequence of that, also changed the way the 
-project folders are organized.
-Similarly, \texttt{Netflix/denominator} has introduced \Tvis on March 13, 2015
-after an active development period of daily commits starting on March 3.
-On the very same date \Tvis has been introduced, the project updated library 
-dependencies and restructured tests, while on the next day it added examples 
-and removed support of DiscoveryDNS.
-This rather active development continued until the version 4.5.0 has been 
-released on April 6, 2015.
-The project had three additional commits in April and then went to a recess 
-until early August. 
-Examples such as \texttt{allendevco/pill-logger} and \texttt{Netflix/denominator} 
-suggest that the activity immediately prior and immediately after introduction 
-of \Tvis might not be representative for the project's overall software development
-practices.
-Therefore, to limit the risk of our trends being biased by extraordinary project 
-activity during the transition period, we decided to exclude one month before 
-the first \Tvis build and one month after it, in our quantitative analyses below.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/churn.pdf}
+\caption{Evolution of mean code churn before and after the \Tvis adoption.}
+\label{fig:churn}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-non-merge.pdf}
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-merge.pdf}
+\caption{Evolution of mean code churn before and after the \Tvis adoption.}
+\label{fig:freq}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/issues.pdf}
+\caption{Evolution of the number of closed issues before and after the \Tvis adoption.}
+\label{fig:issues}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/prs-full.pdf}
+\caption{Evolution of the number of closed pull requests before and after the \Tvis adoption.}
+\label{fig:prs}
+\end{figure}
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/pr-latency-mean.pdf}
+\caption{Evolution of the mean PR latency before and after the \Tvis adoption.}
+\label{fig:pr-latency}
+\end{figure}
+
+
+\input{tables/churn-model}
+\input{tables/freq-model}
+\input{tables/issues-model}
+
 
 \begin{figure}[t]
 \centering

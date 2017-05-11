@@ -1,0 +1,59 @@
+
+ 
+
+\begin{table}[t]
+\centering \footnotesize
+\rowcolors{3}{Gray}{}
+\begin{tabular}{l D{)}{)}{13)3}@{} D{.}{.}{5.5} }
+\hline
+                                               & \multicolumn{1}{c}{Coeffs (Errors)} & \multicolumn{1}{c}{Sum Sq.} \\
+\hline
+(Intercept)                            & -1.680 \; (0.364)^{***} & \\
+log(TotalCommits)                      & 0.443 \; (0.049)^{***} & 42.54^{***}  \\
+AgeAtTravis                            & -0.006 \; (0.001)^{***} & 8.83^{***}\\
+log(NumAuthors)                        & 0.119 \; (0.039)^{**}   & 4.72^{**}\\
+time                                   & 0.021 \; (0.004)^{***}  & 16.00^{***}\\
+interventionTRUE                       & 0.030 \; (0.049)         0.19&\\
+time\_after\_intervention              & -0.019 \; (0.005)^{***}  &  5.99^{***}\\
+\hline
+%AIC                                    & 13679.398               \\
+%BIC                                    & 13759.398               \\
+%Log Likelihood                         & -6827.699               \\
+%Num. obs.                              & 5806                    \\
+%Num. groups: Repo                      & 280                     \\
+%Num. groups: Language                  & 20                      \\
+%Var: Repo (Intercept)                  & 0.403                   \\
+%Var: Repo interventionTRUE             & 0.213                   \\
+%Cov: Repo (Intercept) interventionTRUE & -0.134                  \\
+%Var: Language (Intercept)              & 0.019                   \\
+%Var: Residual                          & 0.513                   \\
+%
+%(Intercept)                            & -2.540 \; (0.180)^{***} & \\
+%log(TotalCommits)                      & 0.396 \; (0.025)^{***} & 155.91^{***} \\
+%AgeAtTravis                            & -0.006 \; (0.001)^{***} & 47.72^{***}\\
+%log(NumAuthors)                        & 0.224 \; (0.019)^{***} & 83.73^{***} \\
+%time                                   & 0.012 \; (0.002)^{***} & 13.58^{***} \\
+%interventionTRUE                       & 0.049 \; (0.028)       & 2.02 \\
+%time\_after\_intervention              & -0.008 \; (0.003)^{*}  & 3.77^{*} \\
+%\hline
+%AIC                                    & 58524.762               \\
+%BIC                                    & 58620.964               \\
+%Log Likelihood                         & -29250.381              \\
+%Num. obs.                              & 22401                   \\
+%Num. groups: Repo                      & 1716                    \\
+%Num. groups: Language                  & 22                      \\
+%Var: Repo (Intercept)                  & 0.641                   \\
+%Var: Repo interventionTRUE             & 0.301                   \\
+%Cov: Repo (Intercept) interventionTRUE & -0.159                  \\
+%Var: Language (Intercept)              & 0.050                   \\
+%Var: Residual                          & 0.627                   \\
+\hline
+\rowcolor{white}
+\multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
+\end{tabular}
+\caption{Issues model. The response is \textbf{log(number of issues closed)}
+per month. $R^2_m = 0.17$. $R^2_c = 0.53$.}
+\label{table:issues}
+ 
+\end{table}
+
