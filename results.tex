@@ -150,7 +150,13 @@ The former is not unexpected, as one can reasonably expect that more
 maintenance work may be going on in preparation for the transition to \Tvis, 
 and that the projects go through some adjustment/cleanup period right after.
 The increased code churn on both sides near the CI adoption time is also
-indication of this, as are the survey results \as{ToDo}.
+indication of this, as are the survey results.  
+Indeed, when asked about the introduction of \Tvis, respondents frequently refer to 
+test automation being introduced around the same time as \Tvi ``as contributors 
+couldn't be trusted to run test suite on their own'' (R25). Furthermore, respondents 
+indicate that \Tvi has been introduced as ``a part of automated package/release effort'' (R38) 
+and to ``deploy artifacts to S3 on each commit, as part of our deployment process using 
+Amazon CodeDeploy'' (R34).
 
 The latter is consistent with Fowler's recommended good practices of CI, of 
 committing smaller changes to the code.
@@ -163,13 +169,13 @@ referred to pull request integration as the reason for introducing \Tvis, and
 while R31 and R50 state that \Tvis is used both for commits and for pull 
 requests, R11, R21, and R37 explicitly state that \Tvis is applied solely to 
 pull requests, \ie in those projects push commits are outside the scope of \Tvis.
-In other words, if in a project not all commits are subjected to \Tvi, then 
+In other words, if in a project not all commits are subjected to \Tvis, then 
 there may be less incentive to follow Fowler's recommended good practices 
 related to commit churn.
 
 At the same time, a different respondent indicated that \Tvis discourages 
 him/her from making trivial commits (R11), suggesting instead that the 
-commits he/she makes are likely to be larger\as{too speculative?};
+commits he/she makes are likely to be larger;
 therefore, our global decreasing trend may be weakened by local trends
 in the opposite direction.
 Our model found evidence for strong project-specific effects: 
@@ -186,7 +192,8 @@ become more prevalent than commits adding new features, which on
 average are larger.
 
 \as{Say something about SE practice/research implications}
-
+Our results suggest that while the Fowler's good practice of small commits is followed to some extent but the project-to-project and language-to-language differences are more important and might overshadow the overall trend.
+\as{Still thinking} 
 
 
 %Most of the projects did not show linear trends with time in code churn, on 
@@ -476,8 +483,9 @@ Thus, the number of issues increases significantly overall after CI adoption, to
 This is consistent with an increased number of issues brought up after CI adoption. Some of those are invariably related to the change in the way things are done, and the transition. Others may be related to the increased automated testing which likely discovers more concerns and bugs, which are then mentioned in issues.
 Overall, this result shows that the adoption of CI brings about more issues, as expected.
 
-
-
+\as{Survey}
+Survey participants experience \Tvi as beneficial for bug detection: ``I think we produce less bugs'' (R45), ``there was an immediately noticeable improvement in terms of the number of serious bugs in production'' (R51). 
+An interesting insight into this matter is provided by R16: while several survey respondents have indicated that \Tvis is not consistent in terms of performance and relatively slow, those performance aspects provided R16 with means to detect ``more flaky issues'' ``which where only visible on \Tvi''. 
 
 \subsection{RQ4: Trends in Testing}
 
@@ -556,4 +564,5 @@ error handling, with an indication that debugging complexity grows over time.
 	\caption{Evolution of Error Types Since CI Adoption}
 	\label{Fig:BugTypes}
 \end{figure}
+
 
