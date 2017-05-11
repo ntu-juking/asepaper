@@ -154,18 +154,39 @@ indication of this, as are the survey results \as{ToDo}.
 
 The latter is consistent with Fowler's recommended good practices of CI, of 
 committing smaller changes to the code.
-Alternatively, it is also consistent with the observation by Brindescu 
-\etal~\cite{brindescu2014centralized} that, as projects age, bug-fixing commits, 
-which on average are smaller, become more prevalent than commits adding 
-new features, which on average are larger.
+The expected decrease in the size of the commits is echoed by one of the 
+survey respondents: ``commits became smaller and more frequent, to check 
+the build; pull requests became easier to check'' (R4).
+However, the decreasing trend we observed is not steep.
+Survey responses provide a possible explanation: several developers 
+referred to pull request integration as the reason for introducing \Tvis, and 
+while R31 and R50 state that \Tvis is used both for commits and for pull 
+requests, R11, R21, and R37 explicitly state that \Tvis is applied solely to 
+pull requests, \ie in those projects push commits are outside the scope of \Tvis.
+In other words, if in a project not all commits are subjected to \Tvi, then 
+there may be less incentive to follow Fowler's recommended good practices 
+related to commit churn.
 
-Our model also found that project-to-project and language-to-language
-differences, as captured by our random effects, better explain the overall
-data variability. 
-One explanation consistent with this is that any phenomena giving rise to 
-pressures to increase or reduce code churn are perhaps subordinate in 
-magnitude to other, more pressing phenomena of local, \ie project-specific, 
-character.
+At the same time, a different respondent indicated that \Tvis discourages 
+him/her from making trivial commits (R11), suggesting instead that the 
+commits he/she makes are likely to be larger\as{too speculative?};
+therefore, our global decreasing trend may be weakened by local trends
+in the opposite direction.
+Our model found evidence for strong project-specific effects: 
+project-to-project and language-to-language differences, as captured by 
+our random effects, better explain the overall data variability. 
+This suggests that any phenomena giving rise to pressures to increase 
+or reduce code churn are perhaps subordinate in magnitude to other, 
+more pressing phenomena of local, \ie project-specific, character.
+
+Alternatively, the decreasing trend in commit churn is also consistent with 
+the observation by Brindescu \etal~\cite{brindescu2014centralized} that, 
+as projects age, bug-fixing commits, which on average are smaller, 
+become more prevalent than commits adding new features, which on 
+average are larger.
+
+\as{Say something about SE practice/research implications}
+
 
 
 %Most of the projects did not show linear trends with time in code churn, on 
@@ -202,7 +223,7 @@ character.
 
 %The model fits the data well; it explains 35% of the variability in the data using only the fixed effects (Rm2 = 0.35), and 55% when considering both the fixed and random effects (Rc2 = 0.55).
 
-%deviations in intercept and slope of that subjectÕs time trend from the population values.
+%deviations in intercept and slope of that subjectï¿½s time trend from the population values.
 %(1 + Days | Subject)
 %we allow for the possibility that, for example, subjects with higher initial reaction times may, on average, be more strongly affected by sleep deprivation.
 
@@ -233,8 +254,6 @@ character.
 
 
 %Table XX: Projects with statistical negative trends after CI
-
-\as{Say something about implications}
 
 
 \bv{I'm here}
