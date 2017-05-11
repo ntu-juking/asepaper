@@ -1,0 +1,39 @@
+
+ 
+
+\begin{table}[t]
+\centering \footnotesize
+\rowcolors{3}{Gray}{}
+\begin{tabular}{l D{)}{)}{13)3}@{} D{.}{.}{5.5} }
+\hline
+                                               & \multicolumn{1}{c}{Coeffs (Errors)} & \multicolumn{1}{c}{Sum Sq.} \\
+\hline
+(Intercept)                            & 2.510 \; (0.526)^{***} & \\
+log(TotalCommits)                      & -0.138 \; (0.073)    & 6.79 \\
+AgeAtTravis                            & 0.007 \; (0.002)^{***} &  24.44^{***} \\
+log(NumAuthors)                        & 0.474 \; (0.064)^{***} &  101.27^{***} \\
+time                                   & 0.055 \; (0.007)^{***} &  113.44^{***} \\
+interventionTRUE                       & -0.103 \; (0.082)     &  2.95 \\
+time\_after\_intervention              & -0.032 \; (0.010)^{**} &  19.09^{**} \\
+%\hline
+%AIC                                    & 23087.126              \\
+%BIC                                    & 23168.260              \\
+%Log Likelihood                         & -11531.563             \\
+%Num. obs.                              & 6382                   \\
+%Num. groups: Repo                      & 306                    \\
+%Num. groups: Language                  & 21                     \\
+%Var: Repo (Intercept)                  & 1.085                  \\
+%Var: Repo interventionTRUE             & 0.392                  \\
+%Cov: Repo (Intercept) interventionTRUE & -0.275                 \\
+%Var: Language (Intercept)              & 0.058                  \\
+%Var: Residual                          & 1.870                  \\
+\hline
+\rowcolor{white}
+\multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
+\end{tabular}
+\caption{PR latency model. The response is \textbf{log(mean PR latency)}
+per month, in hours. $R^2_m = 0.10$. $R^2_c = 0.42$.}
+\label{table:latency}
+ 
+\end{table}
+
