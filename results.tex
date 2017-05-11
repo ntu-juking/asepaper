@@ -42,7 +42,7 @@ Recall that our data consists of 2,401 projects across 22 programming languages.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/churn.pdf}
-\caption{Evolution of mean code churn before and after the \Tvis adoption.}
+\caption{Mean code churn per commit per project, before and after \Tvi.}
 \label{fig:churn}
 \end{figure}
 
@@ -113,7 +113,26 @@ the coefficient for \emph{time\_after\_intervention} is the divergence in the sl
 before and after \Tvis adoption, and the sum of the coefficients for \emph{time}
 and \emph{time\_after\_intervention} is the slope of the linear trend after \Tvis
 adoption.
+
 Table~\ref{table:churn} summarizes the model.
+In addition to the model coefficients and corresponding standard errors, the table 
+shows the sum of squares, a measure of variance explained, for each variable.
+The statistical significance is indicated by stars.
+First, we observe that only the combined fixed-and-random effects model fits the 
+data well ($R_c^2 = 0.46$ compared to $R_m^2 = 0.1$), \ie most of the explained 
+variability in the data is attributed to project-to-project and language-to-language
+variability, rather than any of the fixed effects, either controls or RDD-related.
+
+Next, we turn to our controls and main predictors.
+The controls behave unsurprisingly.
+Overall bigger projects (\emph{TotalCommits}) tend to churn more, other things
+held constant; older projects (\emph{AgeAtTravis}) tend to churn less, perhaps 
+as they have reached maturity and a more stationary stage in their evolution;
+projects with a larger contributor base (\emph{NumAuthors}) also tend to churn
+less, which is in line with the expectation that occasional contributors to open 
+source projects are generally less active than core developers.
+
+%The model fits the data well; it explains 35% of the variability in the data using only the fixed effects (Rm2 = 0.35), and 55% when considering both the fixed and random effects (Rc2 = 0.55).
 
 %deviations in intercept and slope of that subject’s time trend from the population values.
 %(1 + Days | Subject)
