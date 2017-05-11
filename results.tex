@@ -33,6 +33,12 @@ dimensions: code churn, commit frequency, issue tracking, and testing.
 %activity during the transition period, we decided to exclude one month before 
 %the first \Tvis build and one month after it, in our quantitative analyses below.
 
+\subsection{RQ1: Trends in Code Churn}
+
+The first development practice we examine is code churn.
+Recall that our data consists of 2,401 projects across 22 programming languages.
+%each with at least 500 non-merge commits.
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/churn.pdf}
@@ -40,106 +46,90 @@ dimensions: code churn, commit frequency, issue tracking, and testing.
 \label{fig:churn}
 \end{figure}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-non-merge.pdf}
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-merge.pdf}
-\caption{Evolution of mean code churn before and after the \Tvis adoption.}
-\label{fig:freq}
-\end{figure}
+\smallskip\noindent \emph{Exploratory Study}: 
+Figure~\ref{fig:churn} shows boxplots of per-project per-commit mean code 
+churn (medians behave similarly) for each of twelve consecutive 30-day time 
+intervals before, and after, the \Tvis adoption.
+Recall that due to instability, we omit the 30-day time interval centered 
+around $t = 0$, when the earliest commit to the \Tvi configuration file, which 
+signals adoption, was recorded (Figure~\ref{fig:timeseries}).
+The horizontal line in each boxplot is the median value over all projects.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/issues.pdf}
-\caption{Evolution of the number of closed issues before and after the \Tvis adoption.}
-\label{fig:issues}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/prs-full.pdf}
-\caption{Evolution of the number of closed pull requests before and after the \Tvis adoption.}
-\label{fig:prs}
-\end{figure}
-
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/pr-latency-mean.pdf}
-\caption{Evolution of the mean PR latency before and after the \Tvis adoption.}
-\label{fig:pr-latency}
-\end{figure}
-
-
-\input{tables/churn-model}
-\input{tables/freq-model}
-\input{tables/issues-model}
-\input{tables/latency-model}
-
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_before.pdf}
-\caption{Code churn before \Tvis adoption.}
-\label{Fig:CodeChurnBefore}\vspace{-0.3cm}
-\end{figure}
-
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_after.pdf}
-\caption{Code churn after \Tvis adoption.}
-\label{Fig:CodeChurnAfter}\vspace{-0.3cm}
-\end{figure}
-
-
-\subsection{RQ1: Trends in Code Churn}
-
-The first development practice we examine is code churn.
-Recall that our data consists of 567 projects, each with at least 500 non-merge 
-commits.
-
-\smallskip\noindent \emph{Exploratory Study}: To explore general trends over 
-time, we first look at code churn in months leading up to CI adoption.
-Fig.~\ref{Fig:CodeChurnBefore} shows a boxplot of per-project median code 
-churn for each of nine consecutive 30-day time intervals before CI adoption.
-The horizontal line in each boxplot is the median value of all per-project medians, 
-and the black dot is their average value.
-We observe that, for most part, the medians dance around 10 and 12 lines of 
-code churn per period, and the averages between 16 and 18 lines, with large 
-variance and no obvious trend. 
-The 30-day interval just before CI adoption seems to stand out and is higher 
-than the rest.
-
-Next, we look to the other side of the adoption point. 
-Fig.~\ref{Fig:CodeChurnAfter} shows a boxplot of per-project median code 
-churn for each of nine consecutive 30-day time intervals following CI adoption.
-Here, there seems to be a slight downward trend in both the medians and 
-averages; the former drop monotonically from 13 down to 8 lines of code and 
-the latter down to 15 lines of code.
+We observe that, pre-\Tvi, the medians are quite stable, dancing around 65 
+lines of code churn per commit on average, with large variance.
+The 30-day interval just before \Tvis adoption (-1) seems to stand out and is 
+slightly higher than the rest (median = 73 LOC), as is the 30-day interval just after 
+\Tvi (1).
+On the other side, following \Tvis adoption, there seems to be a slight downward 
+trend in the medians, which drop to about 53 lines of code churn per commit on 
+average in the last period (12).
 However, we note the large variance around the medians.
 
-The 30- and 60-day intervals just after the adoption point seem to be higher 
-than the rest, and together with the 30-day interval just before adoption of CI 
-seem to form a peak of increased code churn.
-In conclusion, discounting the peak behavior in code churn around CI adoption 
+In conclusion, discounting the peak behavior in code churn around adoption 
 time, we observe a small reduction in the amounts of code churn from before 
-to after CI adoption.
+to after the adoption.
 
-\input{tables/rq1_models}
+%To explore general trends over 
+%time, we first look at code churn in months leading up to CI adoption.
+%The horizontal line in each boxplot is the median value of all per-project medians, 
+%and the black dot is their average value.
+%We observe that, for most part, the medians dance around 10 and 12 lines of 
+%code churn per period, and the averages between 16 and 18 lines, with large 
+%variance and no obvious trend. 
+%The 30-day interval just before CI adoption seems to stand out and is higher 
+%than the rest.
+
+%Next, we look to the other side of the adoption point. 
+%Fig.~\ref{Fig:CodeChurnAfter} shows a boxplot of per-project median code 
+%churn for each of nine consecutive 30-day time intervals following CI adoption.
+%Here, there seems to be a slight downward trend in both the medians and 
+%averages; the former drop monotonically from 13 down to 8 lines of code and 
+%the latter down to 15 lines of code.
+%However, we note the large variance around the medians.
+
+%The 30- and 60-day intervals just after the adoption point seem to be higher 
+%than the rest, and together with the 30-day interval just before adoption of CI 
+%seem to form a peak of increased code churn.
+%In conclusion, discounting the peak behavior in code churn around CI adoption 
+%time, we observe a small reduction in the amounts of code churn from before 
+%to after CI adoption.
+
+%\input{tables/rq1_models}
+\input{tables/churn-model}
 
 \smallskip\noindent \emph{Statistical Modeling Study}: 
-Guided by our exploratory observations above, we proceed to 
-quantify the trends we observed.
-For each project, we fitted a sharp RDD model, as described before.
-Recall that because of the peak we observed, we eliminated the time point 
-immediately before and the one immediately after the CI adoption time, so as 
-they do not throw off the regression models.
-Table~\ref{Table:rddmodels} summarizes the results for the models on the 
-remaining 16 time points.
-Recall that $\beta$ is the slope before, $\gamma$ the size of the effect of 
-CI introduction, $\delta$ is the divergence in the slopes before and after CI 
-adoption, and $\beta + \delta$ the slope of the linear trend after CI adoption.
+Guided by our exploratory observations above, we proceed to quantify the 
+trends we observed using a mixed-effects RDD model, as described before.
+Recall that we modeled a random intercept for \emph{programming language}, 
+to allow for language-to-language variability in the response (\ie code in some 
+languages being naturally more verbose than in others), and a random 
+\emph{intervention} slope and intercept for \emph{project}, to allow for 
+project-to-project variability in the response, and the possibility that, on average, 
+projects with lower initial churn values may be less strongly affected by adopting 
+\Tvis, since their commits are already ``small enough'' for efficient CI.
+Recall also that the coefficient for \emph{time} is the slope before adoption,
+the coefficient for \emph{intervention} is the size of the effect of CI introduction,
+the coefficient for \emph{time\_after\_intervention} is the divergence in the slopes
+before and after \Tvis adoption, and the sum of the coefficients for \emph{time}
+and \emph{time\_after\_intervention} is the slope of the linear trend after \Tvis
+adoption.
+Table~\ref{table:churn} summarizes the model.
+
+%deviations in intercept and slope of that subject’s time trend from the population values.
+%(1 + Days | Subject)
+%we allow for the possibility that, for example, subjects with higher initial reaction times may, on average, be more strongly affected by sleep deprivation.
+
+%For each project, we fitted a sharp RDD model, as described before.
+%Recall that because of the peak we observed, we eliminated the time point 
+%immediately before and the one immediately after the CI adoption time, so as 
+%they do not throw off the regression models.
+%Table~\ref{Table:rddmodels} summarizes the results for the models on the 
+%remaining 16 time points.
+%Recall that $\beta$ is the slope before, $\gamma$ the size of the effect of 
+%CI introduction, $\delta$ is the divergence in the slopes before and after CI 
+%adoption, and $\beta + \delta$ the slope of the linear trend after CI adoption.
+
+\bv{I'm here}
 
 Of the 567 models, in 487 there was no significant linear relationship of 
 code churn to time, \ie there was no linear trend.
@@ -189,6 +179,59 @@ The increased code churn on both sides near the CI adoption time is
 arguably in line with expectations that more maintenance work may be 
 going on in preparation for the transition to CI, and that the projects go 
 through some adjustment/cleanup period right after.
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-non-merge.pdf}
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-merge.pdf}
+\caption{Evolution of mean code churn before and after the \Tvis adoption.}
+\label{fig:freq}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/issues.pdf}
+\caption{Evolution of the number of closed issues before and after the \Tvis adoption.}
+\label{fig:issues}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/prs-full.pdf}
+\caption{Evolution of the number of closed pull requests before and after the \Tvis adoption.}
+\label{fig:prs}
+\end{figure}
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/pr-latency-mean.pdf}
+\caption{Evolution of the mean PR latency before and after the \Tvis adoption.}
+\label{fig:pr-latency}
+\end{figure}
+
+
+\input{tables/freq-model}
+\input{tables/issues-model}
+\input{tables/latency-model}
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_before.pdf}
+\caption{Code churn before \Tvis adoption.}
+\label{Fig:CodeChurnBefore}\vspace{-0.3cm}
+\end{figure}
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_after.pdf}
+\caption{Code churn after \Tvis adoption.}
+\label{Fig:CodeChurnAfter}\vspace{-0.3cm}
+\end{figure}
+
 
 
 \subsection{RQ2: Trends in Commit Frequency}
