@@ -132,46 +132,16 @@ projects with a larger contributor base (\emph{NumAuthors}) also tend to churn
 less, which is in line with the expectation that occasional contributors to open 
 source projects are generally less active than core developers.
 
-%The model fits the data well; it explains 35% of the variability in the data using only the fixed effects (Rm2 = 0.35), and 55% when considering both the fixed and random effects (Rc2 = 0.55).
-
-%deviations in intercept and slope of that subjectï¿½s time trend from the population values.
-%(1 + Days | Subject)
-%we allow for the possibility that, for example, subjects with higher initial reaction times may, on average, be more strongly affected by sleep deprivation.
-
-%For each project, we fitted a sharp RDD model, as described before.
-%Recall that because of the peak we observed, we eliminated the time point 
-%immediately before and the one immediately after the CI adoption time, so as 
-%they do not throw off the regression models.
-%Table~\ref{Table:rddmodels} summarizes the results for the models on the 
-%remaining 16 time points.
-%Recall that $\beta$ is the slope before, $\gamma$ the size of the effect of 
-%CI introduction, $\delta$ is the divergence in the slopes before and after CI 
-%adoption, and $\beta + \delta$ the slope of the linear trend after CI adoption.
+After controlling for confounds, we move on to the main predictors. 
+We observe that the coefficient for \emph{time} is not statistically significant, 
+\ie there is no baseline trend in commit churn before CI adoption, and the 
+\emph{intervention}, although statistically significant, has a small effect.
+However, \emph{time\_after\_intervention} has a statistically significant, 
+negative coefficient, with a notable effect size.
+Taken together, this confirms a decreasing trend in commit churn after 
+adopting \Tvis.
 
 \bv{I'm here}
-
-Of the 567 models, in 487 there was no significant linear relationship of 
-code churn to time, \ie there was no linear trend.
-In 47 projects there was a rising trend before CI and in 33 projects a falling 
-trend before CI.
-Similarly, in 507 projects no effect of CI introduction on code churn was found. 
-Among the 58 projects where an effect was significant, in 34 the trend was 
-positive, \ie code churn increased, and in 24 it was negative, \ie code churn 
-decreased.
-Interestingly, while in 487 projects no change of slope in the trends before 
-and after CI adoption was found, in the 80 projects with significant change 
-of trends, a reduction in the slope was more prevalent than an increase by 
-about 2 to 1.
-This carried over into trends following CI adoption: out of the 80 significant 
-trend changes, 55 are downward trends, and only 25 are upward.
-
-\smallskip\noindent \as{Added here} \emph{Survey}:
-The expected decrease in the size of the commits is echoed by one of the survey respondents: ``commits became smaller and more frequently, to check the build, pull request became easier to check'' (R4).
-At the same time, a different respondent indicated that \Tvis discourages them from the trivial commits (R11), suggesting that the commits they perform are less trivial and likely to be larger\as{too speculative?}.
-Furthermore, several developers referred to pull request integration as the reason for introduction of \Tvis,
-and while R31 and R50 state that \Tvis is used both for commits and for pull requests, R11, R21 and R37 explicitly state that \Tvis is applied solely to pull requests, i.e., in those projects direct commits are outside the scope of \Tvis.
-
-%Table XX: Projects with statistical negative trends after CI
 
 \smallskip\noindent \emph{Discussion}:
 Most of the projects did not show linear trends with time in code churn, on 
@@ -203,6 +173,42 @@ The increased code churn on both sides near the CI adoption time is
 arguably in line with expectations that more maintenance work may be 
 going on in preparation for the transition to CI, and that the projects go 
 through some adjustment/cleanup period right after.
+
+
+
+%The model fits the data well; it explains 35% of the variability in the data using only the fixed effects (Rm2 = 0.35), and 55% when considering both the fixed and random effects (Rc2 = 0.55).
+
+%deviations in intercept and slope of that subjectÕs time trend from the population values.
+%(1 + Days | Subject)
+%we allow for the possibility that, for example, subjects with higher initial reaction times may, on average, be more strongly affected by sleep deprivation.
+
+%For each project, we fitted a sharp RDD model, as described before.
+%Recall that because of the peak we observed, we eliminated the time point 
+%immediately before and the one immediately after the CI adoption time, so as 
+%they do not throw off the regression models.
+%Table~\ref{Table:rddmodels} summarizes the results for the models on the 
+%remaining 16 time points.
+%Recall that $\beta$ is the slope before, $\gamma$ the size of the effect of 
+%CI introduction, $\delta$ is the divergence in the slopes before and after CI 
+%adoption, and $\beta + \delta$ the slope of the linear trend after CI adoption.
+
+%Of the 567 models, in 487 there was no significant linear relationship of 
+%code churn to time, \ie there was no linear trend.
+%In 47 projects there was a rising trend before CI and in 33 projects a falling 
+%trend before CI.
+%Similarly, in 507 projects no effect of CI introduction on code churn was found. 
+%Among the 58 projects where an effect was significant, in 34 the trend was 
+%positive, \ie code churn increased, and in 24 it was negative, \ie code churn 
+%decreased.
+%Interestingly, while in 487 projects no change of slope in the trends before 
+%and after CI adoption was found, in the 80 projects with significant change 
+%of trends, a reduction in the slope was more prevalent than an increase by 
+%about 2 to 1.
+%This carried over into trends following CI adoption: out of the 80 significant 
+%trend changes, 55 are downward trends, and only 25 are upward.
+
+
+%Table XX: Projects with statistical negative trends after CI
 
 
 \begin{figure}[t]
