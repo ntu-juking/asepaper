@@ -258,56 +258,21 @@ average are larger.
 
 \bv{I'm here}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-non-merge.pdf}
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-merge.pdf}
-\caption{Evolution of mean code churn before and after the \Tvis adoption.}
-\label{fig:freq}
-\end{figure}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/issues.pdf}
-\caption{Evolution of the number of closed issues before and after the \Tvis adoption.}
-\label{fig:issues}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/prs-full.pdf}
-\caption{Evolution of the number of closed pull requests before and after the \Tvis adoption.}
-\label{fig:prs}
-\end{figure}
-
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/pr-latency-mean.pdf}
-\caption{Evolution of the mean PR latency before and after the \Tvis adoption.}
-\label{fig:pr-latency}
-\end{figure}
-
-
-\input{tables/freq-model}
-\input{tables/issues-model}
-\input{tables/latency-model}
-
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_before.pdf}
-\caption{Code churn before \Tvis adoption.}
-\label{Fig:CodeChurnBefore}\vspace{-0.3cm}
-\end{figure}
-
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_after.pdf}
-\caption{Code churn after \Tvis adoption.}
-\label{Fig:CodeChurnAfter}\vspace{-0.3cm}
-\end{figure}
+%\begin{figure}[t]
+%\centering
+%\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_before.pdf}
+%\caption{Code churn before \Tvis adoption.}
+%\label{Fig:CodeChurnBefore}\vspace{-0.3cm}
+%\end{figure}
+%
+%
+%\begin{figure}[t]
+%\centering
+%\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{churn_after.pdf}
+%\caption{Code churn after \Tvis adoption.}
+%\label{Fig:CodeChurnAfter}\vspace{-0.3cm}
+%\end{figure}
 
 
 
@@ -316,6 +281,15 @@ average are larger.
 The second practice we examine is commit frequency.
 We examine this question from two directions by looking separately at the non-merge commits at the merge commits. 
 %(we obtained the latter as described previously in the Methods section).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-non-merge.pdf}
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-merge.pdf}
+\caption{Evolution of mean code churn before and after the \Tvis adoption.}
+\label{fig:freq}
+\end{figure}
+
 
 We started from the same data as before, 567 projects, each with at least 500 
 non-merge commits.
@@ -407,6 +381,33 @@ automated testing.
 
 
 %\as{Vladimir, do you have a cross-combination data, such as \# decrease in churn AND increase in frequency?}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/issues.pdf}
+\caption{Evolution of the number of closed issues before and after the \Tvis adoption.}
+\label{fig:issues}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/prs-full.pdf}
+\caption{Evolution of the number of closed pull requests before and after the \Tvis adoption.}
+\label{fig:prs}
+\end{figure}
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/pr-latency-mean.pdf}
+\caption{Evolution of the mean PR latency before and after the \Tvis adoption.}
+\label{fig:pr-latency}
+\end{figure}
+
+
+\input{tables/freq-model}
+\input{tables/issues-model}
+\input{tables/latency-model}
 
 
 
