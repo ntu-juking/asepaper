@@ -565,7 +565,17 @@ As above, the combined fixed-and-random effects models fit the data much better 
 are responsible for most of the variability explained. 
 $R^2_m$ and $R^2_c$ are in line with the statistical models built for \textbf{RQ2} (churn) with $R^2_m \simeq 0.1-0.2$ and $R^2_c \simeq 0.4-0.5$.
 
-Among the fixed effects 
+Taking a closer look at Table~\ref{table:latency} we observe that the number of authors
+is statistically significant and explains a large part of the variance explained by the model.
+Recall, that as opposed to Yu et al.~\cite{yue2015wait} we consider as authors \emph{both} core developers with the commit rights and external contributors that can only submit pull requests. 
+Our model indicates that projects with larger number of authors tend to have a higher pull
+request latency, suggesting that the larger number of authors is achieved through a high
+number of external contributors submitting pull requests and therefore slowing down the pull request review process as each pull request requires an extra review/merge effort from a limited number of core developers.
+Variable \emph{time} is also statistically significant and explains a big percentage of the variance. 
+This means that there is a base-line increase in the pull request latency; introduction of \Tvis does not result in a discontinuity (\emph{intervention} is not statistically significant) but merely slows down the increasing trend.
+
+
+
 \smallskip\noindent \emph{Discussion}:
 
 \subsection{RQ4: Trends in Issue Report Frequency}
