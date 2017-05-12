@@ -1,0 +1,59 @@
+
+ 
+
+\begin{table}[t]
+\centering 
+\footnotesize
+\rowcolors{3}{Gray}{}
+\begin{tabular}{l D{)}{)}{13)3}@{} D{.}{.}{5.5} }
+\hline
+                                               & \multicolumn{1}{c}{Coeffs (Errors)} & \multicolumn{1}{c}{Sum Sq.} \\
+\hline
+(Intercept)                            & -0.958 \; (0.232)^{***} & \\
+log(TotalCommits)                      & -0.016 \; (0.032)     & 0.07  \\
+log(NumNonMergeCommits)          & 0.777 \; (0.007)^{***} & 3095.91^{***} \\
+AgeAtTravis                            & -0.001 \; (0.001)      & 0.96 \\
+log(NumAuthors)                        & 0.120 \; (0.026)^{***} & 5.67^{***} \\
+time                                   & 0.019 \; (0.002)^{***} & 30.39^{***} \\
+interventionTRUE                       & -0.024 \; (0.027)      & 0.21 \\
+time\_after\_intervention              & -0.016 \; (0.003)^{***} & 10.96^{***}\\
+\hline
+%AIC                                    & 24086.065               \\
+%BIC                                    & 24183.986               \\
+%Log Likelihood                         & -12030.032              \\
+%Num. obs.                              & 13800                   \\
+%Num. groups: Repo                      & 575                     \\
+%Num. groups: Language                  & 21                      \\
+%Var: Repo (Intercept)                  & 0.413                   \\
+%Var: Repo interventionTRUE             & 0.207                   \\
+%Cov: Repo (Intercept) interventionTRUE & -0.121                  \\
+%Var: Language (Intercept)              & 0.001                   \\
+%Var: Residual                          & 0.270                   \\
+\hline
+\rowcolor{white}
+\multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
+\end{tabular}
+\caption{Commit frequency model. The response is \textbf{log(number of merge commits)}
+per month. $R^2_m = 0.58$. $R^2_c = 0.83$.}\vspace{-0.5cm}
+\label{table:freq}
+\end{table}
+
+%> r.squaredGLMM(m1)
+%      R2m       R2c 
+%0.5828560 0.8311715 
+%> vif.mer(m1)
+%         log(TotalCommits) log(num_non_merge_commits)                AgeAtTravis            log(NumAuthors)                       time           interventionTRUE 
+%                  1.774990                   1.082181                   1.311646                   1.396992                   3.266075                   1.634289 
+%   time_after_intervention 
+%                  2.641925 
+%> anova(m1)
+%Analysis of Variance Table of type III  with  Satterthwaite 
+%approximation for degrees of freedom
+%                            Sum Sq Mean Sq NumDF   DenDF F.value    Pr(>F)    
+%log(TotalCommits)             0.07    0.07     1   631.5     0.2   0.61990    
+%log(num_non_merge_commits) 3095.91 3095.91     1 13519.1 11474.7 < 2.2e-16 ***
+%AgeAtTravis                   0.96    0.96     1   394.1     3.6   0.05984 .  
+%log(NumAuthors)               5.67    5.67     1   563.3    21.0 5.576e-06 ***
+%time                         30.39   30.39     1 12647.3   112.6 < 2.2e-16 ***
+%intervention                  0.21    0.21     1  1506.5     0.8   0.37626    
+%time_after_intervention      10.96   10.96     1 12652.0    40.6 1.909e-10 ***

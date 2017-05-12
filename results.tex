@@ -60,7 +60,7 @@ merge commit in each time window.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-non-merge1.pdf}
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 32]{figures/freq-non-merge1.pdf}
 \includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-merge1.pdf}
 \caption{Commit frequency before and after the \Tvis adoption.}
 \label{fig:freq}
@@ -90,12 +90,11 @@ merge commit in each time window.
 Figure~\ref{fig:freq} shows the boxplots of per-project number of non-merge 
 commits (top) and number of merge commits (bottom), respectively, for each
 of twelve consecutive 30-day time intervals before and after the \Tvis adoption.
+Note the log scale.
 Recall that due to instability, we omit the 30-day time interval centered 
 around $t = 0$, when the earliest commit to the \Tvi configuration file, which 
 signals adoption, was recorded (Figure~\ref{fig:timeseries}).
-The horizontal line in each boxplot is the median value, computer across all
-projects.
-Note the log scale in both plots.
+The horizontal line in each boxplot is the median value across all projects.
 
 First, we observe relative stability in the number of non-merge commits prior 
 to the \Tvis adoption (Figure~\ref{fig:freq}, top), with the across-projects medians 
@@ -128,61 +127,136 @@ Note, in both plots, the large variance in the data.
 %We do observe an upward trend in merge commits, but the variance in the data is large.
 
 \smallskip\noindent \emph{Statistical Modeling Study}: 
-As in RQ1, we fitted a sharp RDD model for each project, as described before.
-Tables~\ref{Table:rddmodels_freq} and ~\ref{Table:rddmodels_merge_freq} summarize the results.
-As before, we eliminated one time point on either side of the CI adoption 
-time, so that the peaks at those times  do not throw off the regression models.
-\input{tables/rq2_models}
+We fitted a mixed-effects RDD model, as described before, to model trends
+in the \emph{number of merge commits} per project, over time, as a function 
+of \Tvis adoption, and while controlling for confounds; most notably, we control 
+for the \emph{number of non-merge commits}, as these may have not all been 
+subjected to CI, since they appear to display a decreasing trend with time.
 
-For the non-merge commits, in 452 (80\%) of the models, there was no significant linear relationship 
-between  frequency and time, \ie there was no linear trend.
-In 71 projects there was a rising trend in commit frequency before CI 
-and in 44 projects a falling trend before CI.
-Similarly, in 466 projects no effect of CI introduction on commit frequency 
-was found. 
-Among the 101 projects where an effect was significant, in 59 the trend 
-was positive, \ie commit frequency increased, and in the rest it was 
-negative, \ie commit frequency decreased.
-The mean value over all projects for $\gamma$, the effect size of CI 
-adoption, was $1.1$ commit.
-While in 454 projects no change of slope in the trends before and after CI 
-adoption was found, in the 113 with significant change of trends a reduction 
-in the slope was more prevalent than an increase by about 2.5 to 1.
-This carried over to a lesser degree into trends in commit frequency 
-following CI adoption: out of the 113 significant trend changes, 71 are 
-downward trends, and 42 are upward.
+\input{tables/freq-model2}
+%\input{tables/freq-model}
 
-For merge commits (Table~\ref{Table:rddmodels_merge_freq}), the results 
-are qualitatively similar to those for non-merge commits.
+Recall that we modeled a random intercept for \emph{programming language}, 
+to allow for language-to-language variability in the response (\ie code in some 
+languages being naturally more verbose than in others, resulting in different
+ways to split the work across commits; or community-level norms for committing), 
+and a random \emph{intervention} slope and intercept for \emph{project}, to allow 
+for project-to-project variability in the response and the possibility that, on average, 
+projects with lower initial activity may be less strongly affected by adopting 
+\Tvis than high-frequency projects.
+Recall also that the coefficient for \emph{time} is the slope before adoption,
+the coefficient for \emph{intervention} is the size of the effect of CI introduction,
+the coefficient for \emph{time after intervention} is the divergence in the slopes
+before and after \Tvis adoption, and the sum of the coefficients for \emph{time}
+and \emph{time after intervention} is the slope of the linear trend after \Tvis
+adoption.
+
+Table~\ref{table:freq} summarizes the results.
+In addition to the model coefficients and corresponding standard errors, the table 
+shows the sum of squares, a measure of variance explained, for each variable.
+The statistical significance is indicated by stars.
+The fixed-effects part of the model fits the data well ($R_m^2=0.58$).
+There is also a considerable amount of variability explained by the random
+effects, \ie project-to-project and language-to-language differences, not 
+explicitly modeled by our fixed effects ($R_m^2=0.83$).
+Among the fixed effects, we observe that the \emph{number of non-merge 
+commits}, our main control, explains most of the variability in the response.
+The coefficient is positive, \ie the direction of the correlation is expected: 
+other things constant, the more non-merge commits there are, the more 
+merge commits there will be as well.
+Neither \emph{project size} (total number of commits over the entire history) nor 
+\emph{project age} at adoption time have any statistically significant effects.
+
+Next we turn to our \Tvi-related variables.
+The model confirms a statistically significant, positive, baseline trend in the response 
+with \emph{time} (with a small effect), as suggested by our exploratory study.
+The model does not detect any discontinuity at adoption time, since the coefficient 
+for \emph{intervention} is not statistically significant.
+Post adoption, there is a decrease in the slope of the time trend, but the overall 
+trend remains ascending (the sum of the coefficients for \emph{time} and 
+\emph{time after intervention} is positive): more merge-commits as time passes.
+
+%As before, we eliminated one time point on either side of the CI adoption 
+%time, so that the peaks at those times  do not throw off the regression models.
+%\input{tables/rq2_models}
+
+%For the non-merge commits, in 452 (80\%) of the models, there was no significant linear relationship 
+%between  frequency and time, \ie there was no linear trend.
+%In 71 projects there was a rising trend in commit frequency before CI 
+%and in 44 projects a falling trend before CI.
+%Similarly, in 466 projects no effect of CI introduction on commit frequency 
+%was found. 
+%Among the 101 projects where an effect was significant, in 59 the trend 
+%was positive, \ie commit frequency increased, and in the rest it was 
+%negative, \ie commit frequency decreased.
+%The mean value over all projects for $\gamma$, the effect size of CI 
+%adoption, was $1.1$ commit.
+%While in 454 projects no change of slope in the trends before and after CI 
+%adoption was found, in the 113 with significant change of trends a reduction 
+%in the slope was more prevalent than an increase by about 2.5 to 1.
+%This carried over to a lesser degree into trends in commit frequency 
+%following CI adoption: out of the 113 significant trend changes, 71 are 
+%downward trends, and 42 are upward.
+%
+%For merge commits (Table~\ref{Table:rddmodels_merge_freq}), the results 
+%are qualitatively similar to those for non-merge commits.
 
 \smallskip\noindent \emph{Discussion}:
-As was the case for code churn, most projects did not have longitudinal 
-linear trends in non-merge commits, for reasons probably similar to those 
-in case of code churn.
 
-Even though  we observed a post-CI adoption increase in merge commits 
-in our exploratory study, the statistical tests did not confirm that to be the 
-case for more than 20\% of the projects. 
-We attribute this disparity to the large variance in the data and especially 
-the sparsity of merge commits over time. 
+The exploratory study suggests a sligth decreasing trend in the number 
+of non-merge commits with time.
+Separately modeling the trend in \emph{number of non-merge commits}
+(not shown) using a similar approach as above confirmed this overall 
+decreasing trend.
+This is consistent with the common observation that, as projects move 
+past the initial development hurdle and age, development generally slows 
+down, and the focus shifts to bug-fixing rather than adding new features, 
+noted, \eg by Brindescu \etal~\cite{brindescu2014centralized}.
 
-While our exploratory study did not suggest presence of a trend, the 
-modeling study suggests that right after CI adoption there is a slight 
-positive effect in both the merge and non-merge commits (after removing the peak months around CI adoption time). 
-However, this effect is not sustained.
-% if a linear trend is present, which is 2.5 times as likely to be decreasing as increasing. 
+In contrast, the statistical modeling study above revealed a consistent 
+increase in \emph{merge commits} with time, including post-CI adoption, 
+albeit with a slowdown.
+This overall trend aligns with the expected increase in commit frequency 
+after switching to CI, as expressed and encouraged by Fowler.
+Given the overall decreasing trend with time in the number of non-merge
+commits, the increase in merge commits is noteworthy.
+One explanation for this is that projects are switching to more distributed
+development workflows, using branches and pull requests.
+\as{Survey}
 
-Given the expected increase in the frequency of commits expressed and 
-encouraged by Fowler, our results might appear surprising.
-It is possible that some saturation to the commit frequency has already 
-been reached even before the CI adoption time.
-As we see next, it is also likely that instead developers are spending more time on 
-automated testing.
+\as{R38 The release process got changed. Additionally we have shifted towards pull-request - merge development strategy. It made the distributed development more manageable.}
+\as{R44 develop branch is more stable; we can trust it more and release sooner}
+\as{R46 Regular releases \& work on development branch}
+\as{R54 We've moved as much as possible into CI (eg doc generation, building release artifacts, etc.).}
+
+%As was the case for code churn, most projects did not have longitudinal 
+%linear trends in non-merge commits, for reasons probably similar to those 
+%in case of code churn.
+
+%We observed a post-CI adoption increase in merge commits 
+
+%in our exploratory study, the statistical tests did not confirm that to be the 
+%case for more than 20\% of the projects. 
+%We attribute this disparity to the large variance in the data and especially 
+%the sparsity of merge commits over time. 
+%
+%While our exploratory study did not suggest presence of a trend, the 
+%modeling study suggests that right after CI adoption there is a slight 
+%positive effect in both the merge and non-merge commits (after removing the peak months around CI adoption time). 
+%However, this effect is not sustained.
+%% if a linear trend is present, which is 2.5 times as likely to be decreasing as increasing. 
+
+%Given the expected increase in the frequency of commits expressed and 
+%encouraged by Fowler, our results might appear surprising.
+%It is possible that some saturation to the commit frequency has already 
+%been reached even before the CI adoption time.
+%As we see next, it is also likely that instead developers are spending more time on 
+%automated testing.
 
 
 
 
-\subsection{RQ1: Trends in Code Churn}
+\subsection{RQ2: Trends in Code Churn}
 
 The first development practice we examine is code churn.
 Recall that our data consists of 2,401 projects across 22 programming languages.
@@ -246,19 +320,19 @@ to after the adoption.
 \smallskip\noindent \emph{Statistical Modeling Study}: 
 Guided by our exploratory observations above, we proceed to quantify the 
 trends we observed using a mixed-effects RDD model, as described before.
-Recall that we modeled a random intercept for \emph{programming language}, 
-to allow for language-to-language variability in the response (\ie code in some 
-languages being naturally more verbose than in others), and a random 
-\emph{intervention} slope and intercept for \emph{project}, to allow for 
-project-to-project variability in the response, and the possibility that, on average, 
-projects with lower initial churn values may be less strongly affected by adopting 
-\Tvis, since their commits are already ``small enough'' for efficient CI.
-Recall also that the coefficient for \emph{time} is the slope before adoption,
-the coefficient for \emph{intervention} is the size of the effect of CI introduction,
-the coefficient for \emph{time\_after\_intervention} is the divergence in the slopes
-before and after \Tvis adoption, and the sum of the coefficients for \emph{time}
-and \emph{time\_after\_intervention} is the slope of the linear trend after \Tvis
-adoption.
+%Recall that we modeled a random intercept for \emph{programming language}, 
+%to allow for language-to-language variability in the response (\ie code in some 
+%languages being naturally more verbose than in others), and a random 
+%\emph{intervention} slope and intercept for \emph{project}, to allow for 
+%project-to-project variability in the response, and the possibility that, on average, 
+%projects with lower initial churn values may be less strongly affected by adopting 
+%\Tvis, since their commits are already ``small enough'' for efficient CI.
+%Recall also that the coefficient for \emph{time} is the slope before adoption,
+%the coefficient for \emph{intervention} is the size of the effect of CI introduction,
+%the coefficient for \emph{time\_after\_intervention} is the divergence in the slopes
+%before and after \Tvis adoption, and the sum of the coefficients for \emph{time}
+%and \emph{time\_after\_intervention} is the slope of the linear trend after \Tvis
+%adoption.
 
 Table~\ref{table:churn} summarizes the model.
 In addition to the model coefficients and corresponding standard errors, the table 
@@ -454,7 +528,6 @@ Our results suggest that while the Fowler's good practice of small commits is fo
 \end{figure}
 
 
-\input{tables/freq-model}
 \input{tables/issues-model}
 \input{tables/latency-model}
 
