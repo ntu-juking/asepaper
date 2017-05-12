@@ -1,0 +1,38 @@
+
+ 
+
+\begin{table}[t]
+\centering \footnotesize
+\rowcolors{3}{Gray}{}
+\begin{tabular}{l D{)}{)}{13)3}@{} D{.}{.}{5.5} }
+\hline
+                                               & \multicolumn{1}{c}{Coeffs (Errors)} & \multicolumn{1}{c}{Sum Sq.} \\
+\hline
+(Intercept)                            & -1.308 \; (0.426)^{**} & \\
+log(TotalCommits)                      & 1.131 \; (0.057)^{***} & 795.76^{***}  \\
+AgeAtTravis                            & -0.004 \; (0.001)^{**}  & 14.06^{**}\\
+log(NumAuthors)                        & -0.583 \; (0.048)^{***} & 302.31^{***}\\
+time                                   & -0.011 \; (0.005)^{*}   & 10.07^{*}\\
+interventionTRUE                       & 0.207 \; (0.061)^{***}  & 23.93^{***}\\
+time\_after\_intervention              & -0.018 \; (0.007)^{*}   & 13.11^{*}\\
+\hline
+%AIC                                    & 51186.198               \\
+%BIC                                    & 51276.582               \\
+%Log Likelihood                         & -25581.099              \\
+%Num. obs.                              & 13794                   \\
+%Num. groups: Repo                      & 575                     \\
+%Num. groups: Language                  & 21                      \\
+%Var: Repo (Intercept)                  & 1.218                   \\
+%Var: Repo interventionTRUE             & 0.560                   \\
+%Cov: Repo (Intercept) interventionTRUE & -0.290                  \\
+%Var: Language (Intercept)              & 0.103                   \\
+%Var: Residual                          & 2.056                   \\
+\hline
+\rowcolor{white}
+\multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
+\end{tabular}
+\caption{Commit churn model 2. The response is \textbf{log(mean merge-commit churn)}. $R^2_m = 0.21$. $R^2_c = 0.52$.}
+\label{table:churn:merge}
+ 
+\end{table}
+
