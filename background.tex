@@ -20,17 +20,12 @@ Studying those trajectories can provide lessons learned.
 %More discussions in code review over time
 %Different categories of initial faults
 
+
 Continuous integration encourages developers to ``break down their work 
 into small chunks of a few hours each'', as smaller and more frequent commits 
 helps them keep track of their progress and reduces the debugging effort~\cite{Fowler,Duvall}. 
-%Duvall [p. 31,38,40]
-Based on these guidelines we formulate \textbf{RQ1}: 
-\emph{Are developers reducing the size of code changes in each commit 
-post CI adoption? 
-Do they continue to do so over time?}
-
-The size of commits is closely related to commit frequency: indeed, the 
-aforementioned quote from Fowler's blog post refers to ``chunks of a few hours each''. 
+%The size of commits is closely related to commit frequency: indeed, the 
+%aforementioned quote from Fowler's blog post refers to ``chunks of a few hours each''. 
 In an early study Miller has observed that, on average, Microsoft developers 
 committed once a day, while off-shore developers committed less frequently 
 due to network latencies~\cite{Miller}; Stolberg expects everyone to commit every 
@@ -38,8 +33,16 @@ day~\cite{Stolberg} and Y\"{u}ksel reports 33 commits per day after introduction
 of CI~\cite{Yuksel}. On a related note, the interviewees in the study of 
 Leppanen \etal~\cite{Leppanen2015} saw higher release frequency as an
 advantage and reported that the CI ``radically decreased time-to-market''. 
-Hence, we ask in \textbf{RQ2}: 
+Hence, we ask in \textbf{RQ1}: 
 \emph{Are developers committing code more frequently?}
+
+Frequent commits can be expected to be smaller in size: indeed, 
+ the aforementioned quote from Fowler's blog post refers to ``small chunks''~\cite{Fowler,Duvall}.
+%Duvall [p. 31,38,40]
+Based on these guidelines we formulate \textbf{RQ2}: 
+\emph{Are developers reducing the size of code changes in each commit 
+post CI adoption? 
+Do they continue to do so over time?}
 
 In the \GH-common pull-based development model, wherein project outsiders 
 (and sometimes insiders too) submit changes in the form of pull requests (PRs), 
