@@ -540,9 +540,18 @@ Our results suggest that while the Fowler's good practice of small commits is fo
 \input{tables/issues-model}
 \input{tables/latency-model}
 
+\subsection{RQ3: Trends in Pull Request Closing}
+The next practice we consider is pull request closing time. 
+Since \Tvis is invoked and runs automatically every time a pull request is submitted we expect that the developers are rapidly notified on whether their pull request passes the \Tvi-quality gate.
+This would mean that they can rapidly react upon the feedback provided by \Tvi and correct the pull request source code if necessary.
+Overall we expect therefore that \Tvis should shorten the pull request closing time.
+ 
 
+\smallskip\noindent \emph{Exploratory Study}:
+\smallskip\noindent \emph{Statistical Modeling Study}:
+\smallskip\noindent \emph{Discussion}:
 
-\subsection{RQ3: Trends in Issue Report Frequency}
+\subsection{RQ4: Trends in Issue Report Frequency}
 
 The 3rd practice we examine is issue report frequency.
 As above, we use data on 293 projects, each with 
@@ -577,7 +586,7 @@ stabilize at 4 per period, and the averages are between 6 and 7.
 
 \input{tables/rq3_models}
 
-\smallskip\noindent \emph{Modeling Study}:
+\smallskip\noindent \emph{Statistical Modeling Study}:
 Results of the RDD modeling are summarized in Table~\ref{Table:rddmodels_issues}.
 The time period before and the one after the time of CI adoption have been removed from the modeling, as explained in RQ1 above.
 The lower number of projects in Table~\ref{Table:rddmodels_issues} 
