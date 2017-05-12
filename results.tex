@@ -542,13 +542,22 @@ Our results suggest that while the Fowler's good practice of small commits is fo
 \input{tables/latency-model}
 
 \subsection{RQ3: Trends in Pull Request Closing}
-The next practice we consider is pull request closing time. 
+The next practice we consider is pull request latency, \ie time required to close a pull request. 
 Since \Tvis is invoked and runs automatically every time a pull request is submitted we expect that the developers are rapidly notified on whether their pull request passes the \Tvi-quality gate.
 This would mean that they can rapidly react upon the feedback provided by \Tvi and correct the pull request source code if necessary.
-Overall we expect therefore that \Tvis should shorten the pull request closing time.
- 
+Overall we expect therefore that \Tvis should shorten the pull request latency and, under the assumption of the constant productivity, increase the number of 
+pull requests being closed.
+\as{some literature here. Bogdan, is ``Wait for it'' relevant here?}
 
 \smallskip\noindent \emph{Exploratory Study}:
+Figures~\ref{fig:issues} and \ref{fig:prs}  shows boxplots of per-project number of closed issues and pull requests for each of twelve consecutive 30-day time 
+intervals before, and after, the \Tvis adoption. 
+Similarly to Figure~\ref{fig:churn} in both cases we see large variance around the medians. 
+Inspecting the figures we observe the median number of closed issues/pull requests per months seems to fluctuate around 12 \as{can we take a look at the numbers?}
+and while the number of closed issues does not seem to exhibit any trend, the number of closed pull requests seems to be increasing after the introduction of \Tvis.
+Figure~\ref{fig:prs} provides a complementary perspective on the efficiency of pull request resolution, namely the pull request latency.
+The median latency seems to increase prior to introduction of \Tvis and more or less to stabilize after \Tvis has been introduced.
+
 \smallskip\noindent \emph{Statistical Modeling Study}:
 \smallskip\noindent \emph{Discussion}:
 
