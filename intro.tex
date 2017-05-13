@@ -47,7 +47,7 @@ members and, if necessary, reverting changes.
 Conversely, more frequent changes facilitate merging, but they also require more 
 computing infrastructure for CI, since by default the code is built and all 
 tests are executed with \emph{every} change.
-Moreover, while CI runs on smaller, more frequent changes would provide 
+Moreover, while CI runs on smaller changes, more frequent ones would provide 
 earlier feedback on potential problems, they may also lead to process 
 ``noise'', where developers start to ignore the CI build status due to 
 information overload, irrespective of whether the build is clean or 
@@ -77,14 +77,14 @@ changed following this shift.
 To this end, we operationalize practices in three main aspects of 
 distributed development, related to code changes, issue tracking, 
 and testing, and pursue a mixed-methods approach.
-Quantitatively, to evaluate the effect of an intervention, in our case 
+We introduce \emph{regression 
+discontinuity design analyses} to quantitatively evaluate the effect of an intervention, in our case 
 adoption of \Tvis, on the transition toward expected behaviors in the 
 above three practices (measured from trace data in thousands of 
-\GH projects, appropriately selected), we introduce \emph{regression 
-discontinuity design analyses}.
+\GH projects, appropriately selected).
 Qualitatively, to help essentialize the quantitative results, we survey a 
 sample of \GH developers about their experiences with adopting \Tvis. 
-Applying this methodology, we find that:
+Applying this mixed methodology, we find that:
 
 \bv{This needs to be updated}
 \begin{itemize}
@@ -111,7 +111,7 @@ adopted than before.
 
 
 The rest of this paper starts by developing the research questions 
-pertaining to adoption of CI and its impact on developers' practices 
+pertaining to adoption of CI and its impact on developer practices 
 (Sect.~\ref{sec:background}), then discusses the methods used to collect 
 and analyze the data (Sect.~\ref{sec:method}), presents the results 
 (Sect.~\ref{sec:results}), reviews the related work (Sect.~\ref{sec:rw}),
