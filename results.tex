@@ -726,7 +726,7 @@ explained.
 We note an increasing
 \emph{time} baseline trend pre-adoption; no statistically significant discontinuity
 at the adoption time; and a slight positive trend post-adoption, as $\beta$(\emph{time}) $+$ 
-$\gamma$(\emph{time\_after\_intervention}) $\simeq 0$.
+$\gamma$(\emph{time\_after\_intervention}) $> 0$.
 
 
 %Results of the RDD modeling are summarized in Table~\ref{Table:rddmodels_issues}.
@@ -746,17 +746,25 @@ $\gamma$(\emph{time\_after\_intervention}) $\simeq 0$.
 
 
 \smallskip\noindent \emph{Discussion}:
-Again, most of the projects did not have longitudinal linear trends for reasons probably similar to those in the case of the code churn.
+%Again, most of the projects did not have longitudinal linear trends for reasons probably similar to those in the case of the code churn.
+%
+%As in RQ1, our exploratory study showed a peak in the median number of issues per period around CI adoption time, and an upward trend following CI adoption.
+%The modeling study showed that when linear trends were present (in 20\% 
+%of the models), the downward one after CI adoption were 2.5 times as frequent 
+%as the upward one, a reversal of the pattern in the trends from before CI.
+%This has to be considered in combination with the size of the effect of CI adoption, which is $1$ issue per period additional.
+%Thus, the number of issues increases significantly overall after CI adoption, to the tune of $33\%$, and then has a pressure of slight reduction over time.
 
-As in RQ1, our exploratory study showed a peak in the median number of issues per period around CI adoption time, and an upward trend following CI adoption.
-The modeling study showed that when linear trends were present (in 20\% 
-of the models), the downward one after CI adoption were 2.5 times as frequent 
-as the upward one, a reversal of the pattern in the trends from before CI.
-This has to be considered in combination with the size of the effect of CI adoption, which is $1$ issue per period additional.
-Thus, the number of issues increases significantly overall after CI adoption, to the tune of $33\%$, and then has a pressure of slight reduction over time.
+The statistical modeling study confirmed the visually apparent increasing trend in the number of issues 
+closed per time period, across the entire interval under observation, although the trend slows down following \Tvis adoption, and is smaller than expected from the visual study, indicating the moderating influence of the control variables.
 
-This is consistent with an increased number of issues brought up after CI adoption. Some of those are invariably related to the change in the way things are done, and the transition. Others may be related to the increased automated testing which likely discovers more concerns and bugs, which are then mentioned in issues.
-Overall, this result shows that the adoption of CI brings about more issues, as expected.
+Thus, our model finds that, on average, more issues are being closed 
+over time, but this trend slows with the switch to \Tvis.
+
+
+
+
+
 
 \as{Survey}
 Survey participants experience \Tvi as beneficial for bug detection: ``I think we produce less bugs'' (R45), ``there was an immediately noticeable improvement in terms of the number of serious bugs in production'' (R51). 
