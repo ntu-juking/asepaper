@@ -2,7 +2,7 @@
 
 \section{Threats to Validity}
 \label{sec:threats}
-In this section, we discuss the threats to construct validity, internal validity, 
+We discuss construct, internal, 
 and external validity~\cite{perry2000empirical}.
 
 \smallskip \emph{Construct Validity:} %assesses whether the variables we 
@@ -39,12 +39,13 @@ is ``size of a code change''.
 We operationalize this as the number of churned lines, customarily 
 interpreted as the sum of the number of added and removed lines~\cite{GigerPG}. 
 In this way, moved lines are counted twice, as being added and as being removed.
-Moreover, we do not distinguish between lines of source code and other lines. 
+Moreover, we do not distinguish between lines of source code and other lines, 
 %The reason is that while the repositories considered are labeled by \GH as 
 %Java repositories and \emph{predominantly} contain Java code, they also 
 %contain source code in other languages, configuration files, and documentation. 
-Distinguishing between source code and non-source code in all %those 
-languages in our sample is non-trivial.
+since it is non-trivial when dealing with many languages.
+%Distinguishing between source code and non-source code in all %those 
+%languages in our sample is non-trivial.
 
 %The validity of our measurements, such as the number of commits or the 
 %number of builds, might have been threatened by the limitations of the \GH 
