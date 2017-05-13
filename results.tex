@@ -576,7 +576,7 @@ differences are more important and might overshadow the overall trend.
 
 \input{tables/latency-model}
 
-The next practice we consider is pull request closing, for which we analyze two 
+The next practice we consider is pull request closing, which we analyze along two 
 dimensions: the number of pull requests closed per time window, and the average
 pull request latency per time window, \ie the average time to close.
 Since \Tvis is invoked and runs automatically every time a pull request is submitted, 
@@ -594,7 +594,7 @@ Figure
 %s~\ref{fig:issues} and 
 \ref{fig:prs} shows boxplots of per-project number of closed pull requests, for each 
 of twelve consecutive 30-day time intervals before, and after, the \Tvis adoption. 
-Similarly to Figure~\ref{fig:churn} in both cases we see large variance around the 
+Similarly to Figure~\ref{fig:churn}, in both cases we see large variance around the 
 medians. 
 Inspecting the figure we observe that the median number of closed pull requests 
 per months fluctuates between 11 and 15 across the twelve periods pre-\Tvi, and 
@@ -605,13 +605,13 @@ We note an apparent increasing trend pre-\Tvi, which also seems to continue post
 
 Figure~\ref{fig:pr-latency} provides a complementary perspective on the efficiency 
 of pull request resolution, namely the pull request latency.
-The median latency seems to increase prior to introduction of \Tvis, to to continue
+The median latency seems to increase prior to introduction of \Tvis, and continues
 to do so afterwards. % and more or less to stabilize after \Tvis has been introduced.
 
 \smallskip\noindent \emph{Statistical Modeling Study}:
 We apply RDD as above. 
 %in the same way we have using this approach to address \textbf{RQ1} and \textbf{RQ2}. 
-The statistical models for the number pull requests closed and the mean pull 
+The statistical models for the number of pull requests closed and the mean pull 
 request latency are summarized in Tables~\ref{table:prs} and \ref{table:latency}.
 As above, the combined fixed-and-random effects models fit the data much 
 better than the basic fixed-effect models, indicating that the project-to-project 
@@ -650,7 +650,7 @@ closed per time period, across the entire interval under observation, our model
 suggests that, after controling for project size, project age, and size of developer 
 community, as well as local project-to-project and language-to-language differences, 
 the increasing trend manifests itself, in aggregate, only pre-\Tvi.
-Moreover, and quite surprisingly, we find that the initial trend is reversed post-\Tvi,
+Moreover, and quite surprisingly, we find that the initial trend is flattened post-\Tvi,
 resulting in relatively stationary behavior, on average.
 This paints a more nuanced picture of how \GH teams are adapting to, and
 benefiting from, continuous integration technology than suggested by prior
