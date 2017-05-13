@@ -2,8 +2,8 @@
 
 \section{Threats to Validity}
 \label{sec:threats}
-We discuss construct, internal, 
-and external validity~\cite{perry2000empirical}.
+We focus construct and internal validity~\cite{perry2000empirical}, as we 
+do not claim generalizability.
 
 \smallskip \emph{Construct Validity:} %assesses whether the variables we 
 %considered accurately model the constructs of our study. 
@@ -92,10 +92,10 @@ We encourage independent replications to further assess the robustness of our re
 %Besides, in our data set, a group of builds didn't have test execution descriptions in the log files. Most of them are due to the projects without featuring test execution (nearly 30\% projects). For the other builds, the possible reasons are that (1) the log files are blank; (1) the build was canceled before running tests; (3) all the jobs were errored or failed and then exited before running tests; (4)the build was set to skip tests (\eg \textit{DskipTests=true}). To solve this, we selected the projects which featured test execution and had over 90\% builds with at least one test.
 
 
-\smallskip \emph{External Validity} pertains to generalizability of our findings 
-beyond the collection of \GH projects we investigated.
-While we do expect our findings to apply to other mid to large-sized projects,
-this expectation might be threatened by peculiarities of other CI tools (\eg Jenkins, 
-Hudson) as well as differences between open-source and proprietary projects.
+%\smallskip \emph{External Validity} pertains to generalizability of our findings 
+%beyond the collection of \GH projects we investigated.
+%While we do expect our findings to apply to other mid to large-sized projects,
+%this expectation might be threatened by peculiarities of other CI tools (\eg Jenkins, 
+%Hudson) as well as differences between open-source and proprietary projects.
 
 %the projects in our study are all Java open source projects from GitHub repository. Therefore, our conclusion may not be generalized either to projects developed by other programming languages or projects that are not open-source. Besides, as we know, there have been multiple CI techniques in practice, \eg Travis CI, Jenkins CI, Hudson CI. In our study, we only focused on Travis CI, which may also threaten the generalization of our results. However. as Travis-CI is the most popular CI service in GitHub, we believe our results on Travis-CI are representative for CI.  This is an inherent threat for all studies in empirical software engineering, as many factors cannot be characterized completely. To mitigate this threat, there is a need to replicate our study using a wide variety of systems and considering other CI techniques in the future work.
