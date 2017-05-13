@@ -8,14 +8,47 @@
 \hline
                                                & \multicolumn{1}{c}{Coeffs (Errors)} & \multicolumn{1}{c}{Sum Sq.} \\
 \hline
-(Intercept)                            & -1.308 \; (0.426)^{**} & \\
-log(TotalCommits)                      & 1.131 \; (0.057)^{***} & 795.76^{***}  \\
-AgeAtTravis                            & -0.004 \; (0.001)^{**}  & 14.06^{**}\\
-log(NumAuthors)                        & -0.583 \; (0.048)^{***} & 302.31^{***}\\
-time                                   & -0.011 \; (0.005)^{*}   & 10.07^{*}\\
-interventionTRUE                       & 0.207 \; (0.061)^{***}  & 23.93^{***}\\
-time\_after\_intervention              & -0.018 \; (0.007)^{*}   & 13.11^{*}\\
+(Intercept)                            & -1.297 \; (0.484)^{**}  \\
+log(TotalCommits)                      & 1.113 \; (0.062)^{***} & 625.20^{***}  \\
+AgeAtTravis                            & -0.005 \; (0.001)^{**} & 18.43^{**} \\
+log(NumAuthors)                        & -0.522 \; (0.052)^{***} & 196.48^{***} \\
+time                                   & -0.012 \; (0.005)^{*}  & 8.86^{*} \\
+interventionTRUE                       & 0.220 \; (0.066)^{***} & 21.75^{***} \\
+time\_after\_intervention              & -0.022 \; (0.008)^{**} & 15.51^{**} \\
 \hline
+
+
+%Analysis of Variance Table of type III  with  Satterthwaite 
+%approximation for degrees of freedom
+%                        Sum Sq Mean Sq NumDF   DenDF F.value    Pr(>F)    
+%log(TotalCommits)       625.20  625.20     1   459.7  319.85 < 2.2e-16 ***
+%AgeAtTravis              18.43   18.43     1   464.7    9.43 0.0022600 ** 
+%log(NumAuthors)         196.48  196.48     1   460.7  100.52 < 2.2e-16 ***
+%time                      8.86    8.86     1 10136.0    4.53 0.0332503 *  
+%intervention             21.75   21.75     1  2384.4   11.13 0.0008638 ***
+%time_after_intervention  15.51   15.51     1 10134.2    7.94 0.0048571 ** 
+
+%AIC                                    & 40504.501               \\
+%BIC                                    & 40592.239               \\
+%Log Likelihood                         & -20240.250              \\
+%Num. obs.                              & 11065                   \\
+%Num. groups: Repo                      & 467                     \\
+%Num. groups: Language                  & 7                       \\
+%Var: Repo (Intercept)                  & 1.145                   \\
+%Var: Repo interventionTRUE             & 0.530                   \\
+%Cov: Repo (Intercept) interventionTRUE & -0.272                  \\
+%Var: Language (Intercept)              & 0.087                   \\
+%Var: Residual                          & 1.955                   \\
+
+
+%(Intercept)                            & -1.308 \; (0.426)^{**} & \\
+%log(TotalCommits)                      & 1.131 \; (0.057)^{***} & 795.76^{***}  \\
+%AgeAtTravis                            & -0.004 \; (0.001)^{**}  & 14.06^{**}\\
+%log(NumAuthors)                        & -0.583 \; (0.048)^{***} & 302.31^{***}\\
+%time                                   & -0.011 \; (0.005)^{*}   & 10.07^{*}\\
+%interventionTRUE                       & 0.207 \; (0.061)^{***}  & 23.93^{***}\\
+%time\_after\_intervention              & -0.018 \; (0.007)^{*}   & 13.11^{*}\\
+%\hline
 %AIC                                    & 51186.198               \\
 %BIC                                    & 51276.582               \\
 %Log Likelihood                         & -25581.099              \\
@@ -31,7 +64,7 @@ time\_after\_intervention              & -0.018 \; (0.007)^{*}   & 13.11^{*}\\
 \rowcolor{white}
 \multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
 \end{tabular}
-\caption{Commit churn model 2. The response is \textbf{log(mean merge-commit churn)}. $R^2_m = 0.21$. $R^2_c = 0.52$.}
+\caption{Commit churn model 2. The response is \textbf{log(mean merge-commit churn)}. $R^2_m = 0.20$. $R^2_c = 0.51$.}
 \label{table:churn:merge}
  
 \end{table}

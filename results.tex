@@ -203,8 +203,7 @@ trend remains ascending (the sum of the coefficients for \emph{time} and
 %are qualitatively similar to those for non-merge commits.
 
 \smallskip\noindent \emph{Discussion}:
-
-The exploratory study suggests a sligth decreasing trend in the number 
+The exploratory study suggests a slight decreasing trend in the number 
 of non-merge commits with time.
 Separately modeling the trend in \emph{number of non-merge commits}
 (not shown) using a similar approach as above confirmed this overall 
@@ -224,13 +223,15 @@ commits, the increase in merge commits is noteworthy.
 One explanation for this is that projects are switching to more distributed
 development workflows, using branches and pull requests. 
 Indeed, in our survey R38 has indicated that their project ``shifted towards 
-pull-request - merge development strategy $<$as i$>$t made the distributed development more manageable.''
+pull-request - merge development strategy $<$as i$>$t made the distributed 
+development more manageable.''
 
 The development process change reported by R38 is not exceptional. 
-Indeed, the idea of a shift towards more focused development in separated branches
-has been voiced by R32 (``shorter lived (and generally single contributor) branches'') and
-R49 (``feature branches'') while R6 and R47 report more emphasis on branches and more
-branches, respectively.
+Indeed, the idea of a shift towards more focused development in separated 
+branches has been voiced by R32 (``shorter lived (and generally single contributor) 
+branches'') and R49 (``feature branches''), R6, and R47.
+% both report more 
+%emphasis on branches.
 %R6 speaks of ``much more emphasis'' being put on using 
 
 %\as{R38 The release process got changed. Additionally we have shifted towards pull-request - merge development strategy. It made the distributed development more manageable.}
@@ -268,12 +269,13 @@ branches, respectively.
 \subsection{RQ2: Trends in Code Churn}
 
 The next development practice we examine is code churn.
-Recall that our data consists of 2,401 projects across 22 programming languages.
-%each with at least 500 non-merge commits.
+Recall that our data consists of \bv{2,401 projects across 22 programming languages.}
+As before, we distinguish between merge and non-merge commits.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/churn.pdf}
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/churn-non-merge.pdf}
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/churn-merge.pdf}
 \caption{Mean code churn per commit per project, before and after \Tvi.}
 \label{fig:churn}
 \end{figure}
@@ -284,19 +286,27 @@ churn (medians behave similarly) for each of twelve consecutive 30-day time
 intervals before, and after, the \Tvis adoption.
 The horizontal line in each boxplot is the median value over all projects.
 
-We observe that, pre-\Tvi, the medians are quite stable, dancing around 65 
+We observe that, in the non-merge commits, the medians are quite stable
+across the entire interval, from before to after the \Tvis adoption, dancing 
+around 100 
+% pre-\Tvi, the medians are quite stable, dancing around 65 
 lines of code churn per commit on average, with large variance.
-The 30-day interval just before \Tvis adoption (-1) seems to stand out and is 
-slightly higher than the rest (median = 73 LOC), as is the 30-day interval just after 
-\Tvi (1).
-On the other side, following \Tvis adoption, there seems to be a slight downward 
-trend in the medians, which drop to about 53 lines of code churn per commit on 
-average in the last period (12).
-However, we note the large variance around the medians.
+%The 30-day interval just before \Tvis adoption (-1) seems to stand out and is 
+%slightly higher than the rest (median = 73 LOC), as is the 30-day interval just after 
+%\Tvi (1).
+In comparison, in the merge-commits, we observe more than usual variance
+in the two months preceding the adoption, as well as a slight downward trend 
+%On the other side, following \Tvis adoption, 
+in the medians following adoption, which drop to about 263 lines of code churn 
+per commit on average in the last period (12), compared to about 405 right after 
+adoption (period 1).
+However, we again note the large variance around the medians in all periods.
 
-In conclusion, discounting the peak behavior in code churn around adoption 
-time, we observe a small reduction in the amounts of code churn from before 
-to after the adoption.
+In conclusion, non-merge commits seem mostly unaffected by time passing and 
+the \Tvis adoption, while merge commits seem to be getting smaller with time.
+%discounting the peak behavior in code churn around adoption time, 
+%we observe a small reduction in the amounts of code churn from before 
+%to after the adoption.
 
 %To explore general trends over 
 %time, we first look at code churn in months leading up to CI adoption.

@@ -1,0 +1,36 @@
+
+\usepackage{dcolumn}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{l D{)}{)}{13)3} }
+\hline
+ & \multicolumn{1}{c}{Model 1} \\
+\hline
+(Intercept)                            & -4.013 \; (0.175)^{***} \\
+log(TotalCommits)                      & 1.007 \; (0.023)^{***}  \\
+AgeAtTravis                            & -0.007 \; (0.001)^{***} \\
+log(NumAuthors)                        & -0.052 \; (0.019)^{**}  \\
+time                                   & -0.003 \; (0.002)       \\
+interventionTRUE                       & 0.115 \; (0.036)^{**}   \\
+time\_after\_intervention              & -0.023 \; (0.003)^{***} \\
+\hline
+AIC                                    & 22857.843               \\
+BIC                                    & 22945.736               \\
+Log Likelihood                         & -11416.922              \\
+Num. obs.                              & 11208                   \\
+Num. groups: Repo                      & 467                     \\
+Num. groups: Language                  & 7                       \\
+Var: Repo (Intercept)                  & 0.197                   \\
+Var: Repo interventionTRUE             & 0.301                   \\
+Cov: Repo (Intercept) interventionTRUE & -0.137                  \\
+Var: Language (Intercept)              & 0.000                   \\
+Var: Residual                          & 0.380                   \\
+\hline
+\multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
+\end{tabular}
+\caption{Statistical models}
+\label{table:coefficients}
+\end{center}
+\end{table}
+
