@@ -155,22 +155,29 @@ We use the maximum number of tests across jobs as the test count for a build.
 %a ``build log''), using the \Tvis API and the \textit{travis gem} Ruby library.  
 
 
-\smallskip\noindent\emph{Filtering}
-
+\smallskip\noindent\emph{Filtering:}
 As a large fraction of projects on \GH are small and not highly 
-active~\cite{gousios2014exploratory}, we filtered out projects that had not 
-been consistently active during our 24-month observation period: we require
-at least one commit on the main branch in each of the 24 time windows 
-(in our sample only 2,595 projects, across 83 programming languages, satisfy 
-this requirement).
+active~\cite{gousios2014exploratory}, we filtered out projects inconsistently 
+active during our 24-month observation period, to avoid biasing our 
+conclusions due to an inflation of zero values in our data.
+Depending on the research question, this means either requiring at least 
+one merge and one non-merge commit on the main branch / closed pull
+request / closed issue in \emph{each} of the 24 time windows of observation.
 Furthermore, our multivariate regression analysis below requires enough 
 variance along each of the dimensions being modeled, thus we additionally
-filter out programming languages not represented by at least 10 projects each.
-The resulting dataset consists of 2,446 projects across 22 languages.
+filter out programming languages not represented by many projects each.
+%consists of 2,446 projects across 22 languages.
+The resulting dataset spans seven popular programming languages: 
+C, Java, Ruby, PHP, JavaScript, C++, and Python.
+Table~\ref{projs_summary} contains an overview.
+
+%require at least one commit on the main branch in each of the 24 time windows 
+%(in our sample only 2,595 projects, across 83 programming languages, satisfy 
+%this requirement).
 
 \bv{Talk about outlier removal}
 
-\bv{Add dataset overview table}
+%\bv{Add dataset overview table}
 
 %\input{tables/ouput_examples}
 
