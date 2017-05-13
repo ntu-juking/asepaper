@@ -40,7 +40,7 @@ issue tracking, and testing.
 \centering
 \includegraphics[width=\columnwidth, clip=true, trim=0 0 0 32]{figures/freq-non-merge.pdf}
 \includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-merge.pdf}
-\caption{Commit frequency before and after the \Tvis adoption.}
+\caption{Commit frequency before and after the \Tvis adoption.}\vspace{-0.4cm}
 \label{fig:freq}
 \end{figure}
 
@@ -393,8 +393,8 @@ baseline trend in commit churn before CI adoption; the \emph{intervention}
 coefficient signals a discontinuity in the time series at the time of the \Tvis
 adoption; the negative coefficient \emph{time\_after\_intervention} signals
 an acceleration in the baseline trend.
-Taken together, this confirms a change in merge commit churn at the time 
-of adoption, followed by an accelerated decreasing trend after adopting \Tvis.
+Together, this confirms a change in merge commit churn at the time 
+of adoption, followed by an accelerated decreasing trend after adoption.
 
 %not statistically significant, 
 %\ie there is no baseline trend in commit churn before CI adoption, and the 
@@ -559,7 +559,7 @@ differences are more important and might overshadow the overall trend.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/pr-closed.pdf}
-\caption{Closed pull requests before and after the \Tvis adoption.}
+\caption{Closed pull requests before and after the \Tvis adoption.}\vspace{-0.4cm}
 \label{fig:prs}
 \end{figure}
 
@@ -569,7 +569,7 @@ differences are more important and might overshadow the overall trend.
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/pr-latency.pdf}
-\caption{Mean pull request latency before and after the \Tvis adoption.}
+\caption{Mean pull request latency before and after the \Tvis adoption.}\vspace{-0.4cm}
 \label{fig:pr-latency}
 \end{figure}
 
@@ -676,7 +676,7 @@ Next, we examine issue closing trends.
 \centering
 \includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/issues-closed.pdf}
 \caption{Number of closed issues before and after the \Tvis adoption.}
-\label{fig:issues}
+\label{fig:issues}\vspace{-0.4cm}
 \end{figure}
 
 
@@ -810,8 +810,9 @@ corresponding to the first, third, and fifth interval in Figure~\ref{Fig:Tests})
 %the proportion of all erroneous builds that yield that error type.
 We find an apparent upward trend over time in most error type categories, 
 most notably compile errors, execution errors, failed tests, and skipped 
-test.\footnote{The median number of error types per build remained $2$ over 
-time.}
+test (median remained 2).
+%\footnote{The median number of error types per build remained $2$ over 
+%time.}
 All these are consistent with an increase in the amount of code being built 
 and tested per build, as well as an increasing management of errors by 
 skipping tests, likely to aid in debugging.
@@ -819,7 +820,6 @@ On the other hand, we find a decreasing trend among errors related to missing
 files/dependencies, and time-outs, both consistent with those errors being less 
 of an issue over time, as developers are acculturating to the CI mediated 
 processes.
-
 Thus, overall we find an expected adjustment to the automated testing and 
 error handling, with an indication that debugging complexity grows over time.
 

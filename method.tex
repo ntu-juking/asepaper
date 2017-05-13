@@ -31,7 +31,7 @@ reports being used in over 318,000 open source \GH projects, see
 
 Next, we cloned the \GH repositories of all these projects locally, and extracted
 their main-branch commit histories using \Perc, an open-source repository
-mining tool part of the \GLab tool suite.\footnote{\url{http://grimoirelab.github.io}}
+mining tool part of the \GLab tool suite.%\footnote{\url{http://grimoirelab.github.io}}
 Then, we traversed each project's commit history to determine when 
 maintainers introduced \Tvis, by identifying the earliest commit in the 
 \texttt{.travis.yml} configuration file, and recorded its authored timestamp as
@@ -154,7 +154,7 @@ break (similar to~\cite{rauschempirical}).
 %one for each set of user-defined configuration options; each job run produces 
 %a ``build log''), using the \Tvis API and the \textit{travis gem} Ruby library.  
 
-
+%\vspace{-0.4cm}
 \smallskip\noindent\emph{Filtering:}
 As a large fraction of projects on \GH are small and not highly 
 active~\cite{gousios2014exploratory}, we filtered out projects inconsistently 
@@ -492,7 +492,7 @@ the slope of the regression after the treatment.
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=0.4\textwidth, clip=true, trim=0 250 0 0]{figures/rdd.pdf}
-	\caption{RDD illustration.}
+	\caption{RDD illustration.}\vspace{-0.4cm}
 	\label{RDDIllustration}
 \end{figure}
 
