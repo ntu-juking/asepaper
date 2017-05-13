@@ -709,25 +709,40 @@ issues per unit time period for 12 consecutive 30-day time intervals, befor and 
 Observing these figures shows that the month immediately preceding 
 and the two following the adoption exhibit the highest number of issues.
 Besides those, before CI adoption the median number of issues per period seem to vary between 10 and 13, with most of them being in between.
-Following CI adoption, we note that there seems to be an increasing trend in the median of the number of issues closed, with the median  around 15.
+Following CI adoption, we note that there seems to be a slight increasing trend in the median of the number of issues closed, with the median between 12 and 14.
 
 %\input{tables/rq3_models}
 
 \smallskip\noindent \emph{Statistical Modeling Study}:
-Results of the RDD modeling are summarized in Table~\ref{Table:rddmodels_issues}.
-The time period before and the one after the time of CI adoption have been removed from the modeling, as explained in RQ1 above.
-The lower number of projects in Table~\ref{Table:rddmodels_issues} 
-compared to Tables~\ref{Table:rddmodels} and~\ref{Table:rddmodels_freq} 
-should not be surprising. 
-Recall from Section~\ref{sec:dd} that to answer RQ3 we have focused on 
-projects having at least 100 issues, further reducing the size of the data set 
-used in RQ1 and RQ2 to 293.
-We have fitted models to 291 projects of the 293, however in most cases we 
-did not observe linear trends.
-When a linear trend has been observed than it was more than twice more 
-often decreasing than increasing.
-The mean value over all projects for $\gamma$, the effect size of CI adoption, 
-was $1.0$ issue.
+We apply RDD as above. 
+%in the same way we have using this approach to address \textbf{RQ1} and \textbf{RQ2}. 
+The statistical model for the number of issues closed is summarized in Table~\ref{table:issues-model}.
+As above, the combined fixed-and-random effects models fit the data much 
+better than the basic fixed-effect models, indicating that the project-to-project 
+and language-to-language variability are responsible for most of the variability 
+explained.
+%$R^2_m$ and $R^2_c$ are in line with the statistical models built for \textbf{RQ2} 
+%(churn), with $R^2_m \simeq 0.1-0.2$ and $R^2_c \simeq 0.4-0.5$.
+We note an increasing
+\emph{time} baseline trend pre-adoption; no statistically significant discontinuity
+at the adoption time; and a slight positive trend post-adoption, as $\beta$(\emph{time}) $+$ 
+$\gamma$(\emph{time\_after\_intervention}) $\simeq 0$.
+
+
+%Results of the RDD modeling are summarized in Table~\ref{Table:rddmodels_issues}.
+%The time period before and the one after the time of CI adoption have been removed from the modeling, as explained in RQ1 above.
+%The lower number of projects in Table~\ref{Table:rddmodels_issues} 
+%compared to Tables~\ref{Table:rddmodels} and~\ref{Table:rddmodels_freq} 
+%should not be surprising. 
+%Recall from Section~\ref{sec:dd} that to answer RQ3 we have focused on 
+%projects having at least 100 issues, further reducing the size of the data set 
+%used in RQ1 and RQ2 to 293.
+%We have fitted models to 291 projects of the 293, however in most cases we 
+%did not observe linear trends.
+%When a linear trend has been observed than it was more than twice more 
+%often decreasing than increasing.
+%The mean value over all projects for $\gamma$, the effect size of CI adoption, 
+%was $1.0$ issue.
 
 
 \smallskip\noindent \emph{Discussion}:
@@ -747,7 +762,7 @@ Overall, this result shows that the adoption of CI brings about more issues, as 
 Survey participants experience \Tvi as beneficial for bug detection: ``I think we produce less bugs'' (R45), ``there was an immediately noticeable improvement in terms of the number of serious bugs in production'' (R51). 
 An interesting insight into this matter is provided by R16: while several survey respondents have indicated that \Tvis is not consistent in terms of performance and relatively slow, those performance aspects provided R16 with means to detect ``more flaky issues'' ``which where only visible on \Tvi''. 
 
-\subsection{RQ4: Trends in Testing}
+\subsection{RQ5: Trends in Testing}
 
 The last development practice we examine is testing and the evolution 
 of the types of errors revealed by automated testing.
