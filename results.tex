@@ -764,15 +764,18 @@ An interesting insight into this matter is provided by R16: while several survey
 
 \subsection{RQ5: Trends in Testing}
 
-The last development practice we examine is testing and the evolution 
-of the types of errors revealed by automated testing.
-The data consists of 250 projects, each with at least 100 builds, and 90\% 
-of builds executing tests.
+The last development practice we examine is testing.
+% and the evolution 
+%of the types of errors revealed by automated testing.
+Here we only consider a sample of Java projects, for which we could confidently
+identify their build system and, consequently, parse their \Tvi log files. 
+The sample consists of 250 projects, each with at least 100 builds, and 90\% of 
+builds executing tests.
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{tests.pdf}
-\caption{Unit tests per build following CI adoption}
+\caption{Unit tests per build following CI adoption.}
 \label{Fig:Tests}
 \end{figure}
 
@@ -793,11 +796,10 @@ the average number of jobs per build.
 The median is $1$ for all five time intervals.
 These two findings suggest strongly that there is an increase in the number of 
 unit tests per build over time.
-This, coupled with our finding that builds are not getting more complex over time indicates that developers are likely spending more time on 
-automated testing since CI adoption.
+This, coupled with our finding that builds are not getting more complex over time 
+indicates that developers are likely spending more time on automated testing 
+since CI adoption.
 This is consistent with Fowler's ``good practices" proposal.
-
-
 
 \smallskip\noindent \emph{Error Types Study}:
 We also looked at the evolution of the error types in builds over time after CI 
@@ -805,8 +807,8 @@ adoption.
 For all 250 projects above, we looked at the builds that resulted in errors, 
 and deconvolved the errors into 8 types, as described above.
 We did this over 3 intervals: 0-60 days, 61-180 days, and 181-300 days (\ie 
-corresponding to the first, third, and fifth interval in Fig.~\ref{Fig:Tests}).
-The results are shown in Fig.~\ref{Fig:BugTypes}, where on the y-axis are 
+corresponding to the first, third, and fifth interval in Figure~\ref{Fig:Tests}).
+The results are shown in Figure~\ref{Fig:BugTypes}, where on the $y$-axis are 
 the proportion of all erroneous builds that yield that error type.
 We find an apparent upward trend over time in most error type categories, 
 most notably compile errors, execution errors, failed tests, and skipped 
@@ -833,17 +835,21 @@ error handling, with an indication that debugging complexity grows over time.
 
 
 %this is the new plots
-%\begin{figure}[!t]
-%	\centering
-%	\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{new_plot_together.png}
-%	\caption{Evolution of Error Types Since CI Adoption}
-%	\label{Fig:BugTypes}
-%\end{figure}
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{new_plot_together.png}
+	\caption{Evolution of Error Types Since CI Adoption}
+	\label{Fig:BugTypes}
+\end{figure}
 
 \as{Survey}
-Improving software quality through test automation has been repeatedly mentioned by the survey respondents as a reason to choose for \Tvis. 
-Not surprisingly, respondents also indicate that changes facilitating test automation had to be made when \Tvis was introduced. 
-Moreover, by using \Tvis developers became more aware of testing-related aspects of their software development process (R32, R52), 
-spend more time and effort on designing testing strategies (R5, R53) and encourage other projects to start using \Tvis (R26).
-Efficiency of \Tvis for long-running tests is, however, a concern (R10).
+Improving software quality through test automation has been repeatedly mentioned 
+by the survey respondents as a reason to switch to \Tvis. 
+Not surprisingly, respondents also indicate that changes facilitating test automation 
+had to be made when \Tvis was introduced. 
+Moreover, by using \Tvis developers became more aware of testing-related aspects 
+of their software development process (R32, R52), spent more time and effort on 
+designing testing strategies (R5, R53), and encouraged other projects to start using 
+\Tvis (R26).
+The efficiency of \Tvis for long-running tests is, however, a concern (R10).
 
