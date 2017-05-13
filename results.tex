@@ -339,7 +339,8 @@ the \Tvis adoption, while merge commits seem to be getting smaller with time.
 
 \smallskip\noindent \emph{Statistical Modeling Study}: 
 Guided by our exploratory observations above, we proceed to quantify the 
-trends we observed using a mixed-effects RDD model, as described before.
+trends we observed using two mixed-effects RDD models, for non-merge 
+and merge commits, respectively, as described before.
 %Recall that we modeled a random intercept for \emph{programming language}, 
 %to allow for language-to-language variability in the response (\ie code in some 
 %languages being naturally more verbose than in others), and a random 
@@ -354,56 +355,85 @@ trends we observed using a mixed-effects RDD model, as described before.
 %and \emph{time\_after\_intervention} is the slope of the linear trend after \Tvis
 %adoption.
 
-Table~\ref{table:churn} summarizes the model.
-In addition to the model coefficients and corresponding standard errors, the table 
-shows the sum of squares, a measure of variance explained, for each variable.
-The statistical significance is indicated by stars.
+Table~\ref{table:churn} summarizes the RDD model for non-merge commits.
+%In addition to the model coefficients and corresponding standard errors, the table 
+%shows the sum of squares, a measure of variance explained, for each variable.
+%The statistical significance is indicated by stars.
 First, we observe that only the combined fixed-and-random effects model fits the 
-data well ($R_c^2 = 0.46$ compared to $R_m^2 = 0.1$), \ie most of the explained 
+data well ($R_c^2 = 0.48$ compared to $R_m^2 = 0.09$), \ie most of the explained 
 variability in the data is attributed to project-to-project and language-to-language
 variability, rather than any of the fixed effects, either controls or RDD-related.
 
-Next, we turn to our controls and main predictors.
-The controls behave unsurprisingly.
-Overall bigger projects (\emph{TotalCommits}) tend to churn more, other things
-held constant; older projects (\emph{AgeAtTravis}) tend to churn less, perhaps 
-as they have reached maturity and a more stationary stage in their evolution;
-projects with a larger contributor base (\emph{NumAuthors}) also tend to churn
-less, which is in line with the expectation that occasional contributors to open 
-source projects are generally less active than core developers.
+Next, we turn to the fixed effects.
+From among the controls, we note that overall bigger projects (\emph{TotalCommits}) 
+tend to churn more, other things held constant; and projects with a larger contributor 
+base (\emph{NumAuthors}), which typically indicate many occasional contributors, 
+also tend to churn less.
+None of the \Tvi-related predictors have statistically significant effects,
+%, except for
+%\emph{time\_after\_intervention}, which has a negative coefficient with a small 
+%effect; 
+\ie the churn trend in non-merge commits is stationary over time, and 
+remains unaffected by the \Tvis adoption.
 
-After controlling for confounds, we move on to the main predictors. 
-We observe that the coefficient for \emph{time} is not statistically significant, 
-\ie there is no baseline trend in commit churn before CI adoption, and the 
-\emph{intervention}, although statistically significant, has a small effect.
-However, \emph{time\_after\_intervention} has a statistically significant, 
-negative coefficient, with a notable effect size.
-Taken together, this confirms a decreasing trend in commit churn after 
-adopting \Tvis.
+Table~\ref{table:churn:merge} summarizes the RDD model for merge commits.
+Similarly as with the previous model of churn in non-merge commits, most of 
+the explained variability in the data is attributed to project-to-project and 
+language-to-language variability, rather than any of the fixed effects variables.
+The controls also behave similarly as before: older projects tend to churn less, 
+perhaps as they have reached maturity and a more stationary stage in their 
+evolution; projects with a larger contributor base also tend to churn less, which 
+is in line with the expectation that occasional contributors to open source projects 
+are generally less active than core developers; small pull request contributions
+would be reflected here.
+
+After controlling for confounds, we move on to the main time series predictors,
+all of which now have statistically significant effects.
+The coefficient for \emph{time} is negative, suggesting a small decreasing
+baseline trend in commit churn before CI adoption; the \emph{intervention}
+coefficient signals a discontinuity in the time series at the time of the \Tvis
+adoption; the negative coefficient \emph{time\_after\_intervention} signals
+an acceleration in the baseline trend.
+Taken together, this confirms a change in merge commit churn at the time 
+of adoption, followed by an accelerated decreasing trend after adopting \Tvis.
+
+%not statistically significant, 
+%\ie there is no baseline trend in commit churn before CI adoption, and the 
+%\emph{intervention}, although statistically significant, has a small effect.
+%However, \emph{time\_after\_intervention} has a statistically significant, 
+%negative coefficient, with a notable effect size.
+
 
 \smallskip\noindent \emph{Discussion}:
-Across our large sample (2,401 projects across 22 programming languages),
-our modeling study revealed a statistically significant, but small, discontinuity
-in the commit churn time series when adopting \Tvis; and a statistically 
-significant decreasing linear trend with time in code churn, after adopting \Tvis.
-The former is not unexpected, as one can reasonably expect that more 
+Across our large sample \bv{(2,401 projects across 22 programming languages)},
+our modeling study revealed a statistically significant discontinuity
+in the merge commit churn time series when adopting \Tvis; and a statistically 
+significant decreasing linear trend with time in merge commit churn after adopting \Tvis.
+However, churn in non-merge commits remains unaffected by either time or 
+switching to \Tvis.
+
+The discontinuity is not unexpected, as one can reasonably expect that more 
 maintenance work may be going on in preparation for the transition to \Tvis, 
 and that the projects go through some adjustment/cleanup period right after.
-The increased code churn on both sides near the CI adoption time is also
-indication of this, as are the survey results.  
-Indeed, when asked about the introduction of \Tvis, respondents frequently refer to 
-test automation being introduced around the same time as \Tvi ``as contributors 
+The relative instability in code churn on both sides near the CI adoption time is 
+also indication of this, as are the survey results.  
+Indeed, when asked about the introduction of \Tvis, respondents frequently refer 
+to test automation being introduced around the same time as \Tvi ``as contributors 
 couldn't be trusted to run test suite on their own'' (R25). Furthermore, respondents 
-indicate that \Tvi has been introduced as ``a part of automated package/release effort'' (R38) 
-and to ``deploy artifacts to S3 on each commit, as part of our deployment process using 
-Amazon CodeDeploy'' (R34).
+indicate that \Tvi has been introduced as ``a part of automated package/release 
+effort'' (R38) and to ``deploy artifacts to S3 on each commit, as part of our 
+deployment process using Amazon CodeDeploy'' (R34).
 
-The latter is consistent with Fowler's recommended good practices of CI, of 
+The decreasing trend in code churn post \Tvi is visible only among merge commits,
+which are more likely to be affected by switching to a fast-paced CI workflow than
+non-merge commits, which may live on local, isolated developer branches for
+some time before being merged to the remote.
+This finding is consistent with Fowler's recommended good practices of CI, of 
 committing smaller changes to the code.
-The expected decrease in the size of the commits is echoed by one of the 
+The expected decrease in the size of the commits is also echoed by one of the 
 survey respondents: ``commits became smaller and more frequent, to check 
 the build; pull requests became easier to check'' (R4).
-However, the decreasing trend we observed is not steep.
+However, the decreasing trend we observed is not particularly steep.
 Survey responses provide a possible explanation: several developers 
 referred to pull request integration as the reason for introducing \Tvis, and 
 while R31 and R50 state that \Tvis is used both for commits and for pull 
@@ -419,8 +449,8 @@ commits he/she makes are likely to be larger;
 therefore, our global decreasing trend may be weakened by local trends
 in the opposite direction.
 Our model found evidence for strong project-specific effects: 
-project-to-project and language-to-language differences, as captured by 
-our random effects, better explain the overall data variability. 
+project-to-project and language-to-language differences, as captured by our 
+random effects, contribute substantially to explaining the overall data variability. 
 This suggests that any phenomena giving rise to pressures to increase 
 or reduce code churn are perhaps subordinate in magnitude to other, 
 more pressing phenomena of local, \ie project-specific, character.
@@ -432,7 +462,9 @@ become more prevalent than commits adding new features, which on
 average are larger.
 
 \as{Say something about SE practice/research implications}
-Our results suggest that while the Fowler's good practice of small commits is followed to some extent but the project-to-project and language-to-language differences are more important and might overshadow the overall trend.
+Our results suggest that while Fowler's good practice of small commits 
+is followed to some extent, the project-to-project and language-to-language 
+differences are more important and might overshadow the overall trend.
 \as{Still thinking} 
 
 
@@ -502,8 +534,6 @@ Our results suggest that while the Fowler's good practice of small commits is fo
 
 %Table XX: Projects with statistical negative trends after CI
 
-
-\bv{I'm here}
 
 
 %\begin{figure}[t]
