@@ -661,8 +661,9 @@ over time, and this trend is unaffected by the switch to \Tvis.
 This, again, is quite surprising, as we have seen in RQ2 above that the size of 
 code changes becomes, on average, smaller and smaller over time; in turn, this
 would imply that changes are also easier (quicker) to evaluate.
-\as{Talk about survey and how Travis is becoming slow, which may explain latency trend}
-
+%\as{Talk about survey and how Travis is becoming slow, which may explain latency trend}
+One possible explanation of the increased latency is the low performance of \Tvis, 
+as reported by survey participants (R1, R27, R53).
 
 
 \subsection{RQ4: Trends in Issue Closing}
@@ -757,12 +758,6 @@ closed per time period, across the entire interval under observation, although t
 Thus, our model finds that, on average, more issues are being closed 
 over time, but this trend slows with the switch to \Tvis.
 
-
-
-
-
-
-\as{Survey}
 Survey participants experience \Tvi as beneficial for bug detection: ``I think we produce less bugs'' (R45), ``there was an immediately noticeable improvement in terms of the number of serious bugs in production'' (R51). 
 An interesting insight into this matter is provided by R16: while several survey respondents have indicated that \Tvis is not consistent in terms of performance and relatively slow, those performance aspects provided R16 with means to detect ``more flaky issues'' ``which where only visible on \Tvi''. 
 
@@ -845,7 +840,6 @@ error handling, with an indication that debugging complexity grows over time.
 %	\label{Fig:BugTypes}
 %\end{figure}
 
-\as{Survey}
 Improving software quality through test automation has been repeatedly mentioned 
 by the survey respondents as a reason to switch to \Tvis. 
 Not surprisingly, respondents also indicate that changes facilitating test automation 
