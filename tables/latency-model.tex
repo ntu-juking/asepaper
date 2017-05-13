@@ -8,13 +8,43 @@
 \hline
                                                & \multicolumn{1}{c}{Coeffs (Errors)} & \multicolumn{1}{c}{Sum Sq.} \\
 \hline
-(Intercept)                            & 2.510 \; (0.526)^{***} & \\
-log(TotalCommits)                      & -0.138 \; (0.073)    & 6.79 \\
-AgeAtTravis                            & 0.007 \; (0.002)^{***} &  24.44^{***} \\
-log(NumAuthors)                        & 0.474 \; (0.064)^{***} &  101.27^{***} \\
-time                                   & 0.055 \; (0.007)^{***} &  113.44^{***} \\
-interventionTRUE                       & -0.103 \; (0.082)     &  2.95 \\
-time\_after\_intervention              & -0.032 \; (0.010)^{**} &  19.09^{**} \\
+(Intercept)                            & 0.052 \; (0.519)      & \\
+log(TotalCommits)                      & 0.157 \; (0.068)^{*} & 7.89^{*}   \\
+AgeAtTravis                            & -0.002 \; (0.002)    & 1.00  \\
+log(NumAuthors)                        & 0.225 \; (0.062)^{***} & 19.72^{***}\\
+time                                   & 0.030 \; (0.012)^{*}  & 8.60^{*} \\
+interventionTRUE                       & -0.160 \; (0.153)    & 1.65  \\
+time\_after\_intervention              & -0.022 \; (0.019)    & 2.03  \\
+\hline
+%Analysis of Variance Table of type III  with  Satterthwaite 
+%approximation for degrees of freedom
+%                         Sum Sq Mean Sq NumDF   DenDF F.value    Pr(>F)    
+%log(TotalCommits)        7.8943  7.8943     1  200.00  5.2679 0.0227593 *  
+%AgeAtTravis              1.0013  1.0013     1  194.21  0.6682 0.4146849    
+%log(NumAuthors)         19.7179 19.7179     1  197.77 13.1579 0.0003644 ***
+%time                     8.6001  8.6001     1 1475.42  5.7389 0.0167173 *  
+%intervention             1.6486  1.6486     1  886.22  1.1001 0.2945248    
+%time_after_intervention  2.0330  2.0330     1 1506.63  1.3566 0.2443056    
+
+%AIC                                    & 5558.908               \\
+%BIC                                    & 5623.561               \\
+%Log Likelihood                         & -2767.454              \\
+%Num. obs.                              & 1616                   \\
+%Num. groups: Repo                      & 203                    \\
+%Num. groups: Language                  & 7                      \\
+%Var: Repo (Intercept)                  & 0.638                  \\
+%Var: Repo interventionTRUE             & 0.478                  \\
+%Cov: Repo (Intercept) interventionTRUE & -0.342                 \\
+%Var: Language (Intercept)              & 0.000                  \\
+%Var: Residual                          & 1.499                  \\
+%
+%(Intercept)                            & 2.510 \; (0.526)^{***} & \\
+%log(TotalCommits)                      & -0.138 \; (0.073)    & 6.79 \\
+%AgeAtTravis                            & 0.007 \; (0.002)^{***} &  24.44^{***} \\
+%log(NumAuthors)                        & 0.474 \; (0.064)^{***} &  101.27^{***} \\
+%time                                   & 0.055 \; (0.007)^{***} &  113.44^{***} \\
+%interventionTRUE                       & -0.103 \; (0.082)     &  2.95 \\
+%time\_after\_intervention              & -0.032 \; (0.010)^{**} &  19.09^{**} \\
 %\hline
 %AIC                                    & 23087.126              \\
 %BIC                                    & 23168.260              \\
@@ -31,8 +61,8 @@ time\_after\_intervention              & -0.032 \; (0.010)^{**} &  19.09^{**} \\
 \rowcolor{white}
 \multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
 \end{tabular}
-\caption{PR latency model. The response is \textbf{log(mean PR latency)}
-per month, in hours. $R^2_m = 0.10$. $R^2_c = 0.42$.}
+\caption{Pull request latency model. The response is \textbf{log(mean pull request latency)}
+per month, in hours. $R^2_m = 0.05$. $R^2_c = 0.31$.}
 \label{table:latency}
  
 \end{table}

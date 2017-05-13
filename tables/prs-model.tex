@@ -1,0 +1,49 @@
+
+ 
+
+\begin{table}[t]
+\centering \footnotesize
+\rowcolors{3}{Gray}{}
+\begin{tabular}{l D{)}{)}{13)3}@{} D{.}{.}{5.5} }
+\hline
+                                               & \multicolumn{1}{c}{Coeffs (Errors)} & \multicolumn{1}{c}{Sum Sq.} \\
+\hline
+(Intercept)                            & -3.132 \; (0.356)^{***} & \\
+log(TotalCommits)                      & 0.605 \; (0.049)^{***} & 71.17^{***}  \\
+AgeAtTravis                            & -0.008 \; (0.001)^{***} & 14.17^{***} \\
+log(NumAuthors)                        & 0.136 \; (0.043)^{**}  & 4.64^{**} \\
+time                                   & 0.032 \; (0.004)^{***} & 32.98^{***} \\
+interventionTRUE                       & 0.005 \; (0.055)       & 0.00 \\
+time\_after\_intervention              & -0.033 \; (0.005)^{***} & 18.06^{***} \\
+\hline
+%Analysis of Variance Table of type III  with  Satterthwaite 
+%approximation for degrees of freedom
+%                        Sum Sq Mean Sq NumDF  DenDF F.value    Pr(>F)    
+%log(TotalCommits)       71.171  71.171     1  230.0 152.086 < 2.2e-16 ***
+%AgeAtTravis             14.169  14.169     1  230.0  30.277 9.956e-08 ***
+%log(NumAuthors)          4.640   4.640     1  230.0   9.915  0.001857 ** 
+%time                    32.978  32.978     1 5060.0  70.470 < 2.2e-16 ***
+%intervention             0.004   0.004     1  622.9   0.009  0.926001    
+%time_after_intervention 18.061  18.061     1 5060.0  38.595 5.634e-10 ***
+
+%AIC                                    & 12565.979               \\
+%BIC                                    & 12645.373               \\
+%Log Likelihood                         & -6270.990               \\
+%Num. obs.                              & 5520                    \\
+%Num. groups: Repo                      & 230                     \\
+%Num. groups: Language                  & 7                       \\
+%Var: Repo (Intercept)                  & 0.457                   \\
+%Var: Repo interventionTRUE             & 0.340                   \\
+%Cov: Repo (Intercept) interventionTRUE & -0.182                  \\
+%Var: Language (Intercept)              & 0.000                   \\
+%Var: Residual                          & 0.468                   \\
+\hline
+\rowcolor{white}
+\multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
+\end{tabular}
+\caption{Pull request model. The response is \textbf{log(number of pull requests closed)}
+per month. $R^2_m = 0.32$. $R^2_c = 0.65$.}
+\label{table:prs}
+ 
+\end{table}
+
