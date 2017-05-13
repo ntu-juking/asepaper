@@ -123,17 +123,17 @@ when it was opened.
 The mean is computed over all PRs in that time window.
 
 \item \textbf{number of tests executed per build}. 
-Each \Tvis build consists of at least one job, which corresponds to a particular
-build and test environment (\eg jdk version, environment variables). 
-Once the job is started, a log is generated, recording the detailed information
+Each \Tvi build runs at least one job, corresponding to a particular
+build/test environment (\eg jdk version). 
+Once the job starts, a log is generated, recording the detailed information
 of the build lifecycle, including installation steps and output produced by the 
 build managers.
 On a sample of Java projects that used Maven, Ant, or Gradle as their build
 systems, for which we could make reasonable assumptions about the structure 
-of their build log files, we parsed the \Tvis build logs and extracted information 
-about the number of tests executed and the types of reasons causing builds to 
-break.
-We use the maximum number of tests across jobs as the test count for a build. 
+of their build log files, we parsed the \Tvi build logs and extracted information 
+about the number of tests executed (we take the maximum number of tests 
+across jobs as the test count for a build), and the reasons causing builds to 
+break (similar to~\cite{rauschempirical}).
 
 \end{itemize}
 
