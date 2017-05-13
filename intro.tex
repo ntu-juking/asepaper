@@ -74,10 +74,7 @@ CI infrastructure used on \GH~\cite{Hilton2016}.
 In particular, we focus on the \emph{transition to using 
 T{\footnotesize RAVIS} CI}, and investigate how development practices 
 changed following this shift.
-To this end, we operationalize practices in three main aspects of 
-distributed development, related to code changes, issue tracking, 
-and testing, and pursue a mixed-methods approach.
-We introduce \emph{regression 
+To this end, we introduce \emph{regression 
 discontinuity design analyses} to quantitatively evaluate the effect of an intervention, in our case 
 adoption of \Tvis, on the transition toward expected behaviors in the 
 above three practices (measured from trace data in thousands of 
@@ -89,24 +86,12 @@ Applying this mixed methodology, we find that:
 \bv{This needs to be updated}
 \begin{itemize}
 
-\item Following CI adoption there are downward trends in commit churn, 
-for ca. 10\% of projects (for ca. 86\% no statistical evidence for a trend 
-could be found, and for ca. 4\% the trend is upwards). 
-This downward trend is non-existent before the adoption. 
-This is in agreement with Fowler's ``best practices", although 
-probably to a much lesser extent than expected.
-
-\item The commit frequency for both merge and non-merge commits does 
-not change substantially for most projects, but for 20\% of them it increases
-after CI adoption, but returns back down with time.
-This is not in apparent agreement with Fowler's ``best practices".
-
-\item There is an increasing trend in the number of automatic tests 
-executed per build after CI adoption, as expected.
-
-\item There are significantly more issues submitted after CI is 
-adopted than before.
-
+\item the increasing number of merge commits aligns with the the ``commit often'' guideline of Fowler, but is likely to be further encouraged by the shift to a more distributed workflow with multiple branches and pull requests;
+\item the ``commit small'' guideline, however, is followed only to some extent but the differences between the projects are more important than adherence to this guideline;
+\item the expected increasing trend in the number of pull requests being closed manifests itself after the introduction of \Tvis, and even then only after the initial plateau period;
+\item the pull request latency increases  despite the code changes becoming smaller;
+\item while the number of issues closed increases, this trend is unexpectedly slowed down by \Tvis
+\item after the expected adjustments required by the automated testing required by \Tvis, the debugging complexity seems to increase.
 \end{itemize}
 
 
