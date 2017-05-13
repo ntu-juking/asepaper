@@ -3,17 +3,18 @@
 \section{Related Work}
 \label{sec:rw}
 
-Adoption and impact of CI have attracted quite some attention from the research 
-community already. 
-The earlier studies interpret CI as \emph{distributed development and obligation 
-to integrate one's own contributions}, as common in most open-source software.
-Though not directly comparable, we review these studies for historical reasons.
-Holck and J{\o}rgensen, based on studies of FreeBSD and Mozilla, observed that 
-CI (under this definition) is capable of replacing traditional software engineering 
-coordination mechanisms~\cite{HolckJ03}.  
-Deshpande and Riehle studied adoption of CI based on Ohloh.net data~\cite{Deshpande2008}
-under the assumption that it reduces the size of commits (to facilitate coordination
-in distributed settings), but observed no commit size reduction in their 5,122 projects. 
+Impact of CI has attracted quite some attention from the research 
+community. % already. 
+The earlier studies~\cite{HolckJ03,Deshpande2008} interpret CI as \emph{distributed development and obligation 
+to integrate one's own contributions}. %, as common in most open-source software.
+%Though not directly comparable, we review these studies for historical reasons.
+%Holck and J{\o}rgensen, based on studies of FreeBSD and Mozilla, observed that 
+%CI (under this definition) is capable of replacing traditional software engineering 
+%coordination mechanisms~\cite{HolckJ03}.  
+Under this definition %Deshpande and Riehle %based on Ohloh.net data~\cite{Deshpande2008}
+%under the assumption that it reduces the size of commits (to facilitate coordination
+%in distributed settings), but 
+no commit size reduction has been observed in 5,122 Ohloh projects~\cite{Deshpande2008}. 
 %Assuming that the use of CI (again under this early definition) reduces the 
 %size of commits, the authors studied the size of commits in 5,122 projects and, 
 %since no commit size reduction was observed, they concluded that CI has not 
@@ -31,10 +32,11 @@ and similarly to Beller \etal~\cite{BellerGZ16} we study build failures.
 Closest in spirit to ours is probably the work of Vasilescu \etal~\cite{VasilescuYWDF15},
 who report, using different methodology, increases in a project team's ability 
 to integrate outside contributions following adoption of \Tvis.
-In our work we adopt a similar evolutionary perspective and \emph{within-subject 
-design}, focusing on changes in development practices in the projects  before 
+In our work we adopt a similar evolutionary perspective% and \emph{within-subject design}
+, focusing on changes in development practices in the projects  before 
 and after adoption of \Tvis;
-most prior work has adopted a \emph{between-subject design}, comparing 
+most prior work has %adopted a \emph{between-subject design}, comparing 
+compared
 projects that adopt CI with others that do not.
 
 %However, all these papers compare projects that adopt CI with those that do not, 
@@ -51,7 +53,7 @@ Gousious \etal\ studied work practices and challenges in pull-based
 development on \GH~\cite{gousios2015work, gousios2016work}. 
 They report that 75\% of the projects surveyed use CI tools to evaluate
 code quality~\cite{gousios2015work} and that more than 60\% of the surveyed 
-contributors employ automatic testing, either locally or using a CI server~\cite{gousios2016work}. 
+contributors employ automatic testing~\cite{gousios2016work}. 
 Importance of tooling facilitating the testing tasks has been already recognized by 
 Pham \etal~\cite{pham2013creating}: back in 2012 when the authors conducted
 the interviews, \Tvis has only started to support mainstream languages such as Java 
@@ -63,7 +65,7 @@ These findings further emphasize importance of CI in modern software development
 %of implementing it and another 10\% planned to implement it~\cite{Forrester}. 
 A March 2016 survey of 1,060 IT professionals indicated that 81\% of the enterprises 
 and 70\% small and midsize businesses implement \DO~\cite{rightscale}. 
-Not surprisingly, the topic of industrial adoption of CI 
+Not surprisingly, industrial adoption of CI 
 has attracted substantial research attention~\cite{hilton2016continuous,Leppanen2015,Laukkanen2015Agile,Debbiche2014,Stahl2014ICSEComp,Stahl2014JSS,Stahl2013Experienced} and is a subject of recent literature survey by Eck \etal~\cite{EckUB14}. 
 However, this line of work is based on interviews or surveys rather than on 
 analysis of repository data and, as such, is to a larger extent susceptible to 
@@ -72,9 +74,7 @@ CI introduction is beneficial for productivity~\cite{Leppanen2015},
 Eck \etal\ stress that productivity is likely to decrease before positive effects can be observed~\cite{EckUB14},
 and St{\aa}hl and Bosch validated this hypothesis only partially~\cite{Stahl2013Experienced}.
 %
-There are also reports of experiences with applying CI in specific domains,
-such as neuroinformatics~\cite{Zaytsev:Morrison} and software-intensive
-embedded systems~\cite{Martensson2016}.
+%There are also reports of experiences with applying CI in specific domains, such as neuroinformatics~\cite{Zaytsev:Morrison} and software-intensive embedded systems~\cite{Martensson2016}.
 
 %Several papers have reported on experiences with applying CI in specific domains:
 %\eg Zaytsev and Morrison report that introduction of CI in neuroinformatics
@@ -88,8 +88,7 @@ embedded systems~\cite{Martensson2016}.
 %\as{Laukannen and M\"{a}ntyl\"{a} have surveyed three papers discussing the impact of the build waiting times. Some of the consequences of the long/short build waiting times are related to CI~\cite{Laukkanen2015RCSE}.}
 
 Automated testing is an important factor that affects the cost-effectiveness 
-of CI. 
-In recent years, much effort has been devoted to improve the quality and 
+of CI and much effort has been devoted to improve the quality and 
 efficiency of automated testing in CI. 
 Campos et al.~\cite{campos2014continuous} used Continuous Test Generation 
 (CTG) to enhance CI with automated test generation. 
@@ -97,10 +96,11 @@ Their experimental results showed that CTG could lead to a significantly
 higher code coverage while reducing the test generation time. 
 Elbaum \etal~\cite{elbaum2014techniques} and Hu 
 \etal~\cite{hu2016Implementation} applied test case selection and test case 
-prioritization to test suites, making CI processes more cost-efficient. 
+prioritization to test suites. %, making CI processes more cost-efficient. 
 D{\"o}singer \etal~\cite{dosinger2012communicating} proposed the continuous 
-change impact analysis technique to analyze the dependencies between the 
-code of various projects to improve the effectiveness of automated testing. 
+change impact analysis technique 
+%to analyze the dependencies between the code of various projects 
+to improve the effectiveness of automated testing. 
 Long \etal~\cite{long2015collaborative} designed tools to support collaborative 
 testing between testers. 
 Nilsson et al.~\cite{nilsson2014visualizing} developed a technique to visualize 

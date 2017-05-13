@@ -398,11 +398,11 @@ Table~\ref{projs_summary} contains an overview.
 \label{sec:tsa}
 
 We use data visualization and statistical modeling to discover longitudinal 
-patterns indicative of CI adoption effects on development practices.
+patterns indicative of CI adoption effects. % on development practices.
 As one of our contributions, we introduce the statistical modeling 
 framework of \emph{regression discontinuity design}~\cite{imbens2008regression} 
-to assess the existence and extent of a longitudinal effect on development 
-practices, associated with the \Tvis adoption.
+to assess the existence and extent of a longitudinal effect% on development practices
+, associated with the \Tvis adoption.
 
 To evaluate the effect of a treatment, \eg a new drug, on a disease progression, 
 randomized experimental trials are usually conducted: the experimental 
@@ -460,15 +460,19 @@ after CI adoption:
 %$c$, $c-h \le x_i \le c+h$, is given by:
 \begin{align}
 y_i \ = &\alpha + \beta \cdot \text{time}_i + \gamma \cdot \text{intervention}_i \nonumber \\
-	&+ \delta \cdot \text{time\_after\_intervention}_i + \epsilon_i,
+	&+ \delta \cdot \text{time\_after\_intervention}_i + \epsilon_i, \nonumber
 %y_i \ = \alpha + \beta(x_i-c) + \gamma w_i + \delta(x_i-c)w_i + \epsilon_i,
 \end{align}
-where \emph{time} is a continuous variable indicating time in months at 
+%\[
+%y_i \ = \alpha + \beta \cdot \text{time}_i + \gamma \cdot \text{intervention}_i 
+%	+ \delta \cdot \text{time\_after\_intervention}_i + \epsilon_i, 
+%\]
+where \emph{time} indicates time in months at 
 time $i$ from the start of the observation period;
 \emph{intervention} is an indicator for time $i$ occurring before 
 ($\text{intervention} = 0$) or after ($\text{intervention} = 1$) CI adoption, which 
 was at month 0 based on our encoding in Figure~\ref{fig:timeseries};
-and \emph{time after intervention} is a continuous variable counting the number 
+and \emph{time after intervention} counts the number 
 of months at time $i$ after the intervention, coded 0 before CI adoption and 
 ($\text{time} - 12$) after CI adoption.
 
@@ -476,23 +480,22 @@ of months at time $i$ after the intervention, coded 0 before CI adoption and
 
 %\noindent where $w_i = (x_i \geq c)$, \ie $w_i$ is 1 if point $x_i$ is included in 
 %the treatment group (\eg after CI adoption), and 0 if it is before the treatment.
-In fact, this model encapsulates two separate regressions.
+This model encapsulates two separate regressions.
 For points before the treatment, the resulting regression line has a slope of 
 $\beta$, and after the treatment $\beta + \delta$.
 The size of the effect of the treatment is the difference between the two 
-regression values of $y_i$ evaluated at the intervention time,
+regression values of $y_i$ at the intervention time,
 %$x=c$, 
-and can be seen to be equal to $\gamma$.
-E.g., in Figure~\ref{RDDIllustration}, the treatment effect ($\gamma$) 
-is negative, and there is an interaction effect ($\delta \neq 0$) which changes 
-the slope of the regression after the treatment.
+and is equal to $\gamma$.
 %Note, a critical assumption for RDD is that all variables but the treatment
 %remain steady, before, during, and after the treatment.
 
 \begin{figure}[t]
 	\centering
 	\includegraphics[width=0.4\textwidth, clip=true, trim=0 250 0 0]{figures/rdd.pdf}
-	\caption{RDD illustration.}\vspace{-0.4cm}
+	\caption{RDD: the treatment effect ($\gamma$) 
+is negative, and there is an interaction effect ($\delta \neq 0$) which changes 
+the slope of the regression after the treatment.}\vspace{-0.4cm}
 	\label{RDDIllustration}
 \end{figure}
 
@@ -522,6 +525,7 @@ models~\cite{nakagawa2013general, johnson2014extension}; $R^2_m$ describes
 the proportion of variance explained by the fixed effects alone; $R^2_c$ describes 
 the proportion of variance explained by the fixed and random effects together.
 To improve robustness, the top 1\% of the data was filtered out as outliers.
+Finally, we check for multicolinearity using VIF.
 
 %Coefficients are considered important if they were statistically significant ($p < 0.05$). 
 %Their effect sizes are obtained from ANOVA analyses. 

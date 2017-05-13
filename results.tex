@@ -267,7 +267,7 @@ branches'') and R49 (``feature branches''), R6, and R47.
 
 \subsection{RQ2: Trends in Code Churn}
 
-The next development practice we examine is code churn.
+Next we examine code churn.
 %Recall that our data consists of \bv{2,401 projects across 22 programming languages.}
 We distinguish between merge and non-merge commits.
 
@@ -285,7 +285,7 @@ churn (medians behave similarly) for each of twelve consecutive 30-day time
 intervals before, and after, the \Tvis adoption.
 The horizontal line in each boxplot is the median value over all projects.
 
-We observe that, in the non-merge commits, the medians are quite stable
+In the non-merge commits, the medians are quite stable
 across the entire interval, from before to after the \Tvis adoption, dancing 
 around 100 
 % pre-\Tvi, the medians are quite stable, dancing around 65 
@@ -299,7 +299,7 @@ in the two months preceding the adoption, as well as a slight downward trend
 in the medians following adoption, which drop to about 263 lines of code churn 
 per commit on average in the last period (12), compared to about 405 right after 
 adoption (period 1).
-However, we again note the large variance around the medians in all periods.
+The variance around the medians is still large in all periods.
 
 In conclusion, non-merge commits seem mostly unaffected by time passing and 
 the \Tvis adoption, while merge commits seem to be getting smaller with time.
@@ -361,7 +361,7 @@ Table~\ref{table:churn} summarizes the RDD model for non-merge commits.
 First, we observe that only the combined fixed-and-random effects model fits the 
 data well ($R_c^2 = 0.48$ compared to $R_m^2 = 0.09$), \ie most of the explained 
 variability in the data is attributed to project-to-project and language-to-language
-variability, rather than any of the fixed effects, either controls or RDD-related.
+variability, rather than any of the fixed effects.%, either controls or RDD-related.
 
 Next, we turn to the fixed effects.
 From among the controls, we note that overall bigger projects (\emph{TotalCommits}) 
@@ -436,8 +436,9 @@ However, the decreasing trend we observed is not particularly steep.
 Survey responses provide a possible explanation: several developers 
 referred to pull request integration as the reason for introducing \Tvis, and 
 while R31 and R50 state that \Tvis is used both for commits and for pull 
-requests, R11, R21, and R37 explicitly state that \Tvis is applied solely to 
-pull requests, \ie in those projects push commits are outside the scope of \Tvis.
+requests, R11, R21, and R37 explicitly state that 
+%\Tvis is applied solely to pull requests, \ie 
+in their projects push commits are outside the scope of \Tvis.
 In other words, if in a project not all commits are subjected to \Tvis, then 
 there may be less incentive to follow Fowler's recommendations 
 related to commit churn.
@@ -455,10 +456,9 @@ or reduce code churn are perhaps subordinate in magnitude to other,
 more pressing phenomena of local, \ie project-specific, character.
 
 Alternatively, the decreasing trend in commit churn is also consistent with 
-the observation by Brindescu \etal~\cite{brindescu2014centralized} that, 
-as projects age, bug-fixing commits, which on average are smaller, 
-become more prevalent than commits adding new features, which on 
-average are larger.
+the observation that as projects age, bug-fixing commits, which on average are smaller, 
+become more common than new-feature commits, which on 
+average are larger~\cite{brindescu2014centralized}.
 
 \as{Say something about SE practice/research implications}
 Our results suggest that while Fowler's good practice of small commits 
@@ -575,30 +575,30 @@ differences are more important and might overshadow the overall trend.
 
 \input{tables/latency-model}
 
-The next practice we consider is pull request closing, which we analyze along two 
+Next we consider pull request closing, which we analyze along two 
 dimensions: the number of pull requests closed, and the average
 pull request latency (\ie time to close) per time window.
-Since \Tvis is invoked and runs automatically every time a pull request is submitted, 
-we expect that developers are rapidly notified whether their pull request passes the 
-\Tvi-quality gate.
-This would mean that they can rapidly react to the feedback provided by \Tvi and 
-correct the pull request source code if necessary.
-Overall, we therefore expect that \Tvis should shorten the pull request latency and, 
-under the assumption of constant productivity, increase the number of pull requests 
-being closed.
+Since \Tvis  runs every time a pull request is submitted, 
+the developers are rapidly notified whether their pull requests pass the 
+\Tvi-quality gate and can then rapidly react %to the feedback provided by \Tvi 
+by correcting the pull request source code.
+Hence, we expect that \Tvis shortens the pull request latency and
+%under the assumption of constant productivity, 
+increases the number of closed pull requests.
 \as{some literature here. Bogdan, is ``Wait for it'' relevant here?}
 
 \smallskip\noindent \emph{Exploratory Study}:
 Figure
 %s~\ref{fig:issues} and 
-\ref{fig:prs} shows boxplots of per-project number of closed pull requests, for each 
-of twelve consecutive 30-day time intervals before, and after, the \Tvis adoption. 
-Similarly to Figure~\ref{fig:churn}, in both cases we see large variance around the 
-medians. 
-Inspecting the figure we observe that the median number of closed pull requests 
-per months fluctuates between 11 and 15 across the twelve periods pre-\Tvi, and 
-between 14 and 20 across the twelve periods post adoption.
+\ref{fig:prs} shows boxplots of per-project number of closed pull requests.
+%, for each of twelve consecutive 30-day time intervals before, and after, the \Tvis adoption. 
+%Similarly to Figure~\ref{fig:churn}, 
+We observe that the median number of closed pull requests 
+per months fluctuates between 11 and 15 before \Tvi introduction, and 
+between 14 and 20 after.
 We note an apparent increasing trend pre-\Tvi, which also seems to continue post-\Tvi.
+Both pre-\Tvi and post-\Tvi we see large variance around the 
+medians. 
 %seems to fluctuate around 12 \as{can we take a look at the numbers?}
 %and while the number of closed issues does not seem to exhibit any trend, the number of closed pull requests seems to be increasing after the introduction of \Tvis.
 
@@ -624,9 +624,9 @@ Regarding closed pull requests (Table~\ref{table:prs}), we note an increasing
 at the adoption time; and an apparent neutralization of the aforementioned time
 trend post-adoption, as $\beta$(\emph{time}) $+$ 
 $\gamma$(\emph{time\_after\_intervention}) $\simeq 0$.
-
+%
 Turning to the pull request latency model (Table~\ref{table:latency}), we note
-a statistically significant, increasing baseline \emph{time} trend, which remains
+a statistically significant, increasing baseline \emph{time} trend, 
 unaffected by the \Tvis adoption, as neither coefficient for discontinuity and
 change in trend has statistically significant effects.
 
@@ -642,7 +642,6 @@ change in trend has statistically significant effects.
 %number of external contributors submitting pull requests and therefore slowing down the pull request review process as each pull request requires an extra review/merge effort from a limited number of core developers.
 
 \smallskip\noindent \emph{Discussion}:
-
 The statistical modeling study generated two noteworthy findings.
 First, despite a visually apparent increasing trend in the number of pull requests 
 closed per time period, across the entire interval under observation, our model 
@@ -842,11 +841,10 @@ error handling, with an indication that debugging complexity grows over time.
 
 Improving software quality through test automation has been repeatedly mentioned 
 by the survey respondents as a reason to switch to \Tvis. 
-Not surprisingly, respondents also indicate that changes facilitating test automation 
-had to be made when \Tvis was introduced. 
-Moreover, by using \Tvis developers became more aware of testing-related aspects 
-of their software development process (R32, R52), spent more time and effort on 
-designing testing strategies (R5, R53), and encouraged other projects to start using 
-\Tvis (R26).
+%Not surprisingly, respondents also indicate that changes facilitating test automation had to be made when \Tvis was introduced. 
+By using \Tvis they became more aware of testing-related aspects 
+of their development process (R32, R52), spent more time and effort on 
+designing testing strategies (R5, R53), and encourage other projects to embrace
+\Tvi (R26).
 The efficiency of \Tvis for long-running tests is, however, a concern (R10).
 
