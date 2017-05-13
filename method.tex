@@ -338,50 +338,50 @@ Table~\ref{projs_summary} contains an overview.
 \input{tables/projs_summary}
 
 \bv{Integrate this into Filtering above}
-%Our study makes use of a large-scale data set collected from the selected 1566 java projects. 
-Table~\ref{projs_summary} contains descriptive statistics for the selected 
-1,566 Java projects that adopted \Tvis. 
-We note an average number of 347 builds per project. 
-We further census the builds in terms of the triggering event type and final 
-state (Table~\ref{builds_count}). 
-Out of 541,959 builds total in our data set, 68\% came from push commits 
-and 32\% from pull requests (PRs). 
-Of these builds, 67.1\% passed, 18.6\% failed, and the others errored or were canceled. 
-In addition, Table~\ref{count_info} lists statistics for \#Commits, \#Issues, 
-and \#PRs before and after adopting \Tvis, respectively. 
-We can preliminarily see that there are fewer commits 
-after adopting CI, but more issues and PRs.
-From the summary statistics, we found there are large variances between 
-projects in terms of each attribute (Table~\ref{projs_summary}).
-For example, 18\% of projects have no \GH issues;
-% a value of \#issues equal to 0, as they 
-%haven't used \GH issue tracking yet. 
-when studying the evolution of issue reporting practices, these projects without 
-issues may bias our conclusions. 
-As a result, to avoid too many zeros in our subsequent time series analysis, 
-we did more data filtering for each RQ individually, as follows.
-%based on different conditions, 
-
-
-For RQ1 and RQ2, we study code churn and commit frequency. 
-To reduce potential bias due to data sparsity (since we aggregate data at 
-monthly intervals; see Section~\ref{sec:tsa}), we discard projects having 
-fewer than 500 total non-merge commits (arbitrarily chosen).
-%In our data set, 8.9\% of commits are merge commits. 
-%First, we remove these merge commits, to avoid double counting and since 
-%they were automatically generated. 
-%Then, we further filter the projects based on the number of non-merge commits,
-%to reduce potential bias due to data sparsity (since we aggregate data at 
-%monthly intervals), and discard projects with less than 500 total non-merge 
-%commits.
-%%We Each project should have at least 500 nonmerge commits. 
-This restricts the data set to 567 projects, with a 
-total of 1,629,090 non-merge commits (of them, 274,410 are fix commits) 
-and 157,976 merge commits.
-
-For RQ3, we only selected projects with at least 100 issues for similar sparsity 
-avoidance reasons. 
-The resulting filtered data set contains 293 projects (143,573 \GH issues total).
+%%Our study makes use of a large-scale data set collected from the selected 1566 java projects. 
+%Table~\ref{projs_summary} contains descriptive statistics for the selected 
+%1,566 Java projects that adopted \Tvis. 
+%We note an average number of 347 builds per project. 
+%We further census the builds in terms of the triggering event type and final 
+%state (Table~\ref{builds_count}). 
+%Out of 541,959 builds total in our data set, 68\% came from push commits 
+%and 32\% from pull requests (PRs). 
+%Of these builds, 67.1\% passed, 18.6\% failed, and the others errored or were canceled. 
+%In addition, Table~\ref{count_info} lists statistics for \#Commits, \#Issues, 
+%and \#PRs before and after adopting \Tvis, respectively. 
+%We can preliminarily see that there are fewer commits 
+%after adopting CI, but more issues and PRs.
+%From the summary statistics, we found there are large variances between 
+%projects in terms of each attribute (Table~\ref{projs_summary}).
+%For example, 18\% of projects have no \GH issues;
+%% a value of \#issues equal to 0, as they 
+%%haven't used \GH issue tracking yet. 
+%when studying the evolution of issue reporting practices, these projects without 
+%issues may bias our conclusions. 
+%As a result, to avoid too many zeros in our subsequent time series analysis, 
+%we did more data filtering for each RQ individually, as follows.
+%%based on different conditions, 
+%
+%
+%For RQ1 and RQ2, we study code churn and commit frequency. 
+%To reduce potential bias due to data sparsity (since we aggregate data at 
+%monthly intervals; see Section~\ref{sec:tsa}), we discard projects having 
+%fewer than 500 total non-merge commits (arbitrarily chosen).
+%%In our data set, 8.9\% of commits are merge commits. 
+%%First, we remove these merge commits, to avoid double counting and since 
+%%they were automatically generated. 
+%%Then, we further filter the projects based on the number of non-merge commits,
+%%to reduce potential bias due to data sparsity (since we aggregate data at 
+%%monthly intervals), and discard projects with less than 500 total non-merge 
+%%commits.
+%%%We Each project should have at least 500 nonmerge commits. 
+%This restricts the data set to 567 projects, with a 
+%total of 1,629,090 non-merge commits (of them, 274,410 are fix commits) 
+%and 157,976 merge commits.
+%
+%For RQ3, we only selected projects with at least 100 issues for similar sparsity 
+%avoidance reasons. 
+%The resulting filtered data set contains 293 projects (143,573 \GH issues total).
 
 For RQ4, we investigate changes in \#tests per build.
 As introduced above, we collected \#tests from build logs. 

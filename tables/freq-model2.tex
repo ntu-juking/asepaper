@@ -2,6 +2,9 @@
  
 
 \begin{table}[t]
+\caption{Commit frequency model. The response is \textbf{log(number of merge commits)}
+per month. $R^2_m = 0.58$. $R^2_c = 0.83$.}
+\label{table:freq}
 \centering \footnotesize
 \rowcolors{3}{Gray}{}
 \begin{tabular}{l D{)}{)}{13)3}@{} D{.}{.}{5.5} }
@@ -32,9 +35,6 @@ time\_after\_intervention              & -0.016 \; (0.003)^{***} & 10.96^{***}\\
 \rowcolor{white}
 \multicolumn{2}{l}{\scriptsize{$^{***}p<0.001$, $^{**}p<0.01$, $^*p<0.05$}}
 \end{tabular}
-\caption{Commit frequency model. The response is \textbf{log(number of merge commits)}
-per month. $R^2_m = 0.58$. $R^2_c = 0.83$.}\vspace{-0.5cm}
-\label{table:freq}
 \end{table}
 
 %> r.squaredGLMM(m1)
