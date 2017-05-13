@@ -564,7 +564,8 @@ discontinuity in commit activity we detected at \Tvi adoption time.
 Only one project per developer was considered.
 %We also ensured that in each project a different developer was responsible for 
 %introducing \Tvis. 
-In the invitation email we explicitly stated the name of the project.
+In the invitation email (delivery of 23 messages failed; we received 55 responses,
+or 17.63 response rate) we explicitly stated the name of the project.
 % that the survey questions have pertained to.
 We asked three questions: what made developers decide to start using CI and 
 \Tvis; whether they had to change anything in their development process to 
@@ -575,3 +576,26 @@ To reduce potential bias, no question was mandatory, and no compensation
 was offered to participants.\bv{Doesn't this increase self-selection bias?}
 %In order not to bias the responses, 
 
+%To obtain more profound insights in the adoption of \Tvis we have conducted a survey of software developers.
+
+%We have \as{how?} selected 335 projects from our dataset ensuring that in each project a different software  developer was responsible for introducing \Tvis. 
+
+%Among the 312 (= 335-23) projects we have considered, 170 projects are stationary, 73 increase and 69 decrease.
+
+%The response rate constitutes, therefore, 17.63\% comparable to the response rate in similar surveys of \GH software developers\as{add bib refs}.
+%To match the responses to the direction\as{bad word, to be replaced}  we have asked the respondents to provide the slug of the \GH repository.
+%Three respondents did not provide the slug; distribution of the direction among the respondents' projects does not statistically significantly differ form the distribution of the direction among the 312 (= 335-23) projects ($p$-value of the $\chi^2$-test is $0.57$).
+
+%We have asked three questions: what made the developers decide to start using CI and \Tvis, whether they had to change anything in their development process to accommodate CI, and how did their development process change with time to use CI/\Tvis efficiently?
+%In order not to bias the responses, none of the questions was mandatory.
+
+%The most frequently mentioned reasons for introduction of \Tvis were related to testing and pull request integration as well as to the previous experience with CI.
+%When discussing the changes that had to be introduced in order to accommodate \Tvis, the lions' share of the respondents (42/55)  indicated that no changes have been required. If changes have been required, then they often pertained to testing (7 out of the remaining 13 cases).
+%% p ``no''~0.94
+%In terms of impact, several developers have reported that they no longer use \Tvis due to performance, security or platform coverage issues, or a further-going decision to abandon \GH. 
+%Those developers, however, have reported to still use CI.
+%On the contrary, other developers indicate that due to success of \Tvis they have opted for more elaborate use of \Tvis facilities, going beyond compilation and testing and including code style enforcement, metrics calculation and documentation generation.  
+%In any case, the respondents indicate that \Tvis is often used as a quality gate prior to manual review or merge, albeit developers disagree on whether developers with the commit rights should also pass through this quality gate.
+%In terms of broken builds developers also chose different strategies: while some of them become more careful as to avoid broken builds, some others ``more boldly push untested changes to a branch and check later if CI is happy with it''.
+%
+%We do not observe statistically meaningful differences between the responses provided by the developers from projects with different directions\as{bad name}.
