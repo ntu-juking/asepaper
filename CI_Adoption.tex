@@ -43,6 +43,7 @@
 \usepackage[table]{xcolor}
 \usepackage{ifthen}
 \usepackage{amssymb}
+
 \newboolean{showcomments}
 \setboolean{showcomments}{true} % toggle to show or hide comments
 \ifthenelse{\boolean{showcomments}}
@@ -55,10 +56,14 @@
   {\newcommand{\nb}[2]{}
    \newcommand{\version}{}
   }
-\newcommand{\as}[1]{\nnbb{Alexander}{#1}}
-\newcommand{\bv}[1]{\nnbb{Bogdan}{#1}}
-\newcommand{\vf}[1]{\nnbb{Vladimir}{#1}}
-\newcommand{\yz}[1]{\nnbb{Yangyang}{#1}}
+%\newcommand{\as}[1]{\nnbb{Alexander}{#1}}
+%\newcommand{\bv}[1]{\nnbb{Bogdan}{#1}}
+%\newcommand{\vf}[1]{\nnbb{Vladimir}{#1}}
+%\newcommand{\yz}[1]{\nnbb{Yangyang}{#1}}
+\newcommand{\as}[1]{}
+\newcommand{\bv}[1]{}
+\newcommand{\vf}[1]{}
+\newcommand{\yz}[1]{}
 
 \newcommand\blfootnote[1]{%
   \begingroup

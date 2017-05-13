@@ -38,8 +38,8 @@ issue tracking, and testing.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 32]{figures/freq-non-merge1.pdf}
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-merge1.pdf}
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 32]{figures/freq-non-merge.pdf}
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-merge.pdf}
 \caption{Commit frequency before and after the \Tvis adoption.}
 \label{fig:freq}
 \end{figure}
@@ -576,8 +576,8 @@ differences are more important and might overshadow the overall trend.
 \input{tables/latency-model}
 
 The next practice we consider is pull request closing, which we analyze along two 
-dimensions: the number of pull requests closed per time window, and the average
-pull request latency per time window, \ie the average time to close.
+dimensions: the number of pull requests closed, and the average
+pull request latency (\ie time to close) per time window.
 Since \Tvis is invoked and runs automatically every time a pull request is submitted, 
 we expect that developers are rapidly notified whether their pull request passes the 
 \Tvi-quality gate.
@@ -660,7 +660,7 @@ Second, our model finds that, on average, pull requests are taking longer to clo
 over time, and this trend is unaffected by the switch to \Tvis.
 This, again, is quite surprising, as we have seen in RQ2 above that the size of 
 code changes becomes, on average, smaller and smaller over time; in turn, this
-would imply that changes are also easier (therefore quicker) to evaluate.
+would imply that changes are also easier (quicker) to evaluate.
 \as{Talk about survey and how Travis is becoming slow, which may explain latency trend}
 
 
@@ -668,12 +668,12 @@ would imply that changes are also easier (therefore quicker) to evaluate.
 \subsection{RQ4: Trends in Issue Closing}
 
 Next, we examine issue closing trends.
-As above, we use data on 293 projects, each with 
-100+ issues.
+%As above, we use data on 293 projects, each with 
+%100+ issues.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/issues.pdf}
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/issues-closed.pdf}
 \caption{Number of closed issues before and after the \Tvis adoption.}
 \label{fig:issues}
 \end{figure}
@@ -700,22 +700,21 @@ As above, we use data on 293 projects, each with
 %\end{figure}
 
 \smallskip\noindent \emph{Exploratory Study}:
-We follow the same approach as in RQ1 and RQ2 and compare the 
-medians and the averages in the number of issues per time period, in the 
-months before and after CI adoption.
+We follow the same approach as above and compare the 
+medians in the number of issues per time period, in the months before and after CI adoption.
 Fig.~\ref{fig:issues} shows the boxplots of the number of 
-issues per unit time period for 12 consecutive 30-day time intervals, befor and after \Tvis adoption.
-Observing these figures shows that the month immediately preceding 
+issues per unit time period for 12 consecutive 30-day time intervals, before and after \Tvis adoption.
+We note that the month immediately preceding 
 and the two following the adoption exhibit the highest number of issues.
-Besides those, before CI adoption the median number of issues per period seem to vary between 10 and 13, with most of them being in between.
-Following CI adoption, we note that there seems to be a slight increasing trend in the median of the number of issues closed, with the median between 12 and 14.
+Besides those, before CI adoption the median number of issues per period seems to vary between 10 and 13, with most of them being in between.
+Following CI adoption, we note a slight increasing trend in the median of the number of issues closed, with the median between 12 and 14.
 
 %\input{tables/rq3_models}
 
 \smallskip\noindent \emph{Statistical Modeling Study}:
 We apply RDD as above. 
 %in the same way we have using this approach to address \textbf{RQ1} and \textbf{RQ2}. 
-The statistical model for the number of issues closed is summarized in Table~\ref{table:issues-model}.
+The statistical model for the number of issues closed is summarized in Table~\ref{table:issues}.
 As above, the combined fixed-and-random effects models fit the data much 
 better than the basic fixed-effect models, indicating that the project-to-project 
 and language-to-language variability are responsible for most of the variability 
@@ -753,10 +752,8 @@ $\gamma$(\emph{time\_after\_intervention}) $> 0$.
 %as the upward one, a reversal of the pattern in the trends from before CI.
 %This has to be considered in combination with the size of the effect of CI adoption, which is $1$ issue per period additional.
 %Thus, the number of issues increases significantly overall after CI adoption, to the tune of $33\%$, and then has a pressure of slight reduction over time.
-
 The statistical modeling study confirmed the visually apparent increasing trend in the number of issues 
 closed per time period, across the entire interval under observation, although the trend slows down following \Tvis adoption, and is smaller than expected from the visual study, indicating the moderating influence of the control variables.
-
 Thus, our model finds that, on average, more issues are being closed 
 over time, but this trend slows with the switch to \Tvis.
 
@@ -776,18 +773,18 @@ The last development practice we examine is testing.
 %of the types of errors revealed by automated testing.
 Here we only consider a sample of Java projects, for which we could confidently
 identify their build system and, consequently, parse their \Tvi log files. 
-The sample consists of 250 projects, each with at least 100 builds, and 90\% of 
+The sample consists of 250 projects, each with at least 100 builds, 90+\% of 
 builds executing tests.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=0.45\textwidth, clip=true, trim=0 15 15 50]{tests.pdf}
-\caption{Unit tests per build following CI adoption.}
+\includegraphics[width=0.4\textwidth, clip=true, trim=0 15 15 50]{tests.pdf}
+\caption{Unit tests per build following CI adoption.}\vspace{-0.3cm}
 \label{Fig:Tests}
 \end{figure}
 
 \smallskip\noindent \emph{Exploratory Study}: 
-As before, we first look for general trends over time.
+As before, we first look for general trends.
 Fig.~\ref{Fig:Tests} shows a boxplot of per-project median number of tests 
 per build, for each of five consecutive 60-day time intervals before CI adoption.
 We aggregated the data here in 60 day intervals to make it easier to visualize 
@@ -795,8 +792,7 @@ the trend, since the differences are small.
 The horizontal line in each boxplot is the median value of all per-project medians, 
 and the black dot is their average value.
 We observe a monotonically increasing trend in both the medians, from 140 to 
-160 tests per build, and the means, from 205 to 245 tests per build, \ie 15\% to 
-20\% increase. 
+160 tests per build, and the means, from 205 to 245, \ie 15\% to 20\% increase. 
 
 To ascertain if the complexity of builds increases over time, we also calculated 
 the average number of jobs per build.
