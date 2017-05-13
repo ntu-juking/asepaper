@@ -36,6 +36,14 @@ issue tracking, and testing.
 
 
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 32]{figures/freq-non-merge1.pdf}
+\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-merge1.pdf}
+\caption{Commit frequency before and after the \Tvis adoption.}
+\label{fig:freq}
+\end{figure}
+
 
 \subsection{RQ1: Trends in Commit Frequency}
 
@@ -58,14 +66,6 @@ periods, we restrict this analysis to only 575 projects that had at least one
 merge commit in each time window.
 
 %(we obtained the latter as described previously in the Methods section).
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 32]{figures/freq-non-merge1.pdf}
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/freq-merge1.pdf}
-\caption{Commit frequency before and after the \Tvis adoption.}
-\label{fig:freq}
-\end{figure}
 
 
 %We started from the same data as before, 567 projects, each with at least 500 
@@ -220,12 +220,11 @@ This overall trend aligns with the expected increase in commit frequency
 after switching to CI, as expressed and encouraged by Fowler.
 Given the overall decreasing trend with time in the number of non-merge
 commits, the increase in merge commits is noteworthy.
-One explanation for this is that projects are switching to more distributed
+One explanation is that projects are switching to more distributed
 development workflows, using branches and pull requests. 
 Indeed, in our survey, R38 has indicated that their project ``shifted towards 
-pull-request - merge development strategy $<$as i$>$t made the distributed 
+pull-request - merge development strategy as it made the distributed 
 development more manageable.''
-
 The development process change reported by R38 is not exceptional. 
 Indeed, the idea of a shift towards more focused development in separated 
 branches has been voiced by R32 (``shorter lived (and generally single contributor) 
@@ -269,8 +268,8 @@ branches'') and R49 (``feature branches''), R6, and R47.
 \subsection{RQ2: Trends in Code Churn}
 
 The next development practice we examine is code churn.
-Recall that our data consists of \bv{2,401 projects across 22 programming languages.}
-As before, we distinguish between merge and non-merge commits.
+%Recall that our data consists of \bv{2,401 projects across 22 programming languages.}
+We distinguish between merge and non-merge commits.
 
 \begin{figure}[t]
 \centering
@@ -405,16 +404,16 @@ of adoption, followed by an accelerated decreasing trend after adopting \Tvis.
 
 
 \smallskip\noindent \emph{Discussion}:
-Across our large sample \bv{(2,401 projects across 22 programming languages)},
-our modeling study revealed a statistically significant discontinuity
+%Across our sample, %\bv{(2,401 projects across 22 programming languages)},
+Our modeling study revealed a statistically significant discontinuity
 in the merge commit churn time series when adopting \Tvis; and a statistically 
 significant decreasing linear trend with time in merge commit churn after adopting \Tvis.
 However, churn in non-merge commits remains unaffected by either time or 
 switching to \Tvis.
 
-The discontinuity is not unexpected, as one can reasonably expect that more 
-maintenance work may be going on in preparation for the transition to \Tvis, 
-and that the projects go through some adjustment/cleanup period right after.
+The discontinuity is not unexpected, as one can reasonably expect more 
+maintenance work in preparation for transitioning to \Tvis, 
+and some adjustment/cleanup period right after.
 The relative instability in code churn on both sides near the CI adoption time is 
 also indication of this, as are the survey results.  
 Indeed, when asked about the introduction of \Tvis, respondents frequently refer 
@@ -440,7 +439,7 @@ while R31 and R50 state that \Tvis is used both for commits and for pull
 requests, R11, R21, and R37 explicitly state that \Tvis is applied solely to 
 pull requests, \ie in those projects push commits are outside the scope of \Tvis.
 In other words, if in a project not all commits are subjected to \Tvis, then 
-there may be less incentive to follow Fowler's recommended good practices 
+there may be less incentive to follow Fowler's recommendations 
 related to commit churn.
 
 At the same time, a different respondent indicated that \Tvis discourages 
