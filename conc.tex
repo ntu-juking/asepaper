@@ -3,43 +3,51 @@
 \section{Conclusion}
 \label{sec:conc}
 
-This paper focused on CI: while several ``best 
-practices'' have been proposed, relatively little has been done to evaluate the 
+This paper focused on CI: while several guidelines have been proposed, relatively little has been done to evaluate the 
 state of practice.
 We conducted an 
-empirical study of the impact of adopting \Tvis on development practices in a collection of \GH Java projects.
-We observed that for most projects no significant linear trends 
-are visible, neither before nor after introduction of \Tvis.
-In cases when such a linear trend can be observed it is more often decreasing 
-(fewer churned lines, less frequent commits, fewer issues). 
-And while decrease in the churned lines concurs with one of the aforementioned 
-``best practices'', decrease in the commit frequency or number of issues seems 
-to disagree with them. 
-Finally, we considered trends in testing and the types of errors revealed 
-by the automatic testing.
-The number of tests run by \Tvis shows an increasing trend, 
-%\as{VF, please check this once you have done a more careful modeling} 
-in agreement with the importance of automated testing in CI.
-We also observed increase in the percentage of compilation and execution errors 
-as well as failed and skipping tests as opposed to missing files or dependencies.
-We conjecture that as file omissions are easy to fix, once such an error has been 
-observed it is immediately fixed, in contrast to repeated attempts to fix other 
-kinds of errors causing repeated build failures.
-More work has to be done to tease out the (possibly subtle) interactions in the 
-interleaved processes of building, coding, and testing.
-%As developers are getting more and more used to the rapid feedback provided by the CI 
-%\as{This still does not explain the evolution; the conjecture that the developers are running more and more attempts to fix a bug seems to be contradicted by 
-%our conclusion on \# commits (unless they are using pull requests...)}
+empirical study of the impact of adopting \Tvis on development practices in a collection of \GH projects,
+and augmented it by surveying the developers responsible for introducing \Tvis in the projects we have studied.
 
-While CI is a popular mechanism, we don't 
+We observe that the increasing number of merge commits aligns with the the ``commit often'' guideline, but is likely to be further encouraged by the shift to a more distributed workflow with multiple branches and pull requests.
+The ``commit small'' guideline, however, is followed only to some extent but the differences between the projects are more important than adherence to this guideline.
+As expected, we have observed that the increasing tend in the number of issues closed; however, it was surprising that this trend slows down after \Tvis is introduced.
+In terms of testing, we observe that after the expected adjustments required by the automated testing, the debugging complexity seems to increase. 
+The most interesting observations were related to the pull request resolution: the expected increasing trend in the number of pull requests being closed manifests itself after the introduction of \Tvis, and even then only after the initial plateau period. 
+This observation calls for a more profound investigation of how \GH teams change their behavior in response to the introduction of \Tvis. 
+Furthermore, we have observed that the pull request latency increases  despite the code changes becoming smaller.
+%\as{till here}
+%We observed that for most projects no significant linear trends 
+%are visible, neither before nor after introduction of \Tvis.
+%In cases when such a linear trend can be observed it is more often decreasing 
+%(fewer churned lines, less frequent commits, fewer issues). 
+%And while decrease in the churned lines concurs with one of the aforementioned 
+%``best practices'', decrease in the commit frequency or number of issues seems 
+%to disagree with them. 
+%Finally, we considered trends in testing and the types of errors revealed 
+%by the automatic testing.
+%The number of tests run by \Tvis shows an increasing trend, 
+%%\as{VF, please check this once you have done a more careful modeling} 
+%in agreement with the importance of automated testing in CI.
+%We also observed increase in the percentage of compilation and execution errors 
+%as well as failed and skipping tests as opposed to missing files or dependencies.
+%We conjecture that as file omissions are easy to fix, once such an error has been 
+%observed it is immediately fixed, in contrast to repeated attempts to fix other 
+%kinds of errors causing repeated build failures.
+%More work has to be done to tease out the (possibly subtle) interactions in the 
+%interleaved processes of building, coding, and testing.
+%%As developers are getting more and more used to the rapid feedback provided by the CI 
+%%\as{This still does not explain the evolution; the conjecture that the developers are running more and more attempts to fix a bug seems to be contradicted by 
+%%our conclusion on \# commits (unless they are using pull requests...)}
+
+While CI is a popular mechanism, we do not 
 find overwhelming evidence that developers transition to ``best practices" 
 following its adoption.
-In fact, it is apparent that the ``one size fits all" approach may not apply here, 
-and that project specific concerns may guide individual implementations, usage, 
+In fact, it is apparent that the reality of the \Tvis adoption is more complex than suggested by the previous studies.
+Project specific concerns may guide individual implementations, usage, 
 and practices.
-These findings have support in recent qualitative studies, where CI needs and 
-wishes of open-source and proprietary code developers have been surveyed~\cite{Hilton2016, hilton2016continuous}.
-We consider investigating whether introduction of CI in a project leads to 
-realization of those expectations, independent of Fowler's ``best practices," 
-as future work.
-%\as{Danny Dig and co-authors have only compared Travis with no-Travis but did not look at the transition.}
+Moreover, the ways developers benefit from the introduction of \Tvis do not necessarily correspond to their
+expectations, \eg unstable performance of \Tvis allowed one of the survey respondents to detect hard-to-find bugs.
+%These findings have support in recent qualitative studies, where CI needs and  wishes of open-source and proprietary code developers have been surveyed~\cite{Hilton2016, hilton2016continuous}.
+We consider investigating longer term impact of \Tvis as future work.
+%%\as{Danny Dig and co-authors have only compared Travis with no-Travis but did not look at the transition.}
