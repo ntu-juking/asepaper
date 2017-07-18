@@ -1,0 +1,232 @@
+*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=
+
+          >>> Summary of discussion leader <<<
+
+The reviewers discussed the paper and everyone agreed that the use of quantitative
+and qualitative methods is very good. However, please provide more information
+about how the survey was conducted. Please also be more explicit about the
+implications of the findings towards automation.
+
+*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=
+
+First reviewer's review:
+
+          >>> Summary of the submission <<<
+
+The authors present an interesting study over continuous integration practices
+and their adoption in open-source. The study harnesses mixed-methods research
+and addresses the need to clarify the effects and impact of DevOps adoption
+with a focus on continuous testing and deployment practices in the specific.
+
+          >>> Evaluation <<<
+
+I commend the authors for the width of the study and strongly encourage their
+work in this direction, however, I must point out two critical shortcomings of
+the study that prohibit it from delivering its true value. More in particular,
+I observe two crucial shortcomings. The first related to the unclear adoption
+of mixed-methods in the context of this study. The second shortcoming relates
+to the missing "so what", for this study. 
+
+Concerning the methodological issue, I feel like the adoption of mixed methods
+research to widen the scope of the study was not a happy choice. More in
+particular the choice leads to an uneasy feeling of "we know this [...], and we
+also found that [...], but also [...]" but none of the findings confirm each
+other out - as the authors themselves admit (section 3.C, line 1), the aim of
+the mixed-methods research approach is to offer more "profound" insights over
+quantitative findings, that is, rather than confirming them elaborate more on
+the circumstances and factors around them but without actually pointing out to
+any actionable insight or practical advice for CI adopters. Although the study
+is targeting a topic which is timely, the too wide scope does not warrant that
+the findings are actually usable and practical. 
+
+Concerning the actionability of results, I hereby report the authors' research
+questions with punctual comments over each of them: (1) "are developers
+committing code more frequently?" - regardless of the answer, what can
+practitioners learn from this question? that CI increases commit-rate? This
+finding is rather banale, since the use of CI is designed to address continuous
+testing, continuous improvement and consequently commit increase; (2) "are
+developers reducing the size of code changes [...]?" again, what can a
+practitioner learn from this answer? that using CI actually reduces
+commit-size? I find this rather banale as well - quite simply the increased
+frequency necessarily drives non-merge commits to become smaller while
+merge-commits will remain unaffected; (3) "trends in pull request closing" -
+here you find no statistically significant variation, can you at least
+elaborate what you were looking for in the first place?; (4) "trends in issue
+closing" - again, same comment as for RQ3, what were you expecting? can you at
+least comment on that?; (5) "trends in testing" - this is rather a consequence
+of (1) and (2), so not surprising either... This not withstanding, again, I am
+left severely perplexed after reading through this study - a carefully crafted
+and executed empirical study which however says nothing new unfortunately.
+Perhaps the authors could take their data and formulate an initial set of
+hypotheses discussing differences, confirmations and violations of such
+hypotheses, perhaps as followups and further investigations beyond the current
+findings. In their current form, said findings are not able to deliver, if not
+but a tenuous contribution at best.
+
+minor comments:
+- abstract line 1-3: I think these lines are redundant and don't add much
+contribution;
+- intro, par 4, lines 9+: the questions you report here are not only different
+than the RQs for your study but they actually go in a completely different
+direction, i.e., they look more at "disruption", i.e., the organisational
+structure of teams/communities being investigated - this also reflects on the
+immediately following question. Please, either you remove or rephrase these
+questions to synch them with the actual ones;
+- section 3.C: more "profound" - "profound" is not really clear to me in this
+context - I assume you mean "wider", referring to the scope of your survey;
+
+*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*
+
+Second reviewer's review:
+
+          >>> Summary of the submission <<<
+
+This paper conducts software repository mining from GHTorrent, using GitHub
+API, and Travis CI API to statistically evaluate the effects of adopting
+continuous integration in contrast to proposed â€œbest practicesâ€. The
+authors focus on the evolution of code writing and submission, issue and pull
+request closing, and test suite evolution before and after the introduction of
+Travis CI. Adapting and augmenting a statistical modeling framework of
+regression discontinuity design, the authors are able to assess the existence
+and extent of longitudinal effects for the target factors associated with
+Travis CI adoption. The authors also conducted a survey of 55 developers from
+the target projects in order to further understand the effects of Travis CI
+adoption and illicit specific rationals for their observations within the
+larger dataset. The results suggest that several â€œbest practicesâ€ have
+marginal impact within projects post-CI adoption, and that additional factors
+surrounding a transition to automated testing and agile processes help to
+create a more nuanced situation than previously reported.
+
+          >>> Evaluation <<<
+
+This paper provides a brief, but thorough, introduction to continuous
+integration in order to motivate the five research questions. 
+
+While the research questions are preliminary questions regarding CI, the lack
+of available data and difficulty in capturing developer practices means that
+these questions are important to answer and difficult to assess. The use of
+quasi-experimental linear regression analysis, via regression discontinuity
+designed statistical model, is a novel tactic for examining process adoption
+within SE.
+
+The use of qualitative methodologies such as surveys and interviews to provide
+a humanized context to quantitative data is helpful for gathering further
+insights into results. The authors conducted a survey of 55 developers in order
+to assess the reasons for adopting CI, whether development processes had
+changed in light of the introduction of CI, and whether CI usage prompted
+gradual changes over time in order to more efficiently use CI. It is not clear
+when the survey was conducted â€“ was it prior to the analysis (time series
+analysis). It is disappointing that the survey was not used to confirm and
+further examine the results from the time series analysis, considering that the
+open questions of why certain trends appear to adhere to â€œbest practicesâ€
+and others do not could be further explored by understanding the perspective of
+developers that have experienced this CI adoption process.
+
+Overall, this paper is clearly well-written and provides concise explanations
+for the employed methodologies and draws conclusions that are well nuanced to
+the limitations of the data and statistical models used.
+
+Concerns:
+- While the descriptive analysis (please do not write it as exploratory study
+â€“ since that means it was a separate study) is great, and it is good to use
+the log transformation â€“ pictorially, it is really hard to see any difference
+pre-, post-CI adoption. 
+- It would also have been useful to know about the demographics of the survey
+participants and how long they have been using CI would have been useful to
+know
+
+- Section III.A, Measures list: How were projects that use GitHub, but do not
+use GitHubâ€™s issue tracker, handled in regards to gathering the number of
+issues opened/closed?
+- Section IV.C, para. 7: The explanation for the increased latency of pull
+requests being closed is the â€œlow performance of Travis CI, as reported by
+survey participantsâ€. What is meant by â€œlow performanceâ€ in this
+instance?
+- Section VI, para. 5: Is the dataset available in order to allow researchers
+to replicate and assess the robustness of the results?
+- Section VII, para. 1: The conclusion is the first location that indicates the
+developer survey was conducted on only the developers that were responsible for
+introducing Travis CI. The methodology for the survey does not mention how
+these Travis CI instigators were located within each project.
+
+Minor corrections:
+- Section III.A., para. 3: There is a missing space between the following
+sentences â€œâ€¦tool part of the GrimoireLab tool suite.Then, we traversed
+projectâ€™s commit historyâ€¦â€
+- Section IV.A., para. 1: It is unclear why the statement â€œthe blessed GitHub
+repositoryâ€ is used here. Why is it blessed?
+- Section VI, para. 1: There is a missing word in â€œWe focus [on] construct
+and internal validityâ€.
+- Section VI, para. 2: There is a missing word in â€œA more precise definition
+of [??] would have involved reconcilingâ€¦â€
+- Section VI, para. 2: There is a missing period at the end of the statement
+â€œâ€¦two additional timestamps: registration of the repository with Travis CI,
+and first build[.]â€
+- Section VI, para. 2: It is unclear what is meant by â€œThis is due, e.g.,, to
+the fact thatâ€¦â€
+
+Strengths and Weaknesses:
+  + Novel use of time series statistical models to evaluate pre- and
+post-introduction effects (including exclusionary filtering)
+  + Consistent and thorough explanation of results
+  + Honest explanations for results that did not adhere to assumptions
+  - No detailed explanation (or intuition) in cases where their results are
+different from past
+  - Under-utilization of survey to provide further understanding of
+â€œnuancedâ€ results
+  - No exploration of the effects of corollary co-occurring changes to
+developer processes (e.g. code reviews, automated testing, etc.)
+
+*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*
+
+Third reviewer's review:
+
+          >>> Summary of the submission <<<
+
+This paper performs an analysis of the impact of adopting continuous
+integration on commit frequency, code churn, pull request closing, issue
+closing and testing. The study is based on GitHub projects adopting Travis
+continuous integration. Regression discontinuity designs (RDDs) and surveys are
+used for the analysis. The analysis shows that project-to-project and
+language-to-language variability are responsible for most of the explained
+variability in the data. Continuous integration had a much more nuanced effect
+than suggested by previous work.
+
+          >>> Evaluation <<<
+
+Positive points:
+
+- Regression discontinuity designs is used for the analysis, making it
+statistically sound.
+
+- Surveys have been used to complement the analysis.
+
+- Conclusions lead to a good contribution to knowledge, specially considering
+that the study found that the reality of adopting Travis continuous integration
+is much more complex than suggested by previous work.
+
+Negative points:
+
+- The fact that project-to-project and language-to-language variability are
+responsible for most of the explained variability in the data could have been
+discussed more.
+
+- I like to see that there is an exploratory analysis before RDDs are used, but
+it is very difficult to see any trends in the box plots shown by the authors. 
+
+- VIF is used to check for multicolinearity, but the results are not reported.
+
+Other comments for improvement:
+
+- Threats to validity regarding the survey are not discussed. Threats to
+validity regarding filtering are not discussed either. Could filtering lead to
+some undesirable bias in the conclusions?
+
+- Section IV.C, last paragraph: explain the meaning of "low performance" here.
+
+- Section IV.E: why RDD was not used here?
+
+- Section V should discuss differences in conclusions obtained by the authors
+and by related work more.
+
+*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*=--=*
