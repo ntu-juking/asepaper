@@ -215,6 +215,7 @@ statistically sound.
 - Conclusions lead to a good contribution to knowledge, specially considering
 that the study found that the reality of adopting Travis continuous integration
 is much more complex than suggested by previous work.
+AS> I’ve added this sentence to conclusions.
 
 Negative points:
 
