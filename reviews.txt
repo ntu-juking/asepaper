@@ -144,12 +144,15 @@ issues opened/closed?
 requests being closed is the â€œlow performance of Travis CI, as reported by
 survey participantsâ€. What is meant by â€œlow performanceâ€ in this
 instance?
+AS> Also mentioned by Reviewer 3. I’ve replaced “low performance” with “slowness”.
 - Section VI, para. 5: Is the dataset available in order to allow researchers
 to replicate and assess the robustness of the results?
 - Section VII, para. 1: The conclusion is the first location that indicates the
 developer survey was conducted on only the developers that were responsible for
 introducing Travis CI. The methodology for the survey does not mention how
 these Travis CI instigators were located within each project.
+AS> This was already mentioned in III-before-A but indeed not in III-C.
+Added: “For each project we identify the developer responsible for introducing \Tvi, i.e., committing the first version of \texttt{.travis.yml}.”
 
 Minor corrections:
 - Section III.A., para. 3: There is a missing space between the following
@@ -158,15 +161,20 @@ projectâ€™s commit historyâ€¦â€
 AS> Fixed
 - Section IV.A., para. 1: It is unclear why the statement â€œthe blessed GitHub
 repositoryâ€ is used here. Why is it blessed?
+AS> Lingo. I’ve added “blessed \GH repository, \ie the ``main'' repository of the project”
 - Section VI, para. 1: There is a missing word in â€œWe focus [on] construct
 and internal validityâ€.
+AS> Fixed
 - Section VI, para. 2: There is a missing word in â€œA more precise definition
 of [??] would have involved reconcilingâ€¦â€
+AS> Fixed
 - Section VI, para. 2: There is a missing period at the end of the statement
 â€œâ€¦two additional timestamps: registration of the repository with Travis CI,
 and first build[.]â€
+AS> Fixed
 - Section VI, para. 2: It is unclear what is meant by â€œThis is due, e.g.,, to
 the fact thatâ€¦â€
+AS> Fixed.
 
 Strengths and Weaknesses:
   + Novel use of time series statistical models to evaluate pre- and
@@ -226,6 +234,7 @@ validity regarding filtering are not discussed either. Could filtering lead to
 some undesirable bias in the conclusions?
 
 - Section IV.C, last paragraph: explain the meaning of "low performance" here.
+AS> Also mentioned by Reviewer 2. I’ve replaced “low performance” with “slowness”.
 
 - Section IV.E: why RDD was not used here?
 

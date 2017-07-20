@@ -57,7 +57,7 @@ important to distinguish non-merge from merge commits.
 Indeed, local git commits, in a developer's offline repository, happen in 
 isolation and can be seen as simply a mechanism to partition the work.
 However, what matters for \Tvis are pushes and pull requests to the blessed 
-\GH repository, \ie only then \Tvi would be triggered.
+\GH repository, \ie the ``main'' repository of the project as only then \Tvi would be triggered.
 Push events are not readily accessible in our data, hence we analyze 
 merge commits on the main development branch as a proxy for work
 that would have been subjected to CI by \Tvi.
@@ -658,10 +658,12 @@ analysis methods, such as the RDD we use here, at detecting fine resolution effe
 Second, our model finds that, on average, pull requests are taking longer to close 
 over time, and this trend is unaffected by the switch to \Tvis.
 This, again, is quite surprising, as we have seen in RQ2 above that the size of 
-code changes becomes, on average, smaller and smaller over time; in turn, this
+code changes becomes, on average, smaller %and smaller 
+over time; in turn, this
 would imply that changes are also easier (quicker) to evaluate.
 %\as{Talk about survey and how Travis is becoming slow, which may explain latency trend}
-One possible explanation of the increased latency is the low performance of \Tvis, 
+One possible explanation of the increased latency is the %low performance 
+slowness of \Tvi, 
 as reported by survey participants (R1, R27, R53).
 
 
