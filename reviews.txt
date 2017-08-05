@@ -73,6 +73,7 @@ direction, i.e., they look more at "disruption", i.e., the organisational
 structure of teams/communities being investigated - this also reflects on the
 immediately following question. Please, either you remove or rephrase these
 questions to synch them with the actual ones;
+AS> Dropped the questions
 - section 3.C: more "profound" - "profound" is not really clear to me in this
 context - I assume you mean "wider", referring to the scope of your survey;
 
@@ -147,6 +148,7 @@ instance?
 AS> Also mentioned by Reviewer 3. I’ve replaced “low performance” with “slowness”.
 - Section VI, para. 5: Is the dataset available in order to allow researchers
 to replicate and assess the robustness of the results?
+AS> Who has the data?
 - Section VII, para. 1: The conclusion is the first location that indicates the
 developer survey was conducted on only the developers that were responsible for
 introducing Travis CI. The methodology for the survey does not mention how
