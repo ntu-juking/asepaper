@@ -31,7 +31,7 @@ reports being used in over 318,000 open source \GH projects, see
 
 Next, we cloned the \GH repositories of all these projects locally, and extracted
 their main-branch commit histories using \Perc, an open-source repository
-mining tool part of the \GLab tool suite.%\footnote{\url{http://grimoirelab.github.io}}
+mining tool part of the \GLab tool suite. %\footnote{\url{http://grimoirelab.github.io}}
 Then, we traversed each project's commit history to determine when 
 maintainers introduced \Tvis, by identifying the earliest commit in the 
 \texttt{.travis.yml} configuration file, and recorded its authored timestamp as
@@ -567,11 +567,13 @@ To obtain more profound insights in the adoption of \Tvis we conducted a survey
 of software developers.
 We randomly selected 335 projects from our dataset, stratified by how much of a
 discontinuity in commit activity we detected at \Tvi adoption time.
-Only one project per developer was considered.
+For each project we identify the developer responsible for introducing \Tvi, 
+i.e., committing the first version of \texttt{.travis.yml}. 
+We ensure that only one project per developer was considered.
 %We also ensured that in each project a different developer was responsible for 
 %introducing \Tvis. 
 In the invitation email (delivery of 23 messages failed; we received 55 responses,
-or 17.63 response rate) we explicitly stated the name of the project.
+or 17.63\% response rate) we explicitly stated the name of the project.
 % that the survey questions have pertained to.
 We asked three questions: what made developers decide to start using CI and 
 \Tvis; whether they had to change anything in their development process to 

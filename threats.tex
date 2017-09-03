@@ -2,19 +2,19 @@
 
 \section{Threats to Validity}
 \label{sec:threats}
-We focus construct and internal validity~\cite{perry2000empirical}, as we 
+We focus on construct and internal validity~\cite{perry2000empirical}, as we 
 do not claim generalizability.
 
 \smallskip \emph{Construct Validity:} %assesses whether the variables we 
 %considered accurately model the constructs of our study. 
 One of our constructs is a project's ``CI adoption time,'' which 
 we operationalize as ``first commit to \texttt{.travis.yml}''. %``first \Tvis build''. 
-A more precise definition of would have involved 
+A more precise operationalization would have involved 
 reconciling two additional timestamps: registration of the repository with \Tvis, and 
-first build
+first build.
 %, and the addition of the \texttt{.travis.yml} configuration file to the
 %repository root folder.
-This is due, \eg, to the fact that \Tvis can also start a build using some default 
+Indeed, the three timestamps do not necessarily coincide due \eg, to the fact that \Tvis can also start a build using some default 
 environment settings (Ruby) \emph{without} \texttt{.travis.yml} being present.
 %However, by default Travis-CI is configured for Ruby, and obviously any attempt to build a Java project as if it were Ruby are deemed to fail.
 %When registering the project one might also indicate that the builds should be created only if \texttt{.travis.yml} is present.
