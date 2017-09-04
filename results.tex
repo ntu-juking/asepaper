@@ -45,7 +45,7 @@ issue tracking, and testing.
 \end{figure}
 
 
-\subsection{RQ1: Trends in Commit Frequency}
+\subsection{RQ$_1$: Trends in Commit Frequency}
 
 %Starting from RQ1 and RQ2 the practice being investigate should be �Commits To the Mainline Every Day�, but then you analyze git commits. Not surprisingly, commits do not increase. Why they should? The main reason of having many commits is the ability to partition a large change in many smaller ones and to better handle the work locally. What really matters for the CI are pushes and pull/requests. Indeed, I would expect an increase of pushes/pull requests when CI is being adopted. Maybe a way to observe this is to actually analyze merge commits and see whether their frequency increases.
 %Similar considerations apply for the size of code changes. Also, I�ve the feeling that such a size may strongly depend on the kind of activity being performed. For example, it could be that bug fixing correlates with small change size, whereas feature addition with larger ones. Unfortunately, such a factor is not controlled.
@@ -137,11 +137,11 @@ subjected to CI, since they appear to display a decreasing trend with time.
 \input{tables/freq-model2}
 %\input{tables/freq-model}
 
-Recall that we modeled a random intercept for \emph{programming language}, 
+We modeled a random intercept for \emph{programming language}, 
 to allow for language-to-language variability in the response (\ie code in some 
 languages being naturally more verbose than in others, resulting in different
-ways to split the work across commits; or community-level norms for committing), 
-and a random \emph{intervention} slope and intercept for \emph{project}, to allow 
+ways to split the work across commits; or community-level norms for committing); 
+we also modeled a random \emph{intervention} slope and intercept for \emph{project}, to allow 
 for project-to-project variability in the response and the possibility that, on average, 
 projects with lower initial activity may be less strongly affected by adopting 
 \Tvis than high-frequency projects.
@@ -265,11 +265,11 @@ branches'') and R49 (``feature branches''), R6, and R47.
 
 
 
-\subsection{RQ2: Trends in Code Churn}
+\subsection{RQ$_2$: Trends in Code Churn}
 
 Next we examine code churn.
 %Recall that our data consists of \bv{2,401 projects across 22 programming languages.}
-We distinguish between merge and non-merge commits.
+As before, we distinguish between merge and non-merge commits.
 
 \begin{figure}[t]
 \centering
@@ -554,12 +554,12 @@ differences are more important and might overshadow the overall trend.
 
 %\as{Vladimir, do you have a cross-combination data, such as \# decrease in churn AND increase in frequency?}
 
-\subsection{RQ3: Trends in Pull Request Closing}
+\subsection{RQ$_3$: Trends in Pull Request Closing}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/pr-closed.pdf}
-\caption{Closed pull requests before and after the \Tvis adoption.}\vspace{-0.6cm}
+\caption{Closed pull requests before and after the \Tvis adoption.}\vspace{-0.4cm}
 \label{fig:prs}
 \end{figure}
 
@@ -568,8 +568,8 @@ differences are more important and might overshadow the overall trend.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/pr-latency.pdf}
-\caption{Mean pull request latency before and after the \Tvis adoption.}\vspace{-0.7cm}
+\includegraphics[width=\columnwidth, clip=true, trim=0 5 0 0]{figures/pr-latency.pdf}
+\caption{Mean pull request latency before and after the \Tvis adoption.}\vspace{-0.3cm}
 \label{fig:pr-latency}
 \end{figure}
 
@@ -580,7 +580,7 @@ dimensions: the number of pull requests closed, and the average
 pull request latency (\ie time to close) per time window.
 Since \Tvis  runs every time a pull request is submitted, 
 the developers are rapidly notified whether their pull requests pass the 
-\Tvi-quality gate and can then rapidly react %to the feedback provided by \Tvi 
+\Tvi quality gate, and can then rapidly react %to the feedback provided by \Tvi 
 by correcting the pull request source code.
 Hence, we expect that \Tvis shortens the pull request latency and
 %under the assumption of constant productivity, 
@@ -622,8 +622,8 @@ explained.
 Regarding closed pull requests (Table~\ref{table:prs}), we note an increasing
 \emph{time} baseline trend pre-adoption; no statistically significant discontinuity
 at the adoption time; and an apparent neutralization of the aforementioned time
-trend post-adoption, as $\beta$(\emph{time}) $+$ 
-$\gamma$(\emph{time\_after\_intervention}) $\simeq 0$.
+trend post-adoption, as $\beta$ (\emph{time}) $+$ 
+$\gamma$ (\emph{time\_after\_intervention}) $\simeq 0$.
 %
 Turning to the pull request latency model (Table~\ref{table:latency}), we note
 a statistically significant, increasing baseline \emph{time} trend, 
@@ -648,7 +648,7 @@ closed per time period, across the entire interval under observation, our model
 suggests that, after controlling for project size, project age, and size of developer 
 community, as well as local project-to-project and language-to-language differences, 
 the increasing trend manifests itself, in aggregate, only pre-\Tvi.
-Moreover, and quite surprisingly, we find that the initial trend is flattened post-\Tvi,
+Moreover, surprisingly, we find that the initial trend is flattened post-\Tvi,
 resulting in relatively stationary behavior, on average.
 This paints a more nuanced picture of how \GH teams are adapting to, and
 benefiting from, continuous integration technology than suggested by prior
@@ -657,17 +657,16 @@ analysis methods, such as the RDD we use here, at detecting fine resolution effe
 
 Second, our model finds that, on average, pull requests are taking longer to close 
 over time, and this trend is unaffected by the switch to \Tvis.
-This, again, is quite surprising, as we have seen in RQ2 above that the size of 
+This, again, is quite surprising, as we have seen in RQ$_2$ above that the size of 
 code changes becomes, on average, smaller %and smaller 
 over time; in turn, this
 would imply that changes are also easier (quicker) to evaluate.
 %\as{Talk about survey and how Travis is becoming slow, which may explain latency trend}
-One possible explanation of the increased latency is the %low performance 
-slowness of \Tvi, 
-as reported by survey participants (R1, R27, R53).
+One possible explanation for the increased latency is the %low performance 
+\Tvi' slowness, reported by some survey participants (R1, R27, R53).
 
 
-\subsection{RQ4: Trends in Issue Closing}
+\subsection{RQ$_4$: Trends in Issue Closing}
 
 Next, we examine issue closing trends.
 %As above, we use data on 293 projects, each with 
@@ -675,9 +674,9 @@ Next, we examine issue closing trends.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=\columnwidth, clip=true, trim=0 0 0 0]{figures/issues-closed.pdf}
+\includegraphics[width=\columnwidth, clip=true, trim=0 5 0 0]{figures/issues-closed.pdf}
 \caption{Number of closed issues before and after the \Tvis adoption.}
-\label{fig:issues}\vspace{-0.4cm}
+\label{fig:issues}\vspace{-0.3cm}
 \end{figure}
 
 
@@ -725,8 +724,8 @@ explained.
 %(churn), with $R^2_m \simeq 0.1-0.2$ and $R^2_c \simeq 0.4-0.5$.
 We note an increasing
 \emph{time} baseline trend pre-adoption; no statistically significant discontinuity
-at the adoption time; and a slight positive trend post-adoption, as $\beta$(\emph{time}) $+$ 
-$\gamma$(\emph{time\_after\_intervention}) $> 0$.
+at the adoption time; and a slight positive trend post-adoption, as $\beta$ (\emph{time}) $+$ 
+$\gamma$ (\emph{time\_after\_intervention}) $> 0$.
 
 
 %Results of the RDD modeling are summarized in Table~\ref{Table:rddmodels_issues}.
@@ -762,7 +761,7 @@ over time, but this trend slows with the switch to \Tvis.
 Survey participants experience \Tvi as beneficial for bug detection: ``I think we produce less bugs'' (R45), ``there was an immediately noticeable improvement in terms of the number of serious bugs in production'' (R51). 
 An interesting insight into this matter is provided by R16: while several survey respondents have indicated that \Tvis is not consistent in terms of performance and relatively slow, those performance aspects provided R16 with means to detect ``more flaky issues'' ``which where only visible on \Tvi''. 
 
-\subsection{RQ5: Trends in Testing}
+\subsection{RQ$_5$: Trends in Testing}
 
 The last development practice we examine is testing.
 % and the evolution 

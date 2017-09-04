@@ -3,20 +3,67 @@
 \section{Conclusion}
 \label{sec:conc}
 
-This paper focused on CI: while several guidelines exist, relatively little 
-has been done to evaluate the state of practice.
+This paper focused on the switch to continuous integration (CI): while several 
+guidelines exist, relatively little has been done to evaluate the state of practice.
 We empirically studied the impact of adopting \Tvis on development practices 
 in a collection of \GH projects, and surveyed the developers responsible for 
-introducing \Tvi. %in the projects we have studied.
+introducing \Tvi in those projects.
 
-We observe that the reality of adopting \Tvis is much more complex than suggested by previous work.
-The increasing number of merge commits aligns with the the ``commit often'' guideline, but is likely to be further encouraged by the shift to a more distributed workflow with multiple branches and pull requests.
-The ``commit small'' guideline, however, is followed only to some extent and the differences between the projects are more important than adherence to this guideline.
-As expected, we have observed the increasing trend in the number of issues closed; however, it was surprising that this trend slows down after \Tvis is introduced.
-In terms of testing, we observe that after the expected adjustments required by the automated testing, the debugging complexity seems to increase. 
-The most interesting observations were related to the pull request resolution: the expected increasing trend in the number of pull requests being closed manifests itself after the introduction of \Tvis, and even then only after the initial plateau period. 
-This observation calls for a more profound investigation of how \GH teams change their behavior in response to the introduction of \Tvis. 
-Finally, we have observed the pull request latency increasing  despite the code changes getting smaller.
+%1: commit freq; 2: churn; 3: PRs; 4: issues; 5: tests
+
+We find that the reality of adopting \Tvis is much more complex than suggested 
+by previous work.
+The increasing number of merge commits aligns with the ``commit often'' 
+guideline, but is likely to be further encouraged by the shift to a more distributed 
+workflow with multiple branches and pull requests (RQ$_1$).
+The ``commit small'' guideline, however, is followed only to some extent, with
+large variation between projects (RQ$_2$).
+%differences between the projects are more important than adherence to this guideline.
+As expected, we observe a general increasing trend in the number of issues
+closed over time; however, it was surprising that this trend slows down after \Tvis 
+is introduced (RQ$_4$).
+In terms of testing, we find that after some (expected) initial adjustments, the amount 
+(and potentially the quality) of automated tests seems to increase (RQ$_5$). 
+
+The most interesting observations relate to pull request (PR) evaluations: 
+While we also find that, in aggregate, more PRs are being closed after adopting 
+\Tvi, as did prior work~\cite{VasilescuYWDF15}, our time-series-based analysis 
+suggests that the expected increasing trend in PRs closed over 
+time manifests itself \emph{only before} adopting \Tvi; after, the 
+number of closed PRs remains relatively stable (RQ$_3$).
+At the same time, PR latencies increase steadily over time,
+despite the code changes getting relatively smaller.
+Future work should employ qualitative methods to understand potential causes
+for this effect.
+We can only speculate here that even with the high level of automation provided
+by CI, the ability of teams to scale up distributed development is limited by the
+availability of human resources for manual code review (\ie the project integrators).
+%which typically accompanies automated testing of incoming PRs.
+This calls for a more profound investigation of how \GH teams change their PR 
+review practices in response to the introduction of \Tvis, as well as additional tool 
+support, \eg for automatic prioritization and automatic post-merge defect prediction,
+which may help. 
+Future work should also explicitly consider the design decisions and trade-offs 
+between seemingly equivalent CI pipeline implementations.
+Project specific concerns may drive individual implementations, usage, and practices,
+as the high amount of variance explained by our project random effects suggest.
+
+%Overall, while CI is a popular mechanism, we do not find overwhelming evidence 
+%that developers transition to ``best practices" following its adoption.
+%In fact, it is apparent that the reality of the \Tvis adoption is more complex than 
+%suggested by the previous studies.
+
+%Moreover, the ways developers benefit from the introduction of \Tvis do not necessarily 
+%correspond to their expectations, \eg unstable performance of \Tvis allowed one of the 
+%survey respondents to detect hard-to-find bugs.
+%%These findings have support in recent qualitative studies, where CI needs and  wishes of open-source and proprietary code developers have been surveyed~\cite{Hilton2016, hilton2016continuous}.
+%We consider investigating longer term impact of \Tvis as future work.
+
+
+
+%, and even then only after the initial plateau period. 
+%Finally, we have observed the pull request latency increasing despite the code 
+%changes getting smaller.
 %\as{till here}
 %We observed that for most projects no significant linear trends 
 %are visible, neither before nor after introduction of \Tvis.
@@ -41,14 +88,14 @@ Finally, we have observed the pull request latency increasing  despite the code 
 %%\as{This still does not explain the evolution; the conjecture that the developers are running more and more attempts to fix a bug seems to be contradicted by 
 %%our conclusion on \# commits (unless they are using pull requests...)}
 
-While CI is a popular mechanism, we do not 
-find overwhelming evidence that developers transition to ``best practices" 
-following its adoption.
-In fact, it is apparent that the reality of the \Tvis adoption is more complex than suggested by the previous studies.
-Project specific concerns may guide individual implementations, usage, 
-and practices.
-Moreover, the ways developers benefit from the introduction of \Tvis do not necessarily correspond to their
-expectations, \eg unstable performance of \Tvis allowed one of the survey respondents to detect hard-to-find bugs.
-%These findings have support in recent qualitative studies, where CI needs and  wishes of open-source and proprietary code developers have been surveyed~\cite{Hilton2016, hilton2016continuous}.
-We consider investigating longer term impact of \Tvis as future work.
-%%\as{Danny Dig and co-authors have only compared Travis with no-Travis but did not look at the transition.}
+%While CI is a popular mechanism, we do not find overwhelming evidence that 
+%developers transition to ``best practices" following its adoption.
+%In fact, it is apparent that the reality of the \Tvis adoption is more complex than 
+%suggested by the previous studies.
+%Project specific concerns may drive individual implementations, usage, and practices.
+%Moreover, the ways developers benefit from the introduction of \Tvis do not necessarily 
+%correspond to their expectations, \eg unstable performance of \Tvis allowed one of the 
+%survey respondents to detect hard-to-find bugs.
+%%These findings have support in recent qualitative studies, where CI needs and  wishes of open-source and proprietary code developers have been surveyed~\cite{Hilton2016, hilton2016continuous}.
+%We consider investigating longer term impact of \Tvis as future work.
+%%%\as{Danny Dig and co-authors have only compared Travis with no-Travis but did not look at the transition.}
